@@ -4,10 +4,21 @@ buildscript {
     }
     repositories {
         mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        // node control
+        classpath "com.moowork.gradle:gradle-node-plugin:1.2.0"
     }
+}
+
+
+
+plugins {
+    id "com.moowork.node" version "1.2.0"
 }
 
 apply plugin: 'java'
@@ -15,7 +26,9 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'application'
+apply plugin: "com.moowork.node"
 
+mainClassName="ru.inbox.savinov_vu.regexp.RegExpApplication"
 
 group = 'ru.inbox.savinov_vu'
 version = '0.0.1-SNAPSHOT'
@@ -36,4 +49,31 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('org.springframework.security:spring-security-test')
 }
+
+node {
+    version = "8.11.1"
+    download = true
+    nodeModulesDir = file("front-end")
+}
+
+task buildClientDev(type: NpmTask, dependsOn: 'npmInstall') {
+    group = 'build'
+    description = 'Compile client side folder for development'
+    args = ['run', 'buildDev']
+}
+
+task buildClient(type: NpmTask, dependsOn: 'npmInstall') {
+    group = 'build'
+    description = "Compile client side folder for production"
+    args = ['run', 'build']
+}
+
+task buildClientWatch(type: NpmTask, dependsOn: 'npmInstall') {
+    group = 'application'
+    description = "Build and watches the client side assets for rebuilding"
+    args = ['run', 'buildWatch']
+}
+
+bootRun.dependsOn(buildClientDev)
+jar.dependsOn(buildClient)
 
