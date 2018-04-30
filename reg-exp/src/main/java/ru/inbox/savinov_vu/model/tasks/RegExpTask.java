@@ -11,7 +11,7 @@ import java.util.List;
 public class RegExpTask {
 
     @Id
-    public int id;
+    public Integer id;
 
     @CollectionTable(name = "matchStrings")
     public List<String> matchStrings;

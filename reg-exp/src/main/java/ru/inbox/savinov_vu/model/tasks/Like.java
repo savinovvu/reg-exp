@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Like {
 
     @Id
-    public int id;
+    public Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)

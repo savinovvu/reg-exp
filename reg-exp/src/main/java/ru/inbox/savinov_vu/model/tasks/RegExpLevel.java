@@ -11,7 +11,7 @@ import java.util.List;
 public class RegExpLevel {
 
     @Id
-    public int id;
+    public Integer id;
 
 
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "regExpLevel")

@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Comment {
 
     @Id
-    public int id;
+    public Integer id;
 
     public String text;
 
