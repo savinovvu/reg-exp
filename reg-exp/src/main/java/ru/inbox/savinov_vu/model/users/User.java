@@ -2,6 +2,7 @@ package ru.inbox.savinov_vu.model.users;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import ru.inbox.savinov_vu.interfaces.Identify;
 import ru.inbox.savinov_vu.model.tasks.Comment;
 import ru.inbox.savinov_vu.model.tasks.RegExpLevel;
 import ru.inbox.savinov_vu.model.tasks.Like;
@@ -11,7 +12,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class User {
+@Table(name = "\"user\"")
+public class User implements Identify {
 
     @Id
     public Integer id;
@@ -31,20 +33,25 @@ public class User {
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany
-    @JoinTable(name = "user_solved-regexp-task",
+    @JoinTable(name = "user_solvedregexptask",
             joinColumns = {
                     @JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {
-                    @JoinColumn(name = "solved-regexp-task_id", referencedColumnName = "id")})
+                    @JoinColumn(name = "solvedregexptask_id", referencedColumnName = "id")})
     public List<RegExpTask> solvedRegExpTasks;
 
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany
-    @JoinTable(name = "user_solved-regexp-level",
+    @JoinTable(name = "user_solvedregexplevel",
             joinColumns = {
                     @JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {
-                    @JoinColumn(name = "solved-regexp-level_id", referencedColumnName = "id")})
+                    @JoinColumn(name = "solvedregexplevel_id", referencedColumnName = "id")})
     public List<RegExpLevel> solvedRegExpLevels;
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
 }
