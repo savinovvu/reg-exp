@@ -1,0 +1,13 @@
+spring:
+  mandatory-file-encoding: utf-8
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+  datasource:
+
+    url: jdbc:postgresql://localhost:5432/regexpert
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
