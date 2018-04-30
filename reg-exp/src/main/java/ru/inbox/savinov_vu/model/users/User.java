@@ -4,8 +4,8 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import ru.inbox.savinov_vu.interfaces.Identify;
 import ru.inbox.savinov_vu.model.tasks.Comment;
-import ru.inbox.savinov_vu.model.tasks.RegExpLevel;
 import ru.inbox.savinov_vu.model.tasks.Like;
+import ru.inbox.savinov_vu.model.tasks.RegExpLevel;
 import ru.inbox.savinov_vu.model.tasks.RegExpTask;
 
 import javax.persistence.*;
@@ -15,43 +15,105 @@ import java.util.List;
 @Table(name = "\"user\"")
 public class User implements Identify {
 
+
+    private Integer id;
+
+    private String name;
+
+    private String password;
+
+    private Role role;
+
+    private List<Like> likes;
+
+    private List<Comment> comments;
+
+    private List<RegExpTask> solvedRegExpTasks;
+
+    private List<RegExpLevel> solvedRegExpLevels;
+
     @Id
-    public Integer id;
+    @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
+    @Override
+    public Integer getId() {
+        return id;
+    }
 
-    public String name;
+    public String getName() {
+        return name;
+    }
 
-    public String password;
+    public String getPassword() {
+        return password;
+    }
 
     @Enumerated(value = EnumType.STRING)
-    public Role role;
-
+    public Role getRole() {
+        return role;
+    }
+    @LazyCollection(LazyCollectionOption.TRUE)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    public List<Like> likes;
-
+    public List<Like> getLikes() {
+        return likes;
+    }
+    @LazyCollection(LazyCollectionOption.TRUE)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    public List<Comment> comments;
+    public List<Comment> getComments() {
+        return comments;
+    }
 
-    @LazyCollection(LazyCollectionOption.FALSE)
+    @LazyCollection(LazyCollectionOption.TRUE)
     @ManyToMany
     @JoinTable(name = "user_solvedregexptask",
             joinColumns = {
                     @JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {
                     @JoinColumn(name = "solvedregexptask_id", referencedColumnName = "id")})
-    public List<RegExpTask> solvedRegExpTasks;
+    public List<RegExpTask> getSolvedRegExpTasks() {
+        return solvedRegExpTasks;
+    }
 
-
-    @LazyCollection(LazyCollectionOption.FALSE)
+    @LazyCollection(LazyCollectionOption.TRUE)
     @ManyToMany
     @JoinTable(name = "user_solvedregexplevel",
             joinColumns = {
                     @JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {
                     @JoinColumn(name = "solvedregexplevel_id", referencedColumnName = "id")})
-    public List<RegExpLevel> solvedRegExpLevels;
+    public List<RegExpLevel> getSolvedRegExpLevels() {
+        return solvedRegExpLevels;
+    }
 
-    @Override
-    public Integer getId() {
-        return id;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public void setLikes(List<Like> likes) {
+        this.likes = likes;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public void setSolvedRegExpTasks(List<RegExpTask> solvedRegExpTasks) {
+        this.solvedRegExpTasks = solvedRegExpTasks;
+    }
+
+    public void setSolvedRegExpLevels(List<RegExpLevel> solvedRegExpLevels) {
+        this.solvedRegExpLevels = solvedRegExpLevels;
     }
 }

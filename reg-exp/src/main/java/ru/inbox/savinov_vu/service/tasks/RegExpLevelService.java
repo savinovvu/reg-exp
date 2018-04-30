@@ -21,7 +21,8 @@ public class RegExpLevelService implements CRUDService<RegExpLevel> {
 
     @Override
     public List<RegExpLevel> getAll() {
-        return regExpLevelRepository.findAll();
+        List<RegExpLevel> all = regExpLevelRepository.findAll();
+        return all;
     }
 
     @Override

@@ -9,19 +9,42 @@ import javax.persistence.*;
 @Table(name = "\"like\"")
 public class Like implements Identify {
 
+
+    private Integer id;
+
+    private User user;
+
+    private RegExpTask regExpTask;
+
     @Id
-    public Integer id;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", nullable = false)
-    public User user;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "regexptask_id", nullable = false)
-    public RegExpTask regExpTask;
-
+    @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
     @Override
     public Integer getId() {
         return id;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    public User getUser() {
+        return user;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "regexptask_id", nullable = false)
+    public RegExpTask getRegExpTask() {
+        return regExpTask;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setRegExpTask(RegExpTask regExpTask) {
+        this.regExpTask = regExpTask;
     }
 }
