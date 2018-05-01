@@ -42,3 +42,15 @@ INSERT INTO "public"."like" ("id", "regexptask_id", "user_id") VALUES (1, 1, 1);
 INSERT INTO "public"."like" ("id", "regexptask_id", "user_id") VALUES (2, 1, 1);
 INSERT INTO "public"."like" ("id", "regexptask_id", "user_id") VALUES (3, 2, 1);
 INSERT INTO "public"."like" ("id", "regexptask_id", "user_id") VALUES (4, 2, 3);
+
+INSERT INTO "public"."excluded_strings" ("regexptask_id", "excluded_strings") VALUES (1, 'exclude1')
+INSERT INTO "public"."excluded_strings" ("regexptask_id", "excluded_strings") VALUES (2, 'exclude2')
+INSERT INTO "public"."excluded_strings" ("regexptask_id", "excluded_strings") VALUES (3, 'exclude3')
+
+INSERT INTO "public"."match_strings" ("regexptask_id", "match_strings") VALUES (1, 'match1')
+INSERT INTO "public"."match_strings" ("regexptask_id", "match_strings") VALUES (2, 'match2')
+INSERT INTO "public"."match_strings" ("regexptask_id", "match_strings") VALUES (3, 'match3')
+
+INSERT INTO "public"."required_sub_strings" ("regexptask_id", "required_sub_strings") VALUES (1, 'requiredstring1')
+INSERT INTO "public"."required_sub_strings" ("regexptask_id", "required_sub_strings") VALUES (2, 'requiredstring2')
+INSERT INTO "public"."required_sub_strings" ("regexptask_id", "required_sub_strings") VALUES (3, 'requiredstring3')
