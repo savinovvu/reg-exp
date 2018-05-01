@@ -1,14 +1,29 @@
-<header>footer</header>
+<header>header</header>
 <aside>
-  <nav>
-   <!-- <mat-menu>
-      <button mat-menu-item>Settings</button>
-      <button mat-menu-item>Help</button>
-    </mat-menu>-->
 
+  <nav>
+<!--    <mat-menu #rootMenu="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="subMenu">Power</button>
+      <button mat-menu-item>System settings</button>
+    </mat-menu>
+
+    <mat-menu #subMenu="matMenu">
+      <button mat-menu-item>Shut down</button>
+      <button mat-menu-item>Restart</button>
+      <button mat-menu-item>Hibernate</button>
+    </mat-menu>
+
+    <button mat-icon-button [matMenuTriggerFor]="rootMenu">
+      button
+    </button>-->
+
+    <mat-sidenav-container class="example-container" >
+      <mat-sidenav mode="side" opened>Sidenav content</mat-sidenav>
+      <mat-sidenav-content>Main content</mat-sidenav-content>
+    </mat-sidenav-container>
   </nav>
 </aside>
 <div>
-  <a class="btn btn-danger">butdfg</a>
+  <!--<a class="btn btn-danger">butdfg</a>-->
   main</div>
 <footer></footer>

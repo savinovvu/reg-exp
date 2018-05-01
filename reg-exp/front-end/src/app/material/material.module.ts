@@ -10,7 +10,9 @@ import {MatButtonModule, MatCheckboxModule, MatMenuModule, MatSidenavModule} fro
   ],
   exports: [
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatMenuModule,
+    MatSidenavModule,
   ],
   declarations: []
 })
