@@ -1,24 +1,41 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {MaterialModule} from "./material/material.module";
-// import {MatMenuModule} from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {NavigationComponent} from './components/navigation/navigation.component';
+import {RootRouter} from "./app.routes";
+import {HomeComponent} from './components/home/home.component';
+import {NewsComponent} from './components/news/news.component';
+import {ContactComponent} from './components/contact/contact.component';
+import {AboutComponent} from './components/about/about.component';
+import {TaskComponent} from './components/task/task.component';
+import { CourseComponent } from './components/course/course.component';
+import { LevelComponent } from './components/level/level.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavigationComponent,
+    HomeComponent,
+    NewsComponent,
+    ContactComponent,
+    AboutComponent,
+    TaskComponent,
+    CourseComponent,
+    LevelComponent
   ],
   imports: [
     BrowserModule,
     MaterialModule,
     BrowserAnimationsModule,
-    // MatMenuModule
+    RootRouter
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
