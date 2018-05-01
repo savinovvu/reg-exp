@@ -8,7 +8,9 @@ import {BaseComponent} from "../../utils/base-component";
   styleUrls: ['./course.component.css']
 })
 export class CourseComponent extends BaseComponent implements OnInit {
-  private levels;
+
+  levels;
+  displayedColumns = ['id', 'description'];
 
   constructor(private  restService: RestDataSourceService
   ) {
@@ -19,7 +21,13 @@ export class CourseComponent extends BaseComponent implements OnInit {
     })
   }
 
+
   ngOnInit() {
   }
 
 }
+
+
+
+
+
