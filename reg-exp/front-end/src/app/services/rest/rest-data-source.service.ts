@@ -9,7 +9,6 @@ const PORT = 8080;
 @Injectable()
 export class RestDataSourceService {
 
-  private subject = new Subject();
   private auth_token: string = 'tmp';
   private baseUrl;
 
@@ -24,9 +23,9 @@ export class RestDataSourceService {
     let subject = new Subject();
     const headers = this.getHeaders();
     this.httpClient.get(url, {headers}).subscribe(v => {
-      this.subject.next(v);
+      subject.next(v);
     });
-    return this.subject.asObservable();
+    return subject.asObservable();
   }
 
   post(url, item) {
@@ -34,9 +33,9 @@ export class RestDataSourceService {
     let subject = new Subject();
     const headers = this.getHeaders();
     this.httpClient.post(url, item, {headers}).subscribe(v => {
-      this.subject.next(v);
+      subject.next(v);
     });
-    return this.subject.asObservable();
+    return subject.asObservable();
   }
 
   put(url, item) {
@@ -44,9 +43,9 @@ export class RestDataSourceService {
     let subject = new Subject();
     const headers = this.getHeaders();
     this.httpClient.put(url, item, {headers}).subscribe(v => {
-      this.subject.next(v);
+      subject.next(v);
     });
-    return this.subject.asObservable();
+    return subject.asObservable();
   }
 
   delete(url, item) {
@@ -54,9 +53,9 @@ export class RestDataSourceService {
     let subject = new Subject();
     const headers = this.getHeaders();
     this.httpClient.delete(url, {headers}).subscribe(v => {
-      this.subject.next(v);
+      subject.next(v);
     });
-    return this.subject.asObservable();
+    return subject.asObservable();
   }
 
 
