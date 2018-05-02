@@ -30,6 +30,7 @@ export class RestDataSourceService {
   }
 
   post(url, item) {
+    url = this.baseUrl + url;
     let subject = new Subject();
     const headers = this.getHeaders();
     this.httpClient.post(url, item, {headers}).subscribe(v => {
@@ -39,6 +40,7 @@ export class RestDataSourceService {
   }
 
   put(url, item) {
+    url = this.baseUrl + url;
     let subject = new Subject();
     const headers = this.getHeaders();
     this.httpClient.put(url, item, {headers}).subscribe(v => {
@@ -48,6 +50,7 @@ export class RestDataSourceService {
   }
 
   delete(url, item) {
+    url = this.baseUrl + url;
     let subject = new Subject();
     const headers = this.getHeaders();
     this.httpClient.delete(url, {headers}).subscribe(v => {

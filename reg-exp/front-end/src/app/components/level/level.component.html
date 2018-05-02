@@ -1,3 +1,28 @@
-<p>
-  level works!
-</p>
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="tasks">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef ngClass="customWidthClass"> Номер задачи.</mat-header-cell>
+      <mat-cell *matCellDef="let task" ngClass="customWidthClass">
+        <a [routerLink]="['/course', level, task.id]">{{task.id}}</a>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef ngClass="customWidthClass"> Наименование</mat-header-cell>
+      <mat-cell *matCellDef="let task" ngClass="customWidthClass">
+        <a [routerLink]="['/course', level, task.id]">{{task.name}}</a>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef> Описание</mat-header-cell>
+      <mat-cell *matCellDef="let task"> {{task.description}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

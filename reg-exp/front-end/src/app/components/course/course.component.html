@@ -2,13 +2,15 @@
   <mat-table #table [dataSource]="levels">
 
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef ngClass="customWidthClass"> Уровень. </mat-header-cell>
-      <mat-cell *matCellDef="let level" ngClass="customWidthClass"> {{level.id}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef ngClass="customWidthClass"> Уровень.</mat-header-cell>
+      <mat-cell *matCellDef="let level" ngClass="customWidthClass">
+        <a [routerLink]="['/course', level.id]">{{level.id}}</a>
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef> Описание </mat-header-cell>
-      <mat-cell *matCellDef="let level"> {{level.description}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> Описание</mat-header-cell>
+      <mat-cell *matCellDef="let level"> {{level.description}}</mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

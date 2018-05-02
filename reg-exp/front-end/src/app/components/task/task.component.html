@@ -1,3 +1,45 @@
-<p>
-  task works!
-</p>
+<div class="container">
+  <div class="row">
+    <div>
+      <p>Наименование задачи: {{task?.name}}</p>
+      <p>Условие задачи: {{task?.description}}</p>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-xl-6">
+
+      <div *ngIf="task?.matchStrings?.length > 0">
+        <p>Выражение должно найти строки</p>
+        <ul>
+          <li *ngFor="let matchString of task.matchStrings"> {{matchString}}</li>
+        </ul>
+      </div>
+
+      <div *ngIf="task?.excludedStrings?.length > 0">
+        <p>Выражение должно исключить строки</p>
+        <ul>
+          <li *ngFor="let excludedString of task.excludedStrings"> {{excludedString}}</li>
+        </ul>
+      </div>
+
+      <div *ngIf="task?.requiredSubStrings?.length > 0">
+        <p>Выражение использовать</p>
+        <ul>
+          <li *ngFor="let requiredSubString of task.requiredSubStrings"> {{requiredSubString}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-xl-6">
+      <form (ngSubmit)="onSubmit()">
+
+        <label>
+          Введите регулярное выражение
+          <input type="text" name="regExp" [(ngModel)]="regExp">
+          <button type="submit">Проверить</button>
+        </label>
+      </form>
+    </div>
+  </div>
+
+</div>

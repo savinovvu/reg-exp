@@ -12,12 +12,12 @@ export class CourseComponent extends BaseComponent implements OnInit {
   levels;
   displayedColumns = ['id', 'description'];
 
-  constructor(private  restService: RestDataSourceService
+  constructor(
+    private  restService: RestDataSourceService
   ) {
     super();
     this.subscribtion = restService.get("/tasks/regexplevel").subscribe(v => {
       this.levels = v;
-      console.log(v);
     })
   }
 

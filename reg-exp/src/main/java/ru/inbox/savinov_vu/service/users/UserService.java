@@ -2,7 +2,7 @@ package ru.inbox.savinov_vu.service.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.inbox.savinov_vu.interfaces.CRUDService;
+import ru.inbox.savinov_vu.interfaces.CRUD.CRUDService;
 import ru.inbox.savinov_vu.model.users.User;
 import ru.inbox.savinov_vu.repository.users.UserRepository;
 

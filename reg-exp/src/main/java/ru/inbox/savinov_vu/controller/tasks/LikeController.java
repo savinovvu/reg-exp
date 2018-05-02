@@ -2,9 +2,10 @@ package ru.inbox.savinov_vu.controller.tasks;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.inbox.savinov_vu.interfaces.CRUDController;
+import ru.inbox.savinov_vu.interfaces.CRUD.CRUDController;
 import ru.inbox.savinov_vu.model.tasks.Like;
 import ru.inbox.savinov_vu.service.tasks.LikeService;
 
@@ -28,12 +29,12 @@ public class LikeController implements CRUDController<Like> {
     }
 
     @Override
-    public Like getById(Integer id) {
+    public Like getById(@PathVariable("id") Integer id) {
         return likeService.getById(id);
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public boolean delete(@PathVariable("id") Integer id) {
         likeService.delete(id);
         return true;
     }

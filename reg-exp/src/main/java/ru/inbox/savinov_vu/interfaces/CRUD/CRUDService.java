@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.interfaces;
+package ru.inbox.savinov_vu.interfaces.CRUD;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +13,11 @@ public interface CRUDService<T> extends CRUD<T>{
     }
 
     default List<T> getAll() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    default List<T> getAllByParentId(Integer id) {
         throw new UnsupportedOperationException();
     }
 

@@ -16,8 +16,9 @@ public class RegExpTask implements Identify {
 
     private Integer id;
 
-    private String description;
+    private String name;
 
+    private String description;
 
     private Set<String> matchStrings = new HashSet<>();
 
@@ -45,6 +46,10 @@ public class RegExpTask implements Identify {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @ManyToOne
@@ -97,6 +102,10 @@ public class RegExpTask implements Identify {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setLikes(List<Like> likes) {

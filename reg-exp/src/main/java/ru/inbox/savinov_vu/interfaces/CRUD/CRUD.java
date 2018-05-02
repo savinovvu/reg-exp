@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.interfaces;
+package ru.inbox.savinov_vu.interfaces.CRUD;
 
 import java.util.List;
 
@@ -12,7 +12,11 @@ public interface CRUD<T> {
         throw new UnsupportedOperationException();
     }
 
-    default T getById(Integer Id) {
+    default List<T> getAllByParentId( Integer id) {
+        throw new UnsupportedOperationException();
+    }
+
+    default T getById(Integer id) {
         throw new UnsupportedOperationException();
     }
 

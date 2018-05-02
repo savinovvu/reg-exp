@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.interfaces;
+package ru.inbox.savinov_vu.interfaces.CRUD;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -22,16 +22,23 @@ public interface CRUDController<T> extends CRUD<T> {
     }
 
     @Override
+    @GetMapping("parent/{id}")
+    @CrossOrigin
+    default List<T> getAllByParentId(@PathVariable("id") Integer id) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     @GetMapping("/{id}")
     @CrossOrigin
-    default T getById(@PathVariable("id") Integer Id) {
+    default T getById(@PathVariable("id") Integer id) {
         return null;
     }
 
     @Override
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     @CrossOrigin
-    default boolean delete(@RequestBody Integer id) {
+    default boolean delete(@PathVariable("id") Integer id) {
         throw new UnsupportedOperationException();
     }
 
