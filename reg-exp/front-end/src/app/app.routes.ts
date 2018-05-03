@@ -6,7 +6,7 @@ import {ContactComponent} from "./components/contact/contact.component";
 import {AboutComponent} from "./components/about/about.component";
 import {CourseComponent} from "./components/course/course.component";
 import {LevelComponent} from "./components/level/level.component";
-import {DoorComponent} from "./components/door/door.component";
+import {LoginComponent} from "./components/login/login.component";
 
 
 const routes: Routes = [
@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'news', component: NewsComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'about', component: AboutComponent},
-  {path: 'login', component: DoorComponent},
+  {path: 'login', component: LoginComponent},
 
   {path: 'course', component: CourseComponent},
   {path: 'course', component: CourseComponent},

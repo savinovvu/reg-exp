@@ -14,10 +14,10 @@ import {AboutComponent} from './components/about/about.component';
 import {TaskComponent} from './components/task/task.component';
 import {CourseComponent} from './components/course/course.component';
 import {LevelComponent} from './components/level/level.component';
-import {DoorComponent} from './components/door/door.component';
 import {RestDataSourceService} from "./services/rest/rest-data-source.service";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import {LoginComponent} from './components/login/login.component';
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import {FormsModule} from "@angular/forms";
     TaskComponent,
     CourseComponent,
     LevelComponent,
-    DoorComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
