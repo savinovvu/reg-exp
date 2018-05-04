@@ -2,15 +2,15 @@
   <mat-table #table [dataSource]="tasks">
 
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef ngClass="customWidthClass"> Номер задачи.</mat-header-cell>
-      <mat-cell *matCellDef="let task" ngClass="customWidthClass">
+      <mat-header-cell *matHeaderCellDef> Номер задачи.</mat-header-cell>
+      <mat-cell *matCellDef="let task">
         <a [routerLink]="['/course', level, task.id]">{{task.id}}</a>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef ngClass="customWidthClass"> Наименование</mat-header-cell>
-      <mat-cell *matCellDef="let task" ngClass="customWidthClass">
+      <mat-header-cell *matHeaderCellDef> Наименование</mat-header-cell>
+      <mat-cell *matCellDef="let task">
         <a [routerLink]="['/course', level, task.id]">{{task.name}}</a>
       </mat-cell>
     </ng-container>
