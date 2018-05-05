@@ -32,6 +32,8 @@ public class RegExpTask implements Identify {
 
     private Set<String> requiredSubStrings = new HashSet<>();
 
+    private Set<String> excludedAnswer = new HashSet<>();
+
     private List<Like> likes;
 
     private List<Comment> comments;
@@ -91,25 +93,31 @@ public class RegExpTask implements Identify {
 
 
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "matchStrings", joinColumns = @JoinColumn(name = "regexptask_id"))
+    @CollectionTable(joinColumns = @JoinColumn(name = "regexptask_id"))
     public Set<String> getMatchStrings() {
         return matchStrings;
     }
 
 
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "excludedStrings", joinColumns = @JoinColumn(name = "regexptask_id"))
+    @CollectionTable(joinColumns = @JoinColumn(name = "regexptask_id"))
     public Set<String> getExcludedStrings() {
         return excludedStrings;
     }
 
 
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "requiredSubStrings", joinColumns = @JoinColumn(name = "regexptask_id"))
+    @CollectionTable(joinColumns = @JoinColumn(name = "regexptask_id"))
     public Set<String> getRequiredSubStrings() {
         return requiredSubStrings;
     }
 
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(joinColumns = @JoinColumn(name = "regexptask_id"))
+    public Set<String> getExcludedAnswer() {
+        return excludedAnswer;
+    }
 
     @LazyCollection(LazyCollectionOption.TRUE)
     @ManyToMany(mappedBy = "solvedRegExpTasks")
@@ -177,6 +185,10 @@ public class RegExpTask implements Identify {
 
     public void setRequiredSubStrings(Set<String> requiredSubStrings) {
         this.requiredSubStrings = requiredSubStrings;
+    }
+
+    public void setExcludedAnswer(Set<String> excludedAnswer) {
+        this.excludedAnswer = excludedAnswer;
     }
 
     public void setAuthor(User author) {
