@@ -1,0 +1,50 @@
+
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #fff;
+  border: .05rem solid #fff;
+}
+
+.cover-container {
+  max-width: 42em;
+}
+
+.cover {
+  padding: 0 1.5rem;
+}
+
+.cover .btn-lg {
+  padding: .75rem 1.25rem;
+  font-weight: 700;
+}
+
+.mycustom {
+  color: white;
+  height: 100%;
+  flex-direction: row;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 175px;
+  background-color: #f5f5f5;
+  position: absolute;
+  width: 100%;
+}
+
+@media (max-width: 1035px) {
+  .mycustom {
+    padding-top: 50px;
+  }
+}
+
