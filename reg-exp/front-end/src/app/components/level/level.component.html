@@ -4,7 +4,7 @@
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> Номер задачи.</mat-header-cell>
       <mat-cell *matCellDef="let task">
-        <a [routerLink]="['/course', level, task.id]">{{task.id}}</a>
+        <a [routerLink]="['/course', level, task.id]">{{task.number}}</a>
       </mat-cell>
     </ng-container>
 
@@ -22,7 +22,7 @@
 
     <ng-container matColumnDef="author">
       <mat-header-cell *matHeaderCellDef> Автор</mat-header-cell>
-      <mat-cell *matCellDef="let task"> {{task.author.name}}</mat-cell>
+      <mat-cell *matCellDef="let task">{{task.author.name}} ({{task.author.login}})</mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
