@@ -20,6 +20,10 @@ public class User implements Identify {
 
     private String name;
 
+    private String login;
+
+    private String email;
+
     private String password;
 
     private Role role;
@@ -31,6 +35,8 @@ public class User implements Identify {
     private List<RegExpTask> solvedRegExpTasks;
 
     private List<RegExpLevel> solvedRegExpLevels;
+
+    private List<RegExpTask> addedTask;
 
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)
@@ -48,20 +54,26 @@ public class User implements Identify {
         return password;
     }
 
+
     @Enumerated(value = EnumType.STRING)
     public Role getRole() {
         return role;
     }
+
+
     @LazyCollection(LazyCollectionOption.TRUE)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     public List<Like> getLikes() {
         return likes;
     }
+
+
     @LazyCollection(LazyCollectionOption.TRUE)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     public List<Comment> getComments() {
         return comments;
     }
+
 
     @LazyCollection(LazyCollectionOption.TRUE)
     @ManyToMany
@@ -74,6 +86,7 @@ public class User implements Identify {
         return solvedRegExpTasks;
     }
 
+
     @LazyCollection(LazyCollectionOption.TRUE)
     @ManyToMany
     @JoinTable(name = "user_solvedregexplevel",
@@ -83,6 +96,23 @@ public class User implements Identify {
                     @JoinColumn(name = "solvedregexplevel_id", referencedColumnName = "id")})
     public List<RegExpLevel> getSolvedRegExpLevels() {
         return solvedRegExpLevels;
+    }
+
+
+    @LazyCollection(LazyCollectionOption.TRUE)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "author")
+    public List<RegExpTask> getAddedTask() {
+        return addedTask;
+    }
+
+
+    public String getLogin() {
+        return login;
+    }
+
+
+    public String getEmail() {
+        return email;
     }
 
     public void setId(Integer id) {
@@ -115,5 +145,17 @@ public class User implements Identify {
 
     public void setSolvedRegExpLevels(List<RegExpLevel> solvedRegExpLevels) {
         this.solvedRegExpLevels = solvedRegExpLevels;
+    }
+
+    public void setAddedTask(List<RegExpTask> addedTask) {
+        this.addedTask = addedTask;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

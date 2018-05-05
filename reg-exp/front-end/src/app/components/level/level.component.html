@@ -1,4 +1,4 @@
-<div class="example-container mat-elevation-z8">
+<div class="example-container mat-elevation-z8 container">
   <mat-table #table [dataSource]="tasks">
 
     <ng-container matColumnDef="id">
@@ -18,6 +18,11 @@
     <ng-container matColumnDef="description">
       <mat-header-cell *matHeaderCellDef> Описание</mat-header-cell>
       <mat-cell *matCellDef="let task"> {{task.description}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="author">
+      <mat-header-cell *matHeaderCellDef> Автор</mat-header-cell>
+      <mat-cell *matCellDef="let task"> {{task.author.name}}</mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

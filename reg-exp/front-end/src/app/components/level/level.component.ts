@@ -10,8 +10,9 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class LevelComponent extends BaseComponent implements OnInit {
 
+
   tasks;
-  displayedColumns = ['id', 'name', 'description'];
+  displayedColumns = ['id', 'name', 'description', 'author'];
   level;
 
   constructor(

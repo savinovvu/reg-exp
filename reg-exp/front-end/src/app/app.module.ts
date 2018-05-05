@@ -18,6 +18,7 @@ import { RestDataSourceService } from "./services/rest/rest-data-source.service"
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { LoginComponent } from './components/login/login.component';
+import { AddTaskComponent } from './components/add-task/add-task.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { LoginComponent } from './components/login/login.component';
     CourseComponent,
     LevelComponent,
     LoginComponent,
+    AddTaskComponent,
   ],
   imports: [
     BrowserModule,

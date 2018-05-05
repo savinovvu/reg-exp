@@ -30,8 +30,9 @@ public class RegExpTask implements Identify {
 
     private List<Comment> comments;
 
-
     private RegExpLevel regExpLevel;
+
+    private User author;
 
     private List<User> users;
 
@@ -96,6 +97,12 @@ public class RegExpTask implements Identify {
         return users;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "author_id", nullable = true)
+    public User getAuthor() {
+        return author;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -134,5 +141,9 @@ public class RegExpTask implements Identify {
 
     public void setRequiredSubStrings(Set<String> requiredSubStrings) {
         this.requiredSubStrings = requiredSubStrings;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }

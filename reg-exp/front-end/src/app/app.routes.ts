@@ -7,6 +7,7 @@ import {AboutComponent} from "./components/about/about.component";
 import {CourseComponent} from "./components/course/course.component";
 import {LevelComponent} from "./components/level/level.component";
 import {LoginComponent} from "./components/login/login.component";
+import { AddTaskComponent } from "./components/add-task/add-task.component";
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'about', component: AboutComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'addTask', component: AddTaskComponent},
 
   {path: 'course', component: CourseComponent},
   {path: 'course', component: CourseComponent},

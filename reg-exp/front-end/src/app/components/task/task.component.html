@@ -2,6 +2,7 @@
   <div class="row">
     <div>
       <p>Наименование задачи: {{task?.name}}</p>
+      <p>автор задачи: {{task?.author.name}}</p>
       <p>Условие задачи: {{task?.description}}</p>
     </div>
 
@@ -24,7 +25,7 @@
       </div>
 
       <div *ngIf="task?.requiredSubStrings?.length > 0">
-        <p>Выражение использовать</p>
+        <p>Выражение должно использовать</p>
         <ul>
           <li *ngFor="let requiredSubString of task.requiredSubStrings"> {{requiredSubString}}</li>
         </ul>
