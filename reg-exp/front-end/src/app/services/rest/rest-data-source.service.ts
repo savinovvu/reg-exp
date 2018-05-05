@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Subject} from "rxjs/Subject";
-import {Observable} from "rxjs/Observable";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable, Subject } from "rxjs/index";
+
 
 const PROTOCOL = 'http';
 const PORT = 8080;
@@ -22,7 +22,7 @@ export class RestDataSourceService {
     url = this.baseUrl + url;
     let subject = new Subject();
     const headers = this.getHeaders();
-    this.httpClient.get(url, {headers}).subscribe(v => {
+    this.httpClient.get(url, { headers }).subscribe(v => {
       subject.next(v);
     });
     return subject.asObservable();
@@ -32,7 +32,7 @@ export class RestDataSourceService {
     url = this.baseUrl + url;
     let subject = new Subject();
     const headers = this.getHeaders();
-    this.httpClient.post(url, item, {headers}).subscribe(v => {
+    this.httpClient.post(url, item, { headers }).subscribe(v => {
       subject.next(v);
     });
     return subject.asObservable();
@@ -42,7 +42,7 @@ export class RestDataSourceService {
     url = this.baseUrl + url;
     let subject = new Subject();
     const headers = this.getHeaders();
-    this.httpClient.put(url, item, {headers}).subscribe(v => {
+    this.httpClient.put(url, item, { headers }).subscribe(v => {
       subject.next(v);
     });
     return subject.asObservable();
@@ -52,7 +52,7 @@ export class RestDataSourceService {
     url = this.baseUrl + url;
     let subject = new Subject();
     const headers = this.getHeaders();
-    this.httpClient.delete(url, {headers}).subscribe(v => {
+    this.httpClient.delete(url, { headers }).subscribe(v => {
       subject.next(v);
     });
     return subject.asObservable();
@@ -61,7 +61,7 @@ export class RestDataSourceService {
 
   private getHeaders(): HttpHeaders {
     const headers = new HttpHeaders()
-    .set('Authorization', `Bearer<${this.auth_token}>`)
+      .set('Authorization', `Bearer<${this.auth_token}>`)
     return headers;
   }
 

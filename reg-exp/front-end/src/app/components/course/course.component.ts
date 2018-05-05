@@ -1,16 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {RestDataSourceService} from "../../services/rest/rest-data-source.service";
-import {BaseComponent} from "../../utils/base-component";
+import { Component, OnInit } from '@angular/core';
+import { RestDataSourceService } from "../../services/rest/rest-data-source.service";
+import { BaseComponent } from "../../utils/base-component";
 
 @Component({
   selector: 'reg-course',
   templateUrl: './course.component.html',
-  styleUrls: ['./course.component.css']
+  styleUrls: [ './course.component.css' ]
 })
 export class CourseComponent extends BaseComponent implements OnInit {
 
   levels;
-  displayedColumns = ['id', 'description'];
+  displayedColumns = [ 'id', 'description' ];
 
   constructor(
     private  restService: RestDataSourceService
