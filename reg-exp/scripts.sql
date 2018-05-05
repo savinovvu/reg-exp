@@ -1,20 +1,24 @@
-INSERT INTO "public"."user" ("id", "name", "password", "role") VALUES (1, 'user1', 'pass', 'User');
-INSERT INTO "public"."user" ("id", "name", "password", "role") VALUES (2, 'user2', 'pass', 'User');
-INSERT INTO "public"."user" ("id", "name", "password", "role") VALUES (3, 'admin1', 'pass', 'Admin');
+INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "role") VALUES (1, 'user1', 'tmp1@mail.ru' , 'login1', 'pass', 'User');
+INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "role") VALUES (2, 'user2', 'tmp2@mail.ru' , 'login2','pass', 'User');
+INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "role") VALUES (3, 'admin1',  'tmp3@mail.ru' , 'login3','pass', 'Admin');
 
 INSERT INTO "public"."reg_exp_level" ("id", "description") VALUES (1, 'первый уровень');
 INSERT INTO "public"."reg_exp_level" ("id", "description") VALUES (2, 'второй уровень');
 INSERT INTO "public"."reg_exp_level" ("id", "description") VALUES (3, 'третий уровень');
 
-INSERT INTO "public"."reg_exp_task" ("id", "name", "description", "regexplevel_id", "author_id") VALUES (1, 'name1', '1-1', 1, 1);
-INSERT INTO "public"."reg_exp_task" ("id", "name", "description", "regexplevel_id", "author_id") VALUES (2, 'name2', '1-2', 1, 1);
-INSERT INTO "public"."reg_exp_task" ("id", "name", "description", "regexplevel_id", "author_id") VALUES (3, 'name3', '1-3', 1, 1);
-INSERT INTO "public"."reg_exp_task" ("id", "name", "description", "regexplevel_id", "author_id") VALUES (4, 'name4', '2-1', 2, 1);
-INSERT INTO "public"."reg_exp_task" ("id", "name", "description", "regexplevel_id", "author_id") VALUES (5, 'name5', '2-2', 2, 1);
-INSERT INTO "public"."reg_exp_task" ("id", "name", "description", "regexplevel_id", "author_id") VALUES (6, 'name6', '2-3', 2, 1);
-INSERT INTO "public"."reg_exp_task" ("id", "name", "description", "regexplevel_id", "author_id") VALUES (7, 'name7', '3-1', 3, 1);
-INSERT INTO "public"."reg_exp_task" ("id", "name", "description", "regexplevel_id", "author_id") VALUES (8, 'name8', '3-2', 3, 1);
-INSERT INTO "public"."reg_exp_task" ("id", "name", "description", "regexplevel_id", "author_id") VALUES (9, 'name9', '3-3', 3, 1);
+INSERT INTO "public"."reg_exp_task" ("id", "number", "enabled", "name", "description", "regexplevel_id", "author_id") VALUES (1, 1, true, 'name1', '1-1', 1, 1);
+INSERT INTO "public"."reg_exp_task" ("id", "number", "enabled", "name", "description", "regexplevel_id", "author_id") VALUES (2, 2, true, 'name2', '1-2', 1, 1);
+INSERT INTO "public"."reg_exp_task" ("id", "number", "enabled", "name", "description", "regexplevel_id", "author_id") VALUES (3, 3, true, 'name3', '1-3', 1, 1);
+INSERT INTO "public"."reg_exp_task" ("id", "number", "enabled", "name", "description", "regexplevel_id", "author_id") VALUES (4, 1, true, 'name4', '2-1', 2, 1);
+INSERT INTO "public"."reg_exp_task" ("id", "number", "enabled", "name", "description", "regexplevel_id", "author_id") VALUES (5, 2, true, 'name5', '2-2', 2, 1);
+INSERT INTO "public"."reg_exp_task" ("id", "number", "enabled", "name", "description", "regexplevel_id", "author_id") VALUES (6, 3, true, 'name6', '2-3', 2, 1);
+INSERT INTO "public"."reg_exp_task" ("id", "number", "enabled", "name", "description", "regexplevel_id", "author_id") VALUES (7, 1, true, 'name7', '3-1', 3, 1);
+INSERT INTO "public"."reg_exp_task" ("id", "number", "enabled", "name", "description", "regexplevel_id", "author_id") VALUES (8, 2, true, 'name8', '3-2', 3, 1);
+INSERT INTO "public"."reg_exp_task" ("id", "number", "enabled", "name", "description", "regexplevel_id", "author_id") VALUES (9, 3, true, 'name9', '3-3', 3, 1);
+
+INSERT INTO "public"."reg_exp_task_answer" ("id", "answer", "reg_exp_task_id") VALUES (1, 'sss', 1);
+INSERT INTO "public"."reg_exp_task_answer" ("id", "answer", "reg_exp_task_id") VALUES (2, 'sssa', 1);
+INSERT INTO "public"."reg_exp_task_answer" ("id", "answer", "reg_exp_task_id") VALUES (3, 'sss', 2);
 
 
 INSERT INTO "public"."user_solvedregexplevel" ("user_id", "solvedregexplevel_id") VALUES (1, 1);

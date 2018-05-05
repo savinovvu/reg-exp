@@ -14,6 +14,8 @@ public class RegExpLevel implements Identify {
 
     private Integer id;
 
+    private Integer number;
+
     private String description;
 
     private List<RegExpTask> regExpTasks;
@@ -26,6 +28,11 @@ public class RegExpLevel implements Identify {
     @Override
     public Integer getId() {
         return id;
+    }
+
+    @Column(unique = true)
+    public Integer getNumber() {
+        return number;
     }
 
     public String getDescription() {
@@ -47,6 +54,10 @@ public class RegExpLevel implements Identify {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 
     public void setDescription(String description) {

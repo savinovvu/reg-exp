@@ -105,12 +105,12 @@ public class User implements Identify {
         return addedTask;
     }
 
-
+    @Column(unique = true)
     public String getLogin() {
         return login;
     }
 
-
+    @Column(unique = true)
     public String getEmail() {
         return email;
     }

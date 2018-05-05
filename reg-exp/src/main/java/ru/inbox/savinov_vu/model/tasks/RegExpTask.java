@@ -1,20 +1,26 @@
 package ru.inbox.savinov_vu.model.tasks;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.*;
 import ru.inbox.savinov_vu.interfaces.Identify;
 import ru.inbox.savinov_vu.model.users.User;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Entity
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"regexplevel_id", "number"})})
 public class RegExpTask implements Identify {
 
 
     private Integer id;
+
+    private Integer number;
 
     private String name;
 
@@ -36,6 +42,10 @@ public class RegExpTask implements Identify {
 
     private List<User> users;
 
+    private List<RegExpTaskAnswer> answer;
+
+    private Boolean enabled;
+
 
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)
@@ -45,13 +55,19 @@ public class RegExpTask implements Identify {
         return id;
     }
 
+    public Integer getNumber() {
+        return number;
+    }
+
     public String getDescription() {
         return description;
     }
 
+
     public String getName() {
         return name;
     }
+
 
     @ManyToOne
     @JoinColumn(name = "regexplevel_id", nullable = false)
@@ -59,11 +75,13 @@ public class RegExpTask implements Identify {
         return regExpLevel;
     }
 
+
     @LazyCollection(LazyCollectionOption.TRUE)
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "regExpTask")
     public List<Like> getLikes() {
         return likes;
     }
+
 
     @LazyCollection(LazyCollectionOption.TRUE)
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "regExpTask")
@@ -72,12 +90,12 @@ public class RegExpTask implements Identify {
     }
 
 
-
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "matchStrings", joinColumns = @JoinColumn(name = "regexptask_id"))
     public Set<String> getMatchStrings() {
         return matchStrings;
     }
+
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "excludedStrings", joinColumns = @JoinColumn(name = "regexptask_id"))
@@ -85,11 +103,13 @@ public class RegExpTask implements Identify {
         return excludedStrings;
     }
 
+
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "requiredSubStrings", joinColumns = @JoinColumn(name = "regexptask_id"))
     public Set<String> getRequiredSubStrings() {
         return requiredSubStrings;
     }
+
 
     @LazyCollection(LazyCollectionOption.TRUE)
     @ManyToMany(mappedBy = "solvedRegExpTasks")
@@ -97,14 +117,30 @@ public class RegExpTask implements Identify {
         return users;
     }
 
+
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = true)
     public User getAuthor() {
         return author;
     }
 
+    @LazyCollection(LazyCollectionOption.TRUE)
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "regExpTask")
+    public List<RegExpTaskAnswer> getAnswer() {
+        return answer;
+    }
+
+    @JsonIgnore
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 
     public void setDescription(String description) {
@@ -145,5 +181,14 @@ public class RegExpTask implements Identify {
 
     public void setAuthor(User author) {
         this.author = author;
+    }
+
+
+    public void setAnswer(List<RegExpTaskAnswer> answer) {
+        this.answer = answer;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }
