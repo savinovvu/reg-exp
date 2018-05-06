@@ -19,6 +19,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { LoginComponent } from './components/login/login.component';
 import { AddTaskComponent } from './components/add-task/add-task.component';
+import { CheckWrongStatusPipe } from './pipes/check-wrong-status.pipe';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { AddTaskComponent } from './components/add-task/add-task.component';
     LevelComponent,
     LoginComponent,
     AddTaskComponent,
+    CheckWrongStatusPipe,
   ],
   imports: [
     BrowserModule,

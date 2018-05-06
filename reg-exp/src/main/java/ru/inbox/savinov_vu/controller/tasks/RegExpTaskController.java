@@ -57,8 +57,7 @@ public class RegExpTaskController implements CRUDController<RegExpTask>, TaskChe
 
     @Override
     public TaskResulter check(@PathVariable("id") Integer id, @RequestBody String answer) {
-        TaskResulter check = regExpTaskService.check(id, answer);
-        return check;
+        return regExpTaskService.check(id, answer);
     }
 
 

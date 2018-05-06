@@ -16,6 +16,7 @@ public interface TaskCheckerController<T> extends TaskChecker<T> {
 
     @Override
     @GetMapping("disabled")
+    @CrossOrigin
     List<T> getDisabledTask();
 
 }
