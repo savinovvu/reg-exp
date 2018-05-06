@@ -59,6 +59,6 @@ INSERT INTO "public"."reg_exp_task_required_sub_strings" ("regexptask_id", "requ
 INSERT INTO "public"."reg_exp_task_required_sub_strings" ("regexptask_id", "required_sub_strings") VALUES (2, 'requiredstring2');
 INSERT INTO "public"."reg_exp_task_required_sub_strings" ("regexptask_id", "required_sub_strings") VALUES (3, 'requiredstring3');
 
-INSERT INTO "public"."reg_exp_task_excluded_answer" ("regexptask_id", "excluded_answer") VALUES (1, 'excluded1');
-INSERT INTO "public"."reg_exp_task_excluded_answer" ("regexptask_id", "excluded_answer") VALUES (2, 'excluded2');
-INSERT INTO "public"."reg_exp_task_excluded_answer" ("regexptask_id", "excluded_answer") VALUES (1, 'excluded3');
+INSERT INTO "public"."reg_exp_task_excluded_answers" ("regexptask_id", "excluded_answer") VALUES (1, 'excluded1');
+INSERT INTO "public"."reg_exp_task_excluded_answers" ("regexptask_id", "excluded_answer") VALUES (2, 'excluded2');
+INSERT INTO "public"."reg_exp_task_excluded_answers" ("regexptask_id", "excluded_answer") VALUES (1, 'excluded3');

@@ -34,7 +34,7 @@ public class RegExpTask implements Identify {
 
     private Set<String> requiredSubStrings = new HashSet<>();
 
-    private Set<String> excludedAnswer = new HashSet<>();
+    private Set<String> excludedAnswers = new HashSet<>();
 
     private List<Like> likes;
 
@@ -46,7 +46,7 @@ public class RegExpTask implements Identify {
 
     private List<User> users;
 
-    private List<RegExpTaskAnswer> answer;
+    private List<RegExpTaskAnswer> answers;
 
     private Boolean enabled;
 
@@ -119,8 +119,8 @@ public class RegExpTask implements Identify {
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(joinColumns = @JoinColumn(name = "regexptask_id"))
-    public Set<String> getExcludedAnswer() {
-        return excludedAnswer;
+    public Set<String> getExcludedAnswers() {
+        return excludedAnswers;
     }
 
 
@@ -140,8 +140,8 @@ public class RegExpTask implements Identify {
 
     @LazyCollection(LazyCollectionOption.TRUE)
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "regExpTask")
-    public List<RegExpTaskAnswer> getAnswer() {
-        return answer;
+    public List<RegExpTaskAnswer> getAnswers() {
+        return answers;
     }
 
 
@@ -206,8 +206,8 @@ public class RegExpTask implements Identify {
     }
 
 
-    public void setExcludedAnswer(Set<String> excludedAnswer) {
-        this.excludedAnswer = excludedAnswer;
+    public void setExcludedAnswers(Set<String> excludedAnswers) {
+        this.excludedAnswers = excludedAnswers;
     }
 
 
@@ -216,8 +216,8 @@ public class RegExpTask implements Identify {
     }
 
 
-    public void setAnswer(List<RegExpTaskAnswer> answer) {
-        this.answer = answer;
+    public void setAnswers(List<RegExpTaskAnswer> answers) {
+        this.answers = answers;
     }
 
 

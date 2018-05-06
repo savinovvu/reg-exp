@@ -40,7 +40,7 @@ public interface RegExpTaskCheckerUtil {
                 .filter(v -> !checkRequiredString(v, answer))
                 .forEach(v -> result.setWrong(v, WrongCheckStatus.Unused));
 
-        regExpTask.getExcludedAnswer().stream()
+        regExpTask.getExcludedAnswers().stream()
                 .filter(v -> isEqualExcludedAnswer(v, answer))
                 .forEach(v -> result.setWrong(v, WrongCheckStatus.Equals));
 
