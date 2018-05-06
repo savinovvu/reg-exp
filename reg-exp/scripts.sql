@@ -1,4 +1,4 @@
-INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "role") VALUES (1, 'user1', 'tmp1@mail.ru' , 'login1', 'pass', 'User');
+INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "role") VALUES (1, 'Сидоров Иван Джейсонович', 'tmp1@mail.ru' , 'worldIvan777', 'pass', 'User');
 INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "role") VALUES (2, 'user2', 'tmp2@mail.ru' , 'login2','pass', 'User');
 INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "role") VALUES (3, 'admin1',  'tmp3@mail.ru' , 'login3','pass', 'Admin');
 
@@ -6,7 +6,7 @@ INSERT INTO "public"."reg_exp_level" ("id", number, "description") VALUES (1, 1,
 INSERT INTO "public"."reg_exp_level" ("id", number, "description") VALUES (2, 2, 'второй уровень');
 INSERT INTO "public"."reg_exp_level" ("id", number, "description") VALUES (3, 3, 'третий уровень');
 
-INSERT INTO "public"."reg_exp_task" ("id", "number", "enabled", "name", "description", "regexplevel_id", "author_id") VALUES (1, 1, true, 'name1', '1-1', 1, 1);
+INSERT INTO "public"."reg_exp_task" ("id", "number", "enabled", "name", "description", "regexplevel_id", "author_id") VALUES (1, 1, true, 'Три ореха', 'Давным давно в три десятом царстве потерял Иван три ореха, да не смог отыскать. Помогите Ивану отыскать пренадлежащие ему орехи.', 1, 1);
 INSERT INTO "public"."reg_exp_task" ("id", "number", "enabled", "name", "description", "regexplevel_id", "author_id") VALUES (2, 2, true, 'name2', '1-2', 1, 1);
 INSERT INTO "public"."reg_exp_task" ("id", "number", "enabled", "name", "description", "regexplevel_id", "author_id") VALUES (3, 3, true, 'name3', '1-3', 1, 1);
 INSERT INTO "public"."reg_exp_task" ("id", "number", "enabled", "name", "description", "regexplevel_id", "author_id") VALUES (4, 1, true, 'name4', '2-1', 2, 1);
@@ -52,6 +52,10 @@ INSERT INTO "public"."reg_exp_task_excluded_strings" ("regexptask_id", "excluded
 INSERT INTO "public"."reg_exp_task_excluded_strings" ("regexptask_id", "excluded_strings") VALUES (3, 'exclude3');
 
 INSERT INTO "public"."reg_exp_task_match_strings" ("regexptask_id", "match_strings") VALUES (1, 'match1');
+INSERT INTO "public"."reg_exp_task_match_strings" ("regexptask_id", "match_strings") VALUES (1, 'match1.2')
+INSERT INTO "public"."reg_exp_task_match_strings" ("regexptask_id", "match_strings") VALUES (1, 'match1.3')
+INSERT INTO "public"."reg_exp_task_match_strings" ("regexptask_id", "match_strings") VALUES (1, 'match1.4')
+INSERT INTO "public"."reg_exp_task_match_strings" ("regexptask_id", "match_strings") VALUES (1, 'match1.5')
 INSERT INTO "public"."reg_exp_task_match_strings" ("regexptask_id", "match_strings") VALUES (2, 'match2');
 INSERT INTO "public"."reg_exp_task_match_strings" ("regexptask_id", "match_strings") VALUES (3, 'match3');
 
@@ -59,6 +63,6 @@ INSERT INTO "public"."reg_exp_task_required_sub_strings" ("regexptask_id", "requ
 INSERT INTO "public"."reg_exp_task_required_sub_strings" ("regexptask_id", "required_sub_strings") VALUES (2, 'requiredstring2');
 INSERT INTO "public"."reg_exp_task_required_sub_strings" ("regexptask_id", "required_sub_strings") VALUES (3, 'requiredstring3');
 
-INSERT INTO "public"."reg_exp_task_excluded_answers" ("regexptask_id", "excluded_answer") VALUES (1, 'excluded1');
-INSERT INTO "public"."reg_exp_task_excluded_answers" ("regexptask_id", "excluded_answer") VALUES (2, 'excluded2');
-INSERT INTO "public"."reg_exp_task_excluded_answers" ("regexptask_id", "excluded_answer") VALUES (1, 'excluded3');
+INSERT INTO "public"."reg_exp_task_excluded_answers" ("regexptask_id", "excluded_answers") VALUES (1, 'excluded1');
+INSERT INTO "public"."reg_exp_task_excluded_answers" ("regexptask_id", "excluded_answers") VALUES (2, 'excluded2');
+INSERT INTO "public"."reg_exp_task_excluded_answers" ("regexptask_id", "excluded_answers") VALUES (1, 'excluded3');

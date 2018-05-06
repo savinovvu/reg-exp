@@ -23,7 +23,6 @@ export class TaskComponent extends BaseComponent implements OnInit {
     super();
     this.taskId = router.snapshot.params['task'];
     this.subscribtion = restService.get(`${PATH}${this.taskId}`).subscribe(v => {
-      console.log("777777777777");
       this.task = v;
     });
   }
@@ -34,5 +33,9 @@ export class TaskComponent extends BaseComponent implements OnInit {
   onSubmit() {
     this.restService.put(`${PATH}check/${this.taskId}`, this.regExp)
       .subscribe(v => console.log(JSON.stringify(v)));
+  }
+
+  getCommaString(strings: string[]) {
+    return strings.join(', ');
   }
 }

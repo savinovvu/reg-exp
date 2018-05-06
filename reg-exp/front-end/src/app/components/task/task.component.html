@@ -1,46 +1,67 @@
-<div class="container">
-  <div class="row">
-    <div>
-      <p>Наименование задачи: {{task?.name}}</p>
-      <p>автор задачи: {{task?.author.name}}</p>
-      <p>Условие задачи: {{task?.description}}</p>
-    </div>
+<main class="paddingBottom" role="main">
 
-  </div>
-  <div class="row">
-    <div class="col-xl-6">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-8">{{task?.name}}</h1>
+      <p>{{task?.description}}</p>
+      <form class="form-inline form-control regExpForm" (ngSubmit)="onSubmit()">
+        <label for="inputRegExp" class="sr-only">Введите регулярное выражение</label>
+        <input type="text"
+               id="inputRegExp"
+               class="form-control-plaintext col-8 regExpInput"
+               placeholder="Ответ"
+               required="">
 
-      <div *ngIf="task?.matchStrings?.length > 0">
-        <p>Выражение должно найти строки</p>
-        <ul>
-          <li *ngFor="let matchString of task.matchStrings"> {{matchString}}</li>
-        </ul>
-      </div>
-
-      <div *ngIf="task?.excludedStrings?.length > 0">
-        <p>Выражение должно исключить строки</p>
-        <ul>
-          <li *ngFor="let excludedString of task.excludedStrings"> {{excludedString}}</li>
-        </ul>
-      </div>
-
-      <div *ngIf="task?.requiredSubStrings?.length > 0">
-        <p>Выражение должно использовать</p>
-        <ul>
-          <li *ngFor="let requiredSubString of task.requiredSubStrings"> {{requiredSubString}}</li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-xl-6">
-      <form (ngSubmit)="onSubmit()">
-
-        <label>
-          Введите регулярное выражение
-          <input type="text" name="regExp" [(ngModel)]="regExp">
-          <button type="submit">Проверить</button>
-        </label>
+        <button class="btn  btn-primary submitRegExp" type="submit">Проверить</button>
       </form>
+
     </div>
   </div>
 
-</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Условия</h3>
+        <div *ngIf="task?.matchStrings?.length > 0">
+          <h6>Найти строки:</h6>
+          <p>{{getCommaString(task.matchStrings)}}</p>
+
+
+        </div>
+
+        <div *ngIf="task?.excludedStrings?.length > 0">
+          <h6>Исключить строки:</h6>
+          <p>{{getCommaString(task.excludedStrings)}}</p>
+        </div>
+
+        <div *ngIf="task?.requiredSubStrings?.length > 0">
+          <h6>Использовать:</h6>
+          <p>{{getCommaString(task.requiredSubStrings)}}</p>
+        </div>
+
+        <div *ngIf="task?.excludedAnswers?.length > 0">
+          <h6>Запрещенные ответы:</h6>
+          <p>{{getCommaString(task.excludedAnswers)}}</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>Полезные ссылки</h3>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+          condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
+          Donec sed odio dui. </p>
+      </div>
+      <div class="col-md-4">
+        <h3>Результат проверки</h3>
+        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta
+          felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum
+          massa justo sit amet risus.</p>
+      </div>
+    </div>
+
+
+  </div>
+
+</main>
+
+
+

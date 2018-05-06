@@ -1,0 +1,33 @@
+.paddingBottom {
+  padding-bottom: 5rem;
+}
+
+main.paddingBottom .jumbotron {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.regExpForm {
+  background: transparent;
+  border: none;
+}
+
+.regExpInput {
+  background: white;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.submitRegExp {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+ul {
+  margin-bottom: 0;
+}
+
+h6 {
+  font-weight: bold;
+}
+

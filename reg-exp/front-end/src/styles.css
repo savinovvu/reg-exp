@@ -27,7 +27,7 @@ ol {
 }
 ul {
   padding-left: 1.4em;
-  list-style: square;
+  list-style: none;
 }
 blockquote, q {
   quotes: none;
