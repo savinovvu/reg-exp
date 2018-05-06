@@ -9,8 +9,11 @@ import ru.inbox.savinov_vu.repository.tasks.RegExpLevelRepository;
 
 import java.util.List;
 
+
+
 @Service
 public class RegExpLevelService implements CRUDService<RegExpLevel> {
+
     @Autowired
     RegExpLevelRepository regExpLevelRepository;
 
@@ -20,22 +23,26 @@ public class RegExpLevelService implements CRUDService<RegExpLevel> {
         regExpLevelRepository.saveAndFlush(regExpLevel);
     }
 
+
     @Override
     public List<RegExpLevel> getAll() {
         List<RegExpLevel> all = regExpLevelRepository.findAll(new Sort(Sort.Direction.ASC, "number"));
         return all;
     }
 
+
     @Override
     public RegExpLevel getById(Integer id) {
         return regExpLevelRepository.findById(id).get();
     }
+
 
     @Override
     public boolean delete(Integer id) {
         regExpLevelRepository.deleteById(id);
         return true;
     }
+
 
     @Override
     public RegExpLevel update(RegExpLevel regExpLevel) {

@@ -11,9 +11,12 @@ import ru.inbox.savinov_vu.service.users.UserService;
 
 import java.util.List;
 
+
+
 @RestController
 @RequestMapping(value = "/users/user", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController implements CRUDController<User> {
+
     @Autowired
     UserService userService;
 
@@ -23,21 +26,25 @@ public class UserController implements CRUDController<User> {
         userService.add(user);
     }
 
+
     @Override
     public List<User> getAll() {
         return userService.getAll();
     }
+
 
     @Override
     public User getById(@PathVariable("id") Integer id) {
         return userService.getById(id);
     }
 
+
     @Override
     public boolean delete(@PathVariable("id") Integer id) {
         userService.delete(id);
         return true;
     }
+
 
     @Override
     public User update(User user) {

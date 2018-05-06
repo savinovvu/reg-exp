@@ -11,9 +11,12 @@ import ru.inbox.savinov_vu.service.tasks.CommentService;
 
 import java.util.List;
 
+
+
 @RestController
 @RequestMapping(value = "/tasks/comment", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 public class CommentController implements CRUDController<Comment> {
+
     @Autowired
     CommentService commentService;
 
@@ -23,21 +26,25 @@ public class CommentController implements CRUDController<Comment> {
         commentService.add(comment);
     }
 
+
     @Override
     public List<Comment> getAll() {
         return commentService.getAll();
     }
+
 
     @Override
     public Comment getById(@PathVariable("id") Integer id) {
         return commentService.getById(id);
     }
 
+
     @Override
     public boolean delete(@PathVariable("id") Integer id) {
         commentService.delete(id);
         return true;
     }
+
 
     @Override
     public Comment update(Comment comment) {

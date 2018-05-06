@@ -5,6 +5,8 @@ import ru.inbox.savinov_vu.checker.TaskResulter;
 
 import java.util.List;
 
+
+
 public interface TaskCheckerService<T> extends TaskChecker<T> {
 
     @Override

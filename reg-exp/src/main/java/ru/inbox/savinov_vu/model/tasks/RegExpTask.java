@@ -13,6 +13,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+
+
 @Entity
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"regexplevel_id", "number"})})
 public class RegExpTask implements Identify {
@@ -57,9 +59,11 @@ public class RegExpTask implements Identify {
         return id;
     }
 
+
     public Integer getNumber() {
         return number;
     }
+
 
     public String getDescription() {
         return description;
@@ -119,6 +123,7 @@ public class RegExpTask implements Identify {
         return excludedAnswer;
     }
 
+
     @LazyCollection(LazyCollectionOption.TRUE)
     @ManyToMany(mappedBy = "solvedRegExpTasks")
     public List<User> getUsers() {
@@ -132,64 +137,79 @@ public class RegExpTask implements Identify {
         return author;
     }
 
+
     @LazyCollection(LazyCollectionOption.TRUE)
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "regExpTask")
     public List<RegExpTaskAnswer> getAnswer() {
         return answer;
     }
 
+
     @JsonIgnore
     public Boolean getEnabled() {
         return enabled;
     }
 
+
     public void setId(Integer id) {
         this.id = id;
     }
+
 
     public void setNumber(Integer number) {
         this.number = number;
     }
 
+
     public void setDescription(String description) {
         this.description = description;
     }
+
 
     public void setName(String name) {
         this.name = name;
     }
 
+
     public void setLikes(List<Like> likes) {
         this.likes = likes;
     }
+
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
 
+
     public void setRegExpLevel(RegExpLevel regExpLevel) {
         this.regExpLevel = regExpLevel;
     }
+
 
     public void setUsers(List<User> users) {
         this.users = users;
     }
 
+
     public void setMatchStrings(Set<String> matchStrings) {
         this.matchStrings = matchStrings;
     }
+
 
     public void setExcludedStrings(Set<String> excludedStrings) {
         this.excludedStrings = excludedStrings;
     }
 
+
     public void setRequiredSubStrings(Set<String> requiredSubStrings) {
         this.requiredSubStrings = requiredSubStrings;
     }
 
+
     public void setExcludedAnswer(Set<String> excludedAnswer) {
         this.excludedAnswer = excludedAnswer;
     }
+
 
     public void setAuthor(User author) {
         this.author = author;
@@ -199,6 +219,7 @@ public class RegExpTask implements Identify {
     public void setAnswer(List<RegExpTaskAnswer> answer) {
         this.answer = answer;
     }
+
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;

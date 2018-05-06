@@ -11,6 +11,8 @@ import ru.inbox.savinov_vu.model.tasks.RegExpTask;
 import javax.persistence.*;
 import java.util.List;
 
+
+
 @Entity
 @Table(name = "\"user\"")
 public class User implements Identify {
@@ -38,6 +40,7 @@ public class User implements Identify {
 
     private List<RegExpTask> addedTask;
 
+
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
@@ -46,9 +49,11 @@ public class User implements Identify {
         return id;
     }
 
+
     public String getName() {
         return name;
     }
+
 
     public String getPassword() {
         return password;
@@ -105,55 +110,68 @@ public class User implements Identify {
         return addedTask;
     }
 
+
     @Column(unique = true)
     public String getLogin() {
         return login;
     }
+
 
     @Column(unique = true)
     public String getEmail() {
         return email;
     }
 
+
     public void setId(Integer id) {
         this.id = id;
     }
+
 
     public void setName(String name) {
         this.name = name;
     }
 
+
     public void setPassword(String password) {
         this.password = password;
     }
+
 
     public void setRole(Role role) {
         this.role = role;
     }
 
+
     public void setLikes(List<Like> likes) {
         this.likes = likes;
     }
+
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
 
+
     public void setSolvedRegExpTasks(List<RegExpTask> solvedRegExpTasks) {
         this.solvedRegExpTasks = solvedRegExpTasks;
     }
+
 
     public void setSolvedRegExpLevels(List<RegExpLevel> solvedRegExpLevels) {
         this.solvedRegExpLevels = solvedRegExpLevels;
     }
 
+
     public void setAddedTask(List<RegExpTask> addedTask) {
         this.addedTask = addedTask;
     }
 
+
     public void setLogin(String login) {
         this.login = login;
     }
+
 
     public void setEmail(String email) {
         this.email = email;

@@ -8,8 +8,11 @@ import ru.inbox.savinov_vu.repository.users.UserRepository;
 
 import java.util.List;
 
+
+
 @Service
 public class UserService implements CRUDService<User> {
+
     @Autowired
     UserRepository userRepository;
 
@@ -19,21 +22,25 @@ public class UserService implements CRUDService<User> {
         userRepository.saveAndFlush(user);
     }
 
+
     @Override
     public List<User> getAll() {
         return userRepository.findAll();
     }
+
 
     @Override
     public User getById(Integer id) {
         return userRepository.findById(id).get();
     }
 
+
     @Override
     public boolean delete(Integer id) {
         userRepository.deleteById(id);
         return true;
     }
+
 
     @Override
     public User update(User user) {

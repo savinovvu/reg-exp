@@ -8,8 +8,11 @@ import ru.inbox.savinov_vu.repository.tasks.CommentRepository;
 
 import java.util.List;
 
+
+
 @Service
 public class CommentService implements CRUDService<Comment> {
+
     @Autowired
     CommentRepository commentRepository;
 
@@ -19,21 +22,25 @@ public class CommentService implements CRUDService<Comment> {
         commentRepository.saveAndFlush(comment);
     }
 
+
     @Override
     public List<Comment> getAll() {
         return commentRepository.findAll();
     }
+
 
     @Override
     public Comment getById(Integer id) {
         return commentRepository.findById(id).get();
     }
 
+
     @Override
     public boolean delete(Integer id) {
         commentRepository.deleteById(id);
         return true;
     }
+
 
     @Override
     public Comment update(Comment comment) {

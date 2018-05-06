@@ -11,8 +11,11 @@ import ru.inbox.savinov_vu.repository.tasks.RegExpTaskRepository;
 
 import java.util.List;
 
+
+
 @Service
 public class RegExpTaskService implements CRUDService<RegExpTask>, TaskCheckerService {
+
     @Autowired
     RegExpTaskRepository regExpTaskRepository;
 
@@ -22,20 +25,24 @@ public class RegExpTaskService implements CRUDService<RegExpTask>, TaskCheckerSe
         regExpTaskRepository.saveAndFlush(regExpTask);
     }
 
+
     @Override
     public List<RegExpTask> getAll() {
         return regExpTaskRepository.findAll();
     }
+
 
     @Override
     public List<RegExpTask> getAllByParentId(Integer id) {
         return regExpTaskRepository.getByRegExpLevelIdOrderByNumber(id);
     }
 
+
     @Override
     public RegExpTask getById(Integer id) {
         return regExpTaskRepository.findById(id).get();
     }
+
 
     @Override
     public boolean delete(Integer id) {
@@ -43,16 +50,19 @@ public class RegExpTaskService implements CRUDService<RegExpTask>, TaskCheckerSe
         return true;
     }
 
+
     @Override
     public RegExpTask update(RegExpTask regExpTask) {
         return regExpTaskRepository.saveAndFlush(regExpTask);
     }
 
+
     @Override
     public TaskResulter check(Integer id, String answer) {
-        RegExpTask checkedTask = getById(id);
+        var checkedTask = getById(id);
         return RegExpTaskCheckerUtil.check(checkedTask, answer);
     }
+
 
     @Override
     public List getDisabledTask() {

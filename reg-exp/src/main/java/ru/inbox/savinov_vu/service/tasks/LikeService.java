@@ -8,8 +8,11 @@ import ru.inbox.savinov_vu.repository.tasks.LikeRepository;
 
 import java.util.List;
 
+
+
 @Service
 public class LikeService implements CRUDService<Like> {
+
     @Autowired
     LikeRepository likeRepository;
 
@@ -19,21 +22,25 @@ public class LikeService implements CRUDService<Like> {
         likeRepository.saveAndFlush(like);
     }
 
+
     @Override
     public List<Like> getAll() {
         return likeRepository.findAll();
     }
+
 
     @Override
     public Like getById(Integer id) {
         return likeRepository.findById(id).get();
     }
 
+
     @Override
     public boolean delete(Integer id) {
         likeRepository.deleteById(id);
         return true;
     }
+
 
     @Override
     public Like update(Like like) {

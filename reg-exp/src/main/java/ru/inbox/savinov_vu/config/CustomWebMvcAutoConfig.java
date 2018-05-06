@@ -9,10 +9,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
 
+
+
 // https://stackoverflow.com/questions/33727017/configure-jackson-to-omit-lazy-loading-attributes-in-spring-boot
 @Configuration
-public class CustomWebMvcAutoConfig implements WebMvcConfigurer
-{
+public class CustomWebMvcAutoConfig implements WebMvcConfigurer {
+
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         for (HttpMessageConverter converter : converters) {

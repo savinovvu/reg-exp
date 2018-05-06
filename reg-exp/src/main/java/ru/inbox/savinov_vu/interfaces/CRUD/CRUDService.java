@@ -5,8 +5,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+
+
 @Transactional(readOnly = true)
-public interface CRUDService<T> extends CRUD<T>{
+public interface CRUDService<T> extends CRUD<T> {
 
     default void add(T t) {
         throw new UnsupportedOperationException();
@@ -21,7 +23,7 @@ public interface CRUDService<T> extends CRUD<T>{
         throw new UnsupportedOperationException();
     }
 
-    default T getById(Integer id){
+    default T getById(Integer id) {
         throw new UnsupportedOperationException();
     }
 

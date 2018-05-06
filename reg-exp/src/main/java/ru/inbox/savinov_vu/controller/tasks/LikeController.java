@@ -11,9 +11,12 @@ import ru.inbox.savinov_vu.service.tasks.LikeService;
 
 import java.util.List;
 
+
+
 @RestController
 @RequestMapping(value = "/tasks/like", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 public class LikeController implements CRUDController<Like> {
+
     @Autowired
     LikeService likeService;
 
@@ -23,21 +26,25 @@ public class LikeController implements CRUDController<Like> {
         likeService.add(like);
     }
 
+
     @Override
     public List<Like> getAll() {
         return likeService.getAll();
     }
+
 
     @Override
     public Like getById(@PathVariable("id") Integer id) {
         return likeService.getById(id);
     }
 
+
     @Override
     public boolean delete(@PathVariable("id") Integer id) {
         likeService.delete(id);
         return true;
     }
+
 
     @Override
     public Like update(Like like) {
