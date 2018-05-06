@@ -66,3 +66,11 @@ INSERT INTO "public"."reg_exp_task_required_sub_strings" ("regexptask_id", "requ
 INSERT INTO "public"."reg_exp_task_excluded_answers" ("regexptask_id", "excluded_answers") VALUES (1, 'excluded1');
 INSERT INTO "public"."reg_exp_task_excluded_answers" ("regexptask_id", "excluded_answers") VALUES (2, 'excluded2');
 INSERT INTO "public"."reg_exp_task_excluded_answers" ("regexptask_id", "excluded_answers") VALUES (1, 'excluded3');
+
+INSERT INTO "public"."useful_links" ("id", "description", "link") VALUES (1, 'Википедия', 'https://ru.wikipedia.org');
+INSERT INTO "public"."useful_links" ("id", "description", "link") VALUES (2, 'луркмор', 'http://lurkmore.to');
+INSERT INTO "public"."useful_links" ("id", "description", "link") VALUES (3, 'хабр', 'https://habr.com');
+
+INSERT INTO "public"."usefullnks_regexptask" ("userfullinks_id", "regexptask_id") VALUES (1, 1);
+INSERT INTO "public"."usefullnks_regexptask" ("userfullinks_id", "regexptask_id") VALUES (2, 1);
+INSERT INTO "public"."usefullnks_regexptask" ("userfullinks_id", "regexptask_id") VALUES (3, 1);

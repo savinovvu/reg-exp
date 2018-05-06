@@ -50,6 +50,8 @@ public class RegExpTask implements Identify {
 
     private Boolean enabled;
 
+    private List<UsefulLinks> usefulLinks;
+
 
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)
@@ -144,6 +146,12 @@ public class RegExpTask implements Identify {
         return answers;
     }
 
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany(mappedBy = "regExpTasks")
+    public List<UsefulLinks> getUsefulLinks() {
+        return usefulLinks;
+    }
+
 
     @JsonIgnore
     public Boolean getEnabled() {
@@ -223,5 +231,10 @@ public class RegExpTask implements Identify {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+
+    public void setUsefulLinks(List<UsefulLinks> usefulLinks) {
+        this.usefulLinks = usefulLinks;
     }
 }
