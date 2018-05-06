@@ -44,9 +44,9 @@
       </div>
       <div class="col-md-4">
         <h3>Полезные ссылки</h3>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-          condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-          Donec sed odio dui. </p>
+        <ul *ngFor="let link of task?.usefulLinks">
+          <li><a href={{link.link}}>{{link.description}}</a></li>
+        </ul>
       </div>
       <div class="col-md-4">
         <h3>Результат проверки</h3>
