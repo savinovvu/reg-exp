@@ -29,7 +29,7 @@ public class RegExpTaskService implements CRUDService<RegExpTask>, TaskCheckerSe
 
     @Override
     public List<RegExpTask> getAllByParentId(Integer id) {
-        return regExpTaskRepository.getByRegExpLevelId(id);
+        return regExpTaskRepository.getByRegExpLevelIdOrderByNumber(id);
     }
 
     @Override
@@ -49,10 +49,13 @@ public class RegExpTaskService implements CRUDService<RegExpTask>, TaskCheckerSe
     }
 
     @Override
-//    todo после авторизации сделать проверку на решенные все задачи у уровня, а также поставить флаг решения задач
     public TaskResulter check(Integer id, String answer) {
         RegExpTask checkedTask = getById(id);
-        TaskResulter result = RegExpTaskCheckerUtil.check(checkedTask, answer);
-        return result;
+        return RegExpTaskCheckerUtil.check(checkedTask, answer);
+    }
+
+    @Override
+    public List getDisabledTask() {
+        return regExpTaskRepository.getByEnabledOrderById(false);
     }
 }

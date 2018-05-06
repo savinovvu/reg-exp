@@ -1,16 +1,19 @@
 package ru.inbox.savinov_vu.interfaces.TaskChecker;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import ru.inbox.savinov_vu.checker.TaskResulter;
 
-@FunctionalInterface
-public interface TaskCheckerController extends TaskChecker {
+import java.util.List;
+
+public interface TaskCheckerController<T> extends TaskChecker<T> {
 
     @Override
     @PutMapping("check/{id}")
     @CrossOrigin
     TaskResulter check(@PathVariable("id") Integer id, @RequestBody String answer);
+
+    @Override
+    @GetMapping("disabled")
+    List<T> getDisabledTask();
+
 }

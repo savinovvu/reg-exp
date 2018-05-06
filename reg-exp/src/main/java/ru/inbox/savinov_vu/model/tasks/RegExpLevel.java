@@ -20,6 +20,7 @@ public class RegExpLevel implements Identify {
 
     private List<RegExpTask> regExpTasks;
 
+    @OrderBy("name ASC")
     private List<User> users;
 
     @Id

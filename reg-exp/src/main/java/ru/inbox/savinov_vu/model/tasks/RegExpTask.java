@@ -72,7 +72,7 @@ public class RegExpTask implements Identify {
 
 
     @ManyToOne
-    @JoinColumn(name = "regexplevel_id", nullable = false)
+    @JoinColumn(name = "regexplevel_id", nullable = true)
     public RegExpLevel getRegExpLevel() {
         return regExpLevel;
     }

@@ -14,9 +14,12 @@ import ru.inbox.savinov_vu.service.tasks.RegExpTaskService;
 
 import java.util.List;
 
+
+
 @RestController
 @RequestMapping(value = "/tasks/regexptask", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 public class RegExpTaskController implements CRUDController<RegExpTask>, TaskCheckerController {
+
     @Autowired
     RegExpTaskService regExpTaskService;
 
@@ -26,15 +29,18 @@ public class RegExpTaskController implements CRUDController<RegExpTask>, TaskChe
         regExpTaskService.add(regExpTask);
     }
 
+
     @Override
     public List<RegExpTask> getAllByParentId(@PathVariable("id") Integer id) {
         return regExpTaskService.getAllByParentId(id);
     }
 
+
     @Override
     public RegExpTask getById(@PathVariable("id") Integer id) {
         return regExpTaskService.getById(id);
     }
+
 
     @Override
     public boolean delete(@PathVariable("id") Integer id) {
@@ -42,14 +48,22 @@ public class RegExpTaskController implements CRUDController<RegExpTask>, TaskChe
         return true;
     }
 
+
     @Override
     public RegExpTask update(RegExpTask regExpTask) {
         return regExpTaskService.update(regExpTask);
     }
 
+
     @Override
-    public TaskResulter check(@PathVariable("id")  Integer id, @RequestBody String answer) {
+    public TaskResulter check(@PathVariable("id") Integer id, @RequestBody String answer) {
         TaskResulter check = regExpTaskService.check(id, answer);
         return check;
+    }
+
+
+    @Override
+    public List getDisabledTask() {
+        return regExpTaskService.getDisabledTask();
     }
 }

@@ -3,10 +3,16 @@ package ru.inbox.savinov_vu.interfaces.TaskChecker;
 import org.springframework.transaction.annotation.Transactional;
 import ru.inbox.savinov_vu.checker.TaskResulter;
 
-@FunctionalInterface
-public interface TaskCheckerService extends TaskChecker {
+import java.util.List;
+
+public interface TaskCheckerService<T> extends TaskChecker<T> {
 
     @Override
     @Transactional(readOnly = true)
     TaskResulter check(Integer id, String answer);
+
+
+    @Override
+    @Transactional(readOnly = true)
+    List<T> getDisabledTask();
 }

@@ -8,5 +8,9 @@ import java.util.List;
 
 @Repository
 public interface RegExpTaskRepository extends JpaRepository<RegExpTask, Integer> {
-    List<RegExpTask> getByRegExpLevelId(Integer id);
+
+    List<RegExpTask> getByRegExpLevelIdOrderByNumber(Integer id);
+
+    List<RegExpTask> getByEnabledOrderById(Boolean enable);
+
 }

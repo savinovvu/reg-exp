@@ -2,9 +2,9 @@ INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "role")
 INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "role") VALUES (2, 'user2', 'tmp2@mail.ru' , 'login2','pass', 'User');
 INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "role") VALUES (3, 'admin1',  'tmp3@mail.ru' , 'login3','pass', 'Admin');
 
-INSERT INTO "public"."reg_exp_level" ("id", "description") VALUES (1, 'первый уровень');
-INSERT INTO "public"."reg_exp_level" ("id", "description") VALUES (2, 'второй уровень');
-INSERT INTO "public"."reg_exp_level" ("id", "description") VALUES (3, 'третий уровень');
+INSERT INTO "public"."reg_exp_level" ("id", number, "description") VALUES (1, 1, 'первый уровень');
+INSERT INTO "public"."reg_exp_level" ("id", number, "description") VALUES (2, 2, 'второй уровень');
+INSERT INTO "public"."reg_exp_level" ("id", number, "description") VALUES (3, 3, 'третий уровень');
 
 INSERT INTO "public"."reg_exp_task" ("id", "number", "enabled", "name", "description", "regexplevel_id", "author_id") VALUES (1, 1, true, 'name1', '1-1', 1, 1);
 INSERT INTO "public"."reg_exp_task" ("id", "number", "enabled", "name", "description", "regexplevel_id", "author_id") VALUES (2, 2, true, 'name2', '1-2', 1, 1);

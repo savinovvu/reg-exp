@@ -1,6 +1,7 @@
 package ru.inbox.savinov_vu.service.tasks;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.inbox.savinov_vu.interfaces.CRUD.CRUDService;
 import ru.inbox.savinov_vu.model.tasks.RegExpLevel;
@@ -21,7 +22,7 @@ public class RegExpLevelService implements CRUDService<RegExpLevel> {
 
     @Override
     public List<RegExpLevel> getAll() {
-        List<RegExpLevel> all = regExpLevelRepository.findAll();
+        List<RegExpLevel> all = regExpLevelRepository.findAll(new Sort(Sort.Direction.ASC, "number"));
         return all;
     }
 
