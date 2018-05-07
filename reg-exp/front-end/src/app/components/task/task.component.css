@@ -27,6 +27,10 @@ a.btn{
   color: white;
 }
 
+a.btn:hover{
+  color: white;
+}
+
 ul {
   margin-bottom: 0;
 }
