@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.interfaces.TaskChecker;
+package ru.inbox.savinov_vu.interfaces.taskChecker;
 
 import ru.inbox.savinov_vu.checker.TaskResulter;
 

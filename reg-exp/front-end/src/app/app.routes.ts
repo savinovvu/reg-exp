@@ -22,8 +22,8 @@ const routes: Routes = [
 
   {path: 'course', component: CourseComponent},
   {path: 'course', component: CourseComponent},
-  {path: 'course/:level', component: LevelComponent},
-  {path: 'course/:level/:task', component: TaskComponent},
+  {path: 'course/:levelNumber', component: LevelComponent},
+  {path: 'course/:levelNumber/:taskNumber', component: TaskComponent},
 
   {path: '**', redirectTo: 'main'}
 ];

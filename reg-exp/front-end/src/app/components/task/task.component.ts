@@ -14,24 +14,27 @@ const PATH = "/tasks/regexptask/";
 export class TaskComponent extends BaseComponent implements OnInit {
 
   task;
-  taskId;
+  taskNumber;
   regExp: string;
   result: CheckResult;
-  level: string;
+  levelNumber: string;
   nextLevel: number;
 
   constructor(
     private  restService: RestDataSourceService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private levelService:LevelService
+    private levelService: LevelService
   ) {
     super();
     this.activatedRoute.params.subscribe(params => {
-      this.taskId = params[ 'task' ];
-      this.level = params[ 'level' ];
-      this.nextLevel = 1 + Number(this.taskId);
-      this.subscribtion = restService.get(`${PATH}${this.taskId}`).subscribe(v => {
+      this.taskNumber = params[ 'taskNumber' ];
+      this.levelNumber = params[ 'levelNumber' ];
+      console.log(this.taskNumber);
+      console.log(this.levelNumber);
+      this.nextLevel = 1 + Number(this.taskNumber);
+      this.subscribtion = restService.get(`${PATH}/byNumber/${this.levelNumber}/${this.taskNumber}`).subscribe(v => {
+        console.log(v);
         this.task = v;
       });
     });
@@ -41,7 +44,7 @@ export class TaskComponent extends BaseComponent implements OnInit {
   }
 
   onSubmit() {
-    this.restService.put(`${PATH}check/${this.taskId}`, this.regExp)
+    this.restService.put(`${PATH}check/${this.task.id}`, this.regExp)
       .subscribe((v: CheckResult) => this.result = v);
   }
 
@@ -51,7 +54,7 @@ export class TaskComponent extends BaseComponent implements OnInit {
 
 
   nextTask() {
-    this.router.navigate([ 'course', this.level, this.nextLevel ]);
+    this.router.navigate([ 'course', this.levelNumber, this.nextLevel ]);
   }
 
 

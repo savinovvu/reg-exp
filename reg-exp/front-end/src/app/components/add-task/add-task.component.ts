@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddTaskComponent implements OnInit {
 
+  regExp;
+  level;
+
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSubmit(){
+
   }
 
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.inbox.savinov_vu.checker.TaskResulter;
 import ru.inbox.savinov_vu.interfaces.CRUD.CRUDController;
-import ru.inbox.savinov_vu.interfaces.TaskChecker.TaskCheckerController;
+import ru.inbox.savinov_vu.interfaces.taskChecker.TaskCheckerController;
 import ru.inbox.savinov_vu.interfaces.numbered.NumberedController;
 import ru.inbox.savinov_vu.model.tasks.RegExpTask;
 import ru.inbox.savinov_vu.service.tasks.RegExpTaskService;
@@ -69,7 +69,7 @@ public class RegExpTaskController implements CRUDController<RegExpTask>, TaskChe
 
 
     @Override
-    public List<RegExpTask> getByParentNumberAndByNumber(@PathVariable("parentNumber") Integer parentNumber,
+    public RegExpTask getByParentNumberAndByNumber(@PathVariable("parentNumber") Integer parentNumber,
                                                          @PathVariable("number") Integer number) {
         return regExpTaskService.getByParentNumberAndByNumber(parentNumber, number);
     }

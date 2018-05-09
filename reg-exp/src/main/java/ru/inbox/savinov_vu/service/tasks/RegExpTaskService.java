@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.inbox.savinov_vu.checker.RegExpTaskCheckerUtil;
 import ru.inbox.savinov_vu.checker.TaskResulter;
 import ru.inbox.savinov_vu.interfaces.CRUD.CRUDService;
-import ru.inbox.savinov_vu.interfaces.TaskChecker.TaskCheckerService;
+import ru.inbox.savinov_vu.interfaces.taskChecker.TaskCheckerService;
 import ru.inbox.savinov_vu.interfaces.numbered.NumberedService;
 import ru.inbox.savinov_vu.model.tasks.RegExpTask;
 import ru.inbox.savinov_vu.repository.tasks.RegExpTaskRepository;
@@ -72,7 +72,7 @@ public class RegExpTaskService implements CRUDService<RegExpTask>, TaskCheckerSe
 
 
     @Override
-    public List<RegExpTask> getByParentNumberAndByNumber(Integer parentNumber, Integer number) {
+    public RegExpTask getByParentNumberAndByNumber(Integer parentNumber, Integer number) {
         return regExpTaskRepository.getTaskByLevelIdAndByNumber(parentNumber, number);
     }
 }

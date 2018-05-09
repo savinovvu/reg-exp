@@ -1,9 +1,5 @@
 package ru.inbox.savinov_vu.interfaces.numbered;
 
-import java.util.List;
-
-
-
 public interface Numbered<T> {
 
 
@@ -12,7 +8,7 @@ public interface Numbered<T> {
     }
 
 
-    default List<T> getByParentNumberAndByNumber(Integer parentNumber, Integer number) {
+    default T getByParentNumberAndByNumber(Integer parentNumber, Integer number) {
         throw new UnsupportedOperationException();
     }
 

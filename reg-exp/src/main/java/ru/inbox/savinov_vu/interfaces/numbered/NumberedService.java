@@ -2,8 +2,6 @@ package ru.inbox.savinov_vu.interfaces.numbered;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 
 
 public interface NumberedService<T> extends Numbered<T> {
@@ -17,7 +15,7 @@ public interface NumberedService<T> extends Numbered<T> {
 
     @Override
     @Transactional(readOnly = true)
-    default List<T> getByParentNumberAndByNumber(Integer parentNumber, Integer number){
+    default T getByParentNumberAndByNumber(Integer parentNumber, Integer number){
         throw new UnsupportedOperationException();
     }
 
