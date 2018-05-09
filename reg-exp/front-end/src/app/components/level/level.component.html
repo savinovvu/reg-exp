@@ -4,14 +4,14 @@
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> Номер задачи.</mat-header-cell>
       <mat-cell *matCellDef="let task">
-        <a [routerLink]="['/course', level, task.id]">{{task.number}}</a>
+        <a [routerLink]="['/course', level, task.number]">{{task.number}}</a>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Наименование</mat-header-cell>
       <mat-cell *matCellDef="let task">
-        <a [routerLink]="['/course', level, task.id]">{{task.name}}</a>
+        <a [routerLink]="['/course', level, task.number]">{{task.name}}</a>
       </mat-cell>
     </ng-container>
 

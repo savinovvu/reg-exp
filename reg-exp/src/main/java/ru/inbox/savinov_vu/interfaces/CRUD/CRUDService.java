@@ -7,11 +7,10 @@ import java.util.List;
 
 
 
-@Transactional(readOnly = true)
 public interface CRUDService<T> extends CRUD<T> {
 
     @Override
-    @Transactional
+    @Transactional(readOnly = false)
     default void add(T t) {
         throw new UnsupportedOperationException();
     }
@@ -39,7 +38,7 @@ public interface CRUDService<T> extends CRUD<T> {
 
 
     @Override
-    @Transactional
+    @Transactional(readOnly = false)
     @Modifying
     default boolean delete(Integer id) {
         throw new UnsupportedOperationException();
@@ -47,7 +46,7 @@ public interface CRUDService<T> extends CRUD<T> {
 
 
     @Override
-    @Transactional
+    @Transactional(readOnly = false)
     default T update(T t) {
         throw new UnsupportedOperationException();
     }
