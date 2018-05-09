@@ -16,12 +16,14 @@ public interface CRUDController<T> extends CRUD<T> {
         throw new UnsupportedOperationException();
     }
 
+
     @Override
     @GetMapping
     @CrossOrigin
     default List<T> getAll() {
         throw new UnsupportedOperationException();
     }
+
 
     @Override
     @GetMapping("parent/{id}")
@@ -30,6 +32,7 @@ public interface CRUDController<T> extends CRUD<T> {
         throw new UnsupportedOperationException();
     }
 
+
     @Override
     @GetMapping("/{id}")
     @CrossOrigin
@@ -37,12 +40,14 @@ public interface CRUDController<T> extends CRUD<T> {
         return null;
     }
 
+
     @Override
     @DeleteMapping("/{id}")
     @CrossOrigin
     default boolean delete(@PathVariable("id") Integer id) {
         throw new UnsupportedOperationException();
     }
+
 
     @Override
     @PutMapping

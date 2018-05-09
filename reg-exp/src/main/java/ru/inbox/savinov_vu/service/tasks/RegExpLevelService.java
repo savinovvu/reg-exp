@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.inbox.savinov_vu.interfaces.CRUD.CRUDService;
+import ru.inbox.savinov_vu.interfaces.numbered.NumberedService;
 import ru.inbox.savinov_vu.model.tasks.RegExpLevel;
 import ru.inbox.savinov_vu.repository.tasks.RegExpLevelRepository;
 
@@ -12,7 +13,7 @@ import java.util.List;
 
 
 @Service
-public class RegExpLevelService implements CRUDService<RegExpLevel> {
+public class RegExpLevelService implements CRUDService<RegExpLevel>, NumberedService<RegExpLevel> {
 
     @Autowired
     RegExpLevelRepository regExpLevelRepository;
@@ -47,5 +48,11 @@ public class RegExpLevelService implements CRUDService<RegExpLevel> {
     @Override
     public RegExpLevel update(RegExpLevel regExpLevel) {
         return regExpLevelRepository.saveAndFlush(regExpLevel);
+    }
+
+
+    @Override
+    public RegExpLevel getByNumber(Integer number) {
+        return regExpLevelRepository.getByNumber(number);
     }
 }

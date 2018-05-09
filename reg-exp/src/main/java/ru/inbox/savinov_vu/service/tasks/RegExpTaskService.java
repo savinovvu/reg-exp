@@ -6,6 +6,7 @@ import ru.inbox.savinov_vu.checker.RegExpTaskCheckerUtil;
 import ru.inbox.savinov_vu.checker.TaskResulter;
 import ru.inbox.savinov_vu.interfaces.CRUD.CRUDService;
 import ru.inbox.savinov_vu.interfaces.TaskChecker.TaskCheckerService;
+import ru.inbox.savinov_vu.interfaces.numbered.NumberedService;
 import ru.inbox.savinov_vu.model.tasks.RegExpTask;
 import ru.inbox.savinov_vu.repository.tasks.RegExpTaskRepository;
 
@@ -14,7 +15,7 @@ import java.util.List;
 
 
 @Service
-public class RegExpTaskService implements CRUDService<RegExpTask>, TaskCheckerService {
+public class RegExpTaskService implements CRUDService<RegExpTask>, TaskCheckerService<RegExpTask>, NumberedService<RegExpTask> {
 
     @Autowired
     RegExpTaskRepository regExpTaskRepository;
@@ -65,7 +66,13 @@ public class RegExpTaskService implements CRUDService<RegExpTask>, TaskCheckerSe
 
 
     @Override
-    public List getDisabledTask() {
+    public List<RegExpTask> getDisabledTask() {
         return regExpTaskRepository.getByEnabledOrderById(false);
+    }
+
+
+    @Override
+    public List<RegExpTask> getByParentNumberAndByNumber(Integer parentNumber, Integer number) {
+        return regExpTaskRepository.getTaskByLevelIdAndByNumber(parentNumber, number);
     }
 }

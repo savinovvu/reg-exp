@@ -9,10 +9,10 @@ public interface Identify extends Persistable {
     @Override
     Integer getId();
 
+
     @Override
     default boolean isNew() {
         return (getId() == null);
     }
-
 
 }

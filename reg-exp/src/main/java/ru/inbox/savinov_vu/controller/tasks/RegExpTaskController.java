@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.inbox.savinov_vu.checker.TaskResulter;
 import ru.inbox.savinov_vu.interfaces.CRUD.CRUDController;
 import ru.inbox.savinov_vu.interfaces.TaskChecker.TaskCheckerController;
+import ru.inbox.savinov_vu.interfaces.numbered.NumberedController;
 import ru.inbox.savinov_vu.model.tasks.RegExpTask;
 import ru.inbox.savinov_vu.service.tasks.RegExpTaskService;
 
@@ -18,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/tasks/regexptask", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-public class RegExpTaskController implements CRUDController<RegExpTask>, TaskCheckerController {
+public class RegExpTaskController implements CRUDController<RegExpTask>, TaskCheckerController<RegExpTask>, NumberedController<RegExpTask> {
 
     @Autowired
     RegExpTaskService regExpTaskService;
@@ -62,7 +63,15 @@ public class RegExpTaskController implements CRUDController<RegExpTask>, TaskChe
 
 
     @Override
-    public List getDisabledTask() {
+    public List<RegExpTask> getDisabledTask() {
         return regExpTaskService.getDisabledTask();
     }
+
+
+    @Override
+    public List<RegExpTask> getByParentNumberAndByNumber(@PathVariable("parentNumber") Integer parentNumber,
+                                                         @PathVariable("number") Integer number) {
+        return regExpTaskService.getByParentNumberAndByNumber(parentNumber, number);
+    }
+
 }

@@ -9,4 +9,6 @@ import ru.inbox.savinov_vu.model.tasks.RegExpLevel;
 @Repository
 public interface RegExpLevelRepository extends JpaRepository<RegExpLevel, Integer> {
 
+    RegExpLevel getByNumber(Integer id);
+
 }
