@@ -26,7 +26,7 @@ public class RegExpTaskController implements CRUDController<RegExpTask>, TaskChe
 
 
     @Override
-    public void add(RegExpTask regExpTask) {
+    public void add(@RequestBody RegExpTask regExpTask) {
         regExpTaskService.add(regExpTask);
     }
 

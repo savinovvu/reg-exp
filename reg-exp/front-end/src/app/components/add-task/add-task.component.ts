@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Task } from "../../model/interfaces";
+import { RestDataSourceService } from "../../services/rest/rest-data-source.service";
 
 
 
@@ -30,7 +32,9 @@ export class AddTaskComponent implements OnInit {
   excludedAnswer: string = '';
 
 
-  constructor() {
+  constructor(
+    private  restService: RestDataSourceService
+  ) {
   }
 
 
@@ -39,6 +43,14 @@ export class AddTaskComponent implements OnInit {
 
 
   onSubmit() {
+    const addedTask:Task = {};
+    addedTask.name = this.name;
+    addedTask.description = this.description;
+    addedTask.matchStrings = this.matchStrings;
+    addedTask.excludedString = this.excludedStrings;
+    addedTask.requiredSubStrings = this.requiredSubStrings;
+    addedTask.excludedAnswers = this.excludedAnswers;
+    this.restService.post('/tasks/regexptask', addedTask);
   }
 
 
@@ -93,3 +105,5 @@ export class AddTaskComponent implements OnInit {
     }
   }
 }
+
+
