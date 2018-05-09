@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestDataSourceService } from "../../services/rest/rest-data-source.service";
-import { ActivatedRoute, Router, RouterLink } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { BaseComponent } from "../../utils/base-component";
 import { LevelService } from "../../services/level/level.service";
 
@@ -18,24 +18,23 @@ export class TaskComponent extends BaseComponent implements OnInit {
   regExp: string;
   result: CheckResult;
   levelNumber: string;
-  nextLevel: number;
+  private taskCount: number;
+  existNextTask: boolean = false;
 
   constructor(
     private  restService: RestDataSourceService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private levelService: LevelService
   ) {
     super();
     this.activatedRoute.params.subscribe(params => {
       this.taskNumber = params[ 'taskNumber' ];
       this.levelNumber = params[ 'levelNumber' ];
-      console.log(this.taskNumber);
-      console.log(this.levelNumber);
-      this.nextLevel = 1 + Number(this.taskNumber);
-      this.subscribtion = restService.get(`${PATH}/byNumber/${this.levelNumber}/${this.taskNumber}`).subscribe(v => {
-        console.log(v);
-        this.task = v;
+      this.subscribtion = restService.get(`${PATH}/byNumber/${this.levelNumber}/${this.taskNumber}`).subscribe(taskData => {
+        this.task = taskData;
+        this.subscribtion = restService.get(`/tasks/regexptask/parent/${this.task.regExpLevel.id}`).subscribe(tasksAtLevel => {
+          this.existNextTask = this.task.number >= tasksAtLevel.length;
+        });
       });
     });
   }
@@ -54,8 +53,11 @@ export class TaskComponent extends BaseComponent implements OnInit {
 
 
   nextTask() {
-    this.router.navigate([ 'course', this.levelNumber, this.nextLevel ]);
+    let nextTaskNumber = this.task.number + 1;
+    this.router.navigate([ 'course', this.levelNumber, nextTaskNumber ]);
   }
+
+
 
 
 }

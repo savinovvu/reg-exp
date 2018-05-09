@@ -97,13 +97,13 @@
     </div>
     <div class="row">
       <div class="col-md-4">
-        <p><a class="btn btn-secondary" [routerLink]="['/course','byNumber',levelNumber]" role="button">« К задачам уровня</a></p>
+        <p><a class="btn btn-secondary" [routerLink]="['/course',levelNumber]" role="button">« К задачам уровня</a></p>
       </div>
       <div class="col-md-4">
-        <p><a class="btn btn-secondary" href="#" role="button">Полезные ссылки »</a></p>
+        <p><a class="btn btn-secondary" [routerLink]="['/usefulLinks']" role="button">Полезные ссылки »</a></p>
       </div>
       <div class="col-md-4">
-        <p><a class="btn btn-secondary" (click)="nextTask()" role="button">Следующая задача »</a></p>
+        <p><a class="btn btn-secondary" (click)="nextTask()" role="button" [class.disabled]="existNextTask">Следующая задача »</a></p>
       </div>
     </div>
 
