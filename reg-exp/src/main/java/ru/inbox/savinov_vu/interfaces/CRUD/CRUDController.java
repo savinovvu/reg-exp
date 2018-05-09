@@ -12,7 +12,7 @@ public interface CRUDController<T> extends CRUD<T> {
     @Override
     @PostMapping
     @CrossOrigin
-    default void add(@RequestBody T t) {
+    default void add(T t) {
         throw new UnsupportedOperationException();
     }
 
@@ -28,7 +28,7 @@ public interface CRUDController<T> extends CRUD<T> {
     @Override
     @GetMapping("parent/{id}")
     @CrossOrigin
-    default List<T> getAllByParentId(@PathVariable("id") Integer id) {
+    default List<T> getAllByParentId(Integer id) {
         throw new UnsupportedOperationException();
     }
 
@@ -36,15 +36,15 @@ public interface CRUDController<T> extends CRUD<T> {
     @Override
     @GetMapping("/{id}")
     @CrossOrigin
-    default T getById(@PathVariable("id") Integer id) {
-        return null;
+    default T getById(Integer id) {
+        throw new UnsupportedOperationException();
     }
 
 
     @Override
     @DeleteMapping("/{id}")
     @CrossOrigin
-    default boolean delete(@PathVariable("id") Integer id) {
+    default boolean delete(Integer id) {
         throw new UnsupportedOperationException();
     }
 
@@ -52,7 +52,7 @@ public interface CRUDController<T> extends CRUD<T> {
     @Override
     @PutMapping
     @CrossOrigin
-    default T update(@RequestBody T t) {
+    default T update(T t) {
         throw new UnsupportedOperationException();
     }
 }

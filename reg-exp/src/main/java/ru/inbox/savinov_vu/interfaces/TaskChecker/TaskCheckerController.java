@@ -12,7 +12,7 @@ public interface TaskCheckerController<T> extends TaskChecker<T> {
     @Override
     @PutMapping("check/{id}")
     @CrossOrigin
-    TaskResulter check(@PathVariable("id") Integer id, @RequestBody String answer);
+    TaskResulter check(Integer id, String answer);
 
     @Override
     @GetMapping("disabled")
