@@ -1,58 +1,139 @@
 <main class="paddingBottom" role="main">
+  <form (ngSubmit)="onSubmit()">
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <h1 class="display-8">Добавление задачи</h1>
+          </div>
+          <div class="col-md-3">
+            <button class="btn btn-success btn-lg btn-block" type="submit">Предложить задачу</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-control regExpForm">
+            <label for="name" class="sr-only">Название задачи</label>
+            <input type="text"
+                   id="name"
+                   [(ngModel)]="name"
+                   name="name"
+                   class="form-control-plaintext col-8 regExpInput"
+                   placeholder="Название"
+                   style="margin-bottom: 20px"
 
-  <div class="jumbotron">
+                   required="">
+            <label for="description" class="sr-only">Введите описание задачи</label>
+            <textarea id="description"
+                      class="form-control-plaintext col-8 regExpInput"
+                      [(ngModel)]="description"
+                      name="description"
+                      placeholder="Описание">
+          </textarea>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container">
-      <h1 class="display-8">Добавление задачи</h1>
-      <form class="form-inline form-control regExpForm" (ngSubmit)="onSubmit()">
-        <label for="name" class="sr-only">Название</label>
-        <input type="text"
-               id="name"
-               [(ngModel)]="regExp"
-               name="regExp"
-               class="form-control-plaintext col-8 regExpInput"
-               placeholder="Название"
-               required="">
-        <label for="description" class="sr-only">Введите описание задачи</label>
-        <textarea id="description"
-                  class="form-control-plaintext col-8 regExpInput"
-                  placeholder="Описание"></textarea>
-
-      </form>
-
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <h3>Найти</h3>
-      </div>
-      <div class="col-md-3">
-        <h3>Исключить</h3>
-      </div>
-
-
-      <div class="col-md-3">
-        <h3>Использовать</h3>
-
+      <div class="row">
+        <div class="col-md-3">
+          <h3>Найти</h3>
         </div>
 
-      <div class="col-md-3">
-        <h3>Не должно совпадать</h3>
+        <div class="col-md-3">
+          <h3>Исключить</h3>
+        </div>
 
+        <div class="col-md-3">
+          <h3>Использовать</h3>
+        </div>
+
+        <div class="col-md-3">
+          <h3>Исключить решение</h3>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <section *ngFor="let item of matchStrings" class="example-section">
+            <mat-checkbox class="example-margin" (click)="deleteCondition(item, matchStrings)" [checked]="true">
+              {{item}}
+            </mat-checkbox>
+          </section>
+        </div>
+        <div class="col-md-3">
+
+          <section *ngFor="let item of excludedStrings" class="example-section">
+            <mat-checkbox class="example-margin" (click)="deleteCondition(item, excludedStrings)" [checked]="true">
+              {{item}}
+            </mat-checkbox>
+          </section>
         </div>
 
 
+        <div class="col-md-3">
+
+          <section *ngFor="let item of requiredSubStrings" class="example-section">
+            <mat-checkbox class="example-margin" (click)="deleteCondition(item, requiredSubStrings)" [checked]="true">
+              {{item}}
+            </mat-checkbox>
+          </section>
+
+        </div>
+
+        <div class="col-md-3">
+
+          <section *ngFor="let item of excludedAnswers" class="example-section">
+            <mat-checkbox class="example-margin" (click)="deleteCondition(item, excludedAnswers)" [checked]="true">
+              {{item}}
+            </mat-checkbox>
+          </section>
+
+        </div>
       </div>
 
-    <div class="row">
-      <div class="offset-9 col-md-3">
-        <p><a class="btn btn-primary btn-lg btn-block"  [routerLink]="['/course',level]" role="button">Готово</a></p>
+      <div class="row">
+        <div class=" col-md-3">
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="matchString" name="matchString">
+          </mat-form-field>
+          <p>
+            <button class="btn btn-primary btn-lg btn-block" (click)="addMatchString()" role="button">Добавить</button>
+          </p>
+        </div>
+        <div class=" col-md-3">
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="excludedString" name="excludedString">
+          </mat-form-field>
+          <p>
+            <button class="btn btn-primary btn-lg btn-block" (click)="addExcludedString()" role="button">Добавить
+            </button>
+          </p>
+        </div>
+        <div class=" col-md-3">
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="requiredSubString" name="requiredSubString">
+          </mat-form-field>
+          <p>
+            <button class="btn btn-primary btn-lg btn-block" (click)="addRequiredSubString()" role="button">Добавить
+            </button>
+          </p>
+        </div>
+        <div class=" col-md-3">
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="excludedAnswer" name="excludedAnswer">
+          </mat-form-field>
+          <p>
+            <button class="btn btn-primary btn-lg btn-block" (click)="addExcludedAnswer()" role="button">Добавить
+            </button>
+          </p>
+        </div>
+
       </div>
     </div>
-
-  </div>
-
+  </form>
 
 </main>
 

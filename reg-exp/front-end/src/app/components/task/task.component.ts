@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { RestDataSourceService } from "../../services/rest/rest-data-source.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BaseComponent } from "../../utils/base-component";
-import { LevelService } from "../../services/level/level.service";
+
+
 
 const PATH = "/tasks/regexptask/";
+
+
 
 @Component({
   selector: 'reg-task',
@@ -14,12 +17,19 @@ const PATH = "/tasks/regexptask/";
 export class TaskComponent extends BaseComponent implements OnInit {
 
   task;
+
   taskNumber;
+
   regExp: string;
+
   result: CheckResult;
+
   levelNumber: string;
+
   private taskCount: number;
+
   existNextTask: boolean = false;
+
 
   constructor(
     private  restService: RestDataSourceService,
@@ -39,16 +49,14 @@ export class TaskComponent extends BaseComponent implements OnInit {
     });
   }
 
+
   ngOnInit() {
   }
+
 
   onSubmit() {
     this.restService.put(`${PATH}check/${this.task.id}`, this.regExp)
       .subscribe((v: CheckResult) => this.result = v);
-  }
-
-  getCommaString(strings: string[]) {
-    return strings.join(', ');
   }
 
 
@@ -58,9 +66,9 @@ export class TaskComponent extends BaseComponent implements OnInit {
   }
 
 
-
-
 }
+
+
 
 interface CheckResult {
   success: boolean;

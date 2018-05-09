@@ -26,22 +26,22 @@
         <h3>Условия</h3>
         <div *ngIf="task?.matchStrings?.length > 0">
           <h6>Найти строки:</h6>
-          <p>{{getCommaString(task.matchStrings)}}</p>
+          <p>{{task.matchStrings | join:','}}</p>
         </div>
 
         <div *ngIf="task?.excludedStrings?.length > 0">
           <h6>Исключить строки:</h6>
-          <p>{{getCommaString(task.excludedStrings)}}</p>
+          <p>{{task.excludedStrings | join:','}}</p>
         </div>
 
         <div *ngIf="task?.requiredSubStrings?.length > 0">
           <h6>Использовать:</h6>
-          <p>{{getCommaString(task.requiredSubStrings)}}</p>
+          <p>{{task.requiredSubStrings | join:','}}</p>
         </div>
 
         <div *ngIf="task?.excludedAnswers?.length > 0">
           <h6>Запрещенные ответы:</h6>
-          <p>{{getCommaString(task.excludedAnswers)}}</p>
+          <p>{{task.excludedAnswers | join:','}}</p>
         </div>
       </div>
 
@@ -65,25 +65,24 @@
             <h6>
               Введенное выражение
             </h6>
-
             <div *ngIf="result.wrongMap?.Unmatch">
               <h6>{{"Unmatch"|checkWrongStatus}}</h6>
-              <p>{{getCommaString(result.wrongMap?.Unmatch)}}</p>
+              <p>{{result.wrongMap?.Unmatch | join:','}}</p>
             </div>
 
             <div *ngIf="result.wrongMap?.Match">
               <h6>{{"Match"|checkWrongStatus}}</h6>
-              <p>{{getCommaString(result.wrongMap?.Match)}}</p>
+              <p>{{result.wrongMap?.Match | join:','}}</p>
             </div>
 
             <div *ngIf="result.wrongMap?.Unused">
               <h6>{{"Unused"|checkWrongStatus}}</h6>
-              <p>{{getCommaString(result.wrongMap?.Unused)}}</p>
+              <p>{{result.wrongMap?.Unused | join:','}}</p>
             </div>
 
             <div *ngIf="result.wrongMap?.Equals">
               <h6>{{"Equals"|checkWrongStatus}}</h6>
-              <p>{{getCommaString(result.wrongMap?.Equals)}}</p>
+              <p>{{result.wrongMap?.Equals | join:','}}</p>
             </div>
 
           </ng-template>

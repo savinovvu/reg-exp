@@ -19,9 +19,9 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { LoginComponent } from './components/login/login.component';
 import { AddTaskComponent } from './components/add-task/add-task.component';
-import { CheckWrongStatusPipe } from './pipes/check-wrong-status.pipe';
+import { CheckWrongStatusPipe } from './pipes/check-status/check-wrong-status.pipe';
 import { UsefulLinksComponent } from './components/useful-links/useful-links.component';
-import { LevelService } from "./services/level/level.service";
+import { JoinPipe } from './pipes/join/join.pipe';
 
 
 @NgModule({
@@ -39,6 +39,7 @@ import { LevelService } from "./services/level/level.service";
     AddTaskComponent,
     CheckWrongStatusPipe,
     UsefulLinksComponent,
+    JoinPipe,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +50,7 @@ import { LevelService } from "./services/level/level.service";
     FormsModule
   ],
   providers: [
-    RestDataSourceService, LevelService
+    RestDataSourceService
   ],
   bootstrap: [ AppComponent ]
 })
