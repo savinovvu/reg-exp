@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.inbox.savinov_vu.interfaces.CRUD.CRUDController;
+import ru.inbox.savinov_vu.interfaces.OperationResulter;
 import ru.inbox.savinov_vu.interfaces.numbered.NumberedController;
 import ru.inbox.savinov_vu.model.tasks.RegExpLevel;
 import ru.inbox.savinov_vu.service.tasks.RegExpLevelService;
@@ -23,8 +24,8 @@ public class RegExpLevelController implements CRUDController<RegExpLevel>, Numbe
 
 
     @Override
-    public void add(RegExpLevel regExpLevel) {
-        regExpLevelService.add(regExpLevel);
+    public OperationResulter<String> add(RegExpLevel regExpLevel) {
+        return regExpLevelService.add(regExpLevel);
     }
 
 

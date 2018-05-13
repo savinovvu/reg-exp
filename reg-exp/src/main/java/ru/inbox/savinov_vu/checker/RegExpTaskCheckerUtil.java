@@ -4,6 +4,10 @@ import ru.inbox.savinov_vu.model.tasks.RegExpTask;
 
 import java.util.regex.Pattern;
 
+import static java.util.Objects.isNull;
+import static ru.inbox.savinov_vu.checker.WrongCheckStatus.*;
+import static ru.inbox.savinov_vu.checker.WrongCheckStatus.Unmatch;
+
 
 
 public interface RegExpTaskCheckerUtil {
@@ -26,23 +30,28 @@ public interface RegExpTaskCheckerUtil {
 
 
     static TaskResulter check(RegExpTask regExpTask, String answer) {
+
         var result = new TaskResulter();
+
+        if (isNull(answer)) {
+            return result.setWrong("not answer", NotAnswer);
+        }
 
         regExpTask.getMatchStrings().stream()
                 .filter(v -> !checkMatches(v, answer))
-                .forEach(v -> result.setWrong(v, WrongCheckStatus.Unmatch));
+                .forEach(v -> result.setWrong(v, Unmatch));
 
         regExpTask.getExcludedStrings().stream()
                 .filter(v -> checkMatches(v, answer))
-                .forEach(v -> result.setWrong(v, WrongCheckStatus.Match));
+                .forEach(v -> result.setWrong(v, Match));
 
         regExpTask.getRequiredSubStrings().stream()
                 .filter(v -> !checkRequiredString(v, answer))
-                .forEach(v -> result.setWrong(v, WrongCheckStatus.Unused));
+                .forEach(v -> result.setWrong(v, Unused));
 
         regExpTask.getExcludedAnswers().stream()
                 .filter(v -> isEqualExcludedAnswer(v, answer))
-                .forEach(v -> result.setWrong(v, WrongCheckStatus.Equals));
+                .forEach(v -> result.setWrong(v, Equals));
 
         return result;
     }

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.inbox.savinov_vu.interfaces.CRUD.CRUDController;
+import ru.inbox.savinov_vu.interfaces.OperationResulter;
 import ru.inbox.savinov_vu.model.tasks.Comment;
 import ru.inbox.savinov_vu.service.tasks.CommentService;
 
@@ -22,8 +23,8 @@ public class CommentController implements CRUDController<Comment> {
 
 
     @Override
-    public void add(Comment comment) {
-        commentService.add(comment);
+    public OperationResulter<String> add(Comment comment) {
+       return commentService.add(comment);
     }
 
 

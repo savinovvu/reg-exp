@@ -55,43 +55,7 @@
 
 
       <div class="col-md-4">
-        <h3>Результат проверки</h3>
-        <div *ngIf="result; else notResult">
-          <div *ngIf="result.success; else wrong">
-            <p>Задача успешно прошла проверку</p>
-          </div>
-
-          <ng-template #wrong>
-            <h6>
-              Введенное выражение
-            </h6>
-            <div *ngIf="result.wrongMap?.Unmatch">
-              <h6>{{"Unmatch"|checkWrongStatus}}</h6>
-              <p>{{result.wrongMap?.Unmatch | join:','}}</p>
-            </div>
-
-            <div *ngIf="result.wrongMap?.Match">
-              <h6>{{"Match"|checkWrongStatus}}</h6>
-              <p>{{result.wrongMap?.Match | join:','}}</p>
-            </div>
-
-            <div *ngIf="result.wrongMap?.Unused">
-              <h6>{{"Unused"|checkWrongStatus}}</h6>
-              <p>{{result.wrongMap?.Unused | join:','}}</p>
-            </div>
-
-            <div *ngIf="result.wrongMap?.Equals">
-              <h6>{{"Equals"|checkWrongStatus}}</h6>
-              <p>{{result.wrongMap?.Equals | join:','}}</p>
-            </div>
-
-          </ng-template>
-
-        </div>
-        <ng-template #notResult>
-          <p>Ничего не было отправлено на проверку</p>
-        </ng-template>
-
+        <reg-regexp-check-result [resultAnswer]="resultAnswer"></reg-regexp-check-result>
       </div>
     </div>
     <div class="row">

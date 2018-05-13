@@ -22,6 +22,7 @@ import { AddTaskComponent } from './components/add-task/add-task.component';
 import { CheckWrongStatusPipe } from './pipes/check-status/check-wrong-status.pipe';
 import { UsefulLinksComponent } from './components/useful-links/useful-links.component';
 import { JoinPipe } from './pipes/join/join.pipe';
+import { RegexpCheckResultComponent } from './components/regexp-check-result/regexp-check-result.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { JoinPipe } from './pipes/join/join.pipe';
     CheckWrongStatusPipe,
     UsefulLinksComponent,
     JoinPipe,
+    RegexpCheckResultComponent,
   ],
   imports: [
     BrowserModule,

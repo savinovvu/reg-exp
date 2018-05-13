@@ -5,9 +5,11 @@ import org.springframework.stereotype.Service;
 import ru.inbox.savinov_vu.checker.RegExpTaskCheckerUtil;
 import ru.inbox.savinov_vu.checker.TaskResulter;
 import ru.inbox.savinov_vu.interfaces.CRUD.CRUDService;
-import ru.inbox.savinov_vu.interfaces.taskChecker.TaskCheckerService;
+import ru.inbox.savinov_vu.interfaces.OperationResulter;
 import ru.inbox.savinov_vu.interfaces.numbered.NumberedService;
+import ru.inbox.savinov_vu.interfaces.taskChecker.TaskCheckerService;
 import ru.inbox.savinov_vu.model.tasks.RegExpTask;
+import ru.inbox.savinov_vu.model.tasks.RegExpTaskAnswer;
 import ru.inbox.savinov_vu.repository.tasks.RegExpTaskRepository;
 
 import java.util.List;
@@ -18,43 +20,58 @@ import java.util.List;
 public class RegExpTaskService implements CRUDService<RegExpTask>, TaskCheckerService<RegExpTask>, NumberedService<RegExpTask> {
 
     @Autowired
-    RegExpTaskRepository regExpTaskRepository;
+    RegExpTaskRepository repository;
+
+    @Autowired
+    RegExpTaskAnswerService regExpTaskAnswerService;
 
 
     @Override
-    public void add(RegExpTask regExpTask) {
-        regExpTaskRepository.saveAndFlush(regExpTask);
+    public OperationResulter add(RegExpTask regExpTask) {
+
+        String answer = regExpTask.getAnswers().stream()
+                .map(RegExpTaskAnswer::getAnswer)
+                .findAny()
+                .orElse(null);
+
+        TaskResulter check = RegExpTaskCheckerUtil.check(regExpTask, answer);
+        if (check.getSuccess()) {
+            RegExpTask savedRegExpTask = repository.saveAndFlush(regExpTask);
+            RegExpTaskAnswer regExpTaskAnswer = regExpTask.getAnswers().get(0);
+            regExpTaskAnswerService.add(regExpTaskAnswer.setRegExpTask(savedRegExpTask));
+        }
+        return check;
     }
 
 
     @Override
     public List<RegExpTask> getAll() {
-        return regExpTaskRepository.findAll();
+        return repository.findAll();
     }
 
 
     @Override
     public List<RegExpTask> getAllByParentId(Integer id) {
-        return regExpTaskRepository.getByRegExpLevelIdOrderByNumber(id);
+        return repository.getByRegExpLevelIdOrderByNumber(id);
     }
 
 
     @Override
     public RegExpTask getById(Integer id) {
-        return regExpTaskRepository.findById(id).get();
+        return repository.findById(id).get();
     }
 
 
     @Override
     public boolean delete(Integer id) {
-        regExpTaskRepository.deleteById(id);
+        repository.deleteById(id);
         return true;
     }
 
 
     @Override
     public RegExpTask update(RegExpTask regExpTask) {
-        return regExpTaskRepository.saveAndFlush(regExpTask);
+        return repository.saveAndFlush(regExpTask);
     }
 
 
@@ -67,12 +84,12 @@ public class RegExpTaskService implements CRUDService<RegExpTask>, TaskCheckerSe
 
     @Override
     public List<RegExpTask> getDisabledTask() {
-        return regExpTaskRepository.getByEnabledOrderById(false);
+        return repository.getByEnabledOrderById(false);
     }
 
 
     @Override
     public RegExpTask getByParentNumberAndByNumber(Integer parentNumber, Integer number) {
-        return regExpTaskRepository.getTaskByLevelIdAndByNumber(parentNumber, number);
+        return repository.getTaskByLevelIdAndByNumber(parentNumber, number);
     }
 }

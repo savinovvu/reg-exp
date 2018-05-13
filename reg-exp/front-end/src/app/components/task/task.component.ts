@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RestDataSourceService } from "../../services/rest/rest-data-source.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BaseComponent } from "../../utils/base-component";
+import { CheckedResult } from "../../model/interfaces";
 
 
 
@@ -22,7 +23,7 @@ export class TaskComponent extends BaseComponent implements OnInit {
 
   regExp: string;
 
-  result: CheckResult;
+  resultAnswer: CheckedResult;
 
   levelNumber: string;
 
@@ -56,7 +57,7 @@ export class TaskComponent extends BaseComponent implements OnInit {
 
   onSubmit() {
     this.restService.put(`${PATH}check/${this.task.id}`, this.regExp)
-      .subscribe((v: CheckResult) => this.result = v);
+      .subscribe((v: CheckedResult) => this.resultAnswer = v);
   }
 
 
@@ -69,10 +70,5 @@ export class TaskComponent extends BaseComponent implements OnInit {
 }
 
 
-
-interface CheckResult {
-  success: boolean;
-  wrongMap: any;
-}
 
 

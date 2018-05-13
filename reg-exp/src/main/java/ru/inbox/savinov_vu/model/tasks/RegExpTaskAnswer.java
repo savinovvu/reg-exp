@@ -47,8 +47,9 @@ public class RegExpTaskAnswer implements Identify {
     }
 
 
-    public void setRegExpTask(RegExpTask regExpTask) {
+    public RegExpTaskAnswer setRegExpTask(RegExpTask regExpTask) {
         this.regExpTask = regExpTask;
+        return this;
     }
 
 

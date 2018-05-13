@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.inbox.savinov_vu.interfaces.CRUD.CRUDService;
+import ru.inbox.savinov_vu.interfaces.OperationResulter;
 import ru.inbox.savinov_vu.interfaces.numbered.NumberedService;
 import ru.inbox.savinov_vu.model.tasks.RegExpLevel;
 import ru.inbox.savinov_vu.repository.tasks.RegExpLevelRepository;
@@ -20,8 +21,9 @@ public class RegExpLevelService implements CRUDService<RegExpLevel>, NumberedSer
 
 
     @Override
-    public void add(RegExpLevel regExpLevel) {
+    public OperationResulter<String> add(RegExpLevel regExpLevel) {
         regExpLevelRepository.saveAndFlush(regExpLevel);
+        return () -> "successfully added";
     }
 
 

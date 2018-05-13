@@ -10,13 +10,15 @@ export class CheckWrongStatusPipe implements PipeTransform {
   transform(value: string): string {
     switch (value) {
       case 'Unmatch':
-        return 'Не нашло:';
+        return 'Не нашел:';
       case 'Match':
-        return 'Нашло:';
+        return 'Нашел:';
       case 'Unused':
-        return 'не использовало:';
+        return 'не использовал:';
       case 'Equals':
-        return 'не должно совпадать:';
+        return 'не должен совпадать:';
+      case 'NotAnswer':
+        return 'не был предложен:';
     }
     return null;
   }

@@ -1,10 +1,12 @@
 package ru.inbox.savinov_vu.checker;
 
+import ru.inbox.savinov_vu.interfaces.OperationResulter;
+
 import java.util.*;
 
 
 
-public class TaskResulter {
+public class TaskResulter implements OperationResulter<Map<WrongCheckStatus, List<String>>> {
 
     private boolean success = true;
 
@@ -16,17 +18,20 @@ public class TaskResulter {
     }
 
 
-    public Map<WrongCheckStatus, List<String>> getWrongMap() {
-        return wrongMap;
-    }
-
-
-    public void setWrong(String wrongString, WrongCheckStatus status) {
+    public TaskResulter setWrong(String wrongString, WrongCheckStatus status) {
         success = false;
         wrongMap.merge(status, new ArrayList<>(List.of(wrongString)),
                 (value, newValue) -> {
                     value.add(wrongString);
                     return value;
                 });
+        return this;
+    }
+
+
+
+    @Override
+    public Map<WrongCheckStatus, List<String>> getResult() {
+        return wrongMap;
     }
 }

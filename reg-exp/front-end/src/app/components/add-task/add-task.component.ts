@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Task } from "../../model/interfaces";
+import { Answer, CheckedResult, Task } from "../../model/interfaces";
 import { RestDataSourceService } from "../../services/rest/rest-data-source.service";
 
 
@@ -14,6 +14,8 @@ export class AddTaskComponent implements OnInit {
   name: string;
 
   description: string;
+
+  answer:string;
 
   matchStrings: string[] = [];
 
@@ -31,6 +33,8 @@ export class AddTaskComponent implements OnInit {
 
   excludedAnswer: string = '';
 
+  resultAnswer: CheckedResult;
+
 
   constructor(
     private  restService: RestDataSourceService
@@ -43,14 +47,21 @@ export class AddTaskComponent implements OnInit {
 
 
   onSubmit() {
-    const addedTask:Task = {};
+    const addedTask: Task = {};
     addedTask.name = this.name;
     addedTask.description = this.description;
     addedTask.matchStrings = this.matchStrings;
     addedTask.excludedString = this.excludedStrings;
     addedTask.requiredSubStrings = this.requiredSubStrings;
     addedTask.excludedAnswers = this.excludedAnswers;
-    this.restService.post('/tasks/regexptask', addedTask);
+    let addedAnswer: Answer = {
+      answer: this.answer,
+    };
+    addedTask.answers = [addedAnswer];
+
+    this.restService.post('/tasks/regexptask', addedTask).subscribe((v: CheckedResult) =>
+      this.resultAnswer = v
+    )
   }
 
 

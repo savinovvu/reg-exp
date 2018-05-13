@@ -1,12 +1,14 @@
 package ru.inbox.savinov_vu.interfaces.CRUD;
 
+import ru.inbox.savinov_vu.interfaces.OperationResulter;
+
 import java.util.List;
 
 
 
 public interface CRUD<T> {
 
-    default void add(T t) {
+    default OperationResulter add(T t) {
         throw new UnsupportedOperationException();
     }
 

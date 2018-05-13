@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.inbox.savinov_vu.interfaces.CRUD.CRUDController;
+import ru.inbox.savinov_vu.interfaces.OperationResulter;
 import ru.inbox.savinov_vu.model.users.User;
 import ru.inbox.savinov_vu.service.users.UserService;
 
@@ -22,8 +23,8 @@ public class UserController implements CRUDController<User> {
 
 
     @Override
-    public void add(User user) {
-        userService.add(user);
+    public OperationResulter<String> add(User user) {
+       return userService.add(user);
     }
 
 

@@ -12,7 +12,23 @@ export interface Task {
   regExpLevel?: any;
   author?: any;
   users?: any;
-  answers?: any;
+  answers?: Answer[];
   usefulLinks?: any;
   new?:any;
 }
+
+export interface Answer {
+  id?:number;
+  answer:string;
+  regexpTask?:Task;
+}
+
+
+
+export interface CheckedResult {
+  success: boolean;
+  result: any;
+}
+
+
+

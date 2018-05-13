@@ -3,6 +3,7 @@ package ru.inbox.savinov_vu.service.tasks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.inbox.savinov_vu.interfaces.CRUD.CRUDService;
+import ru.inbox.savinov_vu.interfaces.OperationResulter;
 import ru.inbox.savinov_vu.model.tasks.Like;
 import ru.inbox.savinov_vu.repository.tasks.LikeRepository;
 
@@ -18,8 +19,9 @@ public class LikeService implements CRUDService<Like> {
 
 
     @Override
-    public void add(Like like) {
+    public OperationResulter<String> add(Like like) {
         likeRepository.saveAndFlush(like);
+        return () -> "successfully added";
     }
 
 

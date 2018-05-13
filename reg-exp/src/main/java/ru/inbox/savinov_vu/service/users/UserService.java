@@ -3,6 +3,7 @@ package ru.inbox.savinov_vu.service.users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.inbox.savinov_vu.interfaces.CRUD.CRUDService;
+import ru.inbox.savinov_vu.interfaces.OperationResulter;
 import ru.inbox.savinov_vu.model.users.User;
 import ru.inbox.savinov_vu.repository.users.UserRepository;
 
@@ -18,8 +19,9 @@ public class UserService implements CRUDService<User> {
 
 
     @Override
-    public void add(User user) {
+    public OperationResulter<String> add(User user) {
         userRepository.saveAndFlush(user);
+        return () -> "successfully added";
     }
 
 

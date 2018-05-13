@@ -11,26 +11,42 @@
           </div>
         </div>
         <div class="row">
-          <div class="form-control regExpForm">
+          <div class="col-md-7 form-control regExpForm">
             <label for="name" class="sr-only">Название задачи</label>
             <input type="text"
                    id="name"
                    [(ngModel)]="name"
                    name="name"
-                   class="form-control-plaintext col-8 regExpInput"
+                   class="form-control-plaintext col-12 regExpInput"
                    placeholder="Название"
                    style="margin-bottom: 20px"
-
                    required="">
+
+            <label for="description" class="sr-only">Ответ</label>
+            <input type="text"
+                   id="answer"
+                   [(ngModel)]="answer"
+                   name="name"
+                   class="form-control-plaintext col-12 regExpInput"
+                   placeholder="Ответ"
+                   style="margin-bottom: 20px"
+                   required="">
+
             <label for="description" class="sr-only">Введите описание задачи</label>
             <textarea id="description"
-                      class="form-control-plaintext col-8 regExpInput"
+                      class="form-control-plaintext col-12 regExpInput"
                       [(ngModel)]="description"
                       name="description"
+                      style="margin-bottom: 20px"
                       placeholder="Описание">
           </textarea>
 
+
           </div>
+          <div class="col-md-5">
+            <reg-regexp-check-result [resultAnswer]="resultAnswer"></reg-regexp-check-result>
+          </div>
+
         </div>
       </div>
     </div>

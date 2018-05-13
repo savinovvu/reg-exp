@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.inbox.savinov_vu.interfaces.CRUD.CRUDController;
+import ru.inbox.savinov_vu.interfaces.OperationResulter;
 import ru.inbox.savinov_vu.model.tasks.Like;
 import ru.inbox.savinov_vu.service.tasks.LikeService;
 
@@ -22,8 +23,8 @@ public class LikeController implements CRUDController<Like> {
 
 
     @Override
-    public void add(Like like) {
-        likeService.add(like);
+    public OperationResulter<String> add(Like like) {
+       return likeService.add(like);
     }
 
 

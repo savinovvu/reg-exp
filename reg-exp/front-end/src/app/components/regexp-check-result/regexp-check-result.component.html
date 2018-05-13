@@ -1,0 +1,36 @@
+<h3>Результат проверки</h3>
+<div *ngIf="resultAnswer; else notResult">
+  <div *ngIf="resultAnswer.success; else wrong">
+    <p>Задача успешно прошла проверку</p>
+  </div>
+
+  <ng-template #wrong>
+    <h6>
+      Ответ <span *ngIf="resultAnswer.result?.NotAnswer">не был введён</span>
+    </h6>
+    <div *ngIf="resultAnswer.result?.Unmatch">
+      <h6>{{"Unmatch"|checkWrongStatus}}</h6>
+      <p>{{resultAnswer.result?.Unmatch | join:','}}</p>
+    </div>
+
+    <div *ngIf="resultAnswer.result?.Match">
+      <h6>{{"Match"|checkWrongStatus}}</h6>
+      <p>{{resultAnswer.result?.Match | join:','}}</p>
+    </div>
+
+    <div *ngIf="resultAnswer.result?.Unused">
+      <h6>{{"Unused"|checkWrongStatus}}</h6>
+      <p>{{resultAnswer.result?.Unused | join:','}}</p>
+    </div>
+
+    <div *ngIf="resultAnswer.result?.Equals">
+      <h6>{{"Equals"|checkWrongStatus}}</h6>
+      <p>{{resultAnswer.result?.Equals | join:','}}</p>
+    </div>
+
+  </ng-template>
+
+</div>
+<ng-template #notResult>
+  <p>Ничего не было предложено</p>
+</ng-template>

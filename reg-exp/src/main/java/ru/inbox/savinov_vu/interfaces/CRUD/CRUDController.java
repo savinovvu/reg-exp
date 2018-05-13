@@ -1,6 +1,7 @@
 package ru.inbox.savinov_vu.interfaces.CRUD;
 
 import org.springframework.web.bind.annotation.*;
+import ru.inbox.savinov_vu.interfaces.OperationResulter;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public interface CRUDController<T> extends CRUD<T> {
     @Override
     @PostMapping
     @CrossOrigin
-    default void add(T t) {
+    default OperationResulter add(T t) {
         throw new UnsupportedOperationException();
     }
 
