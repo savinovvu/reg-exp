@@ -23,6 +23,8 @@ import { CheckWrongStatusPipe } from './pipes/check-status/check-wrong-status.pi
 import { UsefulLinksComponent } from './components/useful-links/useful-links.component';
 import { JoinPipe } from './pipes/join/join.pipe';
 import { RegexpCheckResultComponent } from './components/regexp-check-result/regexp-check-result.component';
+import { ErrorComponent } from './components/error/error.component';
+import { ErrorService } from "./components/error/errorService/error.service";
 
 
 @NgModule({
@@ -42,6 +44,7 @@ import { RegexpCheckResultComponent } from './components/regexp-check-result/reg
     UsefulLinksComponent,
     JoinPipe,
     RegexpCheckResultComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,7 @@ import { RegexpCheckResultComponent } from './components/regexp-check-result/reg
     FormsModule
   ],
   providers: [
-    RestDataSourceService
+    RestDataSourceService, ErrorService
   ],
   bootstrap: [ AppComponent ]
 })
