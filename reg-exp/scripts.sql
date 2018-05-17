@@ -1,6 +1,14 @@
-INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "role") VALUES (1, 'Сидоров Иван Джейсонович', 'tmp1@mail.ru' , 'worldIvan777', 'pass', 'User');
-INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "role") VALUES (2, 'user2', 'tmp2@mail.ru' , 'login2','pass', 'User');
-INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "role") VALUES (3, 'admin1',  'tmp3@mail.ru' , 'login3','pass', 'Admin');
+INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "enabled") VALUES (1, 'Сидоров Иван Джейсонович', 'tmp1@mail.ru' , 'worldIvan777', 'pass', true );
+INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "enabled") VALUES (2, 'user2', 'tmp2@mail.ru' , 'login2','pass', true);
+INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "enabled") VALUES (3, 'admin1',  'tmp3@mail.ru' , 'login3','pass', true);
+
+INSERT INTO "public"."authority" ("id", "authority") VALUES (1, 'User');
+INSERT INTO "public"."authority" ("id", "authority") VALUES (2, 'Admin');
+
+INSERT INTO "public"."user_authority" ("user_id", "role_id") VALUES (1, 1);
+INSERT INTO "public"."user_authority" ("user_id", "role_id") VALUES (2, 1);
+INSERT INTO "public"."user_authority" ("user_id", "role_id") VALUES (3, 2);
+
 
 INSERT INTO "public"."reg_exp_level" ("id", number, "description") VALUES (1, 1, 'первый уровень');
 INSERT INTO "public"."reg_exp_level" ("id", number, "description") VALUES (2, 2, 'второй уровень');

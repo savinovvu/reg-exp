@@ -2,6 +2,7 @@ package ru.inbox.savinov_vu.model.users;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.security.core.userdetails.UserDetails;
 import ru.inbox.savinov_vu.interfaces.Identify;
 import ru.inbox.savinov_vu.model.tasks.Comment;
 import ru.inbox.savinov_vu.model.tasks.Like;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "\"user\"")
-public class User implements Identify {
+public class User implements Identify, UserDetails {
 
 
     private Integer id;
@@ -28,7 +29,9 @@ public class User implements Identify {
 
     private String password;
 
-    private Role role;
+    private Boolean enabled;
+
+    private List<Authority> authorities;
 
     private List<Like> likes;
 
@@ -57,12 +60,6 @@ public class User implements Identify {
 
     public String getPassword() {
         return password;
-    }
-
-
-    @Enumerated(value = EnumType.STRING)
-    public Role getRole() {
-        return role;
     }
 
 
@@ -138,8 +135,13 @@ public class User implements Identify {
     }
 
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+
+    public void setAuthorities(List<Authority> authorities) {
+        this.authorities = authorities;
     }
 
 
@@ -176,4 +178,56 @@ public class User implements Identify {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
+    //    UserDetails methods
+    @Override
+    @Transient
+    public String getUsername() {
+        return name;
+    }
+
+
+    @Override
+    @Enumerated(value = EnumType.STRING)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany
+    @JoinTable(name = "user_authority",
+            joinColumns = {
+                    @JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "role_id", referencedColumnName = "id")})
+    public List<Authority> getAuthorities() {
+        return authorities;
+    }
+
+
+    @Override
+    @Transient
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+
+    @Override
+    @Transient
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+
+    @Override
+    @Transient
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+
+
 }

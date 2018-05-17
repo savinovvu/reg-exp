@@ -9,4 +9,6 @@ import ru.inbox.savinov_vu.model.users.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
+    User getByLogin(String login);
+
 }
