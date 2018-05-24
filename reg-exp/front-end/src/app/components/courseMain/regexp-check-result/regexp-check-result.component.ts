@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CheckedResult } from "../../model/interfaces";
+import { CheckedResult } from "../../../model/interfaces";
 
 
 

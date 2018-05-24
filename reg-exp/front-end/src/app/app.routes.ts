@@ -1,15 +1,15 @@
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from "./components/home/home.component";
-import { TaskComponent } from "./components/task/task.component";
-import { NewsComponent } from "./components/news/news.component";
-import { ContactComponent } from "./components/contact/contact.component";
-import { AboutComponent } from "./components/about/about.component";
-import { CourseComponent } from "./components/course/course.component";
-import { LevelComponent } from "./components/level/level.component";
-import { LoginComponent } from "./components/login/login.component";
-import { AddTaskComponent } from "./components/add-task/add-task.component";
-import { UsefulLinksComponent } from "./components/useful-links/useful-links.component";
-import { ErrorComponent } from "./components/error/error.component";
+import { HomeComponent } from "./components/projectInfo/home/home.component";
+import { TaskComponent } from "./components/courseMain/task/task.component";
+import { NewsComponent } from "./components/projectInfo/news/news.component";
+import { ContactComponent } from "./components/projectInfo/contact/contact.component";
+import { AboutComponent } from "./components/projectInfo/about/about.component";
+import { CourseComponent } from "./components/courseMain/course/course.component";
+import { LevelComponent } from "./components/courseMain/level/level.component";
+import { LoginComponent } from "./components/users/login/login.component";
+import { AddTaskComponent } from "./components/courseMain/add-task/add-task.component";
+import { UsefulLinksComponent } from "./components/courseMain/useful-links/useful-links.component";
+import { ErrorComponent } from "./components/common/error/error.component";
 
 
 

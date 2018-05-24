@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RestDataSourceService } from "../../services/rest/rest-data-source.service";
+import { RestDataSourceService } from "../../../services/rest/rest-data-source.service";
 
 
 

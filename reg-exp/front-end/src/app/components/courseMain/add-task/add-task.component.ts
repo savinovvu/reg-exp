@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Answer, CheckedResult, Task } from "../../model/interfaces";
-import { RestDataSourceService } from "../../services/rest/rest-data-source.service";
+import { Answer, CheckedResult, Task } from "../../../model/interfaces";
+import { RestDataSourceService } from "../../../services/rest/rest-data-source.service";
 
 
 

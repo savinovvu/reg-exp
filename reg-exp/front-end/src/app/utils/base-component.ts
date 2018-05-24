@@ -1,6 +1,6 @@
 import {OnDestroy, OnInit} from "@angular/core";
 
-export class BaseComponent implements OnInit, OnDestroy {
+export abstract class BaseComponent implements OnInit, OnDestroy {
 
   private subs: Array<any> = [];
 

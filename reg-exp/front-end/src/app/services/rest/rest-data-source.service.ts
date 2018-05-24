@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, Subject } from "rxjs/index";
 import { Router } from "@angular/router";
-import { ErrorService } from "../../components/error/errorService/error.service";
+import { ErrorService } from "../../components/common/error/errorService/error.service";
 
 
 
