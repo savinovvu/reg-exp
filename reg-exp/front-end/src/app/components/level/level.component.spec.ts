@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LevelComponent } from './level.component';
 
+
+
 describe('LevelComponent', () => {
   let component: LevelComponent;
   let fixture: ComponentFixture<LevelComponent>;
@@ -10,7 +12,7 @@ describe('LevelComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ LevelComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

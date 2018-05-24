@@ -39,6 +39,7 @@ public class UsefulLinks implements Identify {
         return link;
     }
 
+
     @LazyCollection(LazyCollectionOption.TRUE)
     @ManyToMany
     @JoinTable(name = "usefullnks_regexptask",

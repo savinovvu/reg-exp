@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 
-public interface NumberedController<T> extends Numbered<T>{
+public interface NumberedController<T> extends Numbered<T> {
 
     @Override
     @GetMapping("byNumber/{number}")
@@ -17,7 +17,7 @@ public interface NumberedController<T> extends Numbered<T>{
     @Override
     @GetMapping("byNumber/{parentNumber}/{number}")
     @CrossOrigin
-    default T getByParentNumberAndByNumber(Integer parentNumber, Integer number){
+    default T getByParentNumberAndByNumber(Integer parentNumber, Integer number) {
         throw new UnsupportedOperationException();
     }
 }

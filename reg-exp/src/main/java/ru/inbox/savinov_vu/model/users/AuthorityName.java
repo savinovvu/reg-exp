@@ -1,5 +1,5 @@
 package ru.inbox.savinov_vu.model.users;
 
-public enum  AuthorityName {
+public enum AuthorityName {
     User, Admin
 }

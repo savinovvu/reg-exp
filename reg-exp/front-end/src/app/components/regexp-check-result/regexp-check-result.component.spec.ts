@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegexpCheckResultComponent } from './regexp-check-result.component';
 
+
+
 describe('RegexpCheckResultComponent', () => {
   let component: RegexpCheckResultComponent;
   let fixture: ComponentFixture<RegexpCheckResultComponent>;
@@ -10,7 +12,7 @@ describe('RegexpCheckResultComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ RegexpCheckResultComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

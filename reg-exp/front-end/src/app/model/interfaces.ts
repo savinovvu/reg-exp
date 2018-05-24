@@ -1,7 +1,7 @@
 export interface Task {
   id?: number;
   number?: number;
-  name?:string;
+  name?: string;
   description?: string;
   matchStrings?: string[];
   excludedString?: string[];
@@ -14,13 +14,15 @@ export interface Task {
   users?: any;
   answers?: Answer[];
   usefulLinks?: any;
-  new?:any;
+  new?: any;
 }
 
+
+
 export interface Answer {
-  id?:number;
-  answer:string;
-  regexpTask?:Task;
+  id?: number;
+  answer: string;
+  regexpTask?: Task;
 }
 
 

@@ -147,6 +147,7 @@ public class RegExpTask implements Identify {
         return answers;
     }
 
+
     @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany(mappedBy = "regExpTasks")
     public List<UsefulLinks> getUsefulLinks() {

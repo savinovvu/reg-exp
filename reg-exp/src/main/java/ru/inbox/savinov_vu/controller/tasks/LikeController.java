@@ -24,7 +24,7 @@ public class LikeController implements CRUDController<Like> {
 
     @Override
     public OperationResulter<String> add(Like like) {
-       return likeService.add(like);
+        return likeService.add(like);
     }
 
 

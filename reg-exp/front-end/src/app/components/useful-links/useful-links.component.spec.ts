@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UsefulLinksComponent } from './useful-links.component';
 
+
+
 describe('UsefulLinksComponent', () => {
   let component: UsefulLinksComponent;
   let fixture: ComponentFixture<UsefulLinksComponent>;
@@ -10,7 +12,7 @@ describe('UsefulLinksComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ UsefulLinksComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -15,7 +15,7 @@ public interface NumberedService<T> extends Numbered<T> {
 
     @Override
     @Transactional(readOnly = true)
-    default T getByParentNumberAndByNumber(Integer parentNumber, Integer number){
+    default T getByParentNumberAndByNumber(Integer parentNumber, Integer number) {
         throw new UnsupportedOperationException();
     }
 

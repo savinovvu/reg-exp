@@ -15,9 +15,10 @@ public class RegExpTaskAnswerService implements CRUDService<RegExpTaskAnswer> {
     @Autowired
     RegExpTaskAnswerRepository repository;
 
+
     @Override
     public OperationResulter<String> add(RegExpTaskAnswer regExpTaskAnswer) {
         repository.saveAndFlush(regExpTaskAnswer);
-        return ()->"successfully added";
+        return () -> "successfully added";
     }
 }

@@ -15,7 +15,7 @@ export class AddTaskComponent implements OnInit {
 
   description: string;
 
-  answer:string;
+  answer: string;
 
   matchStrings: string[] = [];
 
@@ -57,7 +57,7 @@ export class AddTaskComponent implements OnInit {
     let addedAnswer: Answer = {
       answer: this.answer,
     };
-    addedTask.answers = [addedAnswer];
+    addedTask.answers = [ addedAnswer ];
 
     this.restService.post('tasks/regexptask', addedTask).subscribe((v: CheckedResult) =>
       this.resultAnswer = v

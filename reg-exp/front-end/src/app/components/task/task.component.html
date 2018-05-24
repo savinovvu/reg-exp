@@ -60,13 +60,15 @@
     </div>
     <div class="row">
       <div class="col-md-4">
-        <p><a class="btn btn-secondary" [routerLink]="['/course',levelNumber]" authorities="button">« К задачам уровня</a></p>
+        <p><a class="btn btn-secondary" [routerLink]="['/course',levelNumber]" authorities="button">« К задачам
+          уровня</a></p>
       </div>
       <div class="col-md-4">
         <p><a class="btn btn-secondary" [routerLink]="['/usefulLinks']" authorities="button">Полезные ссылки »</a></p>
       </div>
       <div class="col-md-4">
-        <p><a class="btn btn-secondary" (click)="nextTask()" authorities="button" [class.disabled]="existNextTask">Следующая задача »</a></p>
+        <p><a class="btn btn-secondary" (click)="nextTask()" authorities="button" [class.disabled]="existNextTask">Следующая
+          задача »</a></p>
       </div>
     </div>
 

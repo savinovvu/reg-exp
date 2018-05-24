@@ -29,7 +29,6 @@ public class TaskResulter implements OperationResulter<Map<WrongCheckStatus, Lis
     }
 
 
-
     @Override
     public Map<WrongCheckStatus, List<String>> getResult() {
         return wrongMap;
