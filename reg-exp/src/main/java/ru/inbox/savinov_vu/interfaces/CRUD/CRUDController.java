@@ -35,7 +35,7 @@ public interface CRUDController<T> extends CRUD<T> {
 
 
     @Override
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     @CrossOrigin
     default T getById(Integer id) {
         throw new UnsupportedOperationException();
@@ -43,7 +43,7 @@ public interface CRUDController<T> extends CRUD<T> {
 
 
     @Override
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     @CrossOrigin
     default boolean delete(Integer id) {
         throw new UnsupportedOperationException();

@@ -6,7 +6,7 @@ import { CheckedResult } from "../../model/interfaces";
 
 
 
-const PATH = "/tasks/regexptask/";
+const PATH = "tasks/regexptask/";
 
 
 
@@ -43,7 +43,7 @@ export class TaskComponent extends BaseComponent implements OnInit {
       this.levelNumber = params[ 'levelNumber' ];
       this.subscribtion = restService.get(`${PATH}/byNumber/${this.levelNumber}/${this.taskNumber}`).subscribe(taskData => {
         this.task = taskData;
-        this.subscribtion = restService.get(`/tasks/regexptask/parent/${this.task.regExpLevel.id}`).subscribe(tasksAtLevel => {
+        this.subscribtion = restService.get(`${PATH}/parent/${this.task.regExpLevel.id}`).subscribe(tasksAtLevel => {
           this.existNextTask = this.task.number >= tasksAtLevel.length;
         });
       });

@@ -14,7 +14,7 @@ const PORT = 8080;
 @Injectable()
 export class RestDataSourceService {
 
-  private auth_token: string = 'tmp';
+  private auth_token: string = 'authorization';
 
   private baseUrl;
 
@@ -47,10 +47,10 @@ export class RestDataSourceService {
     let subject = new Subject();
     const headers = this.getHeaders();
     this.httpClient.post(url, item, { headers }).subscribe(v => {
-      subject.next(v);
-    },
+        subject.next(v);
+      },
       error => {
-        this.handleError(error);
+        // this.handleError(error);
       });
     return subject.asObservable();
   }
@@ -61,8 +61,8 @@ export class RestDataSourceService {
     let subject = new Subject();
     const headers = this.getHeaders();
     this.httpClient.put(url, item, { headers }).subscribe(v => {
-      subject.next(v);
-    },
+        subject.next(v);
+      },
       error => {
         this.handleError(error);
       });
@@ -75,8 +75,8 @@ export class RestDataSourceService {
     let subject = new Subject();
     const headers = this.getHeaders();
     this.httpClient.delete(url, { headers }).subscribe(v => {
-      subject.next(v);
-    },
+        subject.next(v);
+      },
       error => {
         this.handleError(error);
       });
@@ -85,9 +85,12 @@ export class RestDataSourceService {
 
 
   private getHeaders(): HttpHeaders {
-    const headers = new HttpHeaders()
-      .set('Authorization', `Bearer<${this.auth_token}>`)
-    return headers;
+    let headers2 = new HttpHeaders({
+      'authorization': `Bearer<${this.auth_token}>`,
+      'customHeader':'application/json'
+    });
+
+    return headers2;
   }
 
 
@@ -96,5 +99,19 @@ export class RestDataSourceService {
     this.errorService.stack = error.error.text;
     this.router.navigate([ '/error' ]);
   }
+
+
+  /*  private signIn(login, password) {
+      url = this.baseUrl + url;
+      let subject = new Subject();
+      const headers = this.getHeaders();
+      this.httpClient.put(url, item, { headers }).subscribe(v => {
+          subject.next(v);
+        },
+        error => {
+          this.handleError(error);
+        });
+      return subject.asObservable();
+    }*/
 
 }

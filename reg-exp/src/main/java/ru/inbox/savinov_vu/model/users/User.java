@@ -10,6 +10,7 @@ import ru.inbox.savinov_vu.model.tasks.RegExpLevel;
 import ru.inbox.savinov_vu.model.tasks.RegExpTask;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 
@@ -42,6 +43,8 @@ public class User implements Identify, UserDetails {
     private List<RegExpLevel> solvedRegExpLevels;
 
     private List<RegExpTask> addedTask;
+
+    private Date lastPasswordResetDate;
 
 
     @Id
@@ -120,6 +123,12 @@ public class User implements Identify, UserDetails {
     }
 
 
+    @Temporal(TemporalType.TIMESTAMP)
+    public Date getLastPasswordResetDate() {
+        return lastPasswordResetDate;
+    }
+
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -180,6 +189,11 @@ public class User implements Identify, UserDetails {
     }
 
 
+    public void setLastPasswordResetDate(Date lastPasswordResetDate) {
+        this.lastPasswordResetDate = lastPasswordResetDate;
+    }
+
+
     //    UserDetails methods
     @Override
     @Transient
@@ -227,7 +241,6 @@ public class User implements Identify, UserDetails {
     public boolean isEnabled() {
         return enabled;
     }
-
 
 
 }

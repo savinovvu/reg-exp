@@ -13,13 +13,14 @@ import java.util.List;
 @Entity
 public class Authority implements Identify, GrantedAuthority {
 
-//    Admin, User, Guest;
 
     private Integer id;
 
-    private String authority;
+    @Column(unique = true)
+    @Enumerated(EnumType.STRING)
+    private AuthorityName name;
 
-    List<User> users;
+    private List<User> users;
 
 
     @Id
@@ -37,10 +38,16 @@ public class Authority implements Identify, GrantedAuthority {
     }
 
 
-    @Override
-    @Column(unique = true)
+    @Transient
     public String getAuthority() {
-        return this.authority;
+        return name.name();
+    }
+
+
+    @Column(unique = true)
+    @Enumerated(EnumType.STRING)
+    public AuthorityName getName() {
+        return name;
     }
 
 
@@ -49,8 +56,8 @@ public class Authority implements Identify, GrantedAuthority {
     }
 
 
-    public void setAuthority(String authority) {
-        this.authority = authority;
+    public void setName(AuthorityName name) {
+        this.name = name;
     }
 
 

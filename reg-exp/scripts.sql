@@ -2,8 +2,8 @@ INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "enable
 INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "enabled") VALUES (2, 'user2', 'tmp2@mail.ru' , 'login2','pass', true);
 INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "enabled") VALUES (3, 'admin1',  'tmp3@mail.ru' , 'login3','pass', true);
 
-INSERT INTO "public"."authority" ("id", "authority") VALUES (1, 'User');
-INSERT INTO "public"."authority" ("id", "authority") VALUES (2, 'Admin');
+INSERT INTO "public"."authority" ("id", "name") VALUES (1, 'User');
+INSERT INTO "public"."authority" ("id", "name") VALUES (2, 'Admin');
 
 INSERT INTO "public"."user_authority" ("user_id", "role_id") VALUES (1, 1);
 INSERT INTO "public"."user_authority" ("user_id", "role_id") VALUES (2, 1);

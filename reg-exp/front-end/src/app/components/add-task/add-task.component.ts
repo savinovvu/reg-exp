@@ -59,7 +59,7 @@ export class AddTaskComponent implements OnInit {
     };
     addedTask.answers = [addedAnswer];
 
-    this.restService.post('/tasks/regexptask', addedTask).subscribe((v: CheckedResult) =>
+    this.restService.post('tasks/regexptask', addedTask).subscribe((v: CheckedResult) =>
       this.resultAnswer = v
     )
   }

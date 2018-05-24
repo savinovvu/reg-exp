@@ -16,7 +16,7 @@ export class CourseComponent extends BaseComponent implements OnInit {
     private  restService: RestDataSourceService
   ) {
     super();
-    this.subscribtion = restService.get("/tasks/regexplevel").subscribe(v => {
+    this.subscribtion = restService.get("tasks/regexplevel").subscribe(v => {
       this.levels = v;
     })
   }
