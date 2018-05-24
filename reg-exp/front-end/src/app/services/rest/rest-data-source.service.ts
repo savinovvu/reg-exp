@@ -86,8 +86,7 @@ export class RestDataSourceService {
 
   private getHeaders(): HttpHeaders {
     let headers2 = new HttpHeaders({
-      'authorization': `Bearer ${this.token}`,
-      'customHeader': 'application/json'
+      'authorization': `Bearer ${this.token}`
     });
 
     return headers2;
