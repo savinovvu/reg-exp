@@ -23,6 +23,16 @@ public class Authority implements Identify, GrantedAuthority {
     private List<User> users;
 
 
+    public Authority() {
+    }
+
+
+    public Authority(Integer id, AuthorityName name) {
+        this.id = id;
+        this.name = name;
+    }
+
+
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
@@ -51,17 +61,20 @@ public class Authority implements Identify, GrantedAuthority {
     }
 
 
-    public void setId(Integer id) {
+    public Authority setId(Integer id) {
         this.id = id;
+        return this;
     }
 
 
-    public void setName(AuthorityName name) {
+    public Authority setName(AuthorityName name) {
         this.name = name;
+        return this;
     }
 
 
-    public void setUsers(List<User> users) {
+    public Authority setUsers(List<User> users) {
         this.users = users;
+        return this;
     }
 }

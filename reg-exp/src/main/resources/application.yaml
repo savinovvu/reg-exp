@@ -19,3 +19,5 @@ jwt:
     authentication:
       path: /users/user/signin
       refresh: /refresh
+    signup:
+      path: /users/user/signup

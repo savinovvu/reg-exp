@@ -12,6 +12,8 @@ import ru.inbox.savinov_vu.config.security.JwtAuthenticationResponse;
 import ru.inbox.savinov_vu.config.security.JwtTokenUtil;
 import ru.inbox.savinov_vu.interfaces.CRUD.CRUDController;
 import ru.inbox.savinov_vu.interfaces.OperationResulter;
+import ru.inbox.savinov_vu.model.users.Authority;
+import ru.inbox.savinov_vu.model.users.AuthorityName;
 import ru.inbox.savinov_vu.model.users.User;
 import ru.inbox.savinov_vu.service.users.UserService;
 
@@ -79,18 +81,27 @@ public class UserController implements CRUDController<User> {
         return response;
     }
 
-
-    @PostMapping("signup")
-    @CrossOrigin
-    public String signup(@RequestBody User user) {
-        return "userService.signup(user)";
-    }
-
-
     private void authenticate(String username, String password) {
         Objects.requireNonNull(username);
         Objects.requireNonNull(password);
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
     }
+
+
+    @PostMapping("signup")
+    @CrossOrigin
+
+    public String signup(@RequestBody User user) {
+//        todo: implement enabled true with mail.
+        user.setEnabled(true);
+//        todo: implement set authority by name.
+        user.setAuthorities(List.of(new Authority(1, AuthorityName.User)));
+        userService.add(user);
+
+        return "todo access token here";
+    }
+
+
+
 
 }

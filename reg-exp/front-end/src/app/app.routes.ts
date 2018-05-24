@@ -10,6 +10,7 @@ import { LoginComponent } from "./components/users/login/login.component";
 import { AddTaskComponent } from "./components/courseMain/add-task/add-task.component";
 import { UsefulLinksComponent } from "./components/courseMain/useful-links/useful-links.component";
 import { ErrorComponent } from "./components/common/error/error.component";
+import { AddUserComponent } from "./components/users/add-user/add-user.component";
 
 
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'signup', component: AddUserComponent },
   { path: 'addTask', component: AddTaskComponent },
   { path: 'usefulLinks', component: UsefulLinksComponent },
 
