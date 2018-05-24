@@ -41,9 +41,9 @@ export class TaskComponent extends BaseComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.taskNumber = params[ 'taskNumber' ];
       this.levelNumber = params[ 'levelNumber' ];
-      this.subscribtion = restService.get(`${PATH}/byNumber/${this.levelNumber}/${this.taskNumber}`).subscribe(taskData => {
+      this.subscribtion = restService.get(`${PATH}byNumber/${this.levelNumber}/${this.taskNumber}`).subscribe(taskData => {
         this.task = taskData;
-        this.subscribtion = restService.get(`${PATH}/parent/${this.task.regExpLevel.id}`).subscribe(tasksAtLevel => {
+        this.subscribtion = restService.get(`${PATH}parent/${this.task.regExpLevel.id}`).subscribe(tasksAtLevel => {
           this.existNextTask = this.task.number >= tasksAtLevel.length;
         });
       });

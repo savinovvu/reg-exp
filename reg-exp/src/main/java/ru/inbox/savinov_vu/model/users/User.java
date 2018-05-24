@@ -198,7 +198,7 @@ public class User implements Identify, UserDetails {
     @Override
     @Transient
     public String getUsername() {
-        return name;
+        return login;
     }
 
 

@@ -14,7 +14,7 @@ const PORT = 8080;
 @Injectable()
 export class RestDataSourceService {
 
-  private auth_token: string = 'authorization';
+  public token: string;
 
   private baseUrl;
 
@@ -22,7 +22,7 @@ export class RestDataSourceService {
   constructor(
     private httpClient: HttpClient,
     private router: Router,
-    private errorService: ErrorService
+    private errorService: ErrorService,
   ) {
     this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
   }
@@ -86,8 +86,8 @@ export class RestDataSourceService {
 
   private getHeaders(): HttpHeaders {
     let headers2 = new HttpHeaders({
-      'authorization': `Bearer<${this.auth_token}>`,
-      'customHeader':'application/json'
+      'authorization': `Bearer ${this.token}`,
+      'customHeader': 'application/json'
     });
 
     return headers2;
@@ -100,18 +100,5 @@ export class RestDataSourceService {
     this.router.navigate([ '/error' ]);
   }
 
-
-  /*  private signIn(login, password) {
-      url = this.baseUrl + url;
-      let subject = new Subject();
-      const headers = this.getHeaders();
-      this.httpClient.put(url, item, { headers }).subscribe(v => {
-          subject.next(v);
-        },
-        error => {
-          this.handleError(error);
-        });
-      return subject.asObservable();
-    }*/
 
 }

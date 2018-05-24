@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RestDataSourceService } from "../../services/rest/rest-data-source.service";
 
 
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
 
   constructor(
-    private restService: RestDataSourceService
+    private restService: RestDataSourceService,
   ) {
   }
 
@@ -24,8 +24,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(){
-    this.restService.post('users/user/signin', { login: this.login, password: this.password });
-    // this.restService.post('users/user/signin', 45);
+
+  onSubmit() {
+    this.restService.post('users/user/signin', { login: this.login, password: this.password }).subscribe(
+      (value: any) => {
+        this.restService.token = value.token;
+      }
+    );
   }
 }

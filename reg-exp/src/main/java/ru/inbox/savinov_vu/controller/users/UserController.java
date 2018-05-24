@@ -75,10 +75,6 @@ public class UserController implements CRUDController<User> {
         String password = authenticationRequest.password;
         authenticate(login, password);
         UserDetails userDetails = userService.loadUserByUsername(login);
-        /*
-        *
-        * eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMiIsImV4cCI6MTUyNzc0NzE0MywiaWF0IjoxNTI3MTQyMzQzfQ.hsNekRjXLCpgk2jkyrioFt7QlJCDRVFAP2QzxfJYwdWXUvuf0vp9LhumYkuA-xcXHn71xFR2N3st6CefbbkxiQ
-        * */
         JwtAuthenticationResponse response = new JwtAuthenticationResponse(jwtTokenUtil.generateToken(userDetails));
         return response;
     }
