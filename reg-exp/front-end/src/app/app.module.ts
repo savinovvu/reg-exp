@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 
-import { AppComponent } from './app.component';
 import { MaterialModule } from "./material/material.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NavigationComponent } from './components/common/navigation/navigation.component';
@@ -26,6 +25,7 @@ import { RegexpCheckResultComponent } from './components/courseMain/regexp-check
 import { ErrorComponent } from './components/common/error/error.component';
 import { ErrorService } from "./components/common/error/errorService/error.service";
 import { AddUserComponent } from './components/users/add-user/add-user.component';
+import { AppComponent } from "./appComponent/app.component";
 
 
 

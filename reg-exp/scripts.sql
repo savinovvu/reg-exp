@@ -1,4 +1,4 @@
-INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "enabled") VALUES (1, 'Сидоров Иван Джейсонович', 'tmp1@mail.ru' , 'worldIvan777', 'pass', true );
+INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "enabled") VALUES (1, 'Сидоров Иван Джейсонович', 'tmp1@mail.ru' , 'worldIvan777', '$2a$06$2Bn3JQVaayyLfc9Gpx10w.4pCZaOG.jWOInzlIIG4Wo9nMRH/V2le', true );
 INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "enabled") VALUES (2, 'user2', 'tmp2@mail.ru' , 'login2','pass', true);
 INSERT INTO "public"."user" ("id", "name", "email", "login", "password", "enabled") VALUES (3, 'admin1',  'tmp3@mail.ru' , 'login3','pass', true);
 
