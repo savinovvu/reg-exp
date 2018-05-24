@@ -6,6 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import ru.inbox.savinov_vu.config.security.JwtAuthenticationRequest;
 import ru.inbox.savinov_vu.config.security.JwtAuthenticationResponse;
@@ -37,6 +38,9 @@ public class UserController implements CRUDController<User> {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
 
     @Override
@@ -77,9 +81,9 @@ public class UserController implements CRUDController<User> {
         String password = authenticationRequest.password;
         authenticate(login, password);
         UserDetails userDetails = userService.loadUserByUsername(login);
-        JwtAuthenticationResponse response = new JwtAuthenticationResponse(jwtTokenUtil.generateToken(userDetails));
-        return response;
+        return new JwtAuthenticationResponse(jwtTokenUtil.generateToken(userDetails));
     }
+
 
     private void authenticate(String username, String password) {
         Objects.requireNonNull(username);
@@ -88,20 +92,17 @@ public class UserController implements CRUDController<User> {
     }
 
 
+    //todo: implement enabled: true with mailService.
     @PostMapping("signup")
     @CrossOrigin
-
-    public String signup(@RequestBody User user) {
-//        todo: implement enabled true with mail.
+    public JwtAuthenticationResponse signup(@RequestBody User user) {
         user.setEnabled(true);
-//        todo: implement set authority by name.
+        String encodePassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodePassword);
         user.setAuthorities(List.of(new Authority(1, AuthorityName.User)));
-        userService.add(user);
-
-        return "todo access token here";
+        User savedUser = userService.signup(user);
+        return new JwtAuthenticationResponse(jwtTokenUtil.generateToken(savedUser));
     }
-
-
 
 
 }

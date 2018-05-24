@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from "../../../utils/base-component";
 import { RestDataSourceService } from "../../../services/rest/rest-data-source.service";
+import { Router } from "@angular/router";
 
 
 
@@ -23,7 +24,8 @@ export class AddUserComponent extends BaseComponent implements OnInit {
 
 
   constructor(
-    private restService: RestDataSourceService
+    private restService: RestDataSourceService,
+    private router: Router
   ) {
 
     super()
@@ -44,6 +46,7 @@ export class AddUserComponent extends BaseComponent implements OnInit {
       }).subscribe(
         (value: any) => {
           this.restService.token = value.token;
+          this.router.navigate(['/course']);
         }
       );
     } else {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestDataSourceService } from "../../../services/rest/rest-data-source.service";
+import { Router } from "@angular/router";
 
 
 
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private restService: RestDataSourceService,
+    private router: Router
   ) {
   }
 
@@ -29,6 +31,7 @@ export class LoginComponent implements OnInit {
     this.restService.post('users/user/signin', { login: this.login, password: this.password }).subscribe(
       (value: any) => {
         this.restService.token = value.token;
+        this.router.navigate(['/course']);
       }
     );
   }

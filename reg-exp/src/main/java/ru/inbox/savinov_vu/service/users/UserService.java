@@ -23,8 +23,14 @@ public class UserService implements CRUDService<User>, UserDetailsService {
 
     @Override
     public OperationResulter<String> add(User user) {
-        userRepository.saveAndFlush(user);
+        User savedUser = userRepository.saveAndFlush(user);
         return () -> "successfully added";
+    }
+
+
+    public User signup(User user) {
+        User savedUser = userRepository.saveAndFlush(user);
+        return user;
     }
 
 
