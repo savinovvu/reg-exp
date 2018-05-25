@@ -26,6 +26,7 @@ import { ErrorComponent } from './components/common/error/error.component';
 import { ErrorService } from "./components/common/error/errorService/error.service";
 import { AddUserComponent } from './components/users/add-user/add-user.component';
 import { AppComponent } from "./appComponent/app.component";
+import { AuthGuard } from "./services/guards/auth.guard";
 
 
 
@@ -58,7 +59,7 @@ import { AppComponent } from "./appComponent/app.component";
     FormsModule
   ],
   providers: [
-    RestDataSourceService, ErrorService
+    RestDataSourceService, ErrorService, AuthGuard
   ],
   bootstrap: [ AppComponent ]
 })

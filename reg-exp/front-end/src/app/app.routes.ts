@@ -11,6 +11,7 @@ import { AddTaskComponent } from "./components/courseMain/add-task/add-task.comp
 import { UsefulLinksComponent } from "./components/courseMain/useful-links/useful-links.component";
 import { ErrorComponent } from "./components/common/error/error.component";
 import { AddUserComponent } from "./components/users/add-user/add-user.component";
+import { AuthGuard } from "./services/guards/auth.guard";
 
 
 
@@ -21,13 +22,12 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: AddUserComponent },
-  { path: 'addTask', component: AddTaskComponent },
+  { path: 'addTask', component: AddTaskComponent, canActivate: [ AuthGuard ] },
   { path: 'usefulLinks', component: UsefulLinksComponent },
 
-  { path: 'course', component: CourseComponent },
-  { path: 'course', component: CourseComponent },
-  { path: 'course/:levelNumber', component: LevelComponent },
-  { path: 'course/:levelNumber/:taskNumber', component: TaskComponent },
+  { path: 'course', component: CourseComponent, canActivate: [ AuthGuard ] },
+  { path: 'course/:levelNumber', component: LevelComponent, canActivate: [ AuthGuard ] },
+  { path: 'course/:levelNumber/:taskNumber', component: TaskComponent, canActivate: [ AuthGuard ] },
 
   { path: 'error', component: ErrorComponent },
 
