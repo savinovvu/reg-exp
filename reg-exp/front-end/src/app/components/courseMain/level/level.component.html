@@ -15,9 +15,10 @@
       </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef> Описание</mat-header-cell>
-      <mat-cell *matCellDef="let task"> {{task.description}}</mat-cell>
+
+    <ng-container matColumnDef="solve">
+      <mat-header-cell *matHeaderCellDef>Статус</mat-header-cell>
+      <mat-cell *matCellDef="let level"> {{getSolveText(level.solve)}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="author">

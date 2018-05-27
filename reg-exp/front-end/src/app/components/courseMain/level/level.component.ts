@@ -16,7 +16,7 @@ export class LevelComponent extends BaseComponent implements OnInit {
 
   tasks;
 
-  displayedColumns = [ 'id', 'name', 'description', 'author' ];
+  displayedColumns = [ 'id', 'name', 'solve', 'author' ];
 
   level;
 
@@ -34,6 +34,14 @@ export class LevelComponent extends BaseComponent implements OnInit {
 
 
   ngOnInit() {
+  }
+
+  getSolveText(solve: any) {
+    if (solve) {
+      return "решено"
+    } else {
+      return "не решено"
+    }
   }
 
 }

@@ -13,7 +13,7 @@ export class CourseComponent extends BaseComponent implements OnInit {
 
   levels;
 
-  displayedColumns = [ 'id', 'description' ];
+  displayedColumns = [ 'id', 'description', 'solve' ];
 
 
   constructor(
@@ -29,7 +29,16 @@ export class CourseComponent extends BaseComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  getSolveText(solve: any) {
+    if (solve) {
+      return "решено"
+    } else {
+      return "не решено"
+    }
+  }
 }
+
 
 
 
