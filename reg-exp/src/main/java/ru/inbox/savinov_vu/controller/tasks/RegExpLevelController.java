@@ -32,7 +32,8 @@ public class RegExpLevelController implements CRUDController<RegExpLevel>, Numbe
 
     @Override
     public List<RegExpLevel> getAll(HttpServletRequest request) {
-        return regExpLevelService.getAll();
+        Integer userId = Integer.valueOf(request.getHeader("id"));
+        return regExpLevelService.getAll(userId);
     }
 
 

@@ -8,8 +8,10 @@ import ru.inbox.savinov_vu.interfaces.OperationResulter;
 import ru.inbox.savinov_vu.interfaces.numbered.NumberedService;
 import ru.inbox.savinov_vu.model.tasks.RegExpLevel;
 import ru.inbox.savinov_vu.repository.tasks.RegExpLevelRepository;
+import ru.inbox.savinov_vu.repository.users.UserRepository;
 
 import java.util.List;
+import java.util.Set;
 
 
 
@@ -18,6 +20,9 @@ public class RegExpLevelService implements CRUDService<RegExpLevel>, NumberedSer
 
     @Autowired
     RegExpLevelRepository regExpLevelRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
 
     @Override
@@ -28,9 +33,19 @@ public class RegExpLevelService implements CRUDService<RegExpLevel>, NumberedSer
 
 
     @Override
-    public List<RegExpLevel> getAll() {
+    public List<RegExpLevel> getAll(Integer userId) {
         List<RegExpLevel> all = regExpLevelRepository.findAll(new Sort(Sort.Direction.ASC, "number"));
+        Set<RegExpLevel> solvedLevels = userRepository.findSolvedLevels(userId);
+        for (RegExpLevel regExpLevel : all) {
+            if (solvedLevels.contains(regExpLevel)) {
+                regExpLevel.setSolve(true);
+            } else {
+                regExpLevel.setSolve(false);
+            }
+        }
+
         return all;
+
     }
 
 

@@ -46,4 +46,40 @@ public interface CRUDService<T> {
         throw new UnsupportedOperationException();
     }
 
+    @Transactional(readOnly = false)
+    default OperationResulter add(T t, Integer userId) {
+        throw new UnsupportedOperationException();
+    }
+
+
+    @Transactional(readOnly = true)
+    default List<T> getAll(Integer userId) {
+        throw new UnsupportedOperationException();
+    }
+
+
+    @Transactional(readOnly = true)
+    default List<T> getAllByParentId(Integer id, Integer userId) {
+        throw new UnsupportedOperationException();
+    }
+
+
+    @Transactional(readOnly = true)
+    default T getById(Integer id, Integer userId) {
+        throw new UnsupportedOperationException();
+    }
+
+
+    @Transactional(readOnly = false)
+    @Modifying
+    default boolean delete(Integer id, Integer userId) {
+        throw new UnsupportedOperationException();
+    }
+
+
+    @Transactional(readOnly = false)
+    default T update(T t, Integer userId) {
+        throw new UnsupportedOperationException();
+    }
+
 }

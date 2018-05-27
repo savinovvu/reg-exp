@@ -1,14 +1,14 @@
 package ru.inbox.savinov_vu.model.tasks;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import ru.inbox.savinov_vu.interfaces.Identify;
 import ru.inbox.savinov_vu.model.users.User;
 
 import javax.persistence.*;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.Set;
 
 @Entity
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"regexplevel_id", "number"})})
-public class RegExpTask implements Identify {
+public class RegExpTask implements Identify, Serializable {
 
 
     private Integer id;
@@ -52,6 +52,8 @@ public class RegExpTask implements Identify {
     private Boolean enabled;
 
     private List<UsefulLinks> usefulLinks;
+
+    private Boolean solve;
 
 
     @Id
@@ -161,6 +163,19 @@ public class RegExpTask implements Identify {
     }
 
 
+    @Transient
+    @JsonProperty("solve")
+    public Boolean isSolve() {
+        return solve;
+    }
+
+
+    // for Jackson serialization
+    public Boolean getSolve() {
+        return solve;
+    }
+
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -239,4 +254,10 @@ public class RegExpTask implements Identify {
     public void setUsefulLinks(List<UsefulLinks> usefulLinks) {
         this.usefulLinks = usefulLinks;
     }
+
+
+    public void setSolve(Boolean solve) {
+        this.solve = solve;
+    }
+
 }

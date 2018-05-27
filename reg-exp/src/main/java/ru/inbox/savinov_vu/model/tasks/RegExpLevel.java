@@ -1,18 +1,22 @@
 package ru.inbox.savinov_vu.model.tasks;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.proxy.HibernateProxyHelper;
 import org.springframework.context.annotation.Lazy;
 import ru.inbox.savinov_vu.interfaces.Identify;
 import ru.inbox.savinov_vu.model.users.User;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 
 
 @Entity
-public class RegExpLevel implements Identify {
+public class RegExpLevel implements Identify, Serializable {
 
     private Integer id;
 
@@ -24,6 +28,8 @@ public class RegExpLevel implements Identify {
 
     @OrderBy("name ASC")
     private List<User> users;
+
+    private Boolean solve = false;
 
 
     @Id
@@ -61,6 +67,18 @@ public class RegExpLevel implements Identify {
     }
 
 
+    @Transient
+    @JsonGetter(value = "solve")
+    public Boolean isSolve() {
+        return solve;
+    }
+
+   // for Jackson serialization
+    public Boolean getSolve() {
+        return solve;
+    }
+
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -83,5 +101,25 @@ public class RegExpLevel implements Identify {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+
+    public void setSolve(Boolean solve) {
+        this.solve = solve;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != HibernateProxyHelper.getClassWithoutInitializingProxy(o)) return false;
+        RegExpLevel that = (RegExpLevel) o;
+        return id.equals(that.id);
+    }
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

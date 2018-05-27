@@ -11,8 +11,10 @@ import ru.inbox.savinov_vu.interfaces.taskChecker.TaskCheckerService;
 import ru.inbox.savinov_vu.model.tasks.RegExpTask;
 import ru.inbox.savinov_vu.model.tasks.RegExpTaskAnswer;
 import ru.inbox.savinov_vu.repository.tasks.RegExpTaskRepository;
+import ru.inbox.savinov_vu.repository.users.UserRepository;
 
 import java.util.List;
+import java.util.Set;
 
 
 
@@ -24,6 +26,9 @@ public class RegExpTaskService implements CRUDService<RegExpTask>, TaskCheckerSe
 
     @Autowired
     RegExpTaskAnswerService regExpTaskAnswerService;
+
+    @Autowired
+    UserRepository userRepository;
 
 
     @Override
@@ -51,8 +56,17 @@ public class RegExpTaskService implements CRUDService<RegExpTask>, TaskCheckerSe
 
 
     @Override
-    public List<RegExpTask> getAllByParentId(Integer id) {
-        return repository.getByRegExpLevelIdOrderByNumber(id);
+    public List<RegExpTask> getAllByParentId(Integer id, Integer userId) {
+        List<RegExpTask> all = repository.getByRegExpLevelIdOrderByNumber(id);
+        Set<RegExpTask> solvedLevels = userRepository.findSolvedTasks(userId);
+        for (RegExpTask regExpTask : all) {
+            if (solvedLevels.contains(regExpTask)) {
+                regExpTask.setSolve(true);
+            } else {
+                regExpTask.setSolve(false);
+            }
+        }
+        return all;
     }
 
 

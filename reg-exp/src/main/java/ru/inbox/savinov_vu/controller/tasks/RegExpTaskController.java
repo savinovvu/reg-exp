@@ -36,7 +36,8 @@ public class RegExpTaskController implements CRUDController<RegExpTask>, TaskChe
 
     @Override
     public List<RegExpTask> getAllByParentId(HttpServletRequest request, @PathVariable("id") Integer id) {
-        return regExpTaskService.getAllByParentId(id);
+        Integer userId = Integer.valueOf(request.getHeader("id"));
+        return regExpTaskService.getAllByParentId(id, userId);
     }
 
 
