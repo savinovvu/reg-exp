@@ -3,6 +3,7 @@ package ru.inbox.savinov_vu.interfaces.CRUD;
 import org.springframework.web.bind.annotation.*;
 import ru.inbox.savinov_vu.interfaces.OperationResulter;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -18,10 +19,10 @@ public interface CRUDController<T> extends CRUD<T> {
     }
 
 
-    @Override
+    //    @Override
     @GetMapping
     @CrossOrigin
-    default List<T> getAll() {
+    default List<T> getAll(HttpServletRequest request) {
         throw new UnsupportedOperationException();
     }
 

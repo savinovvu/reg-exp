@@ -5,9 +5,15 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class SecurityService {
+export class UserService {
 
-  token: string = "noneToken";
+  token: string;
+
+  id: string;
+
+  name: string;
+
+  roles: string[];
 
 
   constructor() {

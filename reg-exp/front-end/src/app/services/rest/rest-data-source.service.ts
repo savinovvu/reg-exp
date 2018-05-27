@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, Subject } from "rxjs/index";
 import { Router } from "@angular/router";
 import { ErrorService } from "../../components/common/error/errorService/error.service";
+import { UserService } from "../security/user.service";
 
 
 
@@ -14,8 +15,6 @@ const PORT = 8080;
 @Injectable()
 export class RestDataSourceService {
 
-  public token: string;
-
   private baseUrl;
 
 
@@ -23,6 +22,7 @@ export class RestDataSourceService {
     private httpClient: HttpClient,
     private router: Router,
     private errorService: ErrorService,
+    private userService: UserService
   ) {
     this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
   }
@@ -86,7 +86,8 @@ export class RestDataSourceService {
 
   private getHeaders(): HttpHeaders {
     let headers2 = new HttpHeaders({
-      'authorization': `Bearer ${this.token}`
+      'authorization': `Bearer ${this.userService.token}`,
+      'id': `${this.userService.id}`,
     });
 
     return headers2;

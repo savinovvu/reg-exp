@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import ru.inbox.savinov_vu.config.security.JwtAuthenticationRequest;
@@ -14,12 +13,12 @@ import ru.inbox.savinov_vu.config.security.JwtTokenUtil;
 import ru.inbox.savinov_vu.interfaces.CRUD.CRUDController;
 import ru.inbox.savinov_vu.interfaces.OperationResulter;
 import ru.inbox.savinov_vu.model.users.Authority;
-import ru.inbox.savinov_vu.model.users.AuthorityName;
 import ru.inbox.savinov_vu.model.users.User;
 import ru.inbox.savinov_vu.service.users.UserService;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 
 
@@ -80,8 +79,9 @@ public class UserController implements CRUDController<User> {
         String login = authenticationRequest.login;
         String password = authenticationRequest.password;
         authenticate(login, password);
-        UserDetails userDetails = userService.loadUserByUsername(login);
-        return new JwtAuthenticationResponse(jwtTokenUtil.generateToken(userDetails));
+        User user = (User) userService.loadUserByUsername(login);
+
+        return getJwtAuthenticationResponse(user);
     }
 
 
@@ -99,9 +99,18 @@ public class UserController implements CRUDController<User> {
         user.setEnabled(true);
         String encodePassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodePassword);
-        user.setAuthorities(List.of(new Authority(1, AuthorityName.User)));
+        user.setAuthorities(Set.of(Authority.User));
         User savedUser = userService.signup(user);
-        return new JwtAuthenticationResponse(jwtTokenUtil.generateToken(savedUser));
+        return getJwtAuthenticationResponse(savedUser);
+    }
+
+
+    private JwtAuthenticationResponse getJwtAuthenticationResponse(User user) {
+        String token = jwtTokenUtil.generateToken(user);
+        String name = user.getName();
+        Integer id = user.getId();
+        Set<Authority> authorities = user.getAuthorities();
+        return new JwtAuthenticationResponse(token, id, name, authorities);
     }
 
 

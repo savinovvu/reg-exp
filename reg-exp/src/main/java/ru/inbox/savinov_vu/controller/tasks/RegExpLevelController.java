@@ -11,6 +11,7 @@ import ru.inbox.savinov_vu.interfaces.numbered.NumberedController;
 import ru.inbox.savinov_vu.model.tasks.RegExpLevel;
 import ru.inbox.savinov_vu.service.tasks.RegExpLevelService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -30,7 +31,7 @@ public class RegExpLevelController implements CRUDController<RegExpLevel>, Numbe
 
 
     @Override
-    public List<RegExpLevel> getAll() {
+    public List<RegExpLevel> getAll(HttpServletRequest request) {
         return regExpLevelService.getAll();
     }
 

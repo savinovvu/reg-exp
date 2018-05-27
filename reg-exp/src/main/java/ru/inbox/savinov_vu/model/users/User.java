@@ -12,6 +12,7 @@ import ru.inbox.savinov_vu.model.tasks.RegExpTask;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 
 
@@ -32,7 +33,7 @@ public class User implements Identify, UserDetails {
 
     private Boolean enabled;
 
-    private List<Authority> authorities;
+    private Set<Authority> authorities;
 
     private List<Like> likes;
 
@@ -149,7 +150,7 @@ public class User implements Identify, UserDetails {
     }
 
 
-    public void setAuthorities(List<Authority> authorities) {
+    public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
     }
 
@@ -203,15 +204,10 @@ public class User implements Identify, UserDetails {
 
 
     @Override
-    @Enumerated(value = EnumType.STRING)
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @ManyToMany
-    @JoinTable(name = "user_authority",
-            joinColumns = {
-                    @JoinColumn(name = "user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {
-                    @JoinColumn(name = "role_id", referencedColumnName = "id")})
-    public List<Authority> getAuthorities() {
+    @Enumerated(EnumType.STRING)
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(joinColumns = @JoinColumn(name = "user_id"))
+    public Set<Authority> getAuthorities() {
         return authorities;
     }
 

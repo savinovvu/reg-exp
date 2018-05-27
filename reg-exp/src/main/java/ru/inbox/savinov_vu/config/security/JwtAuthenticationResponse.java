@@ -1,6 +1,9 @@
 package ru.inbox.savinov_vu.config.security;
 
+import ru.inbox.savinov_vu.model.users.Authority;
+
 import java.io.Serializable;
+import java.util.Set;
 
 
 
@@ -10,13 +13,37 @@ public class JwtAuthenticationResponse implements Serializable {
 
     private final String token;
 
+    private final Integer id;
 
-    public JwtAuthenticationResponse(String token) {
+    private final String name;
+
+    private final Set<Authority> roles;
+
+
+    public JwtAuthenticationResponse(String token, Integer id, String name, Set<Authority> roles) {
         this.token = token;
+        this.id = id;
+        this.name = name;
+        this.roles = roles;
     }
 
 
     public String getToken() {
         return this.token;
+    }
+
+
+    public Integer getId() {
+        return id;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+
+    public Set<Authority> getRoles() {
+        return roles;
     }
 }

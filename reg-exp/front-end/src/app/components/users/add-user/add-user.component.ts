@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from "../../../utils/base-component";
 import { RestDataSourceService } from "../../../services/rest/rest-data-source.service";
 import { Router } from "@angular/router";
+import { UserService } from "../../../services/security/user.service";
 
 
 
@@ -25,7 +26,8 @@ export class AddUserComponent extends BaseComponent implements OnInit {
 
   constructor(
     private restService: RestDataSourceService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {
 
     super()
@@ -45,7 +47,10 @@ export class AddUserComponent extends BaseComponent implements OnInit {
         email: this.email,
       }).subscribe(
         (value: any) => {
-          this.restService.token = value.token;
+          this.userService.token = value.token;
+          this.userService.name = value.name;
+          this.userService.id = value.id;
+          this.userService.roles = value.roles;
           this.router.navigate(['/course']);
         }
       );

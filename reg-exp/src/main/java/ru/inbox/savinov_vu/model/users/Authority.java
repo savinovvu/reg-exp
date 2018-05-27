@@ -1,80 +1,15 @@
 package ru.inbox.savinov_vu.model.users;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
-import ru.inbox.savinov_vu.interfaces.Identify;
-
-import javax.persistence.*;
-import java.util.List;
 
 
 
-@Entity
-public class Authority implements Identify, GrantedAuthority {
+public enum Authority implements GrantedAuthority {
+    User, Admin;
 
 
-    private Integer id;
-
-    @Column(unique = true)
-    @Enumerated(EnumType.STRING)
-    private AuthorityName name;
-
-    private List<User> users;
-
-
-    public Authority() {
-    }
-
-
-    public Authority(Integer id, AuthorityName name) {
-        this.id = id;
-        this.name = name;
-    }
-
-
-    @Id
-    @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
-    public Integer getId() {
-        return id;
-    }
-
-
-    @LazyCollection(value = LazyCollectionOption.TRUE)
-    @ManyToMany(mappedBy = "authorities")
-    public List<User> getUsers() {
-        return users;
-    }
-
-
-    @Transient
+    @Override
     public String getAuthority() {
-        return name.name();
-    }
-
-
-    @Column(unique = true)
-    @Enumerated(EnumType.STRING)
-    public AuthorityName getName() {
-        return name;
-    }
-
-
-    public Authority setId(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-
-    public Authority setName(AuthorityName name) {
-        this.name = name;
-        return this;
-    }
-
-
-    public Authority setUsers(List<User> users) {
-        this.users = users;
-        return this;
+        return this.toString();
     }
 }

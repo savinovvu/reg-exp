@@ -5,10 +5,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.OncePerRequestFilter;
+import ru.inbox.savinov_vu.model.users.User;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -40,7 +40,7 @@ public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
         logger.debug("processing authentication for '{}'", request.getRequestURL());
 
-        final String requestHeader = request.getHeader(this.tokenHeader);
+        final String requestHeader = request.getHeader(tokenHeader);
 
         String username = null;
         String authToken = null;
@@ -63,12 +63,13 @@ public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
 
             // It is not compelling necessary to load the use details from the database. You could also store the information
             // in the token and read it from it. It's up to you ;)
-            UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
+            User user = (User) this.userDetailsService.loadUserByUsername(username);
+            checkId(request, user);
 
             // For simple validation it is completely sufficient to just check the token integrity. You don't have to call
             // the database compellingly. Again it's up to you ;)
-            if (jwtTokenUtil.validateToken(authToken, userDetails)) {
-                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+            if (jwtTokenUtil.validateToken(authToken, user)) {
+                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 logger.info("authorizated user '{}', setting security context", username);
                 SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -76,5 +77,13 @@ public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
         }
 
         chain.doFilter(request, response);
+    }
+
+
+    private void checkId(HttpServletRequest request, User user) {
+        String id = request.getHeader("id");
+        if (!String.valueOf(user.getId()).equals(request.getHeader("id"))) {
+            throw new RuntimeException("JwtAuthorizationTokenFilter. method checkId: id in header and in user must be equal");
+        }
     }
 }
