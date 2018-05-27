@@ -8,37 +8,32 @@ import java.util.List;
 
 
 
-public interface CRUDService<T> extends CRUD<T> {
+public interface CRUDService<T> {
 
-    @Override
     @Transactional(readOnly = false)
     default OperationResulter add(T t) {
         throw new UnsupportedOperationException();
     }
 
 
-    @Override
     @Transactional(readOnly = true)
     default List<T> getAll() {
         throw new UnsupportedOperationException();
     }
 
 
-    @Override
     @Transactional(readOnly = true)
     default List<T> getAllByParentId(Integer id) {
         throw new UnsupportedOperationException();
     }
 
 
-    @Override
     @Transactional(readOnly = true)
     default T getById(Integer id) {
         throw new UnsupportedOperationException();
     }
 
 
-    @Override
     @Transactional(readOnly = false)
     @Modifying
     default boolean delete(Integer id) {
@@ -46,7 +41,6 @@ public interface CRUDService<T> extends CRUD<T> {
     }
 
 
-    @Override
     @Transactional(readOnly = false)
     default T update(T t) {
         throw new UnsupportedOperationException();

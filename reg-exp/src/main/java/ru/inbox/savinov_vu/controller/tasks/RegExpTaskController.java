@@ -14,6 +14,7 @@ import ru.inbox.savinov_vu.interfaces.numbered.NumberedController;
 import ru.inbox.savinov_vu.model.tasks.RegExpTask;
 import ru.inbox.savinov_vu.service.tasks.RegExpTaskService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -27,39 +28,41 @@ public class RegExpTaskController implements CRUDController<RegExpTask>, TaskChe
 
 
     @Override
-    public OperationResulter add(@RequestBody RegExpTask regExpTask) {
+    public OperationResulter add(HttpServletRequest request, @RequestBody RegExpTask regExpTask) {
         regExpTask.setEnabled(false);
         return regExpTaskService.add(regExpTask);
     }
 
 
     @Override
-    public List<RegExpTask> getAllByParentId(@PathVariable("id") Integer id) {
+    public List<RegExpTask> getAllByParentId(HttpServletRequest request, @PathVariable("id") Integer id) {
         return regExpTaskService.getAllByParentId(id);
     }
 
 
     @Override
-    public RegExpTask getById(@PathVariable("id") Integer id) {
+    public RegExpTask getById(HttpServletRequest request, @PathVariable("id") Integer id) {
         return regExpTaskService.getById(id);
     }
 
 
     @Override
-    public boolean delete(@PathVariable("id") Integer id) {
+    public boolean delete(HttpServletRequest request, @PathVariable("id") Integer id) {
         regExpTaskService.delete(id);
         return true;
     }
 
 
     @Override
-    public RegExpTask update(RegExpTask regExpTask) {
+    public RegExpTask update(HttpServletRequest request, RegExpTask regExpTask) {
         return regExpTaskService.update(regExpTask);
     }
 
 
     @Override
-    public TaskResulter check(@PathVariable("id") Integer id, @RequestBody String answer) {
+    public TaskResulter check(HttpServletRequest request,
+                              @PathVariable("id") Integer id,
+                              @RequestBody String answer) {
         return regExpTaskService.check(id, answer);
     }
 
@@ -71,7 +74,8 @@ public class RegExpTaskController implements CRUDController<RegExpTask>, TaskChe
 
 
     @Override
-    public RegExpTask getByParentNumberAndByNumber(@PathVariable("parentNumber") Integer parentNumber,
+    public RegExpTask getByParentNumberAndByNumber(HttpServletRequest request,
+                                                   @PathVariable("parentNumber") Integer parentNumber,
                                                    @PathVariable("number") Integer number) {
         return regExpTaskService.getByParentNumberAndByNumber(parentNumber, number);
     }

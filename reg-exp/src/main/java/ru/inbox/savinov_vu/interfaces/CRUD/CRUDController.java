@@ -8,18 +8,16 @@ import java.util.List;
 
 
 
-public interface CRUDController<T> extends CRUD<T> {
+public interface CRUDController<T> {
 
 
-    @Override
     @PostMapping
     @CrossOrigin
-    default OperationResulter add(T t) {
+    default OperationResulter add(HttpServletRequest request, T t) {
         throw new UnsupportedOperationException();
     }
 
 
-    //    @Override
     @GetMapping
     @CrossOrigin
     default List<T> getAll(HttpServletRequest request) {
@@ -27,34 +25,30 @@ public interface CRUDController<T> extends CRUD<T> {
     }
 
 
-    @Override
     @GetMapping("parent/{id}")
     @CrossOrigin
-    default List<T> getAllByParentId(Integer id) {
+    default List<T> getAllByParentId(HttpServletRequest request, Integer id) {
         throw new UnsupportedOperationException();
     }
 
 
-    @Override
     @GetMapping("{id}")
     @CrossOrigin
-    default T getById(Integer id) {
+    default T getById(HttpServletRequest request, Integer id) {
         throw new UnsupportedOperationException();
     }
 
 
-    @Override
     @DeleteMapping("{id}")
     @CrossOrigin
-    default boolean delete(Integer id) {
+    default boolean delete(HttpServletRequest request, Integer id) {
         throw new UnsupportedOperationException();
     }
 
 
-    @Override
     @PutMapping
     @CrossOrigin
-    default T update(T t) {
+    default T update(HttpServletRequest request, T t) {
         throw new UnsupportedOperationException();
     }
 }

@@ -7,14 +7,12 @@ import java.util.List;
 
 
 
-public interface TaskCheckerService<T> extends TaskChecker<T> {
+public interface TaskCheckerService<T> {
 
-    @Override
     @Transactional(readOnly = true)
     TaskResulter check(Integer id, String answer);
 
 
-    @Override
     @Transactional(readOnly = true)
     List<T> getDisabledTask();
 }

@@ -10,6 +10,7 @@ import ru.inbox.savinov_vu.interfaces.OperationResulter;
 import ru.inbox.savinov_vu.model.tasks.Like;
 import ru.inbox.savinov_vu.service.tasks.LikeService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -23,32 +24,32 @@ public class LikeController implements CRUDController<Like> {
 
 
     @Override
-    public OperationResulter<String> add(Like like) {
+    public OperationResulter<String> add(HttpServletRequest request, Like like) {
         return likeService.add(like);
     }
 
 
     @Override
-    public List<Like> getAll() {
+    public List<Like> getAll(HttpServletRequest request ) {
         return likeService.getAll();
     }
 
 
     @Override
-    public Like getById(@PathVariable("id") Integer id) {
+    public Like getById(HttpServletRequest request, @PathVariable("id") Integer id) {
         return likeService.getById(id);
     }
 
 
     @Override
-    public boolean delete(@PathVariable("id") Integer id) {
+    public boolean delete(HttpServletRequest request, @PathVariable("id") Integer id) {
         likeService.delete(id);
         return true;
     }
 
 
     @Override
-    public Like update(Like like) {
+    public Like update(HttpServletRequest request, Like like) {
         return likeService.update(like);
     }
 }

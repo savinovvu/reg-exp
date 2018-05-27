@@ -10,6 +10,7 @@ import ru.inbox.savinov_vu.interfaces.OperationResulter;
 import ru.inbox.savinov_vu.model.tasks.Comment;
 import ru.inbox.savinov_vu.service.tasks.CommentService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -23,32 +24,32 @@ public class CommentController implements CRUDController<Comment> {
 
 
     @Override
-    public OperationResulter<String> add(Comment comment) {
+    public OperationResulter<String> add(HttpServletRequest request, Comment comment) {
        return commentService.add(comment);
     }
 
 
     @Override
-    public List<Comment> getAll() {
+    public List<Comment> getAll(HttpServletRequest request) {
         return commentService.getAll();
     }
 
 
     @Override
-    public Comment getById(@PathVariable("id") Integer id) {
+    public Comment getById(HttpServletRequest request, @PathVariable("id") Integer id) {
         return commentService.getById(id);
     }
 
 
     @Override
-    public boolean delete(@PathVariable("id") Integer id) {
+    public boolean delete(HttpServletRequest request, @PathVariable("id") Integer id) {
         commentService.delete(id);
         return true;
     }
 
 
     @Override
-    public Comment update(Comment comment) {
+    public Comment update(HttpServletRequest request, Comment comment) {
         return commentService.update(comment);
     }
 }

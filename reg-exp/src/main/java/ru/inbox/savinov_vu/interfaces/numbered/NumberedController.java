@@ -3,21 +3,21 @@ package ru.inbox.savinov_vu.interfaces.numbered;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpServletRequest;
 
 
-public interface NumberedController<T> extends Numbered<T> {
 
-    @Override
+public interface NumberedController<T> {
+
     @GetMapping("byNumber/{number}")
     @CrossOrigin
-    default T getByNumber(Integer number) {
+    default T getByNumber(HttpServletRequest request, Integer number) {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     @GetMapping("byNumber/{parentNumber}/{number}")
     @CrossOrigin
-    default T getByParentNumberAndByNumber(Integer parentNumber, Integer number) {
+    default T getByParentNumberAndByNumber(HttpServletRequest request, Integer parentNumber, Integer number) {
         throw new UnsupportedOperationException();
     }
 }

@@ -4,16 +4,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 
-public interface NumberedService<T> extends Numbered<T> {
+public interface NumberedService<T>{
 
-    @Override
     @Transactional(readOnly = true)
     default T getByNumber(Integer number) {
         throw new UnsupportedOperationException();
     }
 
 
-    @Override
     @Transactional(readOnly = true)
     default T getByParentNumberAndByNumber(Integer parentNumber, Integer number) {
         throw new UnsupportedOperationException();

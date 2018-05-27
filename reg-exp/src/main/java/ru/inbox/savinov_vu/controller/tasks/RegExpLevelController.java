@@ -25,7 +25,7 @@ public class RegExpLevelController implements CRUDController<RegExpLevel>, Numbe
 
 
     @Override
-    public OperationResulter<String> add(RegExpLevel regExpLevel) {
+    public OperationResulter<String> add(HttpServletRequest request, RegExpLevel regExpLevel) {
         return regExpLevelService.add(regExpLevel);
     }
 
@@ -37,26 +37,27 @@ public class RegExpLevelController implements CRUDController<RegExpLevel>, Numbe
 
 
     @Override
-    public RegExpLevel getById(@PathVariable("id") Integer id) {
+    public RegExpLevel getById(HttpServletRequest request, @PathVariable("id") Integer id) {
         return regExpLevelService.getById(id);
     }
 
 
     @Override
-    public boolean delete(@PathVariable("id") Integer id) {
+    public boolean delete(HttpServletRequest request, @PathVariable("id") Integer id) {
         regExpLevelService.delete(id);
         return true;
     }
 
 
     @Override
-    public RegExpLevel update(RegExpLevel regExpLevel) {
+    public RegExpLevel update(HttpServletRequest request, RegExpLevel regExpLevel) {
         return regExpLevelService.update(regExpLevel);
     }
 
 
     @Override
-    public RegExpLevel getByNumber(@PathVariable("number") Integer number) {
+    public RegExpLevel getByNumber(HttpServletRequest request,
+                                   @PathVariable("number") Integer number) {
         return regExpLevelService.getByNumber(number);
     }
 }

@@ -16,6 +16,7 @@ import ru.inbox.savinov_vu.model.users.Authority;
 import ru.inbox.savinov_vu.model.users.User;
 import ru.inbox.savinov_vu.service.users.UserService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -43,32 +44,32 @@ public class UserController implements CRUDController<User> {
 
 
     @Override
-    public OperationResulter<String> add(User user) {
+    public OperationResulter<String> add(HttpServletRequest request, User user) {
         return userService.add(user);
     }
 
 
     @Override
-    public List<User> getAll() {
+    public List<User> getAll(HttpServletRequest request) {
         return userService.getAll();
     }
 
 
     @Override
-    public User getById(@PathVariable("id") Integer id) {
+    public User getById(HttpServletRequest request, @PathVariable("id") Integer id) {
         return userService.getById(id);
     }
 
 
     @Override
-    public boolean delete(@PathVariable("id") Integer id) {
+    public boolean delete(HttpServletRequest request, @PathVariable("id") Integer id) {
         userService.delete(id);
         return true;
     }
 
 
     @Override
-    public User update(User user) {
+    public User update(HttpServletRequest request, User user) {
         return userService.update(user);
     }
 

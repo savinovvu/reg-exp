@@ -3,18 +3,17 @@ package ru.inbox.savinov_vu.interfaces.taskChecker;
 import org.springframework.web.bind.annotation.*;
 import ru.inbox.savinov_vu.checker.TaskResulter;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
 
-public interface TaskCheckerController<T> extends TaskChecker<T> {
+public interface TaskCheckerController<T> {
 
-    @Override
     @PutMapping("check/{id}")
     @CrossOrigin
-    TaskResulter check(Integer id, String answer);
+    TaskResulter check(HttpServletRequest request, Integer id, String answer);
 
-    @Override
     @GetMapping("disabled")
     @CrossOrigin
     List<T> getDisabledTask();
