@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Set;
 
 
-
+// todo: split UserDetails and User
 @Entity
 @Table(name = "\"user\"")
 public class User implements Identify, UserDetails {

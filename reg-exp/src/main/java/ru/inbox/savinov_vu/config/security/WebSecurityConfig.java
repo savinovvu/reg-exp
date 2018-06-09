@@ -27,7 +27,9 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(securedEnabled = true, // @Secured is enbaled
+        prePostEnabled = true,  // @PreAuthorize and @PostAuthorize are enabled
+        jsr250Enabled = true) //@RolesAllowed is enabled
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired

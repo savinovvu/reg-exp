@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import javax.servlet.http.HttpServletRequest;
 
 
-
+// todo: implement with return type: ResponseEntity
 public interface NumberedController<T> {
 
     @GetMapping("byNumber/{number}")
