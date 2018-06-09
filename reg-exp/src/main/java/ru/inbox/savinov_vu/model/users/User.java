@@ -48,6 +48,15 @@ public class User implements Identify, UserDetails {
     private Date lastPasswordResetDate;
 
 
+    public User() {
+    }
+
+
+    public User(Integer id) {
+        this.id = id;
+    }
+
+
     @Id
     @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
