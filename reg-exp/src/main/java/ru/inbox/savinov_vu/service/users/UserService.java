@@ -5,8 +5,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import ru.inbox.savinov_vu.interfaces.CRUD.CRUDService;
-import ru.inbox.savinov_vu.interfaces.OperationResulter;
+import ru.inbox.savinov_vu.common.interfaces.CRUD.CRUDService;
+import ru.inbox.savinov_vu.common.interfaces.OperationResulter;
 import ru.inbox.savinov_vu.model.users.User;
 import ru.inbox.savinov_vu.repository.users.UserRepository;
 

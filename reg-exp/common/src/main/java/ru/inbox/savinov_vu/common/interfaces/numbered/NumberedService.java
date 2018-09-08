@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.interfaces.numbered;
+package ru.inbox.savinov_vu.common.interfaces.numbered;
 
 import org.springframework.transaction.annotation.Transactional;
 

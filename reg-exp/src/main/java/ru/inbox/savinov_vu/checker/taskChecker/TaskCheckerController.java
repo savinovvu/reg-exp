@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.interfaces.taskChecker;
+package ru.inbox.savinov_vu.checker.taskChecker;
 
 import org.springframework.web.bind.annotation.*;
 import ru.inbox.savinov_vu.checker.TaskResulter;

@@ -6,8 +6,11 @@ plugins {
 // end::plugins[]
 
 dependencies {
-//    implementation 'org.springframework.data:spring-data-commons-core:1.4.1.RELEASE'
     implementation 'org.springframework.data:spring-data-commons:2.0.6.RELEASE'
+    implementation 'org.springframework.data:spring-data-jpa:2.0.6.RELEASE'
+    implementation 'org.springframework:spring-web:5.0.5.RELEASE'
+    implementation 'org.springframework:spring-tx:5.0.5.RELEASE'
+    compileOnly 'javax.servlet:servlet-api:2.5'
 }
 
 // tag::moduleName[]

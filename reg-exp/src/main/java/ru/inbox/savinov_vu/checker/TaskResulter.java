@@ -1,6 +1,6 @@
 package ru.inbox.savinov_vu.checker;
 
-import ru.inbox.savinov_vu.interfaces.OperationResulter;
+import ru.inbox.savinov_vu.common.interfaces.OperationResulter;
 
 import java.util.*;
 

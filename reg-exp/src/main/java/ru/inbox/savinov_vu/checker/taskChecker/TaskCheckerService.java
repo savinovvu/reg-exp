@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.interfaces.taskChecker;
+package ru.inbox.savinov_vu.checker.taskChecker;
 
 import org.springframework.transaction.annotation.Transactional;
 import ru.inbox.savinov_vu.checker.TaskResulter;

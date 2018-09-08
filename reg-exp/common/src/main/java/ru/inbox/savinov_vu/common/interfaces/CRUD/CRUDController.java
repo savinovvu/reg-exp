@@ -1,7 +1,11 @@
-package ru.inbox.savinov_vu.interfaces.CRUD;
+package ru.inbox.savinov_vu.common.interfaces.CRUD;
 
-import org.springframework.web.bind.annotation.*;
-import ru.inbox.savinov_vu.interfaces.OperationResulter;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import ru.inbox.savinov_vu.common.interfaces.OperationResulter;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

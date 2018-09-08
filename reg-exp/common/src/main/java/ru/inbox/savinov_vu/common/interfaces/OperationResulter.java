@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.interfaces;
+package ru.inbox.savinov_vu.common.interfaces;
 
 public interface OperationResulter<T> {
 

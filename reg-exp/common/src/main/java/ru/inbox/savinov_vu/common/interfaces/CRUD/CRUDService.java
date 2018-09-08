@@ -1,8 +1,8 @@
-package ru.inbox.savinov_vu.interfaces.CRUD;
+package ru.inbox.savinov_vu.common.interfaces.CRUD;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.transaction.annotation.Transactional;
-import ru.inbox.savinov_vu.interfaces.OperationResulter;
+import ru.inbox.savinov_vu.common.interfaces.OperationResulter;
 
 import java.util.List;
 
