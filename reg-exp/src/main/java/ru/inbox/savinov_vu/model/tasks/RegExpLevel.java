@@ -5,7 +5,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.proxy.HibernateProxyHelper;
 import org.springframework.context.annotation.Lazy;
-import ru.inbox.savinov_vu.interfaces.Identify;
+import ru.inbox.savinov_vu.common.interfaces.Identify;
 import ru.inbox.savinov_vu.model.users.User;
 
 import javax.persistence.*;

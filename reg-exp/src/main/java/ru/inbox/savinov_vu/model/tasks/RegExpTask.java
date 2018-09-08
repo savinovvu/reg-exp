@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
-import ru.inbox.savinov_vu.interfaces.Identify;
+import ru.inbox.savinov_vu.common.interfaces.Identify;
 import ru.inbox.savinov_vu.model.users.User;
 
 import javax.persistence.*;

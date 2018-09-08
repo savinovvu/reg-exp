@@ -40,12 +40,12 @@ repositories {
 
 
 dependencies {
+    compile project(':common')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('io.jsonwebtoken:jjwt:0.9.0')
 // todo: add spring boot actuator, swagger 2, javamelody
-    compile("org.springframework.boot:spring-boot-starter-data-rest")
 
     compile('com.fasterxml.jackson.datatype:jackson-datatype-hibernate5:2.9.5')
 
@@ -82,4 +82,12 @@ task buildClientWatch(type: NpmTask, dependsOn: 'npmInstall') {
 
 bootRun.dependsOn(buildClientDev)
 jar.dependsOn(buildClient)
+
+subprojects {
+    afterEvaluate {
+        repositories {
+            jcenter()
+        }
+    }
+}
 

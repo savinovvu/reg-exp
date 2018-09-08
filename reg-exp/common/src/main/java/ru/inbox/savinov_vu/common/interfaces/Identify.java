@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.interfaces;
+package ru.inbox.savinov_vu.common.interfaces;
 
 import org.springframework.data.domain.Persistable;
 

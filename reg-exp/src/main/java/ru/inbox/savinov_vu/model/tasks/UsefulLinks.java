@@ -2,7 +2,7 @@ package ru.inbox.savinov_vu.model.tasks;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
-import ru.inbox.savinov_vu.interfaces.Identify;
+import ru.inbox.savinov_vu.common.interfaces.Identify;
 
 import javax.persistence.*;
 import java.util.List;

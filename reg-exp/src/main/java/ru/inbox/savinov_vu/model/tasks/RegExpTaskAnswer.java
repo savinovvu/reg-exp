@@ -1,6 +1,6 @@
 package ru.inbox.savinov_vu.model.tasks;
 
-import ru.inbox.savinov_vu.interfaces.Identify;
+import ru.inbox.savinov_vu.common.interfaces.Identify;
 
 import javax.persistence.*;
 
