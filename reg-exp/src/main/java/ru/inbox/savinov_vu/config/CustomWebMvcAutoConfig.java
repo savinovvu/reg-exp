@@ -25,14 +25,4 @@ public class CustomWebMvcAutoConfig implements WebMvcConfigurer {
         }
     }
 
-
-/*//    https://medium.com/@evonsdesigns/spring-boot-include-transient-fields-in-jackson-serialization-4d6e24571585
-    @Bean
-    public ObjectMapper includeTransientObjectMapper() {
-        Hibernate5Module hibernate5Module = new Hibernate5Module();
-        hibernate5Module.disable(Hibernate5Module.Feature.USE_TRANSIENT_ANNOTATION);
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(hibernate5Module);
-        return mapper;
-    }*/
 }

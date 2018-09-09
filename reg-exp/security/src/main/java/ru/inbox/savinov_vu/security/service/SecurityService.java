@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import ru.inbox.savinov_vu.security.model.SecurityUser;
 import ru.inbox.savinov_vu.security.repository.SecurityRepository;
 
 
@@ -19,5 +20,10 @@ public class SecurityService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return repository.getByLogin(username);
+    }
+
+    public SecurityUser signup(SecurityUser user) {
+        SecurityUser savedUser = repository.saveAndFlush(user);
+        return savedUser;
     }
 }

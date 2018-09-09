@@ -41,6 +41,7 @@ repositories {
 
 dependencies {
     compile project(':common')
+    compile project(':regexp-security')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-web')

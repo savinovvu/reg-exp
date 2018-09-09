@@ -28,12 +28,6 @@ public class UserService implements CRUDService<User>, UserDetailsService {
     }
 
 
-    public User signup(User user) {
-        User savedUser = userRepository.saveAndFlush(user);
-        return user;
-    }
-
-
     @Override
     public List<User> getAll() {
         return userRepository.findAll();

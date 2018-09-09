@@ -20,7 +20,6 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import ru.inbox.savinov_vu.security.service.SecurityService;
-import ru.inbox.savinov_vu.service.users.UserService;
 
 import java.util.List;
 

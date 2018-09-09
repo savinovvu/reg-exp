@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
+
 // todo: implement with return type: ResponseEntity
+// todo: add Principal principal
 public interface CRUDController<T> {
 
 
