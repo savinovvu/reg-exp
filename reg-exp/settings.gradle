@@ -1,3 +1,5 @@
 rootProject.name = 'reg-exp'
 include 'common'
+include 'security'
+findProject(':security')?.name = 'regexp-security'
 

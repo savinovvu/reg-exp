@@ -1,0 +1,29 @@
+// tag::plugins[]
+plugins {
+    id 'java-library'
+    id 'org.gradle.java.experimental-jigsaw' version '0.1.1'  // <1>
+}
+// end::plugins[]
+
+dependencies {
+    implementation 'org.springframework:spring-web:5.0.5.RELEASE'
+    implementation 'org.springframework:spring-tx:5.0.5.RELEASE'
+
+    implementation 'org.springframework.data:spring-data-commons:2.0.6.RELEASE'
+    implementation 'org.springframework.data:spring-data-jpa:2.0.6.RELEASE'
+
+
+    implementation 'org.springframework.security:spring-security-core:5.0.4.RELEASE'
+    implementation 'org.springframework.security:spring-security-web:5.0.4.RELEASE'
+    implementation 'org.springframework.security:spring-security-config:5.0.4.RELEASE'
+
+    implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
+
+    implementation('io.jsonwebtoken:jjwt:0.9.0')
+    implementation 'org.slf4j:slf4j-api:1.7.25'
+    compileOnly 'javax.servlet:servlet-api:2.5'
+}
+
+// tag::moduleName[]
+javaModule.name = 'security'  // <1>
+// end::moduleName[]
