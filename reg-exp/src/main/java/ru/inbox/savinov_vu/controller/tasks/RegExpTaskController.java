@@ -1,18 +1,24 @@
 package ru.inbox.savinov_vu.controller.tasks;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
-import ru.inbox.savinov_vu.checker.TaskResulter;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import ru.inbox.savinov_vu.checker.taskChecker.TaskCheckerController;
 import ru.inbox.savinov_vu.common.interfaces.CRUD.CRUDController;
 import ru.inbox.savinov_vu.common.interfaces.OperationResulter;
 import ru.inbox.savinov_vu.common.interfaces.numbered.NumberedController;
-import ru.inbox.savinov_vu.checker.taskChecker.TaskCheckerController;
 import ru.inbox.savinov_vu.model.tasks.RegExpTask;
 import ru.inbox.savinov_vu.model.users.User;
 import ru.inbox.savinov_vu.service.tasks.RegExpTaskService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
 
 
@@ -27,59 +33,62 @@ public class RegExpTaskController implements CRUDController<RegExpTask>, TaskChe
 
     @Override
     @PostMapping
-    public OperationResulter add(HttpServletRequest request, @RequestBody RegExpTask regExpTask) {
+    public ResponseEntity<OperationResulter> add(HttpServletRequest request, @RequestBody RegExpTask regExpTask, Principal principal) {
         Integer userId = Integer.valueOf(request.getHeader("id"));
         regExpTask.setEnabled(false);
         regExpTask.setAuthor(new User(userId));
-        return regExpTaskService.add(regExpTask);
+        return new ResponseEntity(regExpTaskService.add(regExpTask), HttpStatus.ACCEPTED.OK);
     }
 
 
     @Override
-    public List<RegExpTask> getAllByParentId(HttpServletRequest request, @PathVariable("id") Integer id) {
+    public ResponseEntity<List<RegExpTask>> getAllByParentId(HttpServletRequest request, @PathVariable("id") Integer id, Principal principal) {
         Integer userId = Integer.valueOf(request.getHeader("id"));
-        return regExpTaskService.getAllByParentId(id, userId);
+        return new ResponseEntity(regExpTaskService.getAllByParentId(id, userId), HttpStatus.ACCEPTED.OK);
     }
 
 
     @Override
-    public RegExpTask getById(HttpServletRequest request, @PathVariable("id") Integer id) {
-        return regExpTaskService.getById(id);
+    public ResponseEntity<RegExpTask> getById(HttpServletRequest request, @PathVariable("id") Integer id, Principal principal) {
+        return new ResponseEntity(regExpTaskService.getById(id), HttpStatus.ACCEPTED.OK);
     }
 
 
     @Override
-    public boolean delete(HttpServletRequest request, @PathVariable("id") Integer id) {
+    public ResponseEntity<Boolean> delete(HttpServletRequest request, @PathVariable("id") Integer id, Principal principal) {
         regExpTaskService.delete(id);
-        return true;
+        return new ResponseEntity(Boolean.TRUE, HttpStatus.ACCEPTED.OK);
     }
 
 
     @Override
-    public RegExpTask update(HttpServletRequest request, RegExpTask regExpTask) {
-        return regExpTaskService.update(regExpTask);
+    public ResponseEntity<RegExpTask> update(HttpServletRequest request, RegExpTask regExpTask, Principal principal) {
+        return new ResponseEntity(regExpTaskService.update(regExpTask), HttpStatus.ACCEPTED.OK);
     }
 
 
     @Override
-    public TaskResulter check(HttpServletRequest request,
-                              @PathVariable("id") Integer id,
-                              @RequestBody String answer) {
-        return regExpTaskService.check(id, answer);
+    public ResponseEntity check(HttpServletRequest request,
+                                @PathVariable("id") Integer id,
+                                @RequestBody String answer,
+                                Principal principal) {
+        return new ResponseEntity(regExpTaskService.check(id, answer), HttpStatus.ACCEPTED.OK);
     }
 
 
     @Override
-    public List<RegExpTask> getDisabledTask() {
-        return regExpTaskService.getDisabledTask();
+    public ResponseEntity<List<RegExpTask>> getDisabledTask(Principal principal) {
+        return new ResponseEntity(regExpTaskService.getDisabledTask(), HttpStatus.ACCEPTED.OK);
     }
 
 
     @Override
-    public RegExpTask getByParentNumberAndByNumber(HttpServletRequest request,
-                                                   @PathVariable("parentNumber") Integer parentNumber,
-                                                   @PathVariable("number") Integer number) {
-        return regExpTaskService.getByParentNumberAndByNumber(parentNumber, number);
+    public ResponseEntity getByParentNumberAndByNumber(HttpServletRequest request,
+                                                       @PathVariable("parentNumber") Integer parentNumber,
+                                                       @PathVariable("number") Integer number,
+                                                       Principal principal) {
+        return new ResponseEntity(regExpTaskService.getByParentNumberAndByNumber(parentNumber, number),
+                HttpStatus.ACCEPTED.OK);
     }
 
 }

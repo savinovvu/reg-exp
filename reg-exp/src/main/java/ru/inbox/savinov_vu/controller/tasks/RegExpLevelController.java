@@ -1,7 +1,9 @@
 package ru.inbox.savinov_vu.controller.tasks;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +14,7 @@ import ru.inbox.savinov_vu.model.tasks.RegExpLevel;
 import ru.inbox.savinov_vu.service.tasks.RegExpLevelService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
 
 
@@ -25,40 +28,40 @@ public class RegExpLevelController implements CRUDController<RegExpLevel>, Numbe
 
 
     @Override
-    public OperationResulter<String> add(HttpServletRequest request, RegExpLevel regExpLevel) {
-        return regExpLevelService.add(regExpLevel);
+    public ResponseEntity<OperationResulter<String>> add(HttpServletRequest request, RegExpLevel regExpLevel, Principal principal) {
+        return new ResponseEntity(regExpLevelService.add(regExpLevel), HttpStatus.ACCEPTED.OK);
     }
 
 
     @Override
-    public List<RegExpLevel> getAll(HttpServletRequest request) {
+    public ResponseEntity<List<RegExpLevel>> getAll(HttpServletRequest request, Principal principal) {
         Integer userId = Integer.valueOf(request.getHeader("id"));
-        return regExpLevelService.getAll(userId);
+        return new ResponseEntity(regExpLevelService.getAll(userId), HttpStatus.ACCEPTED.OK);
     }
 
 
     @Override
-    public RegExpLevel getById(HttpServletRequest request, @PathVariable("id") Integer id) {
-        return regExpLevelService.getById(id);
+    public ResponseEntity<RegExpLevel> getById(HttpServletRequest request, @PathVariable("id") Integer id, Principal principal) {
+        return new ResponseEntity(regExpLevelService.getById(id), HttpStatus.ACCEPTED.OK);
     }
 
 
     @Override
-    public boolean delete(HttpServletRequest request, @PathVariable("id") Integer id) {
+    public ResponseEntity<Boolean> delete(HttpServletRequest request, @PathVariable("id") Integer id, Principal principal) {
         regExpLevelService.delete(id);
-        return true;
+        return new ResponseEntity(Boolean.TRUE, HttpStatus.ACCEPTED.OK);
     }
 
 
     @Override
-    public RegExpLevel update(HttpServletRequest request, RegExpLevel regExpLevel) {
-        return regExpLevelService.update(regExpLevel);
+    public ResponseEntity<RegExpLevel> update(HttpServletRequest request, RegExpLevel regExpLevel, Principal principal) {
+        return new ResponseEntity(regExpLevelService.update(regExpLevel), HttpStatus.ACCEPTED.OK);
     }
 
 
     @Override
-    public RegExpLevel getByNumber(HttpServletRequest request,
-                                   @PathVariable("number") Integer number) {
-        return regExpLevelService.getByNumber(number);
+    public ResponseEntity<RegExpLevel> getByNumber(HttpServletRequest request, @PathVariable("number") Integer number,
+                                                   Principal principal) {
+        return new ResponseEntity(regExpLevelService.getByNumber(number), HttpStatus.ACCEPTED.OK);
     }
 }

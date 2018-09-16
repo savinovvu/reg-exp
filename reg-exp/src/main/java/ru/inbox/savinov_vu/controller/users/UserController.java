@@ -2,7 +2,9 @@ package ru.inbox.savinov_vu.controller.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +14,7 @@ import ru.inbox.savinov_vu.model.users.User;
 import ru.inbox.savinov_vu.service.users.UserService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
 
 
@@ -27,36 +30,34 @@ public class UserController implements CRUDController<User> {
     UserService userService;
 
 
-
-
     @Override
-    public OperationResulter<String> add(HttpServletRequest request, User user) {
-        return userService.add(user);
+    public ResponseEntity<OperationResulter<String>> add(HttpServletRequest request, User user, Principal principal) {
+        return new ResponseEntity(userService.add(user), HttpStatus.ACCEPTED.OK);
     }
 
 
     @Override
-    public List<User> getAll(HttpServletRequest request) {
-        return userService.getAll();
+    public ResponseEntity<List<User>> getAll(HttpServletRequest request, Principal principal) {
+        return new ResponseEntity(userService.getAll(), HttpStatus.ACCEPTED.OK);
     }
 
 
     @Override
-    public User getById(HttpServletRequest request, @PathVariable("id") Integer id) {
-        return userService.getById(id);
+    public ResponseEntity<User> getById(HttpServletRequest request, @PathVariable("id") Integer id, Principal principal) {
+        return new ResponseEntity(userService.getById(id), HttpStatus.ACCEPTED.OK);
     }
 
 
     @Override
-    public boolean delete(HttpServletRequest request, @PathVariable("id") Integer id) {
+    public ResponseEntity delete(HttpServletRequest request, @PathVariable("id") Integer id, Principal principal) {
         userService.delete(id);
-        return true;
+        return new ResponseEntity(Boolean.TRUE, HttpStatus.ACCEPTED.OK);
     }
 
 
     @Override
-    public User update(HttpServletRequest request, User user) {
-        return userService.update(user);
+    public ResponseEntity<User> update(HttpServletRequest request, User user, Principal principal) {
+        return new ResponseEntity(userService.update(user), HttpStatus.ACCEPTED.OK);
     }
 
 
