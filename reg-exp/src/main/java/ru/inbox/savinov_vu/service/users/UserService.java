@@ -1,9 +1,6 @@
 package ru.inbox.savinov_vu.service.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ru.inbox.savinov_vu.common.interfaces.CRUD.CRUDService;
 import ru.inbox.savinov_vu.common.interfaces.OperationResulter;
@@ -15,7 +12,7 @@ import java.util.List;
 
 
 @Service
-public class UserService implements CRUDService<User>, UserDetailsService {
+public class UserService implements CRUDService<User> {
 
     @Autowired
     UserRepository userRepository;
@@ -52,9 +49,4 @@ public class UserService implements CRUDService<User>, UserDetailsService {
         return userRepository.saveAndFlush(user);
     }
 
-    // todo: split UserDetails and User. see CustomUserDetailService https://github.com/savinovvu/spring-boot-settings/commit/0c3c442de3ae48c3560b4102b01c585883cadae6
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.getByLogin(username);
-    }
 }
