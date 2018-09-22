@@ -9,6 +9,9 @@ import { UserService } from "../../../services/security/user.service";
   selector: 'reg-login',
   templateUrl: './login.component.html',
   styleUrls: [ './login.component.css' ],
+  host: {
+    'class': 'router-flex'
+  }
 })
 export class LoginComponent implements OnInit {
 

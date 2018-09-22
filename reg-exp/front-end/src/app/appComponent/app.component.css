@@ -9,4 +9,13 @@
   color: white;
 }
 
+.bounds {
+  background-color: #ddd;
+  height: 400px;
+}
 
+.router-flex {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}

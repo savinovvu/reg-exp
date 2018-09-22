@@ -1,13 +1,16 @@
-<header>
-  <reg-navigation style="width: 100%"></reg-navigation>
-</header>
+<div class="bounds" fxLayout="column" fxFill>
+  <header>
+    <reg-navigation style="width: 100%"></reg-navigation>
+  </header>
 
-<router-outlet></router-outlet>
 
-<footer class="footer bg-dark text-center">
-  <p>© 2017-2018</p>
-</footer>
-
+  <div fxFlex fxLayout="column">
+    <router-outlet></router-outlet>
+  </div>
+  <footer class="footer bg-dark text-center">
+    <p>© 2017-2018</p>
+  </footer>
+</div>
 
 
 
