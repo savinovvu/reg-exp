@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseComponent } from "../../../utils/base-component";
-import { RestDataSourceService } from "../../../services/rest/rest-data-source.service";
-import { Router } from "@angular/router";
-import { UserService } from "../../../services/security/user.service";
+import { BaseComponent } from '../../../utils/base-component';
+import { RestDataSourceService } from '../../../services/rest/rest-data-source.service';
+import { Router } from '@angular/router';
+import { UserService } from '../../../services/security/user.service';
 
 
 
 @Component({
   selector: 'reg-add-user',
   templateUrl: './add-user.component.html',
-  styleUrls: [ './add-user.component.css' ]
+  styleUrls: [ './add-user.component.css' ],
+  host: {
+    'class': 'router-flex'
+  }
 })
 export class AddUserComponent extends BaseComponent implements OnInit {
 
@@ -30,7 +33,7 @@ export class AddUserComponent extends BaseComponent implements OnInit {
     private userService: UserService
   ) {
 
-    super()
+    super();
   }
 
 
@@ -51,11 +54,11 @@ export class AddUserComponent extends BaseComponent implements OnInit {
           this.userService.name = value.name;
           this.userService.id = value.id;
           this.userService.roles = value.roles;
-          this.router.navigate(['/course']);
+          this.router.navigate([ '/course' ]);
         }
       );
     } else {
-      alert("Пароль и повторно введенный пароль не совпадают");
+      alert('Пароль и повторно введенный пароль не совпадают');
     }
 
 
