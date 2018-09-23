@@ -10,9 +10,6 @@ import { UserService } from '../../../services/security/user.service';
   selector: 'reg-add-user',
   templateUrl: './add-user.component.html',
   styleUrls: [ './add-user.component.css' ],
-  host: {
-    'class': 'router-flex'
-  }
 })
 export class AddUserComponent extends BaseComponent implements OnInit {
 
