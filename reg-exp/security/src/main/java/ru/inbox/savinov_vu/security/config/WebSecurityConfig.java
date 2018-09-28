@@ -23,6 +23,8 @@ import ru.inbox.savinov_vu.security.service.SecurityService;
 
 import java.util.List;
 
+import static ru.inbox.savinov_vu.common.constant.PathConstant.BACK_END_PATHS;
+
 
 
 @Configuration
@@ -125,7 +127,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/favicon.ico",
                         "/**/*.html",
                         "/**/*.css",
-                        "/**/*.js"
+                        "/**/*.js",
+                        BACK_END_PATHS
                 )
 
                 // Un-secure H2 Database (for testing purposes, H2 console shouldn't be unprotected in production)

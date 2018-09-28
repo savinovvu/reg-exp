@@ -2,6 +2,10 @@ package ru.inbox.savinov_vu.common.constant;
 
 public class PathConstant {
 
+    private PathConstant() {
+    }
+
+
     public static final String USER = "/users/user";
 
     public static final String REGEXP_TASK = "/tasks/regexptask";
@@ -24,8 +28,10 @@ public class PathConstant {
 
     public static final String PARENT_PARAM = PARENT + "/" + ID;
 
-    public static final String SIGN_IN = "signin";
+    public static final String SIGN_IN = "/signin";
 
-    public static final String SIGN_UP = "signup";
+    public static final String SIGN_UP = "/signup";
+
+    public static final String BACK_END_PATHS = "/back-end-paths";
 
 }

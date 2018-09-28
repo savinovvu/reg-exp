@@ -25,6 +25,4 @@ dependencies {
     compileOnly 'javax.servlet:servlet-api:2.5'
 }
 
-// tag::moduleName[]
-javaModule.name = 'security'  // <1>
-// end::moduleName[]
+javaModule.name = 'security'
