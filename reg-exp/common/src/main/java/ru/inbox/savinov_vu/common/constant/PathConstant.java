@@ -22,7 +22,7 @@ public class PathConstant {
 
     public static final String NUMBERED_WITH_PARENT_PARAM = NUMBERED + "/{parentNumber}/{number}";
 
-    public static final String PARENT = "parent";
+    public static final String PARENT = "/parent";
 
     public static final String ID = "{id}";
 

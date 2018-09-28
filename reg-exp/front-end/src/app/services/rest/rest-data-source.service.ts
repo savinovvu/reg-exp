@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, Subject } from "rxjs/index";
-import { Router } from "@angular/router";
-import { ErrorService } from "../../components/common/error/errorService/error.service";
-import { UserService } from "../security/user.service";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs/index';
+import { Router } from '@angular/router';
+import { ErrorService } from '../../components/common/error/errorService/error.service';
+import { UserService } from '../security/user.service';
 
 
 
@@ -18,13 +18,21 @@ export class RestDataSourceService {
   private baseUrl;
 
 
+  public path: Path;
+
+  private rootPath = '/back-end-paths';
+
+
   constructor(
     private httpClient: HttpClient,
     private router: Router,
     private errorService: ErrorService,
     private userService: UserService
   ) {
-    this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
+    this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}`;
+    this.get(this.rootPath).subscribe(v => {
+      this.path = v;
+    });
   }
 
 
@@ -100,5 +108,28 @@ export class RestDataSourceService {
     this.router.navigate([ '/error' ]);
   }
 
+
+}
+
+
+
+export interface Path {
+  comment: string;
+
+  like: string;
+
+  numbered: string;
+
+  regexpLevel: string;
+
+  regexpTask: string;
+
+  signin: string;
+
+  signup: string;
+
+  user: string;
+
+  parent: string;
 
 }

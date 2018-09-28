@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ActivatedRoute } from "@angular/router";
-import { BaseComponent } from "../../../utils/base-component";
-import { RestDataSourceService } from "../../../services/rest/rest-data-source.service";
+import { ActivatedRoute } from '@angular/router';
+import { BaseComponent } from '../../../utils/base-component';
+import { RestDataSourceService } from '../../../services/rest/rest-data-source.service';
 
 
 
@@ -27,7 +27,7 @@ export class LevelComponent extends BaseComponent implements OnInit {
   ) {
     super();
     this.level = router.snapshot.params[ 'levelNumber' ];
-    this.subscribtion = restService.get(`tasks/regexptask/parent/${this.level}`).subscribe(v => {
+    this.subscribtion = restService.get(restService.path.regexpTask + restService.path.parent + `/${this.level}`).subscribe(v => {
       this.tasks = v;
     });
   }
@@ -36,11 +36,12 @@ export class LevelComponent extends BaseComponent implements OnInit {
   ngOnInit() {
   }
 
+
   getSolveText(solve: any) {
     if (solve) {
-      return "решено"
+      return 'решено';
     } else {
-      return "не решено"
+      return 'не решено';
     }
   }
 

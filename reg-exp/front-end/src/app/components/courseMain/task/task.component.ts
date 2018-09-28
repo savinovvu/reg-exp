@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
-import { CheckedResult } from "../../../model/interfaces";
-import { RestDataSourceService } from "../../../services/rest/rest-data-source.service";
-import { BaseComponent } from "../../../utils/base-component";
+import { ActivatedRoute, Router } from '@angular/router';
+import { CheckedResult } from '../../../model/interfaces';
+import { RestDataSourceService } from '../../../services/rest/rest-data-source.service';
+import { BaseComponent } from '../../../utils/base-component';
 
 
 
-const PATH = "tasks/regexptask/";
+const PATH = 'tasks/regexptask/';
 
 
 
@@ -29,7 +29,7 @@ export class TaskComponent extends BaseComponent implements OnInit {
 
   private taskCount: number;
 
-  existNextTask: boolean = false;
+  existNextTask = false;
 
 
   constructor(
@@ -41,9 +41,13 @@ export class TaskComponent extends BaseComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.taskNumber = params[ 'taskNumber' ];
       this.levelNumber = params[ 'levelNumber' ];
-      this.subscribtion = restService.get(`${PATH}byNumber/${this.levelNumber}/${this.taskNumber}`).subscribe(taskData => {
+      this.subscribtion = restService
+        .get(this.restService.path.regexpTask + this.restService.path.numbered + `/${this.levelNumber}/${this.taskNumber}`)
+        .subscribe(taskData => {
         this.task = taskData;
-        this.subscribtion = restService.get(`${PATH}parent/${this.task.regExpLevel.id}`).subscribe(tasksAtLevel => {
+        this.subscribtion = restService
+          .get(this.restService.path.regexpTask + this.restService.path.parent + `/${this.task.regExpLevel.id}`)
+          .subscribe(tasksAtLevel => {
           this.existNextTask = this.task.number >= tasksAtLevel.length;
         });
       });
@@ -62,7 +66,7 @@ export class TaskComponent extends BaseComponent implements OnInit {
 
 
   nextTask() {
-    let nextTaskNumber = this.task.number + 1;
+    const nextTaskNumber = this.task.number + 1;
     this.router.navigate([ 'course', this.levelNumber, nextTaskNumber ]);
   }
 

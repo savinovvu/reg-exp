@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Answer, CheckedResult, Task } from "../../../model/interfaces";
-import { RestDataSourceService } from "../../../services/rest/rest-data-source.service";
+import { Answer, CheckedResult, Task } from '../../../model/interfaces';
+import { RestDataSourceService } from '../../../services/rest/rest-data-source.service';
 
 
 
@@ -25,13 +25,13 @@ export class AddTaskComponent implements OnInit {
 
   excludedAnswers: string[] = [];
 
-  matchString: string = '';
+  matchString = '';
 
-  excludedString: string = '';
+  excludedString = '';
 
-  requiredSubString: string = '';
+  requiredSubString = '';
 
-  excludedAnswer: string = '';
+  excludedAnswer = '';
 
   resultAnswer: CheckedResult;
 
@@ -54,14 +54,14 @@ export class AddTaskComponent implements OnInit {
     addedTask.excludedString = this.excludedStrings;
     addedTask.requiredSubStrings = this.requiredSubStrings;
     addedTask.excludedAnswers = this.excludedAnswers;
-    let addedAnswer: Answer = {
+    const addedAnswer: Answer = {
       answer: this.answer,
     };
     addedTask.answers = [ addedAnswer ];
 
-    this.restService.post('tasks/regexptask', addedTask).subscribe((v: CheckedResult) =>
+    this.restService.post(this.restService.path.regexpTask, addedTask).subscribe((v: CheckedResult) =>
       this.resultAnswer = v
-    )
+    );
   }
 
 
@@ -111,7 +111,7 @@ export class AddTaskComponent implements OnInit {
 
   deleteCondition(item: string, conditionArray: string[]) {
     const idx = conditionArray.indexOf(item);
-    if (idx != -1) {
+    if (idx !== -1) {
       conditionArray.splice(idx, 1);
     }
   }

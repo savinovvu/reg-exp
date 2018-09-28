@@ -1,4 +1,6 @@
-import {OnDestroy, OnInit} from "@angular/core";
+import { OnDestroy, OnInit } from '@angular/core';
+
+
 
 export abstract class BaseComponent implements OnInit, OnDestroy {
 
@@ -7,7 +9,7 @@ export abstract class BaseComponent implements OnInit, OnDestroy {
 
   set subscribtion(subscription: any) {
     this.subs.push(subscription);
-  };
+  }
 
 
   ngOnInit() {
@@ -15,8 +17,8 @@ export abstract class BaseComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy() {
-    for (let sub of this.subs) {
-      if (sub) sub.unsubscribe();
+    for (const sub of this.subs) {
+      if (sub) { sub.unsubscribe(); }
     }
   }
 

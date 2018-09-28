@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RestDataSourceService } from "../../../services/rest/rest-data-source.service";
-import { Router } from "@angular/router";
-import { UserService } from "../../../services/security/user.service";
+import { RestDataSourceService } from '../../../services/rest/rest-data-source.service';
+import { Router } from '@angular/router';
+import { UserService } from '../../../services/security/user.service';
 
 
 
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private restService: RestDataSourceService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
   ) {
   }
 
@@ -30,7 +30,10 @@ export class LoginComponent implements OnInit {
 
 
   onSubmit() {
-    this.restService.post('users/user/signin', { login: this.login, password: this.password }).subscribe(
+    this.restService.post(this.restService.path.user + this.restService.path.signin, {
+      login: this.login,
+      password: this.password
+    }).subscribe(
       (value: any) => {
         this.userService.token = value.token;
         this.userService.name = value.name;

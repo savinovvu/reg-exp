@@ -40,7 +40,7 @@ export class AddUserComponent extends BaseComponent implements OnInit {
 
   onSubmit() {
     if (this.password === this.repeatPassword) {
-      this.restService.post('users/user/signup', {
+      this.restService.post(this.restService.path.user + this.restService.path.signup, {
         login: this.login,
         password: this.password,
         name: this.name,

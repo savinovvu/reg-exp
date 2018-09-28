@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RestDataSourceService } from "../../../services/rest/rest-data-source.service";
-import { BaseComponent } from "../../../utils/base-component";
+import { RestDataSourceService } from '../../../services/rest/rest-data-source.service';
+import { BaseComponent } from '../../../utils/base-component';
 
 
 
@@ -20,9 +20,9 @@ export class CourseComponent extends BaseComponent implements OnInit {
     private  restService: RestDataSourceService
   ) {
     super();
-    this.subscribtion = restService.get("tasks/regexplevel").subscribe(v => {
+    this.subscribtion = restService.get(restService.path.regexpLevel).subscribe(v => {
       this.levels = v;
-    })
+    });
   }
 
 
@@ -32,9 +32,9 @@ export class CourseComponent extends BaseComponent implements OnInit {
 
   getSolveText(solve: any) {
     if (solve) {
-      return "решено"
+      return 'решено';
     } else {
-      return "не решено"
+      return 'не решено';
     }
   }
 }
