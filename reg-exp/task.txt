@@ -1,0 +1,10 @@
+. alias for String in code
+. implement i18n.
+. implement Liquibase.
+. implement testes
+. migrate to angular 7.
+. migrate to java 11.
+. add angular 7 ngrx.
+. add angular 7 mainer.
+24. Make path-controller.
+23. Fix flexboxes in templates.+

@@ -14,10 +14,12 @@ import ru.inbox.savinov_vu.service.tasks.CommentService;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
+import static ru.inbox.savinov_vu.common.constant.PathConstant.COMMENT;
+
 
 
 @RestController
-@RequestMapping(value = "/tasks/comment", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = COMMENT, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 public class CommentController implements CRUDController<Comment> {
 
     @Autowired

@@ -16,10 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.List;
 
+import static ru.inbox.savinov_vu.common.constant.PathConstant.LIKE;
+
 
 
 @RestController
-@RequestMapping(value = "/tasks/like", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = LIKE, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 public class LikeController implements CRUDController<Like> {
 
     @Autowired

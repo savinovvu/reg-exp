@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.inbox.savinov_vu.common.constant.PathConstant;
 import ru.inbox.savinov_vu.security.config.JwtAuthenticationRequest;
 import ru.inbox.savinov_vu.security.config.JwtAuthenticationResponse;
 import ru.inbox.savinov_vu.security.config.JwtTokenUtil;
@@ -20,9 +21,13 @@ import ru.inbox.savinov_vu.security.service.SecurityService;
 import java.util.Objects;
 import java.util.Set;
 
+import static ru.inbox.savinov_vu.common.constant.PathConstant.SIGN_IN;
+import static ru.inbox.savinov_vu.common.constant.PathConstant.SIGN_UP;
+
+
 
 @RestController
-@RequestMapping(value = "/users/user", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = PathConstant.USER, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 public class SecurityController {
 
     @Autowired
@@ -38,7 +43,7 @@ public class SecurityController {
     SecurityService securityService;
 
 
-    @PostMapping("signin")
+    @PostMapping(SIGN_IN)
     @CrossOrigin
     public JwtAuthenticationResponse signin(@RequestBody JwtAuthenticationRequest authenticationRequest) {
         String login = authenticationRequest.login;
@@ -58,7 +63,7 @@ public class SecurityController {
 
 
     //todo: implement enabled: true with mailService.
-    @PostMapping("signup")
+    @PostMapping(SIGN_UP)
     @CrossOrigin
     public JwtAuthenticationResponse signup(@RequestBody SecurityUser user) {
         user.setEnabled(true);

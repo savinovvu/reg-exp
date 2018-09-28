@@ -6,6 +6,7 @@ plugins {
 // end::plugins[]
 
 dependencies {
+    compile project(':common')
     implementation 'org.springframework:spring-web:5.0.5.RELEASE'
     implementation 'org.springframework:spring-tx:5.0.5.RELEASE'
 

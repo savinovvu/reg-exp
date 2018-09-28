@@ -17,10 +17,12 @@ import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.List;
 
+import static ru.inbox.savinov_vu.common.constant.PathConstant.REGEXP_LEVEL;
+
 
 
 @RestController
-@RequestMapping(value = "/tasks/regexplevel", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = REGEXP_LEVEL, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 public class RegExpLevelController implements CRUDController<RegExpLevel>, NumberedController<RegExpLevel> {
 
     @Autowired

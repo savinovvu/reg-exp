@@ -21,10 +21,12 @@ import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.List;
 
+import static ru.inbox.savinov_vu.common.constant.PathConstant.REGEXP_TASK;
+
 
 
 @RestController
-@RequestMapping(value = "/tasks/regexptask", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = REGEXP_TASK, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 public class RegExpTaskController implements CRUDController<RegExpTask>, TaskCheckerController<RegExpTask>, NumberedController<RegExpTask> {
 
     @Autowired

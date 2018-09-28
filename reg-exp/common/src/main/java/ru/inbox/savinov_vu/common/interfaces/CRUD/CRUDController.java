@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.List;
 
+import static ru.inbox.savinov_vu.common.constant.PathConstant.ID;
+import static ru.inbox.savinov_vu.common.constant.PathConstant.PARENT_PARAM;
+
 
 
 public interface CRUDController<T> {
@@ -30,21 +33,21 @@ public interface CRUDController<T> {
     }
 
 
-    @GetMapping("parent/{id}")
+    @GetMapping(PARENT_PARAM)
     @CrossOrigin
     default ResponseEntity<List<T>> getAllByParentId(HttpServletRequest request, Integer id, Principal principal) {
         throw new UnsupportedOperationException();
     }
 
 
-    @GetMapping("{id}")
+    @GetMapping(ID)
     @CrossOrigin
     default ResponseEntity<T> getById(HttpServletRequest request, Integer id, Principal principal) {
         throw new UnsupportedOperationException();
     }
 
 
-    @DeleteMapping("{id}")
+    @DeleteMapping(ID)
     @CrossOrigin
     default ResponseEntity delete(HttpServletRequest request, Integer id, Principal principal) {
         throw new UnsupportedOperationException();

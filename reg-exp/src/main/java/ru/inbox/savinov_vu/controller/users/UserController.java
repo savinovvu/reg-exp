@@ -1,7 +1,6 @@
 package ru.inbox.savinov_vu.controller.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,14 +16,15 @@ import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.List;
 
+import static ru.inbox.savinov_vu.common.constant.PathConstant.USER;
+
 
 
 @RestController
-@RequestMapping(value = "/users/user", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = USER, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController implements CRUDController<User> {
 
-    @Value("${jwt.header}")
-    private String tokenHeader;
+
 
     @Autowired
     UserService userService;

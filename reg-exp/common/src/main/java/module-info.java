@@ -1,5 +1,6 @@
 module common {
     exports ru.inbox.savinov_vu.common.interfaces;
+    exports ru.inbox.savinov_vu.common.constant;
     exports ru.inbox.savinov_vu.common.interfaces.CRUD;
     exports ru.inbox.savinov_vu.common.interfaces.numbered;
 
