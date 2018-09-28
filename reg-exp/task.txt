@@ -6,5 +6,6 @@
 . migrate to java 11.
 . add angular 7 ngrx.
 . add angular 7 mainer.
-24. Make path-controller.
+25. Actual sql scripts.+
+24. Make path-controller.+
 23. Fix flexboxes in templates.+
