@@ -38,10 +38,14 @@ repositories {
     mavenCentral()
 }
 
-
+//  <groupId>org.projectlombok</groupId>
+//    <artifactId>lombok</artifactId>
+//    <version>1.18.2</version>
+//    <scope>provided</scope>
 dependencies {
     compile project(':common')
     compile project(':regexp-security')
+    compileOnly('org.projectlombok:lombok:1.18.2')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-web')

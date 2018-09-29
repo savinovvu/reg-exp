@@ -18,8 +18,7 @@
     </button>
     <div
       class="collapse navbar-collapse"
-      id="navbarCollapse"
-      >
+      id="navbarCollapse">
 
 
       <ul class="navbar-nav mr-auto">
@@ -29,7 +28,7 @@
             routerLink="/main"
             routerLinkActive="active"
             class="nav-link"
-            >Главная
+            >{{ 'nav.main' | translate }}
             <span class="sr-only">(current)</span>
           </a>
         </li>
@@ -39,7 +38,7 @@
             routerLink="/course"
             routerLinkActive="active"
             class="nav-link"
-            >Курс
+            >{{ 'nav.course' | translate }}
           </a>
         </li>
 
@@ -48,7 +47,7 @@
             routerLink="/addTask"
             routerLinkActive="active"
             class="nav-link"
-            >Предложить задачу
+            >{{ 'nav.addTask' | translate }}
           </a>
         </li>
 
@@ -57,7 +56,7 @@
             routerLink="usefulLinks"
             routerLinkActive="active"
             class="nav-link"
-            >Полезные ссылки
+            >{{ 'nav.usefulLinks' | translate }}
           </a>
         </li>
 
@@ -66,7 +65,7 @@
             routerLink="/news"
             routerLinkActive="active"
             class="nav-link"
-            >Новости
+            >{{ 'nav.news' | translate }}
           </a>
         </li>
 
@@ -75,7 +74,7 @@
             routerLink="contact"
             routerLinkActive="active"
             class="nav-link"
-            >Контакты
+            >{{ 'nav.contact' | translate }}
           </a>
         </li>
 
@@ -85,7 +84,7 @@
             routerLink="about"
             routerLinkActive="active"
             class="nav-link"
-            >О проекте
+            >{{ 'nav.about' | translate }}
           </a>
         </li>
 
@@ -94,12 +93,16 @@
             routerLink="login"
             routerLinkActive="active"
             class="nav-link"
-            >Войти
+            >{{ 'nav.login' | translate }}
           </a>
         </li>
 
       </ul>
 
+     <span>
+       {{ 'lang' | translate
+       }}: <reg-translate></reg-translate>
+     </span>
 
     </div>
   </div>

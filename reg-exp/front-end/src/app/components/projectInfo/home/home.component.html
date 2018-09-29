@@ -2,15 +2,11 @@
   <div class="cover-container d-flex h-100 p-3 mx-auto flex-column ">
 
     <main role="main" class="inner cover">
-      <h1 class="cover-heading">Добро пожаловать на курс RegExpert</h1>
-      <p class="lead">Данный курс предназначен тем, кто хочет научится одному из наиболее мощных
-        инструментов поиска: регулярным выражениям. Если вы часто ищете информацию в тексте и вам приходится
-        обрабатывать
-        множество вариантов ответов, то вы попали по адресу. Пройдите курс и научитесь находить в тексте именно то, что
-        ищете.
+      <h1 class="cover-heading">{{ 'home.welcome-title' | translate }}</h1>
+      <p class="lead">{{ 'home.welcome-text' | translate }}
       </p>
       <p class="lead">
-        <a routerLink="/about" class="btn btn-lg btn-secondary">Узнать больше</a>
+        <a routerLink="/about" class="btn btn-lg btn-secondary">{{ 'home.welcome-button' | translate }}</a>
       </p>
     </main>
 

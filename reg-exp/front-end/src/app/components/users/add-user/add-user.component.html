@@ -1,28 +1,27 @@
 <div class="text-center mycustom" fxFlex="1 1 auto" fxLayout fxLayoutAlign="center center">
   <form class="form-signin" (ngSubmit)="onSubmit()">
-    <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
+    <h1 class="h3 mb-3 font-weight-normal">{{ 'register.title' | translate }}</h1>
 
-    <label for="name" class="sr-only">Имя</label>
+    <label for="name" class="sr-only">{{ 'register.name' | translate }}</label>
     <input type="text" id="name" name="name" [(ngModel)]="name" class="form-control"
            placeholder="ФИО" required autofocus>
 
-    <label for="login" class="sr-only">Логин</label>
+    <label for="login" class="sr-only">{{ 'register.login' | translate }}</label>
     <input type="text" id="login" name="login" [(ngModel)]="login" class="form-control"
            placeholder="Логин" required>
 
-    <label for="email" class="sr-only">Логин</label>
+    <label for="email" class="sr-only">{{ 'register.email' | translate }}</label>
     <input type="email" id="email" name="email" [(ngModel)]="email" class="form-control"
            placeholder="email" required>
 
-    <label for="inputPassword" class="sr-only">Password</label>
+    <label for="inputPassword" class="sr-only">{{ 'register.password' | translate }}</label>
     <input type="password" id="inputPassword" name="password" [(ngModel)]="password" class="form-control"
            placeholder="Пароль" required>
 
-    <label for="repeatPassword" class="sr-only">Password</label>
+    <label for="repeatPassword" class="sr-only">{{ 'register.repeatPassword' | translate }}</label>
     <input type="password" id="repeatPassword" name="repeatPassword" [(ngModel)]="repeatPassword" class="form-control"
            placeholder="Повторить пароль" required>
 
-
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">{{ 'register.signup' | translate }}</button>
   </form>
 </div>

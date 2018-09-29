@@ -1,12 +1,3 @@
-footer.footer {
-
-  width: 100%;
-  min-height: 60px;
-  line-height: 60px;
-  margin: 0;
-  padding: 0;
-  color: white;
-}
 
 .bounds {
   background-color: #ddd;
@@ -19,11 +10,15 @@ footer.footer {
   flex-direction: column;
 }
 
-
 div.root-component router-outlet.root-router + * {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
+}
+
+.footer-wrapper {
+  background: #343a40;
+  margin: 0;
 }
 
 

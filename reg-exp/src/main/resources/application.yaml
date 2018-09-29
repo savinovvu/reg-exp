@@ -1,3 +1,7 @@
+server:
+  port: 8888
+
+
 spring:
   mandatory-file-encoding: utf-8
   jpa:

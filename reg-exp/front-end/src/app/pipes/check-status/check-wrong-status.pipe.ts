@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Pipe({
@@ -7,6 +7,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CheckWrongStatusPipe implements PipeTransform {
 
+  constructor(private translate: TranslateService) {
+  }
+
+  // todo: make i18n with "check-wrond-status" label
   transform(value: string): string {
     switch (value) {
       case 'Unmatch':

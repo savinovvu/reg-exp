@@ -5,7 +5,7 @@
       <h1 class="display-8">{{task?.name}}</h1>
       <p>{{task?.description}}</p>
       <form class="form-inline form-control regExpForm" (ngSubmit)="onSubmit()">
-        <label for="inputRegExp" class="sr-only">Введите регулярное выражение</label>
+        <label for="inputRegExp" class="sr-only">{{ 'reg-task.inputRegExp' | translate }}</label>
         <input type="text"
                id="inputRegExp"
                [(ngModel)]="regExp"
@@ -14,7 +14,10 @@
                placeholder="Ответ"
                required="">
 
-        <button class="btn  btn-primary submitRegExp" type="submit" mat-button>Проверить</button>
+        <button class="btn  btn-primary submitRegExp"
+                type="submit"
+                mat-button> {{ 'reg-task.check' | translate }}
+        </button>
       </form>
 
     </div>
@@ -23,31 +26,31 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <h3>Условия</h3>
+        <h3>{{ 'reg-task.conditions' | translate }}</h3>
         <div *ngIf="task?.matchStrings?.length > 0">
-          <h6>Найти строки:</h6>
+          <h6>{{ 'reg-task.matchStrings' | translate }}:</h6>
           <p>{{task.matchStrings | join:','}}</p>
         </div>
 
         <div *ngIf="task?.excludedStrings?.length > 0">
-          <h6>Исключить строки:</h6>
+          <h6>{{ 'reg-task.excludedStrings' | translate }}:</h6>
           <p>{{task.excludedStrings | join:','}}</p>
         </div>
 
         <div *ngIf="task?.requiredSubStrings?.length > 0">
-          <h6>Использовать:</h6>
+          <h6>{{ 'reg-task.requiredSubStrings' | translate }}:</h6>
           <p>{{task.requiredSubStrings | join:','}}</p>
         </div>
 
         <div *ngIf="task?.excludedAnswers?.length > 0">
-          <h6>Запрещенные ответы:</h6>
+          <h6>{{ 'reg-task.excludedAnswers' | translate }}:</h6>
           <p>{{task.excludedAnswers | join:','}}</p>
         </div>
       </div>
 
 
       <div class="col-md-4">
-        <h3>Полезные ссылки</h3>
+        <h3>{{ 'reg-task.usefulLinks' | translate }}</h3>
         <ul *ngFor="let link of task?.usefulLinks">
           <li><a href={{link.link}}>{{link.description}}</a></li>
         </ul>
@@ -60,15 +63,32 @@
     </div>
     <div class="row">
       <div class="col-md-4">
-        <p><a class="btn btn-secondary" [routerLink]="['/course',levelNumber]" authorities="button">« К задачам
-          уровня</a></p>
+        <p>
+          <a class="btn btn-secondary"
+             [routerLink]="['/course',levelNumber]"
+             authorities="button">
+            « {{ 'reg-task.inputRegExp' | translate }}
+          </a>
+        </p>
       </div>
       <div class="col-md-4">
-        <p><a class="btn btn-secondary" [routerLink]="['/usefulLinks']" authorities="button">Полезные ссылки »</a></p>
+        <p>
+          <a class="btn btn-secondary"
+             [routerLink]="['/usefulLinks']"
+             authorities="button">
+            {{'reg-task.usefulLinks' | translate }} »
+          </a>
+        </p>
       </div>
       <div class="col-md-4">
-        <p><a class="btn btn-secondary" (click)="nextTask()" authorities="button" [class.disabled]="existNextTask">Следующая
-          задача »</a></p>
+        <p>
+          <a class="btn btn-secondary"
+             (click)="nextTask()"
+             authorities="button"
+             [class.disabled]="existNextTask">
+            {{ 'reg-task.nextTask' | translate }} »
+          </a>
+        </p>
       </div>
     </div>
 

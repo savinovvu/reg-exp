@@ -1,0 +1,73 @@
+{
+  "HELLO": "hello {{value}}",
+  "lang": "Language",
+  "home": {
+    "welcome-text": "welcome text",
+    "welcome-title": "welcome title",
+    "welcome-button": "Next Page"
+  },
+  "nav": {
+    "main": "Home",
+    "course": "Course",
+    "addTask": "Add Task",
+    "usefulLinks": "Useful Links",
+    "news": "News",
+    "contact": "Contact",
+    "about": "About",
+    "login": "Login"
+  },
+  "add-task": {
+    "title": "Title",
+    "submit": "submit",
+    "taskName": "Task Name",
+    "answer": "Answer",
+    "taskDescription": "Task Description",
+    "search": "Search",
+    "exclude": "Exclude",
+    "use": "Use",
+    "useSolution": "Use Solution",
+    "add": "add"
+  },
+  "regexp-check-result": {
+    "result": "Result",
+    "success": "Success",
+    "answer": "Answer",
+    "notInput": "Not input",
+    "notSuggested": "Not suggested"
+  },
+  "check-wrond-status": {
+    "unmatch": "unmatch",
+    "match": "match",
+    "unused": "unused",
+    "equals": "equals",
+    "notAnswer": "Not Answer"
+  },
+  "login":{
+    "welcome":"Welcome",
+    "login":"Login",
+    "password":"Password",
+    "signin":"Signin",
+    "signup":"Signup"
+  },
+  "register":{
+    "title": "Sign-Up",
+    "name": "name",
+    "login": "login",
+    "email": "email",
+    "password": "password",
+    "repeatPassword": "repeat password",
+    "signup": "Go"
+  },
+  "reg-task": {
+    "inputRegExp": "Input RegExp",
+    "check": "Check",
+    "conditions": "Conditions",
+    "matchStrings": "Search strings",
+    "excludedStrings": "Exclude string",
+    "excludedAnswers": "Excluse Answers",
+    "requiredSubStrings": "Require Sub Strings",
+    "usefulLinks": "Usefull Links",
+    "toCourseTask": "To Level Task",
+    "nextTask": "Next Task"
+  }
+}

@@ -119,13 +119,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "reg",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "reg",
       "kebab-case"
     ],
     "no-output-on-prefix": true,

@@ -2,7 +2,6 @@ package ru.inbox.savinov_vu.model.users;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
-import org.springframework.security.core.userdetails.UserDetails;
 import ru.inbox.savinov_vu.common.interfaces.Identify;
 import ru.inbox.savinov_vu.model.tasks.Comment;
 import ru.inbox.savinov_vu.model.tasks.Like;
@@ -10,13 +9,8 @@ import ru.inbox.savinov_vu.model.tasks.RegExpLevel;
 import ru.inbox.savinov_vu.model.tasks.RegExpTask;
 
 import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +22,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -37,7 +30,7 @@ import java.util.Set;
 // todo: split UserDetails and User
 @Entity
 @Table(name = "\"user\"")
-public class User implements Identify, UserDetails {
+public class User implements Identify {
 
 
     private Integer id;
@@ -223,48 +216,7 @@ public class User implements Identify, UserDetails {
     }
 
 
-    //    UserDetails methods
-    @Override
-    @Transient
-    public String getUsername() {
-        return login;
-    }
 
-
-    @Override
-    @Enumerated(EnumType.STRING)
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(joinColumns = @JoinColumn(name = "user_id"))
-    public Set<Authority> getAuthorities() {
-        return authorities;
-    }
-
-
-    @Override
-    @Transient
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-
-    @Override
-    @Transient
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-
-    @Override
-    @Transient
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-
-    @Override
-    public boolean isEnabled() {
-        return enabled;
-    }
 
 
 }

@@ -1,12 +1,12 @@
-<h3>Результат проверки</h3>
+<h3>{{ 'regexp-check-result.result' | translate }}</h3>
 <div *ngIf="resultAnswer; else notResult">
   <div *ngIf="resultAnswer.success; else wrong">
-    <p>Задача успешно прошла проверку</p>
+    <p> {{ 'regexp-check-result.taskDescription' | translate }}</p>
   </div>
 
   <ng-template #wrong>
     <h6>
-      Ответ <span *ngIf="resultAnswer.result?.NotAnswer">не был введён</span>
+      {{ 'regexp-check-result.success' | translate }} <span *ngIf="resultAnswer.result?.NotAnswer">{{ 'regexp-check-result.notInput' | translate }}</span>
     </h6>
     <div *ngIf="resultAnswer.result?.Unmatch">
       <h6>{{"Unmatch"|checkWrongStatus}}</h6>
@@ -32,5 +32,5 @@
 
 </div>
 <ng-template #notResult>
-  <p>Ничего не было предложено</p>
+  <p> {{ 'regexp-check-result.notSuggested' | translate }}</p>
 </ng-template>

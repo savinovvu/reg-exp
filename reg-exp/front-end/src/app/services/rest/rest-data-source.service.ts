@@ -4,6 +4,7 @@ import { Observable, Subject } from 'rxjs/index';
 import { Router } from '@angular/router';
 import { ErrorService } from '../../components/common/error/errorService/error.service';
 import { UserService } from '../security/user.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -27,7 +28,8 @@ export class RestDataSourceService {
     private httpClient: HttpClient,
     private router: Router,
     private errorService: ErrorService,
-    private userService: UserService
+    private userService: UserService,
+    private translate: TranslateService
   ) {
     this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}`;
     this.get(this.rootPath).subscribe(v => {
@@ -37,8 +39,8 @@ export class RestDataSourceService {
 
 
   get(url): Observable<any> {
-    url = this.baseUrl + url;
-    let subject = new Subject();
+    url = this.getUrl(url);
+    const subject = new Subject();
     const headers = this.getHeaders();
     this.httpClient.get(url, { headers }).subscribe(v => {
         subject.next(v);
@@ -51,8 +53,8 @@ export class RestDataSourceService {
 
 
   post(url, item) {
-    url = this.baseUrl + url;
-    let subject = new Subject();
+    url = this.getUrl(url);
+    const subject = new Subject();
     const headers = this.getHeaders();
     this.httpClient.post(url, item, { headers }).subscribe(v => {
         subject.next(v);
@@ -65,8 +67,8 @@ export class RestDataSourceService {
 
 
   put(url, item) {
-    url = this.baseUrl + url;
-    let subject = new Subject();
+    url = this.getUrl(url);
+    const subject = new Subject();
     const headers = this.getHeaders();
     this.httpClient.put(url, item, { headers }).subscribe(v => {
         subject.next(v);
@@ -79,8 +81,8 @@ export class RestDataSourceService {
 
 
   delete(url, item) {
-    url = this.baseUrl + url;
-    let subject = new Subject();
+    url = this.getUrl(url);
+    const subject = new Subject();
     const headers = this.getHeaders();
     this.httpClient.delete(url, { headers }).subscribe(v => {
         subject.next(v);
@@ -92,8 +94,14 @@ export class RestDataSourceService {
   }
 
 
+  private getUrl(url) {
+    const currentLang = this.translate.currentLang;
+    return this.baseUrl + url + `?lang=${currentLang}`;
+  }
+
+
   private getHeaders(): HttpHeaders {
-    let headers2 = new HttpHeaders({
+    const headers2 = new HttpHeaders({
       'authorization': `Bearer ${this.userService.token}`,
       'id': `${this.userService.id}`,
     });
