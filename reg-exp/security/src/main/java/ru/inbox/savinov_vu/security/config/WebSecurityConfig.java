@@ -34,6 +34,8 @@ import static ru.inbox.savinov_vu.common.constant.PathConstant.BACK_END_PATHS;
         jsr250Enabled = true) //@RolesAllowed is enabled
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    public static String I18N_PATH = "/assets/i18n/*.json";
+
     @Autowired
     private JwtAuthenticationEntryPoint unauthorizedHandler;
 
@@ -128,7 +130,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.html",
                         "/**/*.css",
                         "/**/*.js",
-                        BACK_END_PATHS
+                        BACK_END_PATHS,
+                        I18N_PATH
                 )
 
                 // Un-secure H2 Database (for testing purposes, H2 console shouldn't be unprotected in production)
