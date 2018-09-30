@@ -38,10 +38,6 @@ repositories {
     mavenCentral()
 }
 
-//  <groupId>org.projectlombok</groupId>
-//    <artifactId>lombok</artifactId>
-//    <version>1.18.2</version>
-//    <scope>provided</scope>
 dependencies {
     compile project(':common')
     compile project(':regexp-security')

@@ -8,7 +8,7 @@
 . add angular 7 mainer.
 . add font-awesome
 . align footer.
-26. implement i18n.
+26. implement i18n.+
 25. Actual sql scripts.+
 24. Make path-controller.+
 23. Fix flexboxes in templates.+
