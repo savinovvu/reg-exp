@@ -2,7 +2,7 @@ package ru.inbox.savinov_vu.service.tasks;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.inbox.savinov_vu.checker.RegExpTaskCheckerUtil;
+import ru.inbox.savinov_vu.checker.RegExpTaskChecker;
 import ru.inbox.savinov_vu.checker.TaskResulter;
 import ru.inbox.savinov_vu.common.interfaces.CRUD.CRUDService;
 import ru.inbox.savinov_vu.common.interfaces.OperationResulter;
@@ -22,13 +22,16 @@ import java.util.Set;
 public class RegExpTaskService implements CRUDService<RegExpTask>, TaskCheckerService<RegExpTask>, NumberedService<RegExpTask> {
 
     @Autowired
-    RegExpTaskRepository repository;
+    private RegExpTaskRepository repository;
 
     @Autowired
-    RegExpTaskAnswerService regExpTaskAnswerService;
+    private RegExpTaskAnswerService regExpTaskAnswerService;
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
+
+    @Autowired
+    private RegExpTaskChecker regExpTaskChecker;
 
 
     @Override
@@ -39,7 +42,7 @@ public class RegExpTaskService implements CRUDService<RegExpTask>, TaskCheckerSe
                 .findAny()
                 .orElse(null);
 
-        TaskResulter check = RegExpTaskCheckerUtil.check(regExpTask, answer);
+        TaskResulter check = regExpTaskChecker.check(regExpTask, answer);
         if (check.getSuccess()) {
             RegExpTask savedRegExpTask = repository.saveAndFlush(regExpTask);
             RegExpTaskAnswer regExpTaskAnswer = regExpTask.getAnswers().get(0);
@@ -92,7 +95,7 @@ public class RegExpTaskService implements CRUDService<RegExpTask>, TaskCheckerSe
     @Override
     public TaskResulter check(Integer id, String answer) {
         var checkedTask = getById(id);
-        return RegExpTaskCheckerUtil.check(checkedTask, answer);
+        return regExpTaskChecker.check(checkedTask, answer);
     }
 
 

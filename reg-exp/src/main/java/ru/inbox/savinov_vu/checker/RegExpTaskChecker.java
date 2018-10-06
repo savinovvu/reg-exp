@@ -1,5 +1,6 @@
 package ru.inbox.savinov_vu.checker;
 
+import org.springframework.stereotype.Component;
 import ru.inbox.savinov_vu.model.tasks.RegExpTask;
 
 import java.util.regex.Pattern;
@@ -10,26 +11,28 @@ import static ru.inbox.savinov_vu.checker.WrongCheckStatus.Unmatch;
 
 
 
-public interface RegExpTaskCheckerUtil {
+@Component
+public class RegExpTaskChecker {
 
 
-    private static boolean checkMatches(String researchedString, String regExp) {
+    private boolean checkMatches(String researchedString, String regExp) {
         var pattern = Pattern.compile(regExp);
         var matcher = pattern.matcher(researchedString);
         return matcher.matches();
     }
 
 
-    private static boolean checkRequiredString(String requiredString, String regExp) {
+    private boolean checkRequiredString(String requiredString, String regExp) {
         return regExp.contains(requiredString);
     }
 
-    private static boolean isEqualExcludedAnswer(String excludedAnswer, String regExp) {
+
+    private boolean isEqualExcludedAnswer(String excludedAnswer, String regExp) {
         return regExp.equals(excludedAnswer);
     }
 
 
-    static TaskResulter check(RegExpTask regExpTask, String answer) {
+    public TaskResulter check(RegExpTask regExpTask, String answer) {
 
         var result = new TaskResulter();
 
