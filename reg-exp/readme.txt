@@ -1,1 +1,0 @@
-add VM option for run: --add-modules java.xml.bind
