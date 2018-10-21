@@ -16,9 +16,9 @@ div.root-component router-outlet.root-router + * {
   flex-direction: column;
 }
 
-.footer-wrapper {
-  background: #343a40;
-  margin: 0;
-}
+/*.footer-wrapper {*/
+  /*background: #343a40;*/
+  /*margin: 0;*/
+/*}*/
 
 

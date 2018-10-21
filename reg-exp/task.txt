@@ -4,10 +4,12 @@
 . add angular 7 ngrx.
 . add angular 7 mainer.
 . add font-awesome
-. align footer.
 . implement tests with junit 5.
-29. migrate to angular 7.
-28. architecture refactoring to modules.
+. add font-awesome
+. implement table component
+30. align footer.+
+29. migrate to angular 7.+
+28. architecture refactoring to modules.+
 27. migrate to java 11.+
 26. implement i18n.+
 25. Actual sql scripts.+
