@@ -1,13 +1,15 @@
 . alias for String in code.
 . translate to english.
 . implement Liquibase.
-. migrate to angular 7.
 . add angular 7 ngrx.
 . add angular 7 mainer.
 . add font-awesome
-. align footer.
-29. implement tests with junit 5.
-28. architecture refactoring to modules.
+. implement tests with junit 5.
+. add font-awesome
+. implement table component
+30. align footer.+
+29. migrate to angular 7.+
+28. architecture refactoring to modules.+
 27. migrate to java 11.+
 26. implement i18n.+
 25. Actual sql scripts.+
