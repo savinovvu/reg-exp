@@ -1,12 +1,12 @@
 . alias for String in code.
 . translate to english.
 . implement Liquibase.
-. add angular 7 ngrx.
 . add angular 7 mainer.
 . add font-awesome
 . implement tests with junit 5.
 . add font-awesome
 . implement table component
+. add angular 7 ngrx.
 30. align footer.+
 29. migrate to angular 7.+
 28. architecture refactoring to modules.+
@@ -15,3 +15,25 @@
 25. Actual sql scripts.+
 24. Make path-controller.+
 23. Fix flexboxes in templates.+
+22. do refactor: delete UserDetailsService interface fron UserService class.+
+21. Upgrade Controller Method.+
+20. security module.+
+19. modules.+
+18. add to-do.+
+17. security: disable csfr. add author for added task.+
+16. solve logic.+
+15.delete Crud interface.+
+14. Implement UserService in frontEnd. Replace Authority data model.+
+13. add guards to course and addTask.+
+12. implement sign up. and navigate to course if sign up or sign in.+
+11. Implement coars for sign up.+
+10. do refactor: change front end project structure.+
+9. Add CORS: config for authentification.+
+8. do refactor: code style.+
+7. authorization with stateless security token.+
+6. get security token.+
+5. add secure with spring security nd spring data jpa.+
+4. add bootstrap container to error handling.+
+3.Add RestControllerAdvice for exception handling.+
+2. fix building after update angular.+
+1.implement add task with check answer.+
