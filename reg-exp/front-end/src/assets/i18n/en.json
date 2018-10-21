@@ -1,73 +1,71 @@
 {
-  "HELLO": "hello {{value}}",
-  "lang": "Language",
-  "home": {
-    "welcome-text": "welcome text",
-    "welcome-title": "welcome title",
-    "welcome-button": "Next Page"
-  },
-  "nav": {
-    "main": "Home",
-    "course": "Course",
-    "addTask": "Add Task",
-    "usefulLinks": "Useful Links",
-    "news": "News",
-    "contact": "Contact",
-    "about": "About",
-    "login": "Login"
-  },
   "add-task": {
-    "title": "Title",
-    "submit": "submit",
-    "taskName": "Task Name",
+    "add": "add",
     "answer": "Answer",
-    "taskDescription": "Task Description",
-    "search": "Search",
     "exclude": "Exclude",
+    "search": "Search",
+    "submit": "submit",
+    "taskDescription": "Task Description",
+    "taskName": "Task Name",
+    "title": "Title",
     "use": "Use",
-    "useSolution": "Use Solution",
-    "add": "add"
-  },
-  "regexp-check-result": {
-    "result": "Result",
-    "success": "Success",
-    "answer": "Answer",
-    "notInput": "Not input",
-    "notSuggested": "Not suggested"
+    "useSolution": "Use Solution"
   },
   "check-wrond-status": {
-    "unmatch": "unmatch",
-    "match": "match",
-    "unused": "unused",
     "equals": "equals",
-    "notAnswer": "Not Answer"
+    "notAnswer": "Not Answer",
+    "match": "match",
+    "unmatch": "unmatch",
+    "unused": "unused"
   },
-  "login":{
-    "welcome":"Welcome",
-    "login":"Login",
-    "password":"Password",
-    "signin":"Signin",
-    "signup":"Signup"
+  "home": {
+    "welcome-button": "Next Page",
+    "welcome-text": "This course is designed for those who want to learn one of the most powerful search tools: regular expressions. If you are often looking for information in the text and you have to handle a lot of answers, then you have come to the right place. Complete the course and learn to find in the text exactly what you are looking for.",
+    "welcome-title": "Welcome to The Course RegExpert"
   },
-  "register":{
-    "title": "Sign-Up",
-    "name": "name",
-    "login": "login",
+  "login": {
+    "login": "Login",
+    "password": "Password",
+    "signin": "Sign-in",
+    "signup": "Sign-up",
+    "welcome": "Welcome"
+  },
+  "nav": {
+    "about": "About",
+    "addTask": "Add Task",
+    "contact": "Contact",
+    "course": "Course",
+    "login": "Log-in",
+    "main": "Home",
+    "news": "News",
+    "usefulLinks": "Useful Links"
+  },
+  "regexp-check-result": {
+    "answer": "Answer",
+    "notInput": "Not input",
+    "notSuggested": "Not suggested",
+    "result": "Result",
+    "success": "Success"
+  },
+  "register": {
     "email": "email",
+    "login": "login",
+    "name": "name",
     "password": "password",
     "repeatPassword": "repeat password",
-    "signup": "Go"
+    "signup": "Go",
+    "title": "Sign-Up"
   },
   "reg-task": {
-    "inputRegExp": "Input RegExp",
     "check": "Check",
     "conditions": "Conditions",
-    "matchStrings": "Search strings",
-    "excludedStrings": "Exclude string",
     "excludedAnswers": "Excluse Answers",
+    "excludedStrings": "Exclude string",
+    "inputRegExp": "Input RegExp",
+    "matchStrings": "Search strings",
+    "nextTask": "Next Task",
     "requiredSubStrings": "Require Sub Strings",
-    "usefulLinks": "Usefull Links",
     "toCourseTask": "To Level Task",
-    "nextTask": "Next Task"
+    "usefulLinks": "Usefull Links"
   }
 }
