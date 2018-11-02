@@ -38,7 +38,7 @@ export class UserService {
 
 
   set token(value: string) {
-    localStorage.setItem('reg-token', JSON.stringify(value));
+    localStorage.setItem('reg-token', value);
     this._token = value;
   }
 
@@ -49,7 +49,7 @@ export class UserService {
 
 
   set id(value: string) {
-    localStorage.setItem('reg-id', JSON.stringify(value));
+    localStorage.setItem('reg-id', value);
     this._id = value;
   }
 
@@ -60,7 +60,7 @@ export class UserService {
 
 
   set name(value: string) {
-    localStorage.setItem('reg-name', JSON.stringify(value));
+    localStorage.setItem('reg-name', value);
     this._name = value;
   }
 

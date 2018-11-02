@@ -9,7 +9,7 @@
 . implement baseEntity with created date and last updated date.
 . implement logout.
 . implement url routing in back-end.
-32. implement table component
+32. implement dick-td and dick-th components.+
 31. implement save login with localstorage.+
 30. align footer.+
 29. migrate to angular 7.+

@@ -56,6 +56,11 @@
     "signup": "Go",
     "title": "Sign-Up"
   },
+  "reg-course": {
+    "level": "Level",
+    "description": "Description",
+    "status": "Status"
+  },
   "reg-task": {
     "check": "Check",
     "conditions": "Conditions",

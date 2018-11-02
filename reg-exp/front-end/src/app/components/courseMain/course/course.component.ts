@@ -13,9 +13,6 @@ export class CourseComponent extends BaseComponent implements OnInit {
 
   levels;
 
-  displayedColumns = [ 'id', 'description', 'solve' ];
-
-
   constructor(
     private  restService: RestDataSourceService
   ) {

@@ -1,0 +1,64 @@
+div {
+  background: white;
+}
+
+.dick_td {
+  position: relative;
+  padding-top: 26px;
+  font-size: 12px;
+  padding-bottom: 26px;
+  border-top: solid 1px gray;
+  border-bottom: solid 1px gray;
+  height: 80px;
+  text-align: center;
+}
+
+:host(td) {
+  padding: 10px 0;
+}
+
+:host(td:last-child) {
+  padding-right: 18px;
+}
+
+:host(td:last-child .dick_td) {
+  border-right: solid 1px gray;
+  border-radius: 0 6px 6px 0;
+}
+
+:host(td:nth-child(1) .dick_td) {
+  border-left: solid 1px gray;
+  border-radius: 6px 0 0 6px;
+}
+
+:host(td:first-child) {
+  padding-right: 0;
+}
+
+
+:host(tr:first-child td:not(:first-child)) {
+  padding-top: 20px;
+}
+
+:host(tr:last-child td:not(:first-child)) {
+  padding-bottom: 20px;
+}
+
+:host(tr:first-child td:first-child) {
+  padding-top: 25px;
+}
+
+:host(tr:last-child td:first-child) {
+  padding-bottom: 25px;
+}
+
+
+
+:host {
+  background: transparent;
+}
+
+
+
+
+

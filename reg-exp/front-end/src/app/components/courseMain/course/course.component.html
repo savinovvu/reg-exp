@@ -1,27 +1,22 @@
 <div class="container">
-  <div class="example-container mat-elevation-z8">
-    <mat-table #table [dataSource]="levels">
 
-      <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef>Уровень</mat-header-cell>
-        <mat-cell *matCellDef="let level">
+  <table class="table">
+    <thead>
+      <tr>
+        <th dick-th>{{ 'reg-course.level' | translate }}</th>
+        <th dick-th>{{ 'reg-course.description' | translate }}</th>
+        <th dick-th>{{ 'reg-course.status' | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let level of levels">
+        <td dick-td>
           <a [routerLink]="['/course', level.number]">{{level.number}}</a>
-        </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="description">
-        <mat-header-cell *matHeaderCellDef>Описание</mat-header-cell>
-        <mat-cell *matCellDef="let level"> {{level.description}}</mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="solve">
-        <mat-header-cell *matHeaderCellDef>Статус</mat-header-cell>
-        <mat-cell *matCellDef="let level"> {{getSolveText(level.solve)}}</mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-  </div>
+        </td>
+        <td dick-td> {{level.description}}</td>
+        <td dick-td>{{getSolveText(level.solve)}}</td>
+      </tr>
+    </tbody>
+  </table>
 
 </div>
