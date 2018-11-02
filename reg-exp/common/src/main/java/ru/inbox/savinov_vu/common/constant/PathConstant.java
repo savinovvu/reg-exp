@@ -34,4 +34,6 @@ public class PathConstant {
 
     public static final String BACK_END_PATHS = "/back-end-paths";
 
+    public static final String MAIN = "/main";
+
 }
