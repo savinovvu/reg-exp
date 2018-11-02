@@ -1,12 +1,16 @@
 . alias for String in code.
 . translate to english.
+. migrate to graphQL.
 . implement Liquibase.
 . add angular 7 mainer.
 . add font-awesome
 . implement tests with junit 5.
 . add font-awesome
-. implement table component
-. add angular 7 ngrx.
+. implement baseEntity with created date and last updated date.
+. implement logout.
+. implement url routing in back-end.
+32. implement table component
+31. implement save login with localstorage.+
 30. align footer.+
 29. migrate to angular 7.+
 28. architecture refactoring to modules.+
@@ -22,7 +26,7 @@
 18. add to-do.+
 17. security: disable csfr. add author for added task.+
 16. solve logic.+
-15.delete Crud interface.+
+15. delete Crud interface.+
 14. Implement UserService in frontEnd. Replace Authority data model.+
 13. add guards to course and addTask.+
 12. implement sign up. and navigate to course if sign up or sign in.+

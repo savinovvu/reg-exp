@@ -125,7 +125,7 @@
     "component-selector": [
       true,
       "element",
-      "reg",
+
       "kebab-case"
     ],
     "no-output-on-prefix": true,
