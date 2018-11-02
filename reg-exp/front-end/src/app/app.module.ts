@@ -33,6 +33,8 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FooterComponent } from './components/common/footer/footer.component';
 import { TranslateComponent } from './components/library/translate/translate.component';
+import { DickTdComponent } from './components/library/tables/dick-td/dick-td.component';
+import { DickThComponent } from './components/library/tables/dick-th/dick-th.component';
 
 
 
@@ -63,6 +65,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddUserComponent,
     FooterComponent,
     TranslateComponent,
+    DickTdComponent,
+    DickThComponent,
   ],
   imports: [
     BrowserModule,

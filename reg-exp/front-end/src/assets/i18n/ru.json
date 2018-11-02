@@ -56,6 +56,11 @@
     "signup": "Зарегистрироваться",
     "title": "Регистрация"
   },
+  "reg-course": {
+    "level": "Уровень",
+    "description": "Описание",
+    "status": "Статус"
+  },
   "reg-task": {
     "check": "Проверить",
     "conditions": "Условия",
