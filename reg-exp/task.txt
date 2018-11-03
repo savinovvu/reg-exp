@@ -9,9 +9,9 @@
 . add font-awesome
 . implement usefullinks page.
 . implement news page.
-. implement contact page.
-. implement abount page.
+. implement about page.
 . implement logout.
+33. implement contact page.
 32. implement dick-td and dick-th components.+
 31. implement save login with localstorage.+
 30. align footer.+
