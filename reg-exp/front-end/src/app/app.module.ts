@@ -35,7 +35,7 @@ import { FooterComponent } from './components/common/footer/footer.component';
 import { TranslateComponent } from './components/library/translate/translate.component';
 import { DickTdComponent } from './components/library/tables/dick-td/dick-td.component';
 import { DickThComponent } from './components/library/tables/dick-th/dick-th.component';
-
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -76,6 +76,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     FormsModule,
     FlexLayoutModule,
+    AngularFontAwesomeModule,
     TranslateModule.forRoot(
       ({
         loader: {
