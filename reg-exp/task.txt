@@ -3,12 +3,15 @@
 . migrate to graphQL.
 . implement Liquibase.
 . add angular 7 mainer.
-. add font-awesome
 . implement tests with junit 5.
-. add font-awesome
 . implement baseEntity with created date and last updated date.
-. implement logout.
 . implement url routing in back-end.
+. add font-awesome
+. implement usefullinks page.
+. implement news page.
+. implement contact page.
+. implement abount page.
+. implement logout.
 32. implement dick-td and dick-th components.+
 31. implement save login with localstorage.+
 30. align footer.+

@@ -1,4 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { RestDataSourceService } from '../services/rest/rest-data-source.service';
+
 
 
 @Component({
@@ -8,5 +10,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
+
+  constructor(private restService: RestDataSourceService){}
 
 }
