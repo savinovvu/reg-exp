@@ -103,7 +103,7 @@ p.lead {
     -ms-flex-direction: column;
     flex-direction: column;
     width: 17rem;
-    height: 100vh;
+
   }
 
   #sideNav .navbar-brand {
