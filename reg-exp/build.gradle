@@ -25,7 +25,7 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'application'
 apply plugin: "com.moowork.node"
 
-mainClassName = "ru.inbox.savinov_vu.regexp.RegExpApplication"
+mainClassName = "ru.inbox.savinov_vu.RegExpApplication"
 
 group = 'ru.inbox.savinov_vu'
 version = '0.0.1-SNAPSHOT'
