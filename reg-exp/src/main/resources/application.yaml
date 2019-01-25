@@ -3,10 +3,12 @@ server:
 
 
 spring:
+  liquibase:
+    change-log: classpath:/db/changelog/master.xml
   mandatory-file-encoding: utf-8
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
   datasource:

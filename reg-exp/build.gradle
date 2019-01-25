@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.1.0.RELEASE'
+        springBootVersion = '2.1.2.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -45,6 +45,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('io.jsonwebtoken:jjwt:0.9.1')
+    compile("org.liquibase:liquibase-core")
 
 // todo: add spring boot actuator, swagger 2, javamelody
 
