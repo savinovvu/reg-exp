@@ -10,6 +10,7 @@
 . implement news page.
 . implement about page.
 . implement logout.
+35. refactoring to single module project, add api version
 34. add liquibase.+
 33. implement contact page.
 32. implement dick-td and dick-th components.+

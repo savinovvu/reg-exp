@@ -38,8 +38,6 @@ repositories {
 }
 
 dependencies {
-    compile project(':common')
-    compile project(':regexp-security')
     compileOnly('org.projectlombok:lombok:1.18.2')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-security')
@@ -47,7 +45,6 @@ dependencies {
     compile('io.jsonwebtoken:jjwt:0.9.1')
     compile("org.liquibase:liquibase-core")
 
-// todo: add spring boot actuator, swagger 2, javamelody
 
     compile('com.fasterxml.jackson.datatype:jackson-datatype-hibernate5:2.9.5')
 
