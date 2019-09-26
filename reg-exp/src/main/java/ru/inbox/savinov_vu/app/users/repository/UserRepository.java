@@ -20,10 +20,14 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     boolean existsByLogin(String username);
 
-    @Query( "select u.solvedRegExpLevels from User u where u.id =:userId")
+    @Query("select u.solvedRegExpLevels from User u where u.id =:userId")
     Set<RegExpLevel> findSolvedLevels(@Param(("userId")) Integer userId);
 
-    @Query( "select u.solvedRegExpTasks from User u where u.id =:userId")
+    @Query("select u.solvedRegExpTasks from User u where u.id =:userId")
     Set<RegExpTask> findSolvedTasks(@Param(("userId")) Integer userId);
+
+
+    User findByLogin(String login);
+
 
 }

@@ -33,6 +33,12 @@ public class UserService {
     }
 
 
+    public User getByLogin(String login) {
+        User user = userRepository.findByLogin(login);
+        return user;
+    }
+
+
     public boolean delete(Integer id) {
         userRepository.deleteById(id);
         return true;

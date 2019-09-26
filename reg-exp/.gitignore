@@ -25,4 +25,4 @@
 /dist/
 /nbdist/
 /.nb-gradle/
-/src/main/resources/static
+/src/main/resources/static/regexp-front-end

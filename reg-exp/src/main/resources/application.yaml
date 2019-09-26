@@ -6,24 +6,21 @@ spring:
   liquibase:
     change-log: classpath:/db/changelog/master.xml
   mandatory-file-encoding: utf-8
+
   jpa:
     hibernate:
       ddl-auto: validate
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
-  datasource:
+    show-sql: false
 
+  datasource:
     url: jdbc:postgresql://localhost:5432/regexpert
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
-jwt:
-  header: authorization
-  secret: mySecret
-  expiration: 604800
-  route:
-    authentication:
-      path: /users/user/signin
-      refresh: /refresh
-    signup:
-      path: /users/user/signup
+
+  thymeleaf:
+    prefix: file:///${user.dir}/src/main/resources/templates/
+    cache: false
+    mode: HTML

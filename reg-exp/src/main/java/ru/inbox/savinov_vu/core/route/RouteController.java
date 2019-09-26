@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class RouteController {
 
-    @GetMapping({"main", "usefulLinks", "news", "contact", "about", "login", "signup"})
+    @GetMapping({"main", "usefulLinks", "news", "contact", "about", "signup"})
     public ResponseEntity showMainPage() {
-        ClassPathResource classPathResource = new ClassPathResource("static/index.html");
+        ClassPathResource classPathResource = new ClassPathResource("static/regexp-front-end/index.html");
         return ResponseEntity.ok(classPathResource);
     }
 
