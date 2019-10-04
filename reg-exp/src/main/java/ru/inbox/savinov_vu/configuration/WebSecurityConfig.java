@@ -75,7 +75,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .formLogin()
-                .loginPage("/login").failureHandler(unauthorizedEntryPoint())
+                .loginPage("/page/login").failureHandler(unauthorizedEntryPoint())
                 .permitAll()
 
                 .and()
@@ -85,7 +85,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .logout()
-                .logoutUrl("/logout")
+                .logoutUrl("/v1/logout")
                 .deleteCookies("remember-me")
                 .permitAll()
 

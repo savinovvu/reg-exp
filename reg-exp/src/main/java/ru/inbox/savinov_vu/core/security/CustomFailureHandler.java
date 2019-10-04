@@ -17,12 +17,12 @@ public class CustomFailureHandler implements AuthenticationFailureHandler, Authe
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        response.sendRedirect("/login");
+        response.sendRedirect("/page/login");
     }
 
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        response.sendRedirect("/login");
+        response.sendRedirect("/page/login");
     }
 }

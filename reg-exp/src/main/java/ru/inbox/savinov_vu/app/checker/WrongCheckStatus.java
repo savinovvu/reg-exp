@@ -4,6 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import ru.inbox.savinov_vu.common.interfaces.enumInterfaces.DataEnum;
 
+import java.util.Arrays;
+
+import static java.util.Objects.isNull;
+
 
 
 @AllArgsConstructor
@@ -22,4 +26,13 @@ public enum WrongCheckStatus implements DataEnum<String> {
   private String ruLabel;
 
 
+  public static WrongCheckStatus getByValue(String value) {
+    if (isNull(value)) {
+      return null;
+    }
+    return Arrays.stream(values()).filter(v -> v.getValue().equals(value))
+      .findFirst()
+      .orElseThrow(() -> new IllegalArgumentException(String.format("Wrong %s value: %s",
+        WrongCheckStatus.class.getName(), value)));
+  }
 }
