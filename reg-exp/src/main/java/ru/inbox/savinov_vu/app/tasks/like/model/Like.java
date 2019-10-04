@@ -1,5 +1,7 @@
 package ru.inbox.savinov_vu.app.tasks.like.model;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
 import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 import ru.inbox.savinov_vu.app.users.model.User;
 import ru.inbox.savinov_vu.common.interfaces.entityInterfaces.Identify;
@@ -17,50 +19,23 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "\"like\"")
+@Data
+@Accessors(chain = true)
 public class Like implements Identify {
 
 
-    private Integer id;
+  @Id
+  @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
+  private Integer id;
 
-    private User user;
+  @ManyToOne
+  @JoinColumn(name = "user_id", nullable = false)
+  private User user;
 
-    private RegExpTask regExpTask;
-
-
-    @Id
-    @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
-    @Override
-    public Integer getId() {
-        return id;
-    }
+  @ManyToOne
+  @JoinColumn(name = "regexptask_id", nullable = false)
+  private RegExpTask regExpTask;
 
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    public User getUser() {
-        return user;
-    }
-
-
-    @ManyToOne
-    @JoinColumn(name = "regexptask_id", nullable = false)
-    public RegExpTask getRegExpTask() {
-        return regExpTask;
-    }
-
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-
-    public void setRegExpTask(RegExpTask regExpTask) {
-        this.regExpTask = regExpTask;
-    }
 }

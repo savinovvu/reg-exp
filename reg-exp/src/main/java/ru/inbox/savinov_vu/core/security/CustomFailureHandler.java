@@ -14,15 +14,14 @@ import java.io.IOException;
 public class CustomFailureHandler implements AuthenticationFailureHandler, AuthenticationEntryPoint {
 
 
+  @Override
+  public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+    response.sendRedirect("/page/login");
+  }
 
-    @Override
-    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        response.sendRedirect("/page/login");
-    }
 
-
-    @Override
-    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        response.sendRedirect("/page/login");
-    }
+  @Override
+  public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+    response.sendRedirect("/page/login");
+  }
 }

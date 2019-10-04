@@ -10,30 +10,30 @@ import static java.util.Objects.isNull;
 
 public interface DtoEntityMapper<D, E> {
 
-    default List<D> mapEntityToDto(List<E> entityList) {
-        if (isNull(entityList) || entityList.isEmpty()) {
-            return new ArrayList<>();
-        }
-        List<D> result = entityList.stream()
-                .map(this::mapEntityToDto)
-                .collect(Collectors.toList());
-        return result;
+  default List<D> mapEntityToDto(List<E> entityList) {
+    if (isNull(entityList) || entityList.isEmpty()) {
+      return new ArrayList<>();
     }
+    List<D> result = entityList.stream()
+      .map(this::mapEntityToDto)
+      .collect(Collectors.toList());
+    return result;
+  }
 
-    D mapEntityToDto(E entity);
+  D mapEntityToDto(E entity);
 
-    default List<E> mapDtoToEntity(List<D> dtoList) {
-        if (isNull(dtoList) || dtoList.isEmpty()) {
-            return new ArrayList<>();
-        }
-        List<E> result = dtoList.stream()
-                .map(this::mapDtoToEntity)
-                .collect(Collectors.toList());
-        return result;
+  default List<E> mapDtoToEntity(List<D> dtoList) {
+    if (isNull(dtoList) || dtoList.isEmpty()) {
+      return new ArrayList<>();
     }
+    List<E> result = dtoList.stream()
+      .map(this::mapDtoToEntity)
+      .collect(Collectors.toList());
+    return result;
+  }
 
-    default E mapDtoToEntity(D dtoList) {
-        throw new UnsupportedOperationException("Not implemented");
-    }
+  default E mapDtoToEntity(D dtoList) {
+    throw new UnsupportedOperationException("Not implemented");
+  }
 
 }

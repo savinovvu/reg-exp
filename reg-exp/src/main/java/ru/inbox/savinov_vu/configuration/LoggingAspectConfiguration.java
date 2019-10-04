@@ -6,12 +6,14 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.env.Environment;
 import ru.inbox.savinov_vu.core.aop.logging.LoggingAspect;
 
+
+
 @Configuration
 @EnableAspectJAutoProxy
 public class LoggingAspectConfiguration {
 
-    @Bean
-    public LoggingAspect loggingAspect(Environment env) {
-        return new LoggingAspect(env);
-    }
+  @Bean
+  public LoggingAspect loggingAspect(Environment env) {
+    return new LoggingAspect(env);
+  }
 }

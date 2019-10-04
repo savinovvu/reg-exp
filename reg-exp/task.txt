@@ -10,7 +10,9 @@
 . implement news page.
 . implement about page.
 . implement logout.
-38. refactoring model with lombok
+. denormalize regExpTask String sets
+. replace Date to LocalDate (User)
+38. refactoring
 37. add navigation, implement node redirect to back end for dev, refactor project, add logging aspect
 36. add spring security with thymeleaf template +
 35. refactoring to single module project, add api version +

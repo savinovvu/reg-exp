@@ -14,32 +14,37 @@ import java.util.List;
 
 public class CriteriaApiFilter<T> implements Specification<T> {
 
-    protected List<Specifications> conditions;
+  protected List<Specifications> conditions;
 
-    public CriteriaApiFilter() {
-        this.conditions = new ArrayList<>();
-    }
 
-    @Override
-    public Predicate toPredicate(Root root, CriteriaQuery query, CriteriaBuilder cb) {
-        List<Predicate> predicates = buildPredicates(root, query, cb);
-        return predicates.size() > 1
-            ? cb.and(predicates.toArray(new Predicate[predicates.size()]))
-            : predicates.get(0);
-    }
+  public CriteriaApiFilter() {
+    this.conditions = new ArrayList<>();
+  }
 
-    public void addCondition(Specifications<Specification> condition) {
-        this.conditions.add(condition);
-    }
 
-    private List<Predicate> buildPredicates(Root root, CriteriaQuery query, CriteriaBuilder cb) {
-        List<Predicate> predicates = new ArrayList<>();
-        conditions.forEach(condition -> predicates.add(buildPredicate(condition, root, query, cb)));
-        return predicates;
-    }
+  @Override
+  public Predicate toPredicate(Root root, CriteriaQuery query, CriteriaBuilder cb) {
+    List<Predicate> predicates = buildPredicates(root, query, cb);
+    return predicates.size() > 1
+      ? cb.and(predicates.toArray(new Predicate[predicates.size()]))
+      : predicates.get(0);
+  }
 
-    private Predicate buildPredicate(Specification condition, Root root, CriteriaQuery query, CriteriaBuilder cb) {
-        return condition.toPredicate(root, query, cb);
-    }
+
+  public void addCondition(Specifications<Specification> condition) {
+    this.conditions.add(condition);
+  }
+
+
+  private List<Predicate> buildPredicates(Root root, CriteriaQuery query, CriteriaBuilder cb) {
+    List<Predicate> predicates = new ArrayList<>();
+    conditions.forEach(condition -> predicates.add(buildPredicate(condition, root, query, cb)));
+    return predicates;
+  }
+
+
+  private Predicate buildPredicate(Specification condition, Root root, CriteriaQuery query, CriteriaBuilder cb) {
+    return condition.toPredicate(root, query, cb);
+  }
 
 }

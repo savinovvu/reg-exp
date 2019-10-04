@@ -20,15 +20,15 @@ import java.time.LocalDateTime;
 @EntityListeners({AuditingEntityListener.class})
 public abstract class BaseEntityAudit {
 
-    @Column(name = "updated_at")
-    @JsonProperty("updatedAt")
-    @LastModifiedDate
-    private LocalDateTime updatedAt;
+  @Column(name = "updated_at")
+  @JsonProperty("updatedAt")
+  @LastModifiedDate
+  private LocalDateTime updatedAt;
 
-    @Column(name = "created_at")
-    @JsonProperty("createdAt")
-    @CreatedDate
-    private LocalDateTime createdAt;
+  @Column(name = "created_at")
+  @JsonProperty("createdAt")
+  @CreatedDate
+  private LocalDateTime createdAt;
 
 
 }

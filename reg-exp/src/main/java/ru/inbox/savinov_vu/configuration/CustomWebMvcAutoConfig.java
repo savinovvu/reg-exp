@@ -15,14 +15,14 @@ import java.util.List;
 @Configuration
 public class CustomWebMvcAutoConfig implements WebMvcConfigurer {
 
-    @Override
-    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-        for (HttpMessageConverter converter : converters) {
-            if (converter instanceof org.springframework.http.converter.json.MappingJackson2HttpMessageConverter) {
-                ObjectMapper mapper = ((MappingJackson2HttpMessageConverter) converter).getObjectMapper();
-                mapper.registerModule(new Hibernate5Module());
-            }
-        }
+  @Override
+  public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+    for (HttpMessageConverter converter : converters) {
+      if (converter instanceof org.springframework.http.converter.json.MappingJackson2HttpMessageConverter) {
+        ObjectMapper mapper = ((MappingJackson2HttpMessageConverter) converter).getObjectMapper();
+        mapper.registerModule(new Hibernate5Module());
+      }
     }
+  }
 
 }

@@ -10,7 +10,7 @@ import static java.util.Objects.isNull;
 
 
 @Converter
-public class BookingStatusConverter implements AttributeConverter<WrongCheckStatus, String> {
+public class WrongCheckStatusConverter implements AttributeConverter<WrongCheckStatus, String> {
 
 
     @Override

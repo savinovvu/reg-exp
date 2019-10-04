@@ -7,6 +7,8 @@ import ru.inbox.savinov_vu.app.tasks.taskAnswer.repository.RegExpTaskAnswerRepos
 
 import javax.annotation.Resource;
 
+import static ru.inbox.savinov_vu.common.constant.StringConstants.SUCCESSFULLY_ADDED;
+
 
 
 @Service
@@ -18,6 +20,6 @@ public class RegExpTaskAnswerService {
 
     public OperationResulter<String> add(RegExpTaskAnswer regExpTaskAnswer) {
         repository.saveAndFlush(regExpTaskAnswer);
-        return () -> "successfully added";
+        return () -> SUCCESSFULLY_ADDED;
     }
 }

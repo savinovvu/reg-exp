@@ -8,33 +8,33 @@ import static java.util.Objects.nonNull;
 
 public interface Range<T extends Temporal> {
 
-    default boolean isPresent() {
-        return nonNull(getStart()) && nonNull(getEnd());
-    }
+  default boolean isPresent() {
+    return nonNull(getStart()) && nonNull(getEnd());
+  }
 
-    boolean isRange();
+  boolean isRange();
 
-    T getStart();
+  T getStart();
 
-    T getEnd();
-
-
-    default boolean intersectionWithAnotherRange(Range<T> anotherRange) {
-        return isInsideAnotherRange(anotherRange)
-            || isContainPoint(anotherRange.getStart())
-            || isContainPoint(anotherRange.getEnd());
-    }
+  T getEnd();
 
 
-    boolean isBeforeAnotherRange(Range<T> anotherRange);
+  default boolean intersectionWithAnotherRange(Range<T> anotherRange) {
+    return isInsideAnotherRange(anotherRange)
+      || isContainPoint(anotherRange.getStart())
+      || isContainPoint(anotherRange.getEnd());
+  }
 
-    boolean isAfterAnotherRange(Range<T> anotherRange);
 
-    boolean isInsideAnotherRange(Range<T> anotherRange);
+  boolean isBeforeAnotherRange(Range<T> anotherRange);
 
-    boolean isContainAnotherRange(Range<T> anotherRange);
+  boolean isAfterAnotherRange(Range<T> anotherRange);
 
-    boolean isContainPoint(T point);
+  boolean isInsideAnotherRange(Range<T> anotherRange);
+
+  boolean isContainAnotherRange(Range<T> anotherRange);
+
+  boolean isContainPoint(T point);
 
 
 }

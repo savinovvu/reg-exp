@@ -1,6 +1,9 @@
 package ru.inbox.savinov_vu.app.tasks.level.model;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.proxy.HibernateProxyHelper;
@@ -10,7 +13,6 @@ import ru.inbox.savinov_vu.app.users.model.User;
 import ru.inbox.savinov_vu.common.interfaces.entityInterfaces.Identify;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,110 +28,57 @@ import java.util.Objects;
 
 
 @Entity
+@Getter
+@Setter
+@Accessors(chain = true)
 public class RegExpLevel implements Identify {
 
-    private Integer id;
+  @Id
+  @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
+  private Integer id;
 
-    private Integer number;
+  private Integer number;
 
-    private String description;
+  private String description;
 
-    private List<RegExpTask> regExpTasks;
+  @LazyCollection(LazyCollectionOption.TRUE)
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "regExpLevel")
+  @Lazy
+  private List<RegExpTask> regExpTasks;
 
-    @OrderBy("name ASC")
-    private List<User> users;
+  @LazyCollection(LazyCollectionOption.TRUE)
+  @ManyToMany(mappedBy = "solvedRegExpLevels")
+  @OrderBy("name ASC")
+  private List<User> users;
 
-    private Boolean solve = false;
-
-
-    @Id
-    @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
-    @Override
-    public Integer getId() {
-        return id;
-    }
-
-
-    @Column(unique = true)
-    public Integer getNumber() {
-        return number;
-    }
+  private Boolean solve = false;
 
 
-    public String getDescription() {
-        return description;
-    }
+  @Transient
+  @JsonGetter(value = "solve")
+  public Boolean isSolve() {
+    return solve;
+  }
 
 
-    @LazyCollection(LazyCollectionOption.TRUE)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "regExpLevel")
-    @Lazy
-    public List<RegExpTask> getRegExpTasks() {
-        return regExpTasks;
-    }
+  // for Jackson serialization
+  public Boolean getSolve() {
+    return solve;
+  }
 
 
-    @LazyCollection(LazyCollectionOption.TRUE)
-    @ManyToMany(mappedBy = "solvedRegExpLevels")
-    public List<User> getUsers() {
-        return users;
-    }
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != HibernateProxyHelper.getClassWithoutInitializingProxy(o)) return false;
+    RegExpLevel that = (RegExpLevel) o;
+    return id.equals(that.id);
+  }
 
 
-    @Transient
-    @JsonGetter(value = "solve")
-    public Boolean isSolve() {
-        return solve;
-    }
-
-   // for Jackson serialization
-    public Boolean getSolve() {
-        return solve;
-    }
-
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
-
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-
-    public void setRegExpTasks(List<RegExpTask> regExpTasks) {
-        this.regExpTasks = regExpTasks;
-    }
-
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
-
-    public void setSolve(Boolean solve) {
-        this.solve = solve;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != HibernateProxyHelper.getClassWithoutInitializingProxy(o)) return false;
-        RegExpLevel that = (RegExpLevel) o;
-        return id.equals(that.id);
-    }
-
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
+  }
 }

@@ -17,92 +17,90 @@ import java.util.regex.Pattern;
 
 
 
-
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = false, prePostEnabled = true, jsr250Enabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private static final Pattern DOMAIN_PATTERN = Pattern.compile("^.+?\\.([A-Za-z0-9\\-]+\\.[a-z]+)[:0-9]*$");
+  private static final Pattern DOMAIN_PATTERN = Pattern.compile("^.+?\\.([A-Za-z0-9\\-]+\\.[a-z]+)[:0-9]*$");
 
 
-    @Resource
-    private SecurityService userDetailsService;
+  @Resource
+  private SecurityService userDetailsService;
 
 
-
-    @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
-
-
-    @Bean
-    public CustomFailureHandler unauthorizedEntryPoint() {
-        return new CustomFailureHandler();
-    }
+  @Bean
+  @Override
+  public AuthenticationManager authenticationManagerBean() throws Exception {
+    return super.authenticationManagerBean();
+  }
 
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .and()
-                .userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-    }
+  @Bean
+  public CustomFailureHandler unauthorizedEntryPoint() {
+    return new CustomFailureHandler();
+  }
 
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        String[] publicPaths = new String[]{
-                "/main", "/usefulLinks", "/news", "/contact", "/about", "/signup",
-                "/css/**", "/icons/**", "/images/**", "/js/**", "/layer/**",
-                "/regexp-front-end/**",
-                "/fonts/**"
-        };
-
-        http
-                .headers().frameOptions().disable()
-                .and()
-
-                .csrf().disable().authorizeRequests()
+  @Override
+  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    auth.inMemoryAuthentication()
+      .and()
+      .userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+  }
 
 
-                .and()
-                .authorizeRequests()
-                .antMatchers(publicPaths).permitAll()
-                .anyRequest().authenticated()
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+    String[] publicPaths = new String[]{
+      "/main", "/usefulLinks", "/news", "/contact", "/about", "/signup",
+      "/css/**", "/icons/**", "/images/**", "/js/**", "/layer/**",
+      "/regexp-front-end/**",
+      "/fonts/**"
+    };
 
-                .and()
-                .formLogin()
-                .loginPage("/page/login").failureHandler(unauthorizedEntryPoint())
-                .permitAll()
+    http
+      .headers().frameOptions().disable()
+      .and()
 
-                .and()
-                .anonymous()
-                .principal("System")
-
-
-                .and()
-                .logout()
-                .logoutUrl("/v1/logout")
-                .deleteCookies("remember-me")
-                .permitAll()
-
-                .and()
-                .exceptionHandling()
-                .authenticationEntryPoint(unauthorizedEntryPoint())
-
-                .and()
-                .rememberMe().userDetailsService(userDetailsService).key("userSecurityKey")
-                .tokenValiditySeconds(864000);
-    }
+      .csrf().disable().authorizeRequests()
 
 
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+      .and()
+      .authorizeRequests()
+      .antMatchers(publicPaths).permitAll()
+      .anyRequest().authenticated()
+
+      .and()
+      .formLogin()
+      .loginPage("/page/login").failureHandler(unauthorizedEntryPoint())
+      .permitAll()
+
+      .and()
+      .anonymous()
+      .principal("System")
+
+
+      .and()
+      .logout()
+      .logoutUrl("/v1/logout")
+      .deleteCookies("remember-me")
+      .permitAll()
+
+      .and()
+      .exceptionHandling()
+      .authenticationEntryPoint(unauthorizedEntryPoint())
+
+      .and()
+      .rememberMe().userDetailsService(userDetailsService).key("userSecurityKey")
+      .tokenValiditySeconds(864000);
+  }
+
+
+  @Bean
+  public BCryptPasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
 
 
 }
