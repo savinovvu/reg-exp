@@ -10,8 +10,9 @@
 . implement news page.
 . implement about page.
 . implement logout.
-36. add spring security with thymeleaf template
-35. refactoring to single module project, add api version
+37. add navigation, implement node redirect to back end for dev, refactor project, add logging aspect
+36. add spring security with thymeleaf template +
+35. refactoring to single module project, add api version +
 34. add liquibase.+
 33. implement contact page.
 32. implement dick-td and dick-th components.+

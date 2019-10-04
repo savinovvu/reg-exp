@@ -1,29 +1,22 @@
 buildscript {
     ext {
-        springBootVersion = '2.1.2.RELEASE'
+        springBootVersion = '2.1.8.RELEASE'
     }
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        // node control
-        classpath "com.moowork.gradle:gradle-node-plugin:1.2.0"
     }
 }
 
 
-
-plugins {
-    id "com.moowork.node" version "1.2.0"
-}
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'application'
-apply plugin: "com.moowork.node"
 
 mainClassName = "ru.inbox.savinov_vu.RegExpApplication"
 
@@ -43,9 +36,8 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     compile('org.springframework.boot:spring-boot-starter-web')
-    compile('io.jsonwebtoken:jjwt:0.9.1')
+    compile('org.springframework.boot:spring-boot-starter-log4j2')
     compile("org.liquibase:liquibase-core")
-
 
     compile('com.fasterxml.jackson.datatype:jackson-datatype-hibernate5:2.9.5')
 
@@ -55,39 +47,13 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('org.springframework.security:spring-security-test')
 }
-
-node {
-    version = "8.11.1"
-    download = true
-    nodeModulesDir = file("front-end")
-}
-
-task buildClientDev(type: NpmTask, dependsOn: 'npmInstall') {
-    group = 'build'
-    description = 'Compile client side folder for development'
-    args = ['run', 'buildDev']
-}
-
-task buildClient(type: NpmTask, dependsOn: 'npmInstall') {
-    group = 'build'
-    description = "Compile client side folder for production"
-    args = ['run', 'build']
-}
-
-task buildClientWatch(type: NpmTask, dependsOn: 'npmInstall') {
-    group = 'application'
-    description = "Build and watches the client side assets for rebuilding"
-    args = ['run', 'buildWatch']
-}
-
-bootRun.dependsOn(buildClientDev)
-jar.dependsOn(buildClient)
-
-subprojects {
-    afterEvaluate {
-        repositories {
-            jcenter()
-        }
+configurations {
+    all{
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
     }
+
 }
+
+
 

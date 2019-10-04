@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.config;
+package ru.inbox.savinov_vu.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -55,11 +55,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         String[] publicPaths = new String[]{
+                "/main", "/usefulLinks", "/news", "/contact", "/about", "/signup",
                 "/css/**", "/icons/**", "/images/**", "/js/**", "/layer/**",
-                "/fonts/**", "/getemail", "/reset", "/some", "/appointments/public/**", "/pic/**",
-                "/appointments/thankyou", "/appointments/booking/form/**", "/appointments/booking/form/save",
-                "/appointments/image/**", "/appointments/public/discount/checkCode", "/appointments/public/discount/applyToAppointment",
-            "/appointments/booking/confirm-from-email/*/*","/appointments/booking/thank-you/*/*", "/appointments/booking/payment/*/*"
+                "/regexp-front-end/**",
+                "/fonts/**"
         };
 
         http

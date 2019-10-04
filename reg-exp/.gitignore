@@ -26,3 +26,25 @@
 /nbdist/
 /.nb-gradle/
 /src/main/resources/static/regexp-front-end
+
+### Logs ###
+/logs/**
+
+
+### FRONT-END ###
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/front-end/dist
+/front-end/dist-server
+/front-end/tmp
+/front-end/out-tsc
+
+# dependencies
+/front-end/node_modules
+
+
+# e2e
+/front-end/e2e/*.js
+/front-end/e2e/*.map
+

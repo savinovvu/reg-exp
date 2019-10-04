@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.config;
+package ru.inbox.savinov_vu.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;

@@ -57,7 +57,7 @@ public class OptionForSelect {
 
 
     public static OptionForSelect of(DataEnum dataEnum) {
-        OptionForSelect result = new OptionForSelect(String.valueOf(dataEnum.getValue()), dataEnum.getLabel());
+        OptionForSelect result = new OptionForSelect(String.valueOf(dataEnum.getValue()), dataEnum.getRuLabel());
         return result;
     }
 

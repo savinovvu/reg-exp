@@ -12,7 +12,7 @@ public class RouteController {
 
     @GetMapping({"main", "usefulLinks", "news", "contact", "about", "signup"})
     public ResponseEntity showMainPage() {
-        ClassPathResource classPathResource = new ClassPathResource("static/regexp-front-end/index.html");
+        ClassPathResource classPathResource = new ClassPathResource("/static/regexp-front-end/index.html");
         return ResponseEntity.ok(classPathResource);
     }
 
