@@ -40,7 +40,7 @@ public class RegExpTaskChecker {
       return result.setWrong("not answer", NOT_ANSWER);
     }
 
-    regExpTask.getMatchStrings().stream()
+    regExpTask.getMatchedStrings().stream()
       .filter(v -> !checkMatches(v, answer))
       .forEach(v -> result.setWrong(v, UNMATCH));
 

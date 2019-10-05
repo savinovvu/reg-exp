@@ -31,15 +31,17 @@ public class UsefulLinks implements Identify {
 
   private String link;
 
-  private String description;
+  private String ruDescription;
+
+  private String enDescription;
 
   @LazyCollection(LazyCollectionOption.TRUE)
   @ManyToMany
-  @JoinTable(name = "usefullnks_regexptask",
+  @JoinTable(name = "useful_links_regexp_task",
     joinColumns = {
-      @JoinColumn(name = "userfullinks_id", referencedColumnName = "id")},
+      @JoinColumn(name = "useful_link_id", referencedColumnName = "id")},
     inverseJoinColumns = {
-      @JoinColumn(name = "regexptask_id", referencedColumnName = "id")})
+      @JoinColumn(name = "regexp_task_id", referencedColumnName = "id")})
   private List<RegExpTask> regExpTasks;
 
 

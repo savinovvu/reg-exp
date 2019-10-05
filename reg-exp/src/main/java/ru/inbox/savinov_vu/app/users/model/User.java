@@ -22,15 +22,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
 
 @Entity
-@Table(name = "\"user\"")
+@Table(name = "users")
 @NoArgsConstructor
 @Data
 public class User implements Identify {
@@ -64,28 +62,27 @@ public class User implements Identify {
 
   @LazyCollection(LazyCollectionOption.TRUE)
   @ManyToMany
-  @JoinTable(name = "user_solvedregexptask",
+  @JoinTable(name = "solved_regexp_tasks",
     joinColumns = {
       @JoinColumn(name = "user_id", referencedColumnName = "id")},
     inverseJoinColumns = {
-      @JoinColumn(name = "solvedregexptask_id", referencedColumnName = "id")})
+      @JoinColumn(name = "regexp_task_id", referencedColumnName = "id")})
   private List<RegExpTask> solvedRegExpTasks;
 
   @LazyCollection(LazyCollectionOption.TRUE)
   @ManyToMany
-  @JoinTable(name = "user_solvedregexplevel",
+  @JoinTable(name = "solved_regexp_levels",
     joinColumns = {
       @JoinColumn(name = "user_id", referencedColumnName = "id")},
     inverseJoinColumns = {
-      @JoinColumn(name = "solvedregexplevel_id", referencedColumnName = "id")})
+      @JoinColumn(name = "regexp_level_id", referencedColumnName = "id")})
   private List<RegExpLevel> solvedRegExpLevels;
 
   @LazyCollection(LazyCollectionOption.TRUE)
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "author")
   private List<RegExpTask> addedTask;
 
-  @Temporal(TemporalType.TIMESTAMP)
-  private Date lastPasswordResetDate;
+  private LocalDateTime lastPasswordResetDate;
 
 
   public User(Integer id) {

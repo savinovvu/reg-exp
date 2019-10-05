@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="create regexp_tasks" author="savinov_vu">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="regexp_tasks"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="regexp_tasks">
+
+            <column name="id" type="int(11)" defaultValueSequenceNext="global_seq">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+
+            <column name="number" type="int(4)">
+            </column>
+
+            <column name="en_title" type="text">
+            </column>
+
+            <column name="ru_title" type="text">
+            </column>
+
+            <column name="en_description" type="text">
+            </column>
+
+            <column name="ru_description" type="text">
+            </column>
+
+            <column name="matched_strings" type="text"/>
+
+            <column name="excluded_strings" type="text"/>
+
+            <column name="required_substrings" type="text"/>
+
+            <column name="excluded_answers" type="text"/>
+
+            <column name="answers" type="text"/>
+
+            <column name="author_id" type="int(11)">
+                <constraints foreignKeyName="regexp_task_users"
+                             nullable="false"
+                             referencedTableName="users"
+                             referencedColumnNames="id"/>
+            </column>
+
+            <column name="regexp_level_id" type="int(11)">
+                <constraints foreignKeyName="regexp_task_regexp_levels"
+                             referencedTableName="regexp_levels"
+                             referencedColumnNames="id"/>
+            </column>
+
+            <column name="enabled" type="boolean" defaultValue="1">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+    </changeSet>
+
+
+</databaseChangeLog>

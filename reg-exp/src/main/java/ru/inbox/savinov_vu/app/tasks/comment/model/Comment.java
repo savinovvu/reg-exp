@@ -14,12 +14,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 
 
 @Entity
 @Data
 @Accessors(chain = true)
+@Table(name = "comments")
 public class Comment implements Identify {
 
   @Id
@@ -34,7 +36,7 @@ public class Comment implements Identify {
   private User user;
 
   @ManyToOne
-  @JoinColumn(name = "regexptask_id", nullable = false)
+  @JoinColumn(name = "regexp_task_id", nullable = false)
   private RegExpTask regExpTask;
 
 

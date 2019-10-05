@@ -18,7 +18,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "\"like\"")
+@Table(name = "likes")
 @Data
 @Accessors(chain = true)
 public class Like implements Identify {
@@ -34,7 +34,7 @@ public class Like implements Identify {
   private User user;
 
   @ManyToOne
-  @JoinColumn(name = "regexptask_id", nullable = false)
+  @JoinColumn(name = "regexp_task_id", nullable = false)
   private RegExpTask regExpTask;
 
 

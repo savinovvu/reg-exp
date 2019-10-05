@@ -9,16 +9,15 @@ import org.hibernate.annotations.LazyCollectionOption;
 import ru.inbox.savinov_vu.app.tasks.comment.model.Comment;
 import ru.inbox.savinov_vu.app.tasks.level.model.RegExpLevel;
 import ru.inbox.savinov_vu.app.tasks.like.model.Like;
-import ru.inbox.savinov_vu.app.tasks.taskAnswer.model.RegExpTaskAnswer;
 import ru.inbox.savinov_vu.app.tasks.usefulLinks.model.UsefulLinks;
 import ru.inbox.savinov_vu.app.users.model.User;
 import ru.inbox.savinov_vu.common.interfaces.entityInterfaces.Identify;
+import ru.inbox.savinov_vu.core.converter.ListStringConverter;
 
 import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
+import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,16 +28,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.persistence.UniqueConstraint;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 
 
 @Entity
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"regexplevel_id", "number"})})
+@Table(name = "regexp_tasks")
 @Data
 @Accessors(chain = true)
 public class RegExpTask implements Identify {
@@ -50,25 +45,27 @@ public class RegExpTask implements Identify {
 
   private Integer number;
 
-  private String name;
+  private String ruTitle;
+  private String enTitle;
 
-  private String description;
+  private String ruDescription;
+  private String enDescription;
 
-  @ElementCollection(fetch = FetchType.EAGER)
-  @CollectionTable(joinColumns = @JoinColumn(name = "regexptask_id"))
-  private Set<String> matchStrings = new HashSet<>();
+  @Column(name = "matched_strings", columnDefinition = "text")
+  @Convert(converter = ListStringConverter.class)
+  private List<String> matchedStrings;
 
-  @ElementCollection(fetch = FetchType.EAGER)
-  @CollectionTable(joinColumns = @JoinColumn(name = "regexptask_id"))
-  private Set<String> excludedStrings = new HashSet<>();
+  @Column(name = "excluded_strings", columnDefinition = "text")
+  @Convert(converter = ListStringConverter.class)
+  private List<String> excludedStrings;
 
-  @ElementCollection(fetch = FetchType.EAGER)
-  @CollectionTable(joinColumns = @JoinColumn(name = "regexptask_id"))
-  private Set<String> requiredSubStrings = new HashSet<>();
+  @Column(name = "required_substrings", columnDefinition = "text")
+  @Convert(converter = ListStringConverter.class)
+  private List<String> requiredSubStrings;
 
-  @ElementCollection(fetch = FetchType.EAGER)
-  @CollectionTable(joinColumns = @JoinColumn(name = "regexptask_id"))
-  private Set<String> excludedAnswers = new HashSet<>();
+  @Column(name = "excluded_answers", columnDefinition = "text")
+  @Convert(converter = ListStringConverter.class)
+  private List<String> excludedAnswers;
 
   @LazyCollection(LazyCollectionOption.TRUE)
   @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "regExpTask")
@@ -79,20 +76,20 @@ public class RegExpTask implements Identify {
   private List<Comment> comments;
 
   @ManyToOne
-  @JoinColumn(name = "regexplevel_id", nullable = true)
+  @JoinColumn(name = "regexp_level_id")
   private RegExpLevel regExpLevel;
 
   @ManyToOne
-  @JoinColumn(name = "author_id", nullable = true)
+  @JoinColumn(name = "author_id", nullable = false)
   private User author;
 
   @LazyCollection(LazyCollectionOption.TRUE)
   @ManyToMany(mappedBy = "solvedRegExpTasks")
   private List<User> users;
 
-  @LazyCollection(LazyCollectionOption.TRUE)
-  @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "regExpTask")
-  private List<RegExpTaskAnswer> answers = new ArrayList<>();
+  @Column(name = "answers", columnDefinition = "text")
+  @Convert(converter = ListStringConverter.class)
+  private List<String> answers;
 
   @JsonIgnore
   private Boolean enabled;

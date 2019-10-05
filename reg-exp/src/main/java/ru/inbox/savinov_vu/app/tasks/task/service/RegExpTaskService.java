@@ -7,8 +7,6 @@ import ru.inbox.savinov_vu.app.checker.RegExpTaskChecker;
 import ru.inbox.savinov_vu.app.checker.TaskResulter;
 import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 import ru.inbox.savinov_vu.app.tasks.task.repository.RegExpTaskRepository;
-import ru.inbox.savinov_vu.app.tasks.taskAnswer.model.RegExpTaskAnswer;
-import ru.inbox.savinov_vu.app.tasks.taskAnswer.service.RegExpTaskAnswerService;
 import ru.inbox.savinov_vu.app.users.repository.UserRepository;
 import ru.inbox.savinov_vu.core.interfaces.OperationResulter;
 
@@ -24,9 +22,6 @@ public class RegExpTaskService {
 
   @Resource
   private final RegExpTaskRepository repository;
-
-  @Resource
-  private final RegExpTaskAnswerService regExpTaskAnswerService;
 
   @Resource
   private final UserRepository userRepository;
@@ -78,15 +73,12 @@ public class RegExpTaskService {
   public OperationResulter add(RegExpTask regExpTask) {
 
     String answer = regExpTask.getAnswers().stream()
-      .map(RegExpTaskAnswer::getAnswer)
-      .findAny()
+      .findFirst()
       .orElse(null);
 
     TaskResulter check = regExpTaskChecker.check(regExpTask, answer);
     if (check.getSuccess()) {
-      RegExpTask savedRegExpTask = repository.saveAndFlush(regExpTask);
-      RegExpTaskAnswer regExpTaskAnswer = regExpTask.getAnswers().get(0);
-      regExpTaskAnswerService.add(regExpTaskAnswer.setRegExpTask(savedRegExpTask));
+      repository.saveAndFlush(regExpTask);
     }
     return check;
   }
