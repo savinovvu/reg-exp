@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 import ru.inbox.savinov_vu.app.tasks.task.service.RegExpTaskService;
 import ru.inbox.savinov_vu.app.users.model.User;
+import ru.inbox.savinov_vu.app.users.service.UserService;
 import ru.inbox.savinov_vu.core.interfaces.OperationResulter;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
 
 
@@ -28,11 +30,14 @@ public class RegExpTaskController {
   @Resource
   private final RegExpTaskService regExpTaskService;
 
+  @Resource
+  private final UserService userService;
+
 
   @GetMapping("/v1/tasks/regexptask/parent/{id}")
-  public ResponseEntity<List<RegExpTask>> getAllByParentId(HttpServletRequest request, @PathVariable("id") Integer id) {
-    Integer userId = Integer.valueOf(request.getHeader("id"));
-    return new ResponseEntity(regExpTaskService.getAllByParentId(id, userId), HttpStatus.ACCEPTED.OK);
+  public ResponseEntity<List<RegExpTask>> getAllByParentId(Principal principal, HttpServletRequest request, @PathVariable("id") Integer id) {
+    User user = userService.getByLogin(principal.getName());
+    return new ResponseEntity(regExpTaskService.getAllByParentId(id, user.getId()), HttpStatus.ACCEPTED.OK);
   }
 
 
@@ -48,7 +53,7 @@ public class RegExpTaskController {
   }
 
 
-  @GetMapping("/v1/tasks/regexplevel/byNumber/{parentNumber}/{number}")
+  @GetMapping("/v1/tasks/regexptask/byNumber/{parentNumber}/{number}")
   public ResponseEntity getByParentNumberAndByNumber(@PathVariable("parentNumber") Integer parentNumber,
                                                      @PathVariable("number") Integer number) {
     return new ResponseEntity(regExpTaskService.getByParentNumberAndByNumber(parentNumber, number),
@@ -57,10 +62,10 @@ public class RegExpTaskController {
 
 
   @PostMapping("/v1/tasks/regexptask")
-  public ResponseEntity<OperationResulter> add(HttpServletRequest request, @RequestBody RegExpTask regExpTask) {
-    Integer userId = Integer.valueOf(request.getHeader("id"));
+  public ResponseEntity<OperationResulter> add(Principal principal, @RequestBody RegExpTask regExpTask) {
+    User user = userService.getByLogin(principal.getName());
     regExpTask.setEnabled(false);
-    regExpTask.setAuthor(new User(userId));
+    regExpTask.setAuthor(user);
     return new ResponseEntity(regExpTaskService.add(regExpTask), HttpStatus.ACCEPTED.OK);
   }
 

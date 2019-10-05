@@ -27,7 +27,7 @@ export class LevelComponent extends BaseComponent implements OnInit {
   ) {
     super();
     this.level = router.snapshot.params[ 'levelNumber' ];
-    this.subscribtion = restService.get(restService.path.regexpTask + restService.path.parent + `/${this.level}`).subscribe(v => {
+    this.subscribtion = restService.get(`/v1/tasks/regexptask/parent/${this.level}`).subscribe(v => {
       this.tasks = v;
     });
   }

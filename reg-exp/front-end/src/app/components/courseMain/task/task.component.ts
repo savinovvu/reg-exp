@@ -42,15 +42,15 @@ export class TaskComponent extends BaseComponent implements OnInit {
       this.taskNumber = params[ 'taskNumber' ];
       this.levelNumber = params[ 'levelNumber' ];
       this.subscribtion = restService
-        .get(this.restService.path.regexpTask + this.restService.path.numbered + `/${this.levelNumber}/${this.taskNumber}`)
+        .get(`/v1/tasks/regexptask/byNumber/${this.levelNumber}/${this.taskNumber}`)
         .subscribe(taskData => {
-        this.task = taskData;
-        this.subscribtion = restService
-          .get(this.restService.path.regexpTask + this.restService.path.parent + `/${this.task.regExpLevel.id}`)
-          .subscribe(tasksAtLevel => {
-          this.existNextTask = this.task.number >= tasksAtLevel.length;
+          this.task = taskData;
+          this.subscribtion = restService
+            .get(`/v1/tasks/regexptask/parent/${this.task.regExpLevel.id}`)
+            .subscribe(tasksAtLevel => {
+              this.existNextTask = this.task.number >= tasksAtLevel.length;
+            });
         });
-      });
     });
   }
 

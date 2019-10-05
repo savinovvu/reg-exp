@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 import { Observable } from 'rxjs';
 import { isNil } from 'lodash';
 import { UserService } from '../security/user.service';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -13,7 +14,7 @@ export class AuthGuard implements CanActivate {
 
   constructor(
     private router: Router,
-    private userService: UserService
+    private cookieService: CookieService
   ) {
   }
 
@@ -21,8 +22,8 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (isNil(this.userService.token)) {
-      this.router.navigateByUrl('/login');
+    if (isNil(this.cookieService.get('JSESSIONID'))) {
+      window.location.replace('/page/login');
       return false;
     }
     return true;

@@ -8,21 +8,8 @@ import { TranslateService } from '@ngx-translate/core';
 
 
 
-const PROTOCOL = 'http';
-const PORT = 8080;
-
-
-
 @Injectable()
 export class RestDataSourceService {
-
-  private baseUrl;
-
-
-  public path: Path;
-
-  private rootPath = '/back-end-paths';
-
 
   constructor(
     private httpClient: HttpClient,
@@ -31,18 +18,13 @@ export class RestDataSourceService {
     private userService: UserService,
     private translate: TranslateService
   ) {
-    this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}`;
-    this.get(this.rootPath).subscribe(v => {
-      this.path = v;
-    });
   }
 
 
   get(url): Observable<any> {
     url = this.getUrl(url);
     const subject = new Subject();
-    const headers = this.getHeaders();
-    this.httpClient.get(url, { headers }).subscribe(v => {
+    this.httpClient.get(url).subscribe(v => {
         subject.next(v);
       },
       error => {
@@ -55,8 +37,7 @@ export class RestDataSourceService {
   post(url, item) {
     url = this.getUrl(url);
     const subject = new Subject();
-    const headers = this.getHeaders();
-    this.httpClient.post(url, item, { headers }).subscribe(v => {
+    this.httpClient.post(url, item).subscribe(v => {
         subject.next(v);
       },
       error => {
@@ -69,8 +50,7 @@ export class RestDataSourceService {
   put(url, item) {
     url = this.getUrl(url);
     const subject = new Subject();
-    const headers = this.getHeaders();
-    this.httpClient.put(url, item, { headers }).subscribe(v => {
+    this.httpClient.put(url, item).subscribe(v => {
         subject.next(v);
       },
       error => {
@@ -83,8 +63,7 @@ export class RestDataSourceService {
   delete(url, item) {
     url = this.getUrl(url);
     const subject = new Subject();
-    const headers = this.getHeaders();
-    this.httpClient.delete(url, { headers }).subscribe(v => {
+    this.httpClient.delete(url).subscribe(v => {
         subject.next(v);
       },
       error => {
@@ -96,17 +75,7 @@ export class RestDataSourceService {
 
   private getUrl(url) {
     const currentLang = this.translate.currentLang;
-    return this.baseUrl + url + `?lang=${currentLang}`;
-  }
-
-
-  private getHeaders(): HttpHeaders {
-    const headers2 = new HttpHeaders({
-      'authorization': `Bearer ${this.userService.token}`,
-      'id': `${this.userService.id}`,
-    });
-
-    return headers2;
+    return url + `?lang=${currentLang}`;
   }
 
 

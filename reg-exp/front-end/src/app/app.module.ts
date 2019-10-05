@@ -16,7 +16,6 @@ import { LevelComponent } from './components/courseMain/level/level.component';
 import { RestDataSourceService } from './services/rest/rest-data-source.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { LoginComponent } from './components/users/login/login.component';
 import { AddTaskComponent } from './components/courseMain/add-task/add-task.component';
 import { CheckWrongStatusPipe } from './pipes/check-status/check-wrong-status.pipe';
 import { UsefulLinksComponent } from './components/courseMain/useful-links/useful-links.component';
@@ -24,7 +23,6 @@ import { JoinPipe } from './pipes/join/join.pipe';
 import { RegexpCheckResultComponent } from './components/courseMain/regexp-check-result/regexp-check-result.component';
 import { ErrorComponent } from './components/common/error/error.component';
 import { ErrorService } from './components/common/error/errorService/error.service';
-import { AddUserComponent } from './components/users/add-user/add-user.component';
 import { AppComponent } from './appComponent/app.component';
 import { AuthGuard } from './services/guards/auth.guard';
 import { UserService } from './services/security/user.service';
@@ -36,6 +34,7 @@ import { TranslateComponent } from './components/library/translate/translate.com
 import { DickTdComponent } from './components/library/tables/dick-td/dick-td.component';
 import { DickThComponent } from './components/library/tables/dick-th/dick-th.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { CookieService } from 'ngx-cookie-service';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -55,14 +54,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     TaskComponent,
     CourseComponent,
     LevelComponent,
-    LoginComponent,
     AddTaskComponent,
     CheckWrongStatusPipe,
     UsefulLinksComponent,
     JoinPipe,
     RegexpCheckResultComponent,
     ErrorComponent,
-    AddUserComponent,
     FooterComponent,
     TranslateComponent,
     DickTdComponent,
@@ -88,7 +85,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     )
   ],
   providers: [
-    RestDataSourceService, ErrorService, AuthGuard, UserService
+    RestDataSourceService, ErrorService, AuthGuard, UserService, CookieService
   ],
   bootstrap: [ AppComponent ]
 })

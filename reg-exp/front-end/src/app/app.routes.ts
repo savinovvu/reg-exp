@@ -6,11 +6,9 @@ import { ContactComponent } from './components/projectInfo/contact/contact.compo
 import { AboutComponent } from './components/projectInfo/about/about.component';
 import { CourseComponent } from './components/courseMain/course/course.component';
 import { LevelComponent } from './components/courseMain/level/level.component';
-import { LoginComponent } from './components/users/login/login.component';
 import { AddTaskComponent } from './components/courseMain/add-task/add-task.component';
 import { UsefulLinksComponent } from './components/courseMain/useful-links/useful-links.component';
 import { ErrorComponent } from './components/common/error/error.component';
-import { AddUserComponent } from './components/users/add-user/add-user.component';
 import { AuthGuard } from './services/guards/auth.guard';
 
 
@@ -20,8 +18,6 @@ const routes: Routes = [
   { path: 'news', component: NewsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: AddUserComponent },
   { path: 'addTask', component: AddTaskComponent, canActivate: [ AuthGuard ] },
   { path: 'usefulLinks', component: UsefulLinksComponent },
 

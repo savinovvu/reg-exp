@@ -2,20 +2,22 @@
 . translate to english.
 . migrate to graphQL.
 . add angular 7 mainer.
-. implement tests with junit 5.
-. implement baseEntity with created date and last updated date.
+. migrate to angular 8 or latest
 . implement url routing in back-end.
-. add font-awesome
 . implement usefullinks page.
 . implement news page.
 . implement about page.
-. implement logout.
+. add docker, kubernates, nginx config.
+. add ci
+. implement tests with junit 5.
+
+41. fix front-end, implement logout.
 40. implement sign-in and sign-up with spring security and thymeleaf+
 39. create database with liquibase, denormalize regExpTask String sets, replace Date to LocalDate+
 38. refactoring+
 37. add navigation, implement node redirect to back end for dev, refactor project, add logging aspect+
 36. add spring security with thymeleaf template +
-35. refactoring to single module project, add api version +
+35. refactoring to single module project, add api version, implement baseEntity with created date and last updated date.+
 34. add liquibase.+
 33. implement contact page.
 32. implement dick-td and dick-th components.+

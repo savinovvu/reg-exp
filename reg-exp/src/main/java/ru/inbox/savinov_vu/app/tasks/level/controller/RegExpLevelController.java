@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.inbox.savinov_vu.app.tasks.level.model.RegExpLevel;
 import ru.inbox.savinov_vu.app.tasks.level.service.RegExpLevelService;
+import ru.inbox.savinov_vu.app.users.model.User;
+import ru.inbox.savinov_vu.app.users.service.UserService;
 import ru.inbox.savinov_vu.core.interfaces.OperationResulter;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
 
 
@@ -26,11 +29,13 @@ public class RegExpLevelController {
   @Resource
   private final RegExpLevelService regExpLevelService;
 
+  @Resource
+  private final UserService userService;
 
   @GetMapping("/v1/tasks/regexplevel")
-  public ResponseEntity<List<RegExpLevel>> getAll(HttpServletRequest request) {
-    Integer userId = Integer.valueOf(request.getHeader("id"));
-    return new ResponseEntity(regExpLevelService.getAll(userId), HttpStatus.ACCEPTED.OK);
+  public ResponseEntity<List<RegExpLevel>> getAll(HttpServletRequest request, Principal principal) {
+    User user = userService.getByLogin(principal.getName());
+    return new ResponseEntity(regExpLevelService.getAll(user.getId()), HttpStatus.ACCEPTED.OK);
   }
 
 
