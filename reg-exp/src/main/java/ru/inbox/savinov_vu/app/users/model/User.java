@@ -1,13 +1,15 @@
 package ru.inbox.savinov_vu.app.users.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import ru.inbox.savinov_vu.app.tasks.comment.model.Comment;
 import ru.inbox.savinov_vu.app.tasks.level.model.RegExpLevel;
 import ru.inbox.savinov_vu.app.tasks.like.model.Like;
 import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
+import ru.inbox.savinov_vu.common.audit.BaseEntityAudit;
 import ru.inbox.savinov_vu.common.interfaces.entityInterfaces.Identify;
 
 import javax.persistence.CascadeType;
@@ -29,9 +31,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-@NoArgsConstructor
-@Data
-public class User implements Identify {
+@Getter
+@Setter
+@Accessors(chain = true)
+public class User extends BaseEntityAudit implements Identify {
 
   @Id
   @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)
@@ -87,6 +90,12 @@ public class User implements Identify {
 
   public User(Integer id) {
     this.id = id;
+    this.enabled = true;
+  }
+
+
+  public User() {
+    this.enabled = true;
   }
 
 

@@ -10,7 +10,7 @@
 . implement news page.
 . implement about page.
 . implement logout.
-.
+40. implement sign-in and sign-up with spring security and thymeleaf+
 39. create database with liquibase, denormalize regExpTask String sets, replace Date to LocalDate+
 38. refactoring+
 37. add navigation, implement node redirect to back end for dev, refactor project, add logging aspect+

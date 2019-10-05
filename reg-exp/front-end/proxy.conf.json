@@ -1,11 +1,30 @@
 {
-  "/v1":
-  {
+
+  "/v1": {
     "target": "http://localhost:8080",
     "secure": false
   },
-  "/page":
-  {
+  "/page": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/login": {
+    "target": "http://localhost:8080/page/login",
+    "secure": false
+  },
+  "/sign-in": {
+    "target": "http://localhost:8080/sign-in",
+    "secure": false
+  },
+  "/sign-up": {
+    "target": "http://localhost:8080/page/sign-up",
+    "secure": false
+  },
+  "/css": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/js/": {
     "target": "http://localhost:8080",
     "secure": false
   }

@@ -53,9 +53,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     String[] publicPaths = new String[]{
-      "/main", "/usefulLinks", "/news", "/contact", "/about", "/signup",
+      "/page/sign-up", "/page/users/user",
       "/css/**", "/icons/**", "/images/**", "/js/**", "/layer/**",
-      "/regexp-front-end/**",
       "/fonts/**"
     };
 
@@ -73,8 +72,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
       .and()
       .formLogin()
-      .loginPage("/page/login").failureHandler(unauthorizedEntryPoint())
+      .loginPage("/page/login")
+      .loginProcessingUrl("/v1/sign-in")
+      .failureHandler(unauthorizedEntryPoint())
       .permitAll()
+      .defaultSuccessUrl("/main")
+      .usernameParameter("login")
+      .passwordParameter("password")
 
       .and()
       .anonymous()
@@ -92,7 +96,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .authenticationEntryPoint(unauthorizedEntryPoint())
 
       .and()
-      .rememberMe().userDetailsService(userDetailsService).key("userSecurityKey")
+      .rememberMe()
+      .rememberMeCookieName("remember-me")
+      .userDetailsService(userDetailsService)
+      .key("userSecurityKey")
       .tokenValiditySeconds(864000);
   }
 

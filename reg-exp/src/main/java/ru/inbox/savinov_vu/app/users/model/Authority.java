@@ -30,7 +30,7 @@ public enum Authority implements GrantedAuthority, DataEnum<String> {
 
   @Override
   public String getAuthority() {
-    return this.toString();
+    return this.getAuthorityName();
   }
 
 
