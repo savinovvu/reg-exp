@@ -1,33 +1,39 @@
 version: "3"
 services:
-  postgres:
+  regexp-postgres:
     image: postgres:latest
-    network_mode: bridge
+    build:
+      context: ./postgres
+      dockerfile: ./Dockerfile
+#    network_mode: bridge
     container_name: regexp-postgres
     volumes:
-      - $HOME/docker/volumes/regexp:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
     expose:
-      - 5432
+      - 5452
     ports:
-      - 5432:5432
+      - 5452:5432
     environment:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_DB=regexpert
     restart: unless-stopped
-  # APP*****************************************
-  springbootapp:
+
+  app:
     image: reg-exp.jar:latest
-    network_mode: bridge
+    network_mode: regexp_default
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: regexp
     expose:
-      - 8080
+      - 8090
     ports:
-      - 8080:8080
+      - 8090:8080
     restart: unless-stopped
     depends_on:
-      - postgres
+      - regexp-postgres
     links:
-      - postgres
+      - regexp-postgres
 volumes:
   postgres-data:

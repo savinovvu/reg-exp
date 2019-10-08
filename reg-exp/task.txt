@@ -10,8 +10,8 @@
 . add docker, kubernates, nginx config.
 . add ci
 . implement tests with junit 5.
-
-41. fix front-end, implement logout.
+42. start spring boot and postgre in docker containers with docker compose+
+41. fix front-end, implement logout.+
 40. implement sign-in and sign-up with spring security and thymeleaf+
 39. create database with liquibase, denormalize regExpTask String sets, replace Date to LocalDate+
 38. refactoring+

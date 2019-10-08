@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://regexp-postgres:5432/regexpert
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  thymeleaf:
+    cache: true
+    mode: HTML
