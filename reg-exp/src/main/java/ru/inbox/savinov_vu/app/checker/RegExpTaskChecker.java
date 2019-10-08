@@ -6,8 +6,11 @@ import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 import java.util.regex.Pattern;
 
 import static java.util.Objects.isNull;
-import static ru.inbox.savinov_vu.app.checker.WrongCheckStatus.*;
+import static ru.inbox.savinov_vu.app.checker.WrongCheckStatus.EQUALS;
+import static ru.inbox.savinov_vu.app.checker.WrongCheckStatus.MATCH;
 import static ru.inbox.savinov_vu.app.checker.WrongCheckStatus.UNMATCH;
+import static ru.inbox.savinov_vu.app.checker.WrongCheckStatus.UNUSED;
+import static ru.inbox.savinov_vu.common.constant.StringConstants.NOT_ANSWER;
 
 
 
@@ -37,7 +40,7 @@ public class RegExpTaskChecker {
     var result = new TaskResulter();
 
     if (isNull(answer)) {
-      return result.setWrong("not answer", NOT_ANSWER);
+      return result.setWrong(NOT_ANSWER, WrongCheckStatus.NOT_ANSWER);
     }
 
     regExpTask.getMatchedStrings().stream()

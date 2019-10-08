@@ -6,5 +6,7 @@ public class StringConstants {
 
   public static final String EMPTY = "";
 
+  public static final String NOT_ANSWER = "not answer";
+
 
 }

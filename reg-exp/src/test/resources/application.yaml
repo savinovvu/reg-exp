@@ -1,0 +1,26 @@
+server:
+  port: 8081
+
+
+spring:
+  liquibase:
+    change-log: classpath:/db/changelog/master.xml
+  mandatory-file-encoding: utf-8
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+    show-sql: false
+    open-in-view: false
+    database: h2
+
+  datasource:
+    url: jdbc:h2:mem:regexpert;
+    username: sa
+    password: ""
+
+  thymeleaf:
+    prefix: file:///${user.dir}/src/main/resources/templates/
+    cache: false
+    mode: HTML

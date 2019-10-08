@@ -46,13 +46,31 @@ dependencies {
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('org.springframework.security:spring-security-test')
+
+    testRuntime('com.h2database:h2')
+
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.2.0')
+    testCompile('org.junit.jupiter:junit-jupiter-params:5.2.0')
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.2.0')
+    testCompile('org.mockito:mockito-junit-jupiter:2.25.1')
 }
+
+
+
 configurations {
     all{
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
         exclude group: 'ch.qos.logback', module: 'logback-classic'
+        exclude  group: 'org.jboss.logging', module: 'jboss-logging'
     }
+}
 
+test {
+    useJUnitPlatform()
+
+    filter {
+        exclude '**/module-info.class'
+    }
 }
 
 

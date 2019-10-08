@@ -1,0 +1,12 @@
+# check started psql
+psql --version
+
+# start psql
+sudo service postgresql start
+
+# stop psql
+sudo service postgresql stop
+
+docker pull postgres
+mkdir -p $HOME/docker/volumes/regexp
+docker run --rm  --name regexp-postgres -e POSTGRES_PASSWORD=postgres -d -p 5432:5432 -v $HOME/docker/volumes/regexp:/var/lib/postgresql/data  postgres
