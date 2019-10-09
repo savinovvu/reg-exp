@@ -5,7 +5,6 @@ services:
     build:
       context: ./postgres
       dockerfile: ./Dockerfile
-#    network_mode: bridge
     container_name: regexp-postgres
     volumes:
       - postgres-data:/var/lib/postgresql/data
