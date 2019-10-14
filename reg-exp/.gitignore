@@ -18,14 +18,8 @@
 *.ipr
 /out/
 
-### NetBeans ###
-/nbproject/private/
-/build/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-/src/main/resources/static/regexp-front-end
+### NGINX ###
+/nginx/src/**
 
 ### Logs ###
 /logs/**
