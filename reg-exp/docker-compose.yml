@@ -43,6 +43,7 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf.template
       - ./nginx/src:/usr/share/nginx/html
+      - ./nginx/vhost:/etc/nginx/conf.d/
     depends_on:
       - app
     links:

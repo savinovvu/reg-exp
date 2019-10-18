@@ -10,7 +10,8 @@
 . add docker, kubernates, nginx config.
 . add ci
 . implement tests with junit 5.
-43. add nginx with static files to docker compose
+44. implement nginx like back proxy+
+43. add nginx with static files to docker compose+
 42. start spring boot and postgre in docker containers with docker compose+
 41. fix front-end, implement logout.+
 40. implement sign-in and sign-up with spring security and thymeleaf+
