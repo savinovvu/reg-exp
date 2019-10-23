@@ -52,7 +52,7 @@ public class RegExpLevelService {
 
   @Transactional(readOnly = true)
   public RegExpLevel getByNumber(Integer number) {
-    return regExpLevelRepository.getByNumber(number);
+    return regExpLevelRepository.findByNumber(number);
   }
 
 

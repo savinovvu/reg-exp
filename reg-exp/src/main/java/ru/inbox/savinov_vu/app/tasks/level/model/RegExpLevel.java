@@ -10,6 +10,7 @@ import org.hibernate.proxy.HibernateProxyHelper;
 import org.springframework.context.annotation.Lazy;
 import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 import ru.inbox.savinov_vu.app.users.model.User;
+import ru.inbox.savinov_vu.common.audit.BaseEntityAudit;
 import ru.inbox.savinov_vu.common.interfaces.entityInterfaces.Identify;
 
 import javax.persistence.CascadeType;
@@ -33,7 +34,7 @@ import java.util.Objects;
 @Setter
 @Accessors(chain = true)
 @Table(name="regexp_levels")
-public class RegExpLevel implements Identify {
+public class RegExpLevel extends BaseEntityAudit implements Identify {
 
   @Id
   @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)

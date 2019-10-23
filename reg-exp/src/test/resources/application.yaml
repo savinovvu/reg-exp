@@ -10,7 +10,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+    properties:
+      hibernate:
+        temp.use_jdbc_metadata_defaults: false
+        dialect: org.hibernate.dialect.H2Dialect
+
     show-sql: false
     open-in-view: false
     database: h2
@@ -19,6 +23,7 @@ spring:
     url: jdbc:h2:mem:regexpert;
     username: sa
     password: ""
+    driver-class-name: org.h2.Driver
 
   thymeleaf:
     prefix: file:///${user.dir}/src/main/resources/templates/

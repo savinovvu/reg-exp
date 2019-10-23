@@ -9,7 +9,7 @@
 . implement about page.
 . add docker, kubernates, nginx config.
 . add ci
-. implement tests with junit 5.
+45. implement tests with junit 5.
 44. implement nginx like back proxy+
 43. add nginx with static files to docker compose+
 42. start spring boot and postgre in docker containers with docker compose+
