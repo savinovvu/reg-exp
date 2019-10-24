@@ -3,14 +3,13 @@ package ru.inbox.savinov_vu.app.users.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.inbox.savinov_vu.core.interfaces.OperationResulter;
+import ru.inbox.savinov_vu.app.tasks.level.model.RegExpLevel;
 import ru.inbox.savinov_vu.app.users.model.User;
 import ru.inbox.savinov_vu.app.users.repository.UserRepository;
 
 import javax.annotation.Resource;
 import java.util.List;
-
-import static ru.inbox.savinov_vu.common.constant.StringConstants.SUCCESSFULLY_ADDED;
+import java.util.Set;
 
 
 
@@ -40,11 +39,17 @@ public class UserService {
   }
 
 
+  @Transactional(readOnly = true)
+  public Set<RegExpLevel> findSolvedLevels(Integer userId) {
+    return userRepository.findSolvedLevels(userId);
+  }
+
+
 
   @Transactional
-  public OperationResulter<String> add(User user) {
-    userRepository.saveAndFlush(user);
-    return () -> SUCCESSFULLY_ADDED;
+  public User add(User user) {
+    User result = userRepository.saveAndFlush(user);
+    return result;
   }
 
 

@@ -18,7 +18,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
   @Query("select u from User u where u.login=:login")
   User getByLogin(@Param("login") String login);
 
-  boolean existsByLogin(String username);
+  boolean existsByLogin(String login);
 
   @Query("select u.solvedRegExpLevels from User u where u.id =:userId")
   Set<RegExpLevel> findSolvedLevels(@Param(("userId")) Integer userId);

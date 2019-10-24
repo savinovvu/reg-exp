@@ -27,13 +27,16 @@ import javax.persistence.Transient;
 import java.util.List;
 import java.util.Objects;
 
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
+
 
 
 @Entity
 @Getter
 @Setter
 @Accessors(chain = true)
-@Table(name="regexp_levels")
+@Table(name = "regexp_levels")
 public class RegExpLevel extends BaseEntityAudit implements Identify {
 
   @Id
@@ -81,6 +84,9 @@ public class RegExpLevel extends BaseEntityAudit implements Identify {
     if (this == o) return true;
     if (o == null || getClass() != HibernateProxyHelper.getClassWithoutInitializingProxy(o)) return false;
     RegExpLevel that = (RegExpLevel) o;
+    if (isNull(id) && isNull(that.id)) return true;
+    if (isNull(id) && nonNull(that.id)) return false;
+    if (nonNull(id) && isNull(that.id)) return false;
     return id.equals(that.id);
   }
 

@@ -4,12 +4,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.inbox.savinov_vu.app.tasks.level.model.RegExpLevel;
 import ru.inbox.savinov_vu.config.AbstractCommonConfiguration;
-import ru.inbox.savinov_vu.data.DataClassesFactory;
 
 import javax.annotation.Resource;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static ru.inbox.savinov_vu.stumb.RegExpLevelFactory.getRegExpLevel;
 
 
 
@@ -23,7 +23,7 @@ class RegExpLevelRepositoryTest extends AbstractCommonConfiguration {
   @BeforeEach
   public void initTest() {
     if (repository.findAll().isEmpty()) {
-      RegExpLevel regExpLevel = DataClassesFactory.getRegExpLevel();
+      RegExpLevel regExpLevel = getRegExpLevel();
       repository.saveAndFlush(regExpLevel);
     }
   }
@@ -47,7 +47,7 @@ class RegExpLevelRepositoryTest extends AbstractCommonConfiguration {
 
   @Test
   public void deleteLevelTest() {
-    RegExpLevel regExpLevel = DataClassesFactory.getRegExpLevel();
+    RegExpLevel regExpLevel = getRegExpLevel();
     RegExpLevel result = repository.saveAndFlush(regExpLevel);
     repository.delete(result);
     RegExpLevel nullLevel = repository.findById(result.getId()).orElse(null);
@@ -57,7 +57,7 @@ class RegExpLevelRepositoryTest extends AbstractCommonConfiguration {
 
   @Test
   public void getByNumberTest() {
-    RegExpLevel regExpLevel = DataClassesFactory.getRegExpLevel();
+    RegExpLevel regExpLevel = getRegExpLevel();
     regExpLevel.setNumber(2);
     RegExpLevel savedLevel = repository.saveAndFlush(regExpLevel);
     RegExpLevel byNumberLevel = repository.findByNumber(savedLevel.getNumber());

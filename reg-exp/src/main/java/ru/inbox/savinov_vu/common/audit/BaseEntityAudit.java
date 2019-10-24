@@ -3,6 +3,7 @@ package ru.inbox.savinov_vu.common.audit;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -18,6 +19,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @NoArgsConstructor
 @EntityListeners({AuditingEntityListener.class})
+@Accessors(chain = true)
 public abstract class BaseEntityAudit {
 
   @Column(name = "updated_at")

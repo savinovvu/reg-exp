@@ -2,11 +2,11 @@ package ru.inbox.savinov_vu.app.checker;
 
 import org.junit.jupiter.api.Test;
 import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
-import ru.inbox.savinov_vu.data.DataClassesFactory;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static ru.inbox.savinov_vu.stumb.RegExpTaskFactory.getRegExpTask;
 
 
 
@@ -14,7 +14,7 @@ public class RegExpTaskCheckerTest {
 
   @Test
   public void missAnswerTest() {
-    RegExpTask regExpTask = DataClassesFactory.getRegExpTask();
+    RegExpTask regExpTask = getRegExpTask();
     RegExpTaskChecker regExpTaskChecker = new RegExpTaskChecker();
     TaskResulter resulter = regExpTaskChecker.check(regExpTask, "sdfh");
     assertEquals("result must be false", resulter.getSuccess(), false);
