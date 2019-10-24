@@ -11,7 +11,6 @@ buildscript {
 }
 
 
-
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
@@ -49,16 +48,16 @@ dependencies {
 
     testRuntime('com.h2database:h2')
 
-    testImplementation('org.junit.jupiter:junit-jupiter-api:5.2.0')
-    testCompile('org.junit.jupiter:junit-jupiter-params:5.2.0')
-    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.2.0')
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.5.2')
+    testCompile('org.junit.jupiter:junit-jupiter-params:5.5.2')
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.5.2')
+    testRuntime('org.junit.jupiter:junit-jupiter-api:5.5.2')
     testCompile('org.mockito:mockito-junit-jupiter:2.25.1')
 }
 
 
-
 configurations {
-    all{
+    all {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
         exclude group: 'ch.qos.logback', module: 'logback-classic'
     }
@@ -66,10 +65,6 @@ configurations {
 
 test {
     useJUnitPlatform()
-
-    filter {
-        exclude '**/module-info.class'
-    }
 }
 
 
