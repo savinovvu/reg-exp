@@ -7,8 +7,8 @@ import ru.inbox.savinov_vu.config.AbstractCommonConfiguration;
 
 import javax.annotation.Resource;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.springframework.test.util.AssertionErrors.assertEquals;
 import static ru.inbox.savinov_vu.stumb.RegExpLevelFactory.getRegExpLevel;
 
 
@@ -51,7 +51,7 @@ class RegExpLevelRepositoryTest extends AbstractCommonConfiguration {
     RegExpLevel result = repository.saveAndFlush(regExpLevel);
     repository.delete(result);
     RegExpLevel nullLevel = repository.findById(result.getId()).orElse(null);
-    assertNull("RegExpLevel must be null", nullLevel);
+    assertNull(nullLevel,"RegExpLevel must be null");
   }
 
 

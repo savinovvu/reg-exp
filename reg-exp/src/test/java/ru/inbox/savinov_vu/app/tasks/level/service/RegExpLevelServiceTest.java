@@ -14,7 +14,7 @@ import ru.inbox.savinov_vu.stumb.UserFactory;
 import javax.annotation.Resource;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.springframework.test.util.AssertionErrors.assertEquals;
 import static ru.inbox.savinov_vu.stumb.RegExpLevelFactory.getRegExpLevel;
 import static ru.inbox.savinov_vu.stumb.RegExpLevelFactory.getRegExpLevelRepositoryMock;
 import static ru.inbox.savinov_vu.stumb.RegExpLevelFactory.getRegExpLevelWithId;

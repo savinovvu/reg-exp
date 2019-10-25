@@ -9,6 +9,7 @@
 . implement about page.
 . add docker, kubernates, nginx config.
 . add ci
+46. delete bootstrap
 45. implement tests with junit 5.
 44. implement nginx like back proxy+
 43. add nginx with static files to docker compose+

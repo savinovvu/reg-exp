@@ -27,6 +27,7 @@ repositories {
     mavenCentral()
     maven { url "https://repo.spring.io/snapshot" }
     maven { url "https://repo.spring.io/milestone" }
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -43,16 +44,22 @@ dependencies {
     runtime('org.springframework.boot:spring-boot-devtools')
     runtime('org.postgresql:postgresql')
 
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.boot:spring-boot-starter-test'){
+        exclude module: 'junit'
+    }
     testCompile('org.springframework.security:spring-security-test')
 
     testRuntime('com.h2database:h2')
 
     testImplementation('org.junit.jupiter:junit-jupiter-api:5.5.2')
     testCompile('org.junit.jupiter:junit-jupiter-params:5.5.2')
-    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.5.2')
     testRuntime('org.junit.jupiter:junit-jupiter-api:5.5.2')
     testCompile('org.mockito:mockito-junit-jupiter:2.25.1')
+//    testCompile group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.5.2'
+    testCompile('com.github.sbrannen:spring-test-junit5:1.4.0')
+    testCompile('org.junit.jupiter:junit-jupiter-engine:5.5.2')
+    testRuntimeOnly('org.junit.platform:junit-platform-engine:1.5.1')
+    testRuntimeOnly('org.junit.platform:junit-platform-commons:1.5.1')
 }
 
 
@@ -65,7 +72,22 @@ configurations {
 
 test {
     useJUnitPlatform()
+
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+
+    testClassesDirs = sourceSets.test.output
+    classpath = sourceSets.test.runtimeClasspath
+
+    reports {
+        html.enabled = true
+    }
+
+    outputs.upToDateWhen { false }
+
 }
+
 
 
 
