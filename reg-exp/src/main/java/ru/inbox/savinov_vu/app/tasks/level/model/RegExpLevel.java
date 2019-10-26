@@ -1,12 +1,12 @@
 package ru.inbox.savinov_vu.app.tasks.level.model;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
-import org.hibernate.proxy.HibernateProxyHelper;
 import org.springframework.context.annotation.Lazy;
 import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 import ru.inbox.savinov_vu.app.users.model.User;
@@ -25,10 +25,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.List;
-import java.util.Objects;
-
-import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
 
 
 
@@ -37,6 +33,7 @@ import static java.util.Objects.nonNull;
 @Setter
 @Accessors(chain = true)
 @Table(name = "regexp_levels")
+@EqualsAndHashCode(exclude = {"users", "regExpTasks"})
 public class RegExpLevel extends BaseEntityAudit implements Identify {
 
   @Id
@@ -50,6 +47,11 @@ public class RegExpLevel extends BaseEntityAudit implements Identify {
 
   private String ruDescription;
 
+  private boolean enabled;
+
+  @Transient
+  private Boolean solve = false;
+
   @LazyCollection(LazyCollectionOption.TRUE)
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "regExpLevel")
   @Lazy
@@ -59,11 +61,6 @@ public class RegExpLevel extends BaseEntityAudit implements Identify {
   @ManyToMany(mappedBy = "solvedRegExpLevels")
   @OrderBy("name ASC")
   private List<User> users;
-
-  private boolean enabled;
-
-  @Transient
-  private Boolean solve = false;
 
 
   @Transient
@@ -79,20 +76,6 @@ public class RegExpLevel extends BaseEntityAudit implements Identify {
   }
 
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != HibernateProxyHelper.getClassWithoutInitializingProxy(o)) return false;
-    RegExpLevel that = (RegExpLevel) o;
-    if (isNull(id) && isNull(that.id)) return true;
-    if (isNull(id) && nonNull(that.id)) return false;
-    if (nonNull(id) && isNull(that.id)) return false;
-    return id.equals(that.id);
-  }
 
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id);
-  }
 }

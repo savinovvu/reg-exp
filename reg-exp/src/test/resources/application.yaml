@@ -6,7 +6,6 @@ spring:
   liquibase:
     change-log: classpath:/db/changelog/master.xml
   mandatory-file-encoding: utf-8
-
   jpa:
     hibernate:
       ddl-auto: update

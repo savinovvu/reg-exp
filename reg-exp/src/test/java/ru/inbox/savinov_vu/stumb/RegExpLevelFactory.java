@@ -20,8 +20,8 @@ public class RegExpLevelFactory {
   public static RegExpLevel getRegExpLevel() {
     RegExpLevel regExpLevel = new RegExpLevel()
       .setNumber(1)
-      .setEnDescription("")
-      .setRuDescription("")
+      .setEnDescription("some description")
+      .setRuDescription("описание")
       .setRegExpTasks(List.of())
       .setUsers(List.of())
       .setEnabled(true);
@@ -61,6 +61,7 @@ public class RegExpLevelFactory {
     RegExpLevelService mock = Mockito.mock(RegExpLevelService.class);
     when(mock.findAll(1)).thenReturn(List.of(getRegExpLevelWithId(1), getRegExpLevelWithId(2)));
     when(mock.create(getRegExpLevel())).thenReturn(getRegExpLevelWithId(1));
+    when(mock.update(getRegExpLevelWithId(1))).thenReturn(getRegExpLevelWithId(1));
     when(mock.delete(1)).thenReturn(true);
     when(mock.findById(1)).thenReturn(getRegExpLevelWithId(1));
     when(mock.findByNumber(1)).thenReturn(getRegExpLevelWithNumber(1));

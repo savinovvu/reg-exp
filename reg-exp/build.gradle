@@ -21,7 +21,7 @@ mainClassName = "ru.inbox.savinov_vu.RegExpApplication"
 
 group = 'ru.inbox.savinov_vu'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 11
+sourceCompatibility = 13
 
 repositories {
     mavenCentral()
@@ -55,7 +55,6 @@ dependencies {
     testCompile('org.junit.jupiter:junit-jupiter-params:5.5.2')
     testRuntime('org.junit.jupiter:junit-jupiter-api:5.5.2')
     testCompile('org.mockito:mockito-junit-jupiter:2.25.1')
-//    testCompile group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.5.2'
     testCompile('com.github.sbrannen:spring-test-junit5:1.4.0')
     testCompile('org.junit.jupiter:junit-jupiter-engine:5.5.2')
     testRuntimeOnly('org.junit.platform:junit-platform-engine:1.5.1')

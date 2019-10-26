@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     String[] publicPaths = new String[]{
       "/page/sign-up", "/page/users/user",
       "/css/**", "/icons/**", "/images/**", "/js/**", "/layer/**",
-      "/fonts/**"
+      "/fonts/**", "/v1/tasks/regexplevel"
     };
 
     http

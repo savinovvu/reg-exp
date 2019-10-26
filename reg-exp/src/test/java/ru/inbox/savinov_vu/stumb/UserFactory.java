@@ -56,6 +56,7 @@ public class UserFactory {
     when(mock.getByLogin("login")).thenReturn(getUserWithId(1));
     when(mock.getById(1)).thenReturn(getUserWithId(1));
     when(mock.delete(1)).thenReturn(true);
+    when(mock.getByLogin("admin")).thenReturn(getUserWithId(1));
     return mock;
   }
 
