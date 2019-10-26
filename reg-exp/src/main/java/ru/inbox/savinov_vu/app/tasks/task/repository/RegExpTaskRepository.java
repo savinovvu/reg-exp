@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface RegExpTaskRepository extends JpaRepository<RegExpTask, Integer> {
 
-  List<RegExpTask> getByRegExpLevelIdOrderByNumber(Integer id);
+  List<RegExpTask> getByRegExpLevelIdAndNumberIsNotNullOrderByNumber(Integer levelId);
 
 
   List<RegExpTask> getByEnabledOrderById(Boolean enable);

@@ -25,8 +25,8 @@ import java.util.List;
 public class UsefulLinks implements Identify {
 
   @Id
-  @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
+  @SequenceGenerator(name = "useful_links_seq", sequenceName = "useful_links_seq", allocationSize = 1, initialValue = 1000)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "useful_links_seq")
   private Integer id;
 
   private String link;

@@ -16,6 +16,6 @@ import ru.inbox.savinov_vu.RegExpApplication;
 @ActiveProfiles("test")
 @SpringBootTest(classes = RegExpApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-public class AbstractCommonConfiguration {
+public abstract class AbstractSpringBootTest {
 
 }

@@ -5,15 +5,14 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <include file="001_create_global_seq.xml" relativeToChangelogFile="true"/>
-    <include file="002_create_users.xml" relativeToChangelogFile="true"/>
-    <include file="003_create_regexp_levels.xml" relativeToChangelogFile="true"/>
-    <include file="004_create_solved_regexp_levels.xml" relativeToChangelogFile="true"/>
-    <include file="005_create_regexp_tasks.xml" relativeToChangelogFile="true"/>
-    <include file="006_create_solved_regexp_tasks.xml" relativeToChangelogFile="true"/>
-    <include file="007_create_useful_links.xml" relativeToChangelogFile="true"/>
-    <include file="008_create_useful_links_regexp_task.xml" relativeToChangelogFile="true"/>
-    <include file="009_create_comments.xml" relativeToChangelogFile="true"/>
-    <include file="010_create_likes.xml" relativeToChangelogFile="true"/>
+    <include file="001_create_users.xml" relativeToChangelogFile="true"/>
+    <include file="002_create_regexp_levels.xml" relativeToChangelogFile="true"/>
+    <include file="003_create_solved_regexp_levels.xml" relativeToChangelogFile="true"/>
+    <include file="004_create_regexp_tasks.xml" relativeToChangelogFile="true"/>
+    <include file="005_create_solved_regexp_tasks.xml" relativeToChangelogFile="true"/>
+    <include file="006_create_useful_links.xml" relativeToChangelogFile="true"/>
+    <include file="007_create_useful_links_regexp_task.xml" relativeToChangelogFile="true"/>
+    <include file="008_create_comments.xml" relativeToChangelogFile="true"/>
+    <include file="009_create_likes.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

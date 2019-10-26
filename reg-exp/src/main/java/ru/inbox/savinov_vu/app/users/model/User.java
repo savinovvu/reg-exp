@@ -38,8 +38,8 @@ import java.util.Objects;
 public class User extends BaseEntityAudit implements Identify {
 
   @Id
-  @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
+  @SequenceGenerator(name = "users_seq", sequenceName = "users_seq", allocationSize = 1, initialValue = 1000)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq")
   private Integer id;
 
   private String name;

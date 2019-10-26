@@ -25,8 +25,8 @@ public class Like implements Identify {
 
 
   @Id
-  @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
+  @SequenceGenerator(name = "likes_seq", sequenceName = "likes_seq", allocationSize = 1, initialValue = 1000)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "likes_seq")
   private Integer id;
 
   @ManyToOne

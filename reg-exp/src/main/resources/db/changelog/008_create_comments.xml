@@ -5,6 +5,20 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="create comments_seq" author="savinov_vu">
+        <preConditions onFail="MARK_RAN">
+            <not><sequenceExists sequenceName="comments_seq"/></not>
+        </preConditions>
+
+        <createSequence
+            sequenceName="comments_seq"
+            incrementBy="1"
+            startValue="1000"
+        />
+
+    </changeSet>
+
     <changeSet id="create comments" author="savinov_vu">
         <preConditions onFail="MARK_RAN">
             <not>
@@ -14,7 +28,7 @@
 
         <createTable tableName="comments">
 
-            <column name="id" type="int(11)" defaultValueSequenceNext="global_seq">
+            <column name="id" type="int(11)" defaultValueSequenceNext="comments_seq">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
 
@@ -39,6 +53,8 @@
         </createTable>
 
     </changeSet>
+
+
 
 
 </databaseChangeLog>

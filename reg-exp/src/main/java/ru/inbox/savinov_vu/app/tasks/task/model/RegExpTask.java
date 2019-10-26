@@ -11,6 +11,7 @@ import ru.inbox.savinov_vu.app.tasks.level.model.RegExpLevel;
 import ru.inbox.savinov_vu.app.tasks.like.model.Like;
 import ru.inbox.savinov_vu.app.tasks.usefulLinks.model.UsefulLinks;
 import ru.inbox.savinov_vu.app.users.model.User;
+import ru.inbox.savinov_vu.common.audit.BaseEntityAudit;
 import ru.inbox.savinov_vu.common.interfaces.entityInterfaces.Identify;
 import ru.inbox.savinov_vu.core.converter.ListStringConverter;
 
@@ -36,19 +37,21 @@ import java.util.List;
 @Table(name = "regexp_tasks")
 @Data
 @Accessors(chain = true)
-public class RegExpTask implements Identify {
+public class RegExpTask extends BaseEntityAudit implements Identify {
 
   @Id
-  @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
+  @SequenceGenerator(name = "regexp_task_seq", sequenceName = "regexp_task_seq", allocationSize = 1, initialValue = 1000)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "regexp_task_seq")
   private Integer id;
 
   private Integer number;
 
   private String ruTitle;
+
   private String enTitle;
 
   private String ruDescription;
+
   private String enDescription;
 
   @Column(name = "matched_strings", columnDefinition = "text")
@@ -92,7 +95,7 @@ public class RegExpTask implements Identify {
   private List<String> answers;
 
   @JsonIgnore
-  private Boolean enabled;
+  private boolean enabled;
 
   @LazyCollection(LazyCollectionOption.FALSE)
   @ManyToMany(mappedBy = "regExpTasks")

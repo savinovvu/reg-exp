@@ -3,7 +3,7 @@ package ru.inbox.savinov_vu.app.tasks.level.repository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.inbox.savinov_vu.app.tasks.level.model.RegExpLevel;
-import ru.inbox.savinov_vu.config.AbstractCommonConfiguration;
+import ru.inbox.savinov_vu.config.AbstractSpringBootTest;
 
 import javax.annotation.Resource;
 
@@ -13,32 +13,33 @@ import static ru.inbox.savinov_vu.stumb.RegExpLevelFactory.getRegExpLevel;
 
 
 
-class RegExpLevelRepositoryTest extends AbstractCommonConfiguration {
+class RegExpLevelRepositoryTest extends AbstractSpringBootTest {
 
 
   @Resource
   private RegExpLevelRepository repository;
 
+  private RegExpLevel level;
+
 
   @BeforeEach
   public void initTest() {
-    if (repository.findAll().isEmpty()) {
-      RegExpLevel regExpLevel = getRegExpLevel();
-      repository.saveAndFlush(regExpLevel);
-    }
+    repository.deleteAll();
+    RegExpLevel regExpLevel = getRegExpLevel();
+    level = repository.saveAndFlush(regExpLevel);
   }
 
 
   @Test
   public void createAndReadLevelTest() {
-    RegExpLevel result = repository.findById(1000).orElse(new RegExpLevel());
-    assertEquals("RegExpLevel must have id", result.getId().intValue(), 1000);
+    RegExpLevel result = repository.findById(level.getId()).orElse(new RegExpLevel());
+    assertEquals("RegExpLevel must have id", result.getId().intValue(), level.getId());
   }
 
 
   @Test
   public void updateLevelTest() {
-    RegExpLevel regExpLevel = repository.findById(1000).orElse(new RegExpLevel());
+    RegExpLevel regExpLevel = repository.findById(level.getId()).orElse(new RegExpLevel());
     regExpLevel.setNumber(5);
     RegExpLevel result = repository.saveAndFlush(regExpLevel);
     assertEquals("RegExpLevel must have id", result.getNumber().intValue(), 5);
@@ -51,7 +52,7 @@ class RegExpLevelRepositoryTest extends AbstractCommonConfiguration {
     RegExpLevel result = repository.saveAndFlush(regExpLevel);
     repository.delete(result);
     RegExpLevel nullLevel = repository.findById(result.getId()).orElse(null);
-    assertNull(nullLevel,"RegExpLevel must be null");
+    assertNull(nullLevel, "RegExpLevel must be null");
   }
 
 

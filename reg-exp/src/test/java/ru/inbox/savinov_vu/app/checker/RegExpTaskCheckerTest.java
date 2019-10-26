@@ -6,7 +6,7 @@ import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 import java.util.List;
 
 import static org.springframework.test.util.AssertionErrors.assertEquals;
-import static ru.inbox.savinov_vu.stumb.RegExpTaskFactory.getRegExpTask;
+import static ru.inbox.savinov_vu.stumb.RegExpTaskFactory.getRegExpTaskWithMistakes;
 
 
 
@@ -14,7 +14,7 @@ public class RegExpTaskCheckerTest {
 
   @Test
   public void missAnswerTest() {
-    RegExpTask regExpTask = getRegExpTask();
+    RegExpTask regExpTask = getRegExpTaskWithMistakes();
     RegExpTaskChecker regExpTaskChecker = new RegExpTaskChecker();
     TaskResulter resulter = regExpTaskChecker.check(regExpTask, "sdfh");
     assertEquals("result must be false", resulter.getSuccess(), false);

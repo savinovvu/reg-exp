@@ -5,6 +5,20 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="create useful_links_regexp_tasks_seq" author="savinov_vu">
+        <preConditions onFail="MARK_RAN">
+            <not><sequenceExists sequenceName="useful_links_regexp_tasks_seq"/></not>
+        </preConditions>
+
+        <createSequence
+            sequenceName="useful_links_regexp_tasks_seq"
+            incrementBy="1"
+            startValue="1000"
+        />
+
+    </changeSet>
+
     <changeSet id="create useful_links_regexp_task" author="savinov_vu">
         <preConditions onFail="MARK_RAN">
             <not>
@@ -14,7 +28,7 @@
 
         <createTable tableName="useful_links_regexp_task">
 
-            <column name="id" type="int(11)" defaultValueSequenceNext="global_seq">
+            <column name="id" type="int(11)" defaultValueSequenceNext="useful_links_regexp_tasks_seq">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
 
@@ -33,6 +47,8 @@
         </createTable>
 
     </changeSet>
+
+
 
 
 </databaseChangeLog>

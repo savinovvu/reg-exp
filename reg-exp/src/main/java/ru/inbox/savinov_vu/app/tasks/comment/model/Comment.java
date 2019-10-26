@@ -25,8 +25,8 @@ import javax.persistence.Table;
 public class Comment implements Identify {
 
   @Id
-  @SequenceGenerator(name = "GLOBAL_SEQ", sequenceName = "GLOBAL_SEQ", allocationSize = 1, initialValue = 1000)
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GLOBAL_SEQ")
+  @SequenceGenerator(name = "comments_seq", sequenceName = "comments_seq", allocationSize = 1, initialValue = 1000)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "comments_seq")
   private Integer id;
 
   private String text;
