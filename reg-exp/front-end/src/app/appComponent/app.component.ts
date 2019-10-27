@@ -11,6 +11,7 @@ import { RestDataSourceService } from '../services/rest/rest-data-source.service
 })
 export class AppComponent {
 
-  constructor(private restService: RestDataSourceService){}
+  constructor(private restService: RestDataSourceService) {
+  }
 
 }

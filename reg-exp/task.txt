@@ -2,13 +2,13 @@
 . translate to english.
 . migrate to graphQL.
 . add angular 7 mainer.
-. migrate to angular 8 or latest
 . implement url routing in back-end.
 . implement usefullinks page.
 . implement news page.
 . implement about page.
 . add docker, kubernates, nginx config.
 . add ci
+47. migrate to angular 8
 46. delete bootstrap
 45. implement tests with junit 5.
 44. implement nginx like back proxy+

@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 
-import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './components/common/navigation/navigation.component';
 import { RootRouter } from './app.routes';
@@ -26,14 +25,12 @@ import { ErrorService } from './components/common/error/errorService/error.servi
 import { AppComponent } from './appComponent/app.component';
 import { AuthGuard } from './services/guards/auth.guard';
 import { UserService } from './services/security/user.service';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FooterComponent } from './components/common/footer/footer.component';
 import { TranslateComponent } from './components/library/translate/translate.component';
 import { DickTdComponent } from './components/library/tables/dick-td/dick-td.component';
 import { DickThComponent } from './components/library/tables/dick-th/dick-th.component';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { CookieService } from 'ngx-cookie-service';
 
 
@@ -67,13 +64,10 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
-    MaterialModule,
     BrowserAnimationsModule,
     RootRouter,
     HttpClientModule,
     FormsModule,
-    FlexLayoutModule,
-    AngularFontAwesomeModule,
     TranslateModule.forRoot(
       ({
         loader: {

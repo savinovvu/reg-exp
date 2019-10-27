@@ -31,12 +31,6 @@ public class RegExpTaskService {
 
 
   @Transactional(readOnly = true)
-  public List<RegExpTask> getAll() {
-    return repository.findAll();
-  }
-
-
-  @Transactional(readOnly = true)
   public List<RegExpTask> getAllByParentId(Integer id, Integer userId) {
     List<RegExpTask> all = repository.getByRegExpLevelIdAndNumberIsNotNullOrderByNumber(id);
     Set<RegExpTask> solvedLevels = userRepository.findSolvedTasks(userId);
