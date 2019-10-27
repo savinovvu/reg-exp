@@ -13,12 +13,14 @@
       true,
       "attribute",
       "reg",
+      "ngx",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
       "reg",
+      "ngx",
       "kebab-case"
     ],
     "import-blacklist": [

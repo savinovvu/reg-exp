@@ -8,6 +8,7 @@
 . implement about page.
 . add docker, kubernates, nginx config.
 . add ci
+48. redesign interface
 47. migrate to angular 8
 46. delete bootstrap
 45. implement tests with junit 5.

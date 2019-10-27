@@ -1,21 +1,4 @@
-<div class="bounds container" fxLayout="column" fxFill>
-
-  <header>
-    <reg-navigation style="width: 100%"></reg-navigation>
-  </header>
-
-
-  <div fxFlex fxLayout="column" class="root-component">
-    <router-outlet class="root-router"></router-outlet>
-  </div>
-
-    <reg-footer></reg-footer>
-
-
-
-</div>
-
-
-
-
-
+<ngx-one-column-layout>
+  <nb-menu [items]="menu"></nb-menu>
+  <router-outlet></router-outlet>
+</ngx-one-column-layout>

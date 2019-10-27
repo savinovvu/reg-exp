@@ -1,17 +1,24 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { RestDataSourceService } from '../services/rest/rest-data-source.service';
+import { AnalyticsService } from '../@core/utils';
+import { MENU_ITEMS } from '../pages/pages-menu';
 
 
 
 @Component({
   selector: 'reg-root',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: [ './app.component.scss' ],
 })
-export class AppComponent {
+export class AppComponent  implements OnInit {
 
-  constructor(private restService: RestDataSourceService) {
+  constructor(private analytics: AnalyticsService) {
+  }
+
+  menu = MENU_ITEMS;
+
+  ngOnInit(): void {
+    this.analytics.trackPageViews();
   }
 
 }
