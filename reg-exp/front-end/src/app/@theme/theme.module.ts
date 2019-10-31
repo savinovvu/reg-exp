@@ -34,10 +34,9 @@ import {
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,
 } from './layouts';
-import { DEFAULT_THEME } from './styles/theme.default';
-import { COSMIC_THEME } from './styles/theme.cosmic';
-import { CORPORATE_THEME } from './styles/theme.corporate';
 import { DARK_THEME } from './styles/theme.dark';
+
+
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -70,23 +69,25 @@ const PIPES = [
   NumberWithCommasPipe,
 ];
 
+
+
 @NgModule({
-  imports: [CommonModule, ...NB_MODULES],
-  exports: [CommonModule, ...PIPES, ...COMPONENTS],
-  declarations: [...COMPONENTS, ...PIPES],
+  imports: [ CommonModule, ...NB_MODULES ],
+  exports: [ CommonModule, ...PIPES, ...COMPONENTS ],
+  declarations: [ ...COMPONENTS, ...PIPES ],
 })
 export class ThemeModule {
   static forRoot(): ModuleWithProviders {
-    return <ModuleWithProviders>{
+    return {
       ngModule: ThemeModule,
       providers: [
         ...NbThemeModule.forRoot(
           {
-            name: 'default',
+            name: 'dark',
           },
-          [ DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME ],
+          [ DARK_THEME ],
         ).providers,
       ],
-    };
+    } as ModuleWithProviders;
   }
 }

@@ -6,39 +6,32 @@ import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
+
+
 @Component({
   selector: 'ngx-header',
-  styleUrls: ['./header.component.scss'],
+  styleUrls: [ './header.component.scss' ],
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
   private destroy$: Subject<void> = new Subject<void>();
-  userPictureOnly: boolean = false;
+
+  userPictureOnly = false;
+
   user: any;
 
   themes = [
     {
-      value: 'default',
-      name: 'Light',
-    },
-    {
       value: 'dark',
       name: 'Dark',
-    },
-    {
-      value: 'cosmic',
-      name: 'Cosmic',
-    },
-    {
-      value: 'corporate',
-      name: 'Corporate',
     },
   ];
 
   currentTheme = 'default';
 
   userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
+
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
@@ -47,6 +40,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private layoutService: LayoutService,
               private breakpointService: NbMediaBreakpointsService) {
   }
+
 
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
@@ -58,7 +52,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()
       .pipe(
-        map(([, currentBreakpoint]) => currentBreakpoint.width < xl),
+        map(([ , currentBreakpoint ]) => currentBreakpoint.width < xl),
         takeUntil(this.destroy$),
       )
       .subscribe((isLessThanXl: boolean) => this.userPictureOnly = isLessThanXl);
@@ -71,14 +65,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe(themeName => this.currentTheme = themeName);
   }
 
+
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
   }
 
+
   changeTheme(themeName: string) {
     this.themeService.changeTheme(themeName);
   }
+
 
   toggleSidebar(): boolean {
     this.sidebarService.toggle(true, 'menu-sidebar');
@@ -86,6 +83,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     return false;
   }
+
 
   navigateHome() {
     this.menuService.navigateHome();
