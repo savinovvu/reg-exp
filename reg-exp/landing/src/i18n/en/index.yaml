@@ -1,1 +1,7 @@
-welcome: Welcome
+title: Regexpert - regular expression course
+welcome:
+  title: Welcome to The Course RegExpert
+  description: 'This course is designed for those who want to learn one of the most powerful search tools: regular expressions. If you are often looking for information in the text and you have to handle a lot of answers, then you have come to the right place. Complete the course and learn to find in the text exactly what you are looking for.'
+#  description: some text
+  button: Next Page
+

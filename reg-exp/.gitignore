@@ -42,3 +42,5 @@
 /front-end/e2e/*.js
 /front-end/e2e/*.map
 
+/landing/build/**
+

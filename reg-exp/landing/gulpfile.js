@@ -16,11 +16,12 @@ var posthtml = require("gulp-posthtml");
 var include = require("posthtml-include");
 var del = require("del");
 var htmlmin = require("gulp-htmlmin");
+var i18n = require("gulp-html-i18n");
 
 
 
 gulp.task("css", function () {
-  return gulp.src("src/less/style.less")
+  return gulp.src("./src/less/style.less")
     .pipe(plumber())
     .pipe(sourcemap.init())
     .pipe(less())
@@ -92,6 +93,12 @@ gulp.task("posthtml", function () {
     .pipe(posthtml([
       include()
     ]))
+    .pipe(i18n({
+      langDir: 'src/i18n',
+      renderEngine: 'mustache',
+      defaultLang:'en',
+      createLangDirs: true
+    }))
     .pipe(htmlmin({ collapseWhitespace: true }))
 
     .pipe(gulp.dest("build"))
