@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=yes">
+  <title>RegExpert</title>
+  <link rel="stylesheet" href="/css/style.min.css" type="text/css">
+  <base href="./">
+</head>
+<body>
+  <div class="wrapper main-theme">
+
+    <form accept-charset="UTF-8"
+          action="/v1/sign-in"
+          method="post"
+          class="form"
+          novalidate="novalidate">
+      <h1 class="title">
+        RegExpert
+      </h1>
+
+      <label class="indent-20 form-row">
+        <input name="login"
+               placeholder="Login"
+               class="form-row__input"
+               type="text"
+               required
+               aria-required="true"
+               autocomplete="off">
+      </label>
+
+      <label class="indent-20 form-row">
+        <input name="password"
+               placeholder="Password"
+               type="password"
+               class="form-row__input"
+               required
+               aria-required="true"
+               autocomplete="off">
+      </label>
+
+      <div class="form-row">
+        <button type="submit">Sign In</button>
+        <a class="form-row__link" href="/page/sign-up">Sign Up</a>
+        <a class="form-row__link" href="/main">About</a>
+      </div>
+
+    </form>
+
+  </div>
+</body>
+</html>
+

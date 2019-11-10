@@ -16,8 +16,7 @@ var posthtml = require("gulp-posthtml");
 var include = require("posthtml-include");
 var del = require("del");
 var htmlmin = require("gulp-htmlmin");
-var i18n = require("gulp-html-i18n");
-var buildRootFolder = "../../nginx/src/about";
+var buildRootFolder = "../../../nginx/src/login";
 
 
 
@@ -44,8 +43,8 @@ gulp.task("server", function () {
     notify: false,
     open: true,
     cors: true,
-    ui: false,
-    port: 3000
+    ui: {port:4001},
+    port: 3001
   });
 
   gulp.watch("src/less/**/*.less", gulp.series("css"));
@@ -95,12 +94,6 @@ gulp.task("posthtml", function () {
     .pipe(posthtml([
       include()
     ]))
-    .pipe(i18n({
-      langDir: 'src/i18n',
-      renderEngine: 'mustache',
-      defaultLang:'en',
-      createLangDirs: true
-    }))
     .pipe(htmlmin({ collapseWhitespace: true }))
 
     .pipe(gulp.dest(`${buildRootFolder}`))
