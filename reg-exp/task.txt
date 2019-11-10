@@ -8,6 +8,7 @@
 . implement about page.
 . add docker, kubernates, nginx config.
 . add ci
+51. replace frontend files to front-end folder, rename angular app to regexp
 50. fix errors, multiple static sites with nginx.
 49. add landings
 48. redesign interface
