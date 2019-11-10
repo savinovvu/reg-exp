@@ -1,0 +1,36 @@
+
+worker_processes  2;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       mime.types;
+
+    server {
+        listen       8880;
+        server_name  127.0.0.1;
+
+
+        # location = /v1 {
+      #      proxy_pass 'http://app:8080';
+      #   }
+
+         location ~ / {
+             root   /usr/share/nginx/html/about;
+#             return 200 'Hello fron NGINX "/a".';
+          }
+
+          location ^~ /regexp {
+              root   /usr/share/nginx/html;
+#              return 200 'Hello fron NGINX "/b".';
+          }
+
+        location = /greet {
+            return 200 'Hello fron NGINX "/greet" EXACT MATCH.';
+        }
+
+
+    }
+}

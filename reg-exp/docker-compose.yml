@@ -38,12 +38,11 @@ services:
     image: nginx
     container_name: regexp-nginx
     ports:
-      - 8880:80
+      - 8880:8880
       - 8443:443
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf.template
+      - ./nginx/nginx.conf.nginx:/etc/nginx/nginx.conf
       - ./nginx/src:/usr/share/nginx/html
-      - ./nginx/vhost:/etc/nginx/conf.d/
     depends_on:
       - app
     links:

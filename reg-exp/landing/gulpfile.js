@@ -17,6 +17,7 @@ var include = require("posthtml-include");
 var del = require("del");
 var htmlmin = require("gulp-htmlmin");
 var i18n = require("gulp-html-i18n");
+var buildRootFolder = "../nginx/src/about";
 
 
 
@@ -33,13 +34,13 @@ gulp.task("css", function () {
     .pipe(rename("style.min.css"))
 
     .pipe(sourcemap.write("."))
-    .pipe(gulp.dest("build/css"))
+    .pipe(gulp.dest(`${buildRootFolder}/css`))
     .pipe(server.stream());
 });
 
 gulp.task("server", function () {
   server.init({
-    server: "build/",
+    server: `${buildRootFolder}/`,
     notify: false,
     open: true,
     cors: true,
@@ -84,7 +85,7 @@ gulp.task("sprite", function () {
     }))
     .pipe(rename("sprite.svg"))
 
-    .pipe(gulp.dest("build/img"))
+    .pipe(gulp.dest(`${buildRootFolder}/img`))
 });
 
 gulp.task("posthtml", function () {
@@ -101,7 +102,7 @@ gulp.task("posthtml", function () {
     }))
     .pipe(htmlmin({ collapseWhitespace: true }))
 
-    .pipe(gulp.dest("build"))
+    .pipe(gulp.dest(`${buildRootFolder}`))
 });
 
 gulp.task("copy-js", function () {
@@ -110,7 +111,7 @@ gulp.task("copy-js", function () {
   ], {
     base: "src"
   })
-    .pipe(gulp.dest("build"));
+    .pipe(gulp.dest(`${buildRootFolder}`));
 });
 
 
@@ -122,15 +123,15 @@ gulp.task("copy", function () {
   ], {
     base: "src"
   })
-    .pipe(gulp.dest("build"));
+    .pipe(gulp.dest(`${buildRootFolder}`));
 });
 
 gulp.task("clean", function () {
-  return del("build");
+  return del(`${buildRootFolder}`, {force:true});
 });
 
 gulp.task("gulp-htmlmin", function () {
-  return gulp.src("build/src/*.html")
+  return gulp.src(`${buildRootFolder}/src/*.html`)
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest("build"));
 });

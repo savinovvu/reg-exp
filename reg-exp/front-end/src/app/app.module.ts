@@ -7,7 +7,6 @@ import { RootRouter } from './app.routes';
 import { RestDataSourceService } from './services/rest/rest-data-source.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { ErrorService } from './old/components/common/error/errorService/error.service';
 import { AppComponent } from './appComponent/app.component';
 import { AuthGuard } from './services/guards/auth.guard';
 import { UserService } from './services/security/user.service';
@@ -67,7 +66,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoreModule.forRoot(),
   ],
   providers: [
-    RestDataSourceService, ErrorService, AuthGuard, UserService, CookieService
+    RestDataSourceService, AuthGuard, UserService, CookieService
   ],
   bootstrap: [ AppComponent ]
 })

@@ -1,7 +1,3 @@
-.gradle
-/build/
-!gradle/wrapper/gradle-wrapper.jar
-
 ### STS ###
 .apt_generated
 .classpath
@@ -26,11 +22,8 @@
 
 
 ### FRONT-END ###
-# See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/front-end/dist
-/front-end/dist-server
 /front-end/tmp
 /front-end/out-tsc
 
@@ -41,5 +34,3 @@
 # e2e
 /front-end/e2e/*.js
 /front-end/e2e/*.map
-
-

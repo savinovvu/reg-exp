@@ -1,4 +1,4 @@
-FROM openjdk:11
+FROM openjdk:13
 VOLUME /tmp
 EXPOSE 8080
 

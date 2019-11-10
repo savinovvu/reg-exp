@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs/index';
 import { Router } from '@angular/router';
-import { ErrorService } from '../../old/components/common/error/errorService/error.service';
 import { UserService } from '../security/user.service';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -14,7 +13,6 @@ export class RestDataSourceService {
   constructor(
     private httpClient: HttpClient,
     private router: Router,
-    private errorService: ErrorService,
     private userService: UserService,
     private translate: TranslateService
   ) {
@@ -80,8 +78,6 @@ export class RestDataSourceService {
 
 
   private handleError(error) {
-    this.errorService.header = error.message;
-    this.errorService.stack = error.error.text;
     this.router.navigate([ '/error' ]);
   }
 
