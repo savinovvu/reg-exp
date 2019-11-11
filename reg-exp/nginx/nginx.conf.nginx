@@ -12,28 +12,24 @@ http {
         server_name  127.0.0.1;
 
 
-        location ~* /v1[0-9] {
+        location ~ /v1 {
             proxy_pass 'http://app:8080';
-        }
-
-        location ~ / {
-            root   /usr/share/nginx/html/about;
         }
 
         location ^~ /regexp {
             root   /usr/share/nginx/html;
         }
 
-        location = /greet {
-            return 200 'Hello fron NGINX "/greet" EXACT MATCH.';
-        }
-
-        location = /login {
+        location ^~ /login {
             root   /usr/share/nginx/html;
         }
 
-        location = /sing-up {
+        location ^~ /sign-up {
             root   /usr/share/nginx/html;
+        }
+
+        location ~ / {
+            root   /usr/share/nginx/html/about;
         }
 
     }

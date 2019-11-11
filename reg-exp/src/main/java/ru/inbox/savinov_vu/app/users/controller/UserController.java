@@ -49,12 +49,12 @@ public class UserController {
   public String add(UserDto userDto) {
     User user = UserDto.dtoToEntity(userDto);
     if (isNull(user)) {
-      return "redirect:/page/sign-up";
+      return "redirect:/sign-up";
     }
     String encode = passwordEncoder.encode(user.getPassword());
     user.setPassword(encode);
     userService.add(user);
-    return "redirect:/page/login";
+    return "redirect:/login";
   }
 
 
