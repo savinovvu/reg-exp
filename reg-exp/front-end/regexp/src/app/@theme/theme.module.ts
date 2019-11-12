@@ -17,7 +17,6 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbSecurityModule } from '@nebular/security';
 
 import {
-  FooterComponent,
   HeaderComponent,
   SearchInputComponent,
   TinyMCEComponent,
@@ -31,8 +30,6 @@ import {
 } from './pipes';
 import {
   OneColumnLayoutComponent,
-  ThreeColumnsLayoutComponent,
-  TwoColumnsLayoutComponent,
 } from './layouts';
 import { DARK_THEME } from './styles/theme.dark';
 
@@ -54,12 +51,9 @@ const NB_MODULES = [
 ];
 const COMPONENTS = [
   HeaderComponent,
-  FooterComponent,
   SearchInputComponent,
   TinyMCEComponent,
   OneColumnLayoutComponent,
-  ThreeColumnsLayoutComponent,
-  TwoColumnsLayoutComponent,
 ];
 const PIPES = [
   CapitalizePipe,

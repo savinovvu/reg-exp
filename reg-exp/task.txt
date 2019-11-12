@@ -8,7 +8,7 @@
 . implement about page.
 . add docker, kubernates, nginx config.
 . add ci
-54. edit menu
+54. edit menu, remove footer
 53. fix sign-up and login css resources+
 52. delete thymeleaf templates, add static files to nginx+
 51. replace frontend files to front-end folder, rename angular app to regexp+
