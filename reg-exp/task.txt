@@ -1,13 +1,11 @@
-. alias for String in code.
-. translate to english.
+. implement translation service
 . migrate to graphQL.
 . add angular 7 mainer.
-. implement url routing in back-end.
 . implement usefullinks page.
 . implement news page.
 . implement about page.
-. add docker, kubernates, nginx config.
-. add ci
+. add kubernates.
+. add ci/cd
 55. remove unused core module
 54. edit menu, remove footer
 53. fix sign-up and login css resources+
