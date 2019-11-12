@@ -8,6 +8,7 @@
 . implement about page.
 . add docker, kubernates, nginx config.
 . add ci
+55. remove unused core module
 54. edit menu, remove footer
 53. fix sign-up and login css resources+
 52. delete thymeleaf templates, add static files to nginx+

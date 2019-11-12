@@ -1,6 +1,4 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { RestDataSourceService } from '../services/rest/rest-data-source.service';
-import { AnalyticsService } from '../@core/utils';
 import { MENU_ITEMS } from '../pages/pages-menu';
 
 
@@ -12,13 +10,12 @@ import { MENU_ITEMS } from '../pages/pages-menu';
 })
 export class AppComponent  implements OnInit {
 
-  constructor(private analytics: AnalyticsService) {
+  constructor() {
   }
 
   menu = MENU_ITEMS;
 
   ngOnInit(): void {
-    this.analytics.trackPageViews();
   }
 
 }

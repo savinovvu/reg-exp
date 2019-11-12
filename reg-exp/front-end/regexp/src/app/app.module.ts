@@ -13,7 +13,6 @@ import { UserService } from './services/security/user.service';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CookieService } from 'ngx-cookie-service';
-import { CoreModule } from './@core/core.module';
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -60,10 +59,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     NbDialogModule.forRoot(),
     NbWindowModule.forRoot(),
     NbToastrModule.forRoot(),
+
     NbChatModule.forRoot({
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),
-    CoreModule.forRoot(),
   ],
   providers: [
     RestDataSourceService, AuthGuard, UserService, CookieService
