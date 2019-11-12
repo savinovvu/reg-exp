@@ -1,31 +1,34 @@
 {
-
-  "/v1": {
-    "target": "http://localhost:8080",
-    "secure": false
-  },
-  "/page": {
+  "/v1/*": {
     "target": "http://localhost:8080",
     "secure": false
   },
   "/login": {
-    "target": "http://localhost:8080/page/login",
-    "secure": false
-  },
-  "/sign-in": {
-    "target": "http://localhost:8080/sign-in",
-    "secure": false
+    "target": "http://localhost:3001/",
+    "secure": false,
+    "pathRewrite": {
+      "/login": ""
+    }
   },
   "/sign-up": {
-    "target": "http://localhost:8080/page/sign-up",
-    "secure": false
+    "target": "http://localhost:3002/",
+    "secure": false,
+    "pathRewrite": {
+      "/sign-up": ""
+    }
   },
-  "/css": {
-    "target": "http://localhost:8080",
-    "secure": false
+  "/about": {
+    "target": "http://localhost:3000",
+    "secure": false,
+    "pathRewrite": {
+      "/about": ""
+    }
   },
-  "/js/": {
-    "target": "http://localhost:8080",
-    "secure": false
+  "/test-url": {
+    "target": "http://localhost/inspect-url",
+    "secure": false,
+    "pathRewrite": {
+      "^/test-url": ""
+    }
   }
 }
