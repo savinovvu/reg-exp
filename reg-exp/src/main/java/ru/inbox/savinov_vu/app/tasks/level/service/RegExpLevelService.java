@@ -27,7 +27,7 @@ public class RegExpLevelService {
 
   @Transactional(readOnly = true)
   public List<RegExpLevel> findAll(Integer userId) {
-    List<RegExpLevel> all = regExpLevelRepository.findAll(new Sort(Sort.Direction.ASC, "number"));
+    List<RegExpLevel> all = regExpLevelRepository.findAll(Sort.by(Sort.Direction.ASC, "number"));
     Set<RegExpLevel> solvedLevels = userService.findSolvedLevels(userId);
     for (RegExpLevel regExpLevel : all) {
       if (solvedLevels.contains(regExpLevel)) {

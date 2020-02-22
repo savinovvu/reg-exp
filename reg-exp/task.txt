@@ -6,6 +6,7 @@
 . implement about page.
 . add kubernates.
 . add ci/cd
+56. migrate to java 13, gradle 6.2
 55. remove unused core module
 54. edit menu, remove footer
 53. fix sign-up and login css resources+

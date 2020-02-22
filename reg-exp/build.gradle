@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.1.8.RELEASE'
+        springBootVersion = '2.2.4.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -21,17 +21,48 @@ mainClassName = "ru.inbox.savinov_vu.RegExpApplication"
 
 group = 'ru.inbox.savinov_vu'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 13
+
+sourceCompatibility = JavaVersion.VERSION_13
+targetCompatibility = JavaVersion.VERSION_13
+
+ext {
+    guavaVersion = '23.0'
+    slf4jVersion = '1.7.24'
+    log4jVersion = '2.11.1'
+    junitVersion = '5.5.0'
+    jerseyVersion = '2.29.1'
+    powerMockVersion = '1.7.4'
+    hibernateVersion = '5.4.0.Final'
+    elVersion = '3.0.0'
+    h2Version = '1.4.197'
+    weldVersion = '3.1.2.Final'
+    apacheShiroVersion = '1.4.0'
+    mysqlVersion = '8.0.18'
+    jacksonVersion = '2.9.8'
+    metricsVersion = '4.0.5'
+    mockitoVersion = '2.23.4'
+    hikariCPVersion = '3.2.0'
+    springBootVersion = '2.2.1.RELEASE'
+}
 
 repositories {
+//    mavenLocal()
     mavenCentral()
     maven { url "https://repo.spring.io/snapshot" }
     maven { url "https://repo.spring.io/milestone" }
     maven { url 'https://jitpack.io' }
 }
 
+wrapper{
+    distributionType = Wrapper.DistributionType.ALL
+}
+
 dependencies {
-    compileOnly('org.projectlombok:lombok:1.18.10')
+    compileOnly 'org.projectlombok:lombok:1.18.10'
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+    testCompileOnly 'org.projectlombok:lombok:1.18.10'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.10'
+
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
@@ -44,47 +75,57 @@ dependencies {
     runtime('org.springframework.boot:spring-boot-devtools')
     runtime('org.postgresql:postgresql')
 
-    testCompile('org.springframework.boot:spring-boot-starter-test'){
-        exclude module: 'junit'
-    }
-    testCompile('org.springframework.security:spring-security-test')
+    testCompile('org.springframework.boot:spring-boot-starter-test') {
+        testCompile('org.springframework.security:spring-security-test')
 
-    testRuntime('com.h2database:h2')
+        testRuntime('com.h2database:h2')
 
-    testImplementation('org.junit.jupiter:junit-jupiter-api:5.5.2')
+/*    testImplementation('org.junit.jupiter:junit-jupiter-api:5.5.2')
     testCompile('org.junit.jupiter:junit-jupiter-params:5.5.2')
     testRuntime('org.junit.jupiter:junit-jupiter-api:5.5.2')
     testCompile('org.mockito:mockito-junit-jupiter:2.25.1')
     testCompile('com.github.sbrannen:spring-test-junit5:1.4.0')
     testCompile('org.junit.jupiter:junit-jupiter-engine:5.5.2')
     testRuntimeOnly('org.junit.platform:junit-platform-engine:1.5.1')
-    testRuntimeOnly('org.junit.platform:junit-platform-commons:1.5.1')
-}
+    testRuntimeOnly('org.junit.platform:junit-platform-commons:1.5.1')*/
+/*    testCompile('junit:junit:4.12')
+    testCompile('org.hamcrest:hamcrest-all:1.3')
+    testCompile 'org.mockito:mockito-core:' + mockitoVersion
+    testCompile 'org.junit.jupiter:junit-jupiter-api:' + junitVersion
+    testRuntime 'com.zaxxer:HikariCP:' + hikariCPVersion
 
-
-configurations {
-    all {
-        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-        exclude group: 'ch.qos.logback', module: 'logback-classic'
-    }
-}
-
-test {
-    useJUnitPlatform()
-
-    testLogging {
-        events "passed", "skipped", "failed"
+    testRuntime 'org.junit.jupiter:junit-jupiter-engine:' + junitVersion
+    testRuntime 'org.junit.vintage:junit-vintage-engine:' + junitVersion
+    testCompile 'org.junit.jupiter:junit-jupiter-params:' + junitVersion*/
     }
 
-    testClassesDirs = sourceSets.test.output
-    classpath = sourceSets.test.runtimeClasspath
 
-    reports {
-        html.enabled = true
+    configurations {
+        all {
+            exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+            exclude group: 'ch.qos.logback', module: 'logback-classic'
+        }
     }
 
-    outputs.upToDateWhen { false }
+    test {
+        useJUnitPlatform {
+            includeEngines 'junit-vintage'
+            includeEngines 'junit-jupiter'
+        }
 
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+
+        testClassesDirs = sourceSets.test.output
+        classpath = sourceSets.test.runtimeClasspath
+
+        reports {
+            html.enabled = true
+        }
+
+        outputs.upToDateWhen { false }
+    }
 }
 
 

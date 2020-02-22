@@ -2,6 +2,7 @@ package ru.inbox.savinov_vu.app.tasks.level.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.inbox.savinov_vu.app.tasks.level.model.RegExpLevel;
 import ru.inbox.savinov_vu.app.tasks.level.service.RegExpLevelService;
@@ -24,6 +26,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class RegExpLevelController {
 
   @Resource
@@ -52,7 +55,7 @@ public class RegExpLevelController {
   }
 
 
-  @PostMapping("/v1/tasks/regexplevel")
+  @PostMapping(value = "/v1/tasks/regexplevel")
   public ResponseEntity<RegExpLevel> create(@RequestBody RegExpLevel regExpLevel) {
     RegExpLevel result = regExpLevelService.create(regExpLevel);
     return new ResponseEntity(result, HttpStatus.OK);

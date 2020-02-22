@@ -32,8 +32,6 @@ services:
     restart: unless-stopped
     depends_on:
       - regexp-postgres
-    links:
-      - regexp-postgres
   regexp-nginx:
     image: nginx
     container_name: regexp-nginx
@@ -45,9 +43,5 @@ services:
       - ./nginx/src:/usr/share/nginx/html
     depends_on:
       - app
-    links:
-      - app
-networks:
-  webnet:
 volumes:
   postgres-data:

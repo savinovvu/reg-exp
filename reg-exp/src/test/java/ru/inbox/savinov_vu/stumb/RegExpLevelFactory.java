@@ -48,7 +48,7 @@ public class RegExpLevelFactory {
     RegExpLevelRepository mock = Mockito.mock(RegExpLevelRepository.class);
     when(mock.findAll()).thenReturn(List.of(getRegExpLevelWithId(1), getRegExpLevelWithId(2)));
     when(mock.findById(1)).thenReturn(Optional.of(getRegExpLevelWithId(1)));
-    when(mock.findAll(new Sort(Sort.Direction.ASC, "number"))).thenReturn(List.of(getRegExpLevelWithId(1), getRegExpLevelWithId(2)));
+    when(mock.findAll(Sort.by(Sort.Direction.ASC, "number"))).thenReturn(List.of(getRegExpLevelWithId(1), getRegExpLevelWithId(2)));
     when(mock.saveAndFlush(getRegExpLevel())).thenReturn(getRegExpLevelWithId(1));
     when(mock.saveAndFlush(getRegExpLevelWithId(1))).thenReturn(getRegExpLevelWithId(1));
     when(mock.findByNumber(1)).thenReturn(getRegExpLevelWithNumber(1));

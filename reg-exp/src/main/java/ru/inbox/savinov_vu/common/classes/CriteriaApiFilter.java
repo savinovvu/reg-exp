@@ -1,7 +1,6 @@
 package ru.inbox.savinov_vu.common.classes;
 
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.data.jpa.domain.Specifications;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -14,7 +13,7 @@ import java.util.List;
 
 public class CriteriaApiFilter<T> implements Specification<T> {
 
-  protected List<Specifications> conditions;
+  protected List<Specification> conditions;
 
 
   public CriteriaApiFilter() {
@@ -31,7 +30,7 @@ public class CriteriaApiFilter<T> implements Specification<T> {
   }
 
 
-  public void addCondition(Specifications<Specification> condition) {
+  public void addCondition(Specification<Specification> condition) {
     this.conditions.add(condition);
   }
 

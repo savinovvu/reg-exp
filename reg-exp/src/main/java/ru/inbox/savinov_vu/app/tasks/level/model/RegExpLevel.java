@@ -33,7 +33,7 @@ import java.util.List;
 @Setter
 @Accessors(chain = true)
 @Table(name = "regexp_levels")
-@EqualsAndHashCode(exclude = {"users", "regExpTasks"})
+@EqualsAndHashCode(exclude = {"users", "regExpTasks"}, callSuper = false)
 public class RegExpLevel extends BaseEntityAudit implements Identify {
 
   @Id
