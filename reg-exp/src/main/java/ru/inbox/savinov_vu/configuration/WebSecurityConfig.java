@@ -1,5 +1,6 @@
 package ru.inbox.savinov_vu.configuration;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,44 +10,38 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import ru.inbox.savinov_vu.core.security.CustomFailureHandler;
 import ru.inbox.savinov_vu.core.security.SecurityService;
+import ru.inbox.savinov_vu.core.security.jwt.config.JwtAuthorizationTokenFilter;
+import ru.inbox.savinov_vu.core.security.jwt.config.JwtParams;
+import ru.inbox.savinov_vu.core.security.jwt.config.JwtHelper;
 
 import javax.annotation.Resource;
-import java.util.regex.Pattern;
 
 
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = false, prePostEnabled = true, jsr250Enabled = true)
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true, jsr250Enabled = true)
+@RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-  private static final Pattern DOMAIN_PATTERN = Pattern.compile("^.+?\\.([A-Za-z0-9\\-]+\\.[a-z]+)[:0-9]*$");
-
+  @Resource
+  private JwtHelper jwtHelper;
 
   @Resource
-  private SecurityService userDetailsService;
+  private SecurityService securityService;
 
-
-  @Bean
-  @Override
-  public AuthenticationManager authenticationManagerBean() throws Exception {
-    return super.authenticationManagerBean();
-  }
-
-
-  @Bean
-  public CustomFailureHandler unauthorizedEntryPoint() {
-    return new CustomFailureHandler();
-  }
+  @Resource
+  private JwtParams jwtParams;
 
 
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.inMemoryAuthentication()
-      .and()
-      .userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    auth
+      .userDetailsService(securityService)
+      .passwordEncoder(passwordEncoder());
   }
 
 
@@ -55,17 +50,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     String[] publicPaths = new String[]{
       "/page/sign-up", "/page/users/user",
       "/css/**", "/icons/**", "/images/**", "/js/**", "/layer/**",
-      "/fonts/**", "/v1/tasks/regexplevel"
+      "/fonts/**", "/v1/tasks/regexplevel", "/monitoring/**"
     };
 
     http
-      .headers().frameOptions().disable()
-      .and()
-
-      .csrf().disable().authorizeRequests()
-
-
-      .and()
+      .csrf().disable()
       .authorizeRequests()
       .antMatchers(publicPaths).permitAll()
       .anyRequest().authenticated()
@@ -98,15 +87,36 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .and()
       .rememberMe()
       .rememberMeCookieName("remember-me")
-      .userDetailsService(userDetailsService)
+      .userDetailsService(securityService)
       .key("userSecurityKey")
-      .tokenValiditySeconds(864000);
+      .tokenValiditySeconds(jwtParams.getExpiration());
+
+    http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
   }
 
 
   @Bean
   public BCryptPasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
+  }
+
+
+  @Bean
+  public JwtAuthorizationTokenFilter jwtAuthenticationFilter() {
+    return new JwtAuthorizationTokenFilter(userDetailsService(), jwtHelper, jwtParams.getHeader());
+  }
+
+
+  @Bean
+  public CustomFailureHandler unauthorizedEntryPoint() {
+    return new CustomFailureHandler();
+  }
+
+
+  @Bean
+  @Override
+  public AuthenticationManager authenticationManagerBean() throws Exception {
+    return super.authenticationManagerBean();
   }
 
 

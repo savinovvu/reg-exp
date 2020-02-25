@@ -13,3 +13,20 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
     show-sql: false
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: beans,health,info,mappings
+      base-path: /monitoring
+  server:
+    port: 9090
+
+jwt:
+  header: Authorization
+  secret: 'Hkb+5HoNpE34B9xGWF2iZjnWYbvqbQ2H76UR/ePP7x4='
+  expiration: 31536000
+

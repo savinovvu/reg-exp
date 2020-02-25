@@ -54,7 +54,6 @@ public class User extends BaseEntityAudit implements Identify {
 
   private Boolean enabled;
 
-//  private Set<Authority> authorities;
 
   @LazyCollection(LazyCollectionOption.TRUE)
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")

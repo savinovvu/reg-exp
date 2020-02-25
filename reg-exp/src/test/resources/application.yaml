@@ -28,3 +28,8 @@ spring:
     prefix: file:///${user.dir}/src/main/resources/templates/
     cache: false
     mode: HTML
+
+jwt:
+  header: Authorization
+  secret: 'Hkb+5HoNpE34B9xGWF2iZjnWYbvqbQ2H76UR/ePP7x4='
+  expiration: 31536000

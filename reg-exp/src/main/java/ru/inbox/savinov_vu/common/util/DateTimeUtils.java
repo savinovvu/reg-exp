@@ -2,7 +2,9 @@ package ru.inbox.savinov_vu.common.util;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 import static java.util.Objects.isNull;
 
@@ -16,6 +18,18 @@ public class DateTimeUtils {
     DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern(outputTimeFormat);
     String result = localTime.format(outputFormatter);
     return result;
+  }
+
+
+  public static Date convertLocalDateToDate(LocalDate localDate) {
+    return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+  }
+
+
+  public static LocalDate convertLocalDateToDate(Date date) {
+    return date.toInstant()
+      .atZone(ZoneId.systemDefault())
+      .toLocalDate();
   }
 
 

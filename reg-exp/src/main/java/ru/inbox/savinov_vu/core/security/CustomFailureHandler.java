@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-
 public class CustomFailureHandler implements AuthenticationFailureHandler, AuthenticationEntryPoint {
 
 

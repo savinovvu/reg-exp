@@ -6,6 +6,9 @@
 . implement about page.
 . add kubernates.
 . add ci/cd
+. use jsonpath library for controller tests
+. add datavalidation tests
+57. add jwt config, add docker-compose build
 56. migrate to java 13, gradle 6.2
 55. remove unused core module
 54. edit menu, remove footer

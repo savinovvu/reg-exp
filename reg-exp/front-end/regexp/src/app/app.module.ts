@@ -23,11 +23,18 @@ import {
   NbWindowModule
 } from '@nebular/theme';
 import { ThemeModule } from './@theme/theme.module';
+import { JwtModule } from '@auth0/angular-jwt';
+import { AuthenticationService } from "./services/jwt/authentication.service";
 
 
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
+}
+
+
+export function jwtLoader(): string {
+  return localStorage.getItem('jwt_token');
 }
 
 
@@ -47,7 +54,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,
-          deps: [ HttpClient ]
+          deps: [HttpClient]
         }
       })
     ),
@@ -63,11 +70,16 @@ export function HttpLoaderFactory(http: HttpClient) {
     NbChatModule.forRoot({
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: jwtLoader
+      }
+    })
   ],
   providers: [
-    RestDataSourceService, AuthGuard, UserService, CookieService
+    RestDataSourceService, AuthGuard, UserService, CookieService, AuthenticationService
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

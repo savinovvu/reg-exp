@@ -8,13 +8,14 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
     show-sql: false
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/regexpert
+#    add POSTGRES_URL variable to docker environment
+    url: jdbc:postgresql://${POSTGRES_URL:localhost:5432}/regexpert
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
