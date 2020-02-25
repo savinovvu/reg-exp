@@ -3,10 +3,12 @@ package ru.inbox.savinov_vu.configuration;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,8 +16,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import ru.inbox.savinov_vu.core.security.CustomFailureHandler;
 import ru.inbox.savinov_vu.core.security.SecurityService;
 import ru.inbox.savinov_vu.core.security.jwt.config.JwtAuthorizationTokenFilter;
-import ru.inbox.savinov_vu.core.security.jwt.config.JwtParams;
 import ru.inbox.savinov_vu.core.security.jwt.config.JwtHelper;
+import ru.inbox.savinov_vu.core.security.jwt.config.JwtParams;
 
 import javax.annotation.Resource;
 
@@ -48,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     String[] publicPaths = new String[]{
-      "/page/sign-up", "/page/users/user",
+      "/v1/sign-up", "/page/users/user", "/v1/sign-in",
       "/css/**", "/icons/**", "/images/**", "/js/**", "/layer/**",
       "/fonts/**", "/v1/tasks/regexplevel", "/monitoring/**"
     };
@@ -65,7 +67,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .loginProcessingUrl("/v1/sign-in")
       .failureHandler(unauthorizedEntryPoint())
       .permitAll()
-      .defaultSuccessUrl("/main")
       .usernameParameter("login")
       .passwordParameter("password")
 
@@ -92,6 +93,37 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .tokenValiditySeconds(jwtParams.getExpiration());
 
     http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+  }
+
+
+  @Override
+  public void configure(WebSecurity web) throws Exception {
+    // AuthenticationTokenFilter will ignore the below paths
+    web.ignoring()
+      .antMatchers(
+        HttpMethod.POST,
+        "/v1/sign-in",
+        "/v1/sign-insdfsdf"
+
+      )
+
+      // allow anonymous resource requests
+      .and()
+      .ignoring()
+      .antMatchers(
+        HttpMethod.GET,
+        "/",
+        "/*.html",
+        "/favicon.ico",
+        "/**/*.html",
+        "/**/*.css",
+        "/**/*.js"
+      )
+
+      // Un-secure H2 Database (for testing purposes, H2 console shouldn't be unprotected in production)
+      .and()
+      .ignoring()
+      .antMatchers("/h2-console/**/**");
   }
 
 

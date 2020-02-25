@@ -3,9 +3,9 @@ import { NbMenuItem } from '@nebular/theme';
 export const MENU_ITEMS: NbMenuItem[] = [
 
   {
-    title: 'About',
+    title: 'Welcome',
     icon: 'home-outline',
-    url: '/about',
+    url: '/',
     target: '_blank',
   },
   {
@@ -48,14 +48,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
         url: '/sign-up',
         target: '_blank'
       },
-      {
+    ],
+  },
+];
+      /*{
         title: 'Request Password',
         link: '/auth/request-password',
       },
       {
         title: 'Reset Password',
         link: '/auth/reset-password',
-      },
-    ],
-  },
-];
+      },*/

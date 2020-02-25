@@ -1,6 +1,7 @@
 . implement translation service
+. change transformers to mapstruct
 . migrate to graphQL.
-. add angular 7 mainer.
+. add angular 9
 . implement usefullinks page.
 . implement news page.
 . implement about page.
@@ -8,10 +9,11 @@
 . add ci/cd
 . use jsonpath library for controller tests
 . add datavalidation tests
-57. add jwt config, add docker-compose build
-56. migrate to java 13, gradle 6.2
-55. remove unused core module
-54. edit menu, remove footer
+58. implement login with jwt+
+57. add jwt config, add docker-compose build+
+56. migrate to java 13, gradle 6.2+
+55. remove unused core module+
+54. edit menu, remove footer+
 53. fix sign-up and login css resources+
 52. delete thymeleaf templates, add static files to nginx+
 51. replace frontend files to front-end folder, rename angular app to regexp+

@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
 })
 export class AuthenticationService {
 
-  private BASE_API_URL = 'http://localhost:8040/';
+  private BASE_API_URL = '/';
 
 
   private userName: string;

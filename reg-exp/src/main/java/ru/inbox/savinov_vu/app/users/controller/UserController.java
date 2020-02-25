@@ -45,7 +45,7 @@ public class UserController {
   }
 
 
-  @PostMapping("/page/users/user")
+  @PostMapping("/v1/users/user")
   public String add(UserDto userDto) {
     User user = UserDto.dtoToEntity(userDto);
     if (isNull(user)) {

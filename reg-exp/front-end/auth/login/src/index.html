@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, user-scalable=yes">
   <title>Login</title>
   <link rel="stylesheet" href="./css/style.min.css" type="text/css">
+  <script src="./js/index.js" defer></script>
   <base href="./">
 </head>
 <body>
@@ -13,7 +14,7 @@
     <form accept-charset="UTF-8"
           action="/v1/sign-in"
           method="post"
-          class="form"
+          class="form form-login"
           novalidate="novalidate">
       <h1 class="title">
         RegExpert
@@ -41,13 +42,14 @@
 
       <div class="form-row">
         <button type="submit">Sign In</button>
-        <a class="form-row__link" href="/page/sign-up">Sign Up</a>
-        <a class="form-row__link" href="/main">About</a>
+        <a class="form-row__link" href="/sign-up">Sign Up</a>
+        <a class="form-row__link" href="/">About</a>
       </div>
 
     </form>
 
   </div>
+
 </body>
 </html>
 

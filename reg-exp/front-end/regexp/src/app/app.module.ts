@@ -24,7 +24,7 @@ import {
 } from '@nebular/theme';
 import { ThemeModule } from './@theme/theme.module';
 import { JwtModule } from '@auth0/angular-jwt';
-import { AuthenticationService } from "./services/jwt/authentication.service";
+import { AuthenticationService } from './services/jwt/authentication.service';
 
 
 
