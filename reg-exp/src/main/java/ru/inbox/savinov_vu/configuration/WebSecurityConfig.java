@@ -103,7 +103,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .antMatchers(
         HttpMethod.POST,
         "/v1/sign-in",
-        "/v1/sign-insdfsdf"
+        "/v1/sign-up"
 
       )
 
@@ -118,12 +118,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         "/**/*.html",
         "/**/*.css",
         "/**/*.js"
-      )
-
-      // Un-secure H2 Database (for testing purposes, H2 console shouldn't be unprotected in production)
-      .and()
-      .ignoring()
-      .antMatchers("/h2-console/**/**");
+      );
   }
 
 

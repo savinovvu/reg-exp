@@ -14,5 +14,6 @@
     <include file="007_create_useful_links_regexp_task.xml" relativeToChangelogFile="true"/>
     <include file="008_create_comments.xml" relativeToChangelogFile="true"/>
     <include file="009_create_likes.xml" relativeToChangelogFile="true"/>
+    <include file="010_add_users_fields.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

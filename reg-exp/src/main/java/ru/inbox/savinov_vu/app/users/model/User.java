@@ -1,19 +1,23 @@
 package ru.inbox.savinov_vu.app.users.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.data.annotation.CreatedDate;
 import ru.inbox.savinov_vu.app.tasks.comment.model.Comment;
 import ru.inbox.savinov_vu.app.tasks.level.model.RegExpLevel;
 import ru.inbox.savinov_vu.app.tasks.like.model.Like;
 import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 import ru.inbox.savinov_vu.common.audit.BaseEntityAudit;
 import ru.inbox.savinov_vu.common.interfaces.entityInterfaces.Identify;
+import ru.inbox.savinov_vu.core.converter.SexConverter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,6 +28,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -42,7 +47,9 @@ public class User extends BaseEntityAudit implements Identify {
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq")
   private Integer id;
 
-  private String name;
+  private String firstName;
+
+  private String lastName;
 
   @Column(unique = true)
   private String login;
@@ -53,6 +60,15 @@ public class User extends BaseEntityAudit implements Identify {
   private String password;
 
   private Boolean enabled;
+
+  @Column
+  @Convert(converter = SexConverter.class)
+  private Sex sex;
+
+  @Column(name = "birth_date")
+  @JsonProperty("birth_date")
+  @CreatedDate
+  private LocalDate birthDate;
 
 
   @LazyCollection(LazyCollectionOption.TRUE)

@@ -9,6 +9,7 @@
 . add ci/cd
 . use jsonpath library for controller tests
 . add datavalidation tests
+59. implement sign-up with jwt
 58. implement login with jwt+
 57. add jwt config, add docker-compose build+
 56. migrate to java 13, gradle 6.2+

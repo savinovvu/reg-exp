@@ -31,7 +31,7 @@ public class UserDto {
     }
 
     User user = new User()
-      .setName(userDto.getName())
+      .setFirstName(userDto.getName())
       .setEmail(userDto.getEmail())
       .setLogin(userDto.getLogin())
       .setPassword(userDto.getPassword());

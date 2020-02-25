@@ -19,7 +19,8 @@ public class UserFactory {
 
   public static User getUser() {
     User user = new User()
-      .setName("name")
+      .setFirstName("firstName")
+      .setLastName("lastName")
       .setLogin("login")
       .setPassword("password")
       .setEmail("email@email.com")

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="rename users name to first_name" author="savinov_vu">
+        <preConditions onFail="MARK_RAN">
+            <columnExists tableName="users" columnName="name"/>
+        </preConditions>
+
+        <renameColumn tableName="users" oldColumnName="name" newColumnName="first_name"/>
+
+    </changeSet>
+
+    <changeSet id="add last_name to users" author="savinov_vu">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="users" columnName="last_name"/>
+            </not>
+        </preConditions>
+
+        <addColumn tableName="users">
+            <column name="last_name" type="varchar(255)"/>
+        </addColumn>
+
+    </changeSet>
+
+
+    <changeSet id="add sex to users" author="savinov_vu">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="users" columnName="sex"/>
+            </not>
+        </preConditions>
+
+        <addColumn tableName="users">
+            <column name="sex" type="varchar(10)"/>
+        </addColumn>
+
+    </changeSet>
+
+
+    <changeSet id="add birth_date to users" author="savinov_vu">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="users" columnName="birth_date"/>
+            </not>
+        </preConditions>
+
+        <addColumn tableName="users">
+            <column name="birth_date" type="date"/>
+        </addColumn>
+
+
+    </changeSet>
+
+
+</databaseChangeLog>

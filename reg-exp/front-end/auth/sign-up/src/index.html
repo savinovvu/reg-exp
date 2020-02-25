@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, user-scalable=yes">
   <title>Sign Up</title>
   <link rel="stylesheet" href="./css/style.min.css" type="text/css">
+  <script src="./js/index.js" defer></script>
   <base href="./">
 
 </head>
@@ -12,17 +13,27 @@
   <div class="wrapper main-theme">
 
     <form accept-charset="UTF-8"
-          action="/v1/users/user"
+          action="/v1/sign-up"
           method="post"
-          class="form"
+          class="form form-sign-up"
           novalidate="novalidate">
       <h1 class="title">
         RegExpert
       </h1>
 
       <label class="indent-20 form-row">
-        <input name="name"
-               placeholder="Name"
+        <input name="firstName"
+               placeholder="First Name"
+               class="form-row__input"
+               type="text"
+               required
+               aria-required="true"
+               autocomplete="off">
+      </label>
+
+      <label class="indent-20 form-row">
+        <input name="lastName"
+               placeholder="Last Name"
                class="form-row__input"
                type="text"
                required
@@ -39,11 +50,55 @@
                aria-required="true"
                autocomplete="off">
       </label>
+
       <label class="indent-20 form-row">
         <input name="email"
                placeholder="Email"
                class="form-row__input"
                type="email"
+               required
+               aria-required="true"
+               autocomplete="off">
+      </label>
+
+      <div class="indent-20 form-row" style="padding-left: 30px">
+        <label style="display: flex">
+          Man
+          <input name="sex"
+                 placeholder="Email"
+                 class="form-row__input"
+                 style="margin-left: 15px"
+                 type="radio"
+                 checked
+                 required
+                 value="man"
+                 aria-required="true"
+                 autocomplete="off">
+        </label>
+        <label style="display: flex">
+          Woman
+          <input name="sex"
+                 class="form-row__input"
+                 style="margin-left: 15px"
+                 type="radio"
+                 required
+                 value="woman"
+                 aria-required="true"
+                 autocomplete="off">
+        </label>
+      </div>
+
+      <label class="indent-20 form-row"
+             style="display: flex; flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;">
+
+        <div class="indent-10">Birth Date</div>
+        <input name="birthDate"
+               style="width: 182px"
+               class="form-row__input"
+               type="date"
                required
                aria-required="true"
                autocomplete="off">
@@ -60,7 +115,7 @@
       </label>
 
       <label class="indent-20 form-row">
-        <input name="passwordRepeat"
+        <input name="repeatPassword"
                placeholder="Repeat Password"
                type="password"
                class="form-row__input"
@@ -68,6 +123,7 @@
                aria-required="true"
                autocomplete="off">
       </label>
+
 
       <div class="form-row">
         <button type="submit">Sign Up</button>

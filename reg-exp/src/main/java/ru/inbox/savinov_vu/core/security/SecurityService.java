@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import ru.inbox.savinov_vu.app.users.model.Authority;
 import ru.inbox.savinov_vu.app.users.model.User;
 import ru.inbox.savinov_vu.app.users.service.UserService;
+import ru.inbox.savinov_vu.core.security.jwt.dto.SignUpDto;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -33,6 +34,19 @@ public class SecurityService implements UserDetailsService {
     return Optional.of(byLogin)
       .filter(user -> user.getPassword().equals(SecurityUtil.encryptSHA(password)))
       .map(user -> new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(), List.of(Authority.USER, Authority.ADMIN)));
+  }
+
+
+  public void signUp(SignUpDto signUpDto) {
+    User user = new User();
+    user.setFirstName(signUpDto.getFirstName());
+    user.setLastName(signUpDto.getLastName());
+    user.setLogin(signUpDto.getLogin());
+    user.setEmail(signUpDto.getEmail());
+    user.setSex(signUpDto.getSex());
+    user.setBirthDate(signUpDto.getBirthDate());
+    user.setPassword(SecurityUtil.encryptSHA(signUpDto.getPassword()));
+    userService.add(user);
   }
 
 
