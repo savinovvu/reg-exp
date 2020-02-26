@@ -32,8 +32,6 @@ public interface DtoEntityMapper<D, E> {
     return result;
   }
 
-  default E mapDtoToEntity(D dtoList) {
-    throw new UnsupportedOperationException("Not implemented");
-  }
+  E mapDtoToEntity(D dto);
 
 }

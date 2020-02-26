@@ -37,16 +37,16 @@ export class SmartTableComponent {
         title: 'Last Name',
         type: 'string',
       },
-      username: {
-        title: 'Username',
+      login: {
+        title: 'Login',
         type: 'string',
       },
       email: {
         title: 'E-mail',
         type: 'string',
       },
-      age: {
-        title: 'Age',
+      sex: {
+        title: 'Sex',
         type: 'number',
       },
     },
@@ -73,9 +73,9 @@ const dataOut = [{
   id: 1,
   firstName: 'Mark',
   lastName: 'Otto',
-  username: '@mdo',
+  login: '@mdo',
   email: 'mdo@gmail.com',
-  age: '28',
+  sex: 'male',
 }, {
   id: 2,
   firstName: 'Jacob',

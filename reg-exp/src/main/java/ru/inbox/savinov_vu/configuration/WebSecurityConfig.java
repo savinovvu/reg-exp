@@ -104,7 +104,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         HttpMethod.POST,
         "/v1/sign-in",
         "/v1/sign-up"
-
       )
 
       // allow anonymous resource requests
@@ -112,6 +111,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .ignoring()
       .antMatchers(
         HttpMethod.GET,
+        "/v1/users/user/filter",
         "/",
         "/*.html",
         "/favicon.ico",
