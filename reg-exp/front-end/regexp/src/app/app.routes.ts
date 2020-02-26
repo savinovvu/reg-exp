@@ -1,8 +1,17 @@
 import { RouterModule, Routes } from '@angular/router';
+import { UserTableComponent } from "./pages/user-table/user-table.component";
+import { CourseComponent } from "./pages/course/course.component";
+import { ProposeTaskComponent } from "./pages/propose-task/propose-task.component";
+import { UsefulLinksComponent } from "./pages/useful-links/useful-links.component";
 
 
 
 const routes: Routes = [
+
+  { path: 'users', component: UserTableComponent },
+  { path: 'course', component: CourseComponent },
+  { path: 'useful-links', component: UsefulLinksComponent },
+  { path: 'propose-task', component: ProposeTaskComponent },
   /*  { path: 'main', component: HomeComponent },
     { path: 'news', component: NewsComponent },
     { path: 'contact', component: ContactComponent },

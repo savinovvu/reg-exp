@@ -25,6 +25,10 @@ import {
 import { ThemeModule } from './@theme/theme.module';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthenticationService } from './services/jwt/authentication.service';
+import { UserTableComponent } from './pages/user-table/user-table.component';
+import { CourseComponent } from './pages/course/course.component';
+import { ProposeTaskComponent } from './pages/propose-task/propose-task.component';
+import { UsefulLinksComponent } from './pages/useful-links/useful-links.component';
 
 
 
@@ -42,6 +46,10 @@ export function jwtLoader(): string {
 @NgModule({
   declarations: [
     AppComponent,
+    UserTableComponent,
+    CourseComponent,
+    ProposeTaskComponent,
+    UsefulLinksComponent,
   ],
   imports: [
     BrowserModule,
