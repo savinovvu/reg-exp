@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
+import { RestDataSourceService } from '../../../services/rest/rest-data-source.service';
 
 
 @Component({
@@ -7,7 +8,9 @@ import { LocalDataSource } from 'ng2-smart-table';
   templateUrl: './smart-table.component.html',
   styleUrls: ['./smart-table.component.scss'],
 })
-export class SmartTableComponent {
+export class SmartTableComponent implements OnInit {
+
+  private restService: RestDataSourceService;
 
   settings = {
     add: {
@@ -47,16 +50,24 @@ export class SmartTableComponent {
       },
       sex: {
         title: 'Sex',
-        type: 'number',
+        type: 'string',
       },
     },
   };
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor() {
-    const data = dataOut;
-    this.source.load(data);
+  constructor(restService: RestDataSourceService) {
+    // let data = dataOut;
+    // this.source.load(data);
+    this.restService = restService;
+  }
+
+  ngOnInit() {
+    this.restService.get('/v1/users/user/filter').subscribe(v => {
+      console.log(v);
+      this.source.load(v.items);
+    });
   }
 
   onDeleteConfirm(event): void {

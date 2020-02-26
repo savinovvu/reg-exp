@@ -86,23 +86,4 @@ export class RestDataSourceService {
 
 
 
-export interface Path {
-  comment: string;
 
-  like: string;
-
-  numbered: string;
-
-  regexpLevel: string;
-
-  regexpTask: string;
-
-  signin: string;
-
-  signup: string;
-
-  user: string;
-
-  parent: string;
-
-}

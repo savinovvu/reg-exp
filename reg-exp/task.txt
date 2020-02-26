@@ -9,7 +9,8 @@
 . add ci/cd
 . use jsonpath library for controller tests
 . add datavalidation tests
-61. add paged result, mapstruct, metamodel generation
+62. implement userTable
+61. add paged result, mapstruct, metamodel generation+
 60. docker build for node.js+
 59. implement sign-up with jwt+
 58. implement login with jwt+
