@@ -16,6 +16,7 @@
 
 ### NGINX ###
 /nginx/src/**
+/nginx/nginx.dockerfile
 
 ### Logs ###
 /logs/**
@@ -28,7 +29,10 @@
 /front-end/out-tsc
 
 # dependencies
-/front-end/node_modules
+/front-end/auth/login/node_modules
+/front-end/auth/login/node_modules
+/front-end/regexp/node_modules
+/front-end/landing/**
 
 
 # e2e

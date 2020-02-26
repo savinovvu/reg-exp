@@ -1,0 +1,60 @@
+version : '3.4'
+x-healthcheck:
+  &health_check
+  interval: 1m
+  timeout: 10s
+  retries: 2
+  start_period: 1m
+services:
+
+  regexp-postgres:
+    build:
+      context: ./postgres
+      dockerfile: ./Dockerfile
+    networks:
+      - network2
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=regexpert
+    healthcheck:
+      <<: *health_check
+      test: pg_isready -U postgres
+
+  app:
+    build:
+      context: .
+      dockerfile: src/main/resources/docker/project-gradle.dockerfile
+    container_name: regexp
+    ports:
+      - 8080:8080
+      - 8090:8090
+    environment:
+      - POSTGRES_URL=regexp-postgres:5432
+    restart: unless-stopped
+    depends_on:
+      - regexp-postgres
+    networks:
+      - network1
+      - network2
+    entrypoint: sh -c "java -jar /opt/reg-exp.jar"
+    healthcheck:
+      <<: *health_check
+      test: curl -f http://localhost:9090/monitoring/health || exit 1
+
+  regexp-nginx:
+    build:
+      context: .
+      dockerfile: nginx/nginx.dockerfile
+
+    ports:
+      - 8880:8880
+      - 8443:443
+    networks:
+      - network1
+
+networks:
+  network1:
+    driver: bridge
+  network2:
+    driver: bridge
