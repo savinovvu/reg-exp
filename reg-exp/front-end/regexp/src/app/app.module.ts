@@ -14,6 +14,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CookieService } from 'ngx-cookie-service';
 import {
+  NbCardModule,
   NbChatModule,
   NbDatepickerModule,
   NbDialogModule,
@@ -29,7 +30,9 @@ import { UserTableComponent } from './pages/user-table/user-table.component';
 import { CourseComponent } from './pages/course/course.component';
 import { ProposeTaskComponent } from './pages/propose-task/propose-task.component';
 import { UsefulLinksComponent } from './pages/useful-links/useful-links.component';
-
+import { FilterModule } from 'ng2-smart-table/components/filter/filter.module';
+import { SmartTableComponent } from './components/tables/smart-table/smart-table.component';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -50,6 +53,7 @@ export function jwtLoader(): string {
     CourseComponent,
     ProposeTaskComponent,
     UsefulLinksComponent,
+    SmartTableComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +61,9 @@ export function jwtLoader(): string {
     RootRouter,
     HttpClientModule,
     FormsModule,
+
+    FilterModule,
+
     TranslateModule.forRoot(
       ({
         loader: {
@@ -74,6 +81,8 @@ export function jwtLoader(): string {
     NbDialogModule.forRoot(),
     NbWindowModule.forRoot(),
     NbToastrModule.forRoot(),
+    NbCardModule,
+    Ng2SmartTableModule,
 
     NbChatModule.forRoot({
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
