@@ -12,46 +12,59 @@ import { map } from 'rxjs/operators';
 })
 export class AuthenticationService {
 
-  private BASE_API_URL = '/';
+  private login: string;
 
+  private jwtToken: string;
 
-  private userName: string;
+  private id: string;
 
 
   constructor(private jwtService: JwtHelperService, private http: HttpClient) {
-    const jwtToken = jwtLoader();
-    if (jwtToken) {
-      this.changeUser(jwtToken, false);
-    } else {
-      this.login({ userName: 'test', hashedPassword: SHA256('test').toString() });
+    this.jwtToken = jwtLoader();
+    this.id = getDataByKey('id');
+    if (this.jwtToken) {
+      this.changeUser(this.jwtToken, false);
     }
   }
 
 
-  login(loginDTO: LoginDTO): void {
-    this.http.post<any>(`${this.BASE_API_URL}api/login`, loginDTO, { observe: 'response' })
-      .pipe(map(response => response.headers.get('Authorization'))
-        , map(header => header.replace('Bearer ', '')))
-      .subscribe(token => this.changeUser(token, true));
-  }
-
-
   getUserName(): string {
-    return this.userName;
+    return this.login;
   }
 
 
   changeUser(jwtToken: string, persist: boolean): void {
     const tokenJson: object = this.jwtService.decodeToken(jwtToken);
-    this.userName = tokenJson[ 'sub' ];
+    this.login = tokenJson[ 'sub' ];
     if (persist) {
       localStorage.setItem('jwt_token', jwtToken);
     }
   }
+
+
+  getJwtToken(): string {
+    return this.jwtToken;
+  }
+
+
+  getLogin(): string {
+    return this.login;
+  }
+
+
+  getId(): string {
+    return this.id;
+  }
+
 }
 
 
 
 export function jwtLoader(): string {
   return localStorage.getItem('jwt_token');
+}
+
+
+export function getDataByKey(key): string {
+  return localStorage.getItem(key);
 }

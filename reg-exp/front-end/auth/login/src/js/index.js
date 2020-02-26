@@ -13,10 +13,13 @@
     })
       .then(response => {
         return response.json();
-        // window.location.href = "/www.w3schools.com";
       }).then(json => {
+      console.log(json);
         localStorage.setItem("jwt_token", json.token);
-        window.location.href = "/regexp";
+        localStorage.setItem("id", json.id);
+        localStorage.setItem("fullName", json.fullName);
+        localStorage.setItem("roles", json.roles);
+        // window.location.href = "/regexp";
       }
     );
   });

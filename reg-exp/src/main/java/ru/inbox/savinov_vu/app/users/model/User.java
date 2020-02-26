@@ -109,6 +109,10 @@ public class User extends BaseEntityAudit implements Identify {
     this.enabled = true;
   }
 
+  public String getFullName() {
+    return firstName + " " + lastName;
+  }
+
 
   public User() {
     this.enabled = true;

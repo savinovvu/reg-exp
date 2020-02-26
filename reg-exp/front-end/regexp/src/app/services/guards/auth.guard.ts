@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { isNil } from 'lodash';
-import { UserService } from '../security/user.service';
 import { CookieService } from 'ngx-cookie-service';
 
 

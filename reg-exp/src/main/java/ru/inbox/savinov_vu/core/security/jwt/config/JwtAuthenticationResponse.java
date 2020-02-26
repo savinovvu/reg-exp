@@ -1,12 +1,15 @@
 package ru.inbox.savinov_vu.core.security.jwt.config;
 
+import lombok.AllArgsConstructor;
 import ru.inbox.savinov_vu.app.users.model.Authority;
+import ru.inbox.savinov_vu.core.security.jwt.model.SecurityUser;
 
 import java.io.Serializable;
 import java.util.Set;
 
 
 
+@AllArgsConstructor(staticName = "of")
 public class JwtAuthenticationResponse implements Serializable {
 
   private static final long serialVersionUID = 1250166508152483573L;
@@ -15,17 +18,9 @@ public class JwtAuthenticationResponse implements Serializable {
 
   private final Integer id;
 
-  private final String name;
+  private final String fullName;
 
   private final Set<Authority> roles;
-
-
-  public JwtAuthenticationResponse(String token, Integer id, String name, Set<Authority> roles) {
-    this.token = token;
-    this.id = id;
-    this.name = name;
-    this.roles = roles;
-  }
 
 
   public String getToken() {
@@ -38,12 +33,17 @@ public class JwtAuthenticationResponse implements Serializable {
   }
 
 
-  public String getName() {
-    return name;
+  public String getFullName() {
+    return fullName;
   }
 
 
   public Set<Authority> getRoles() {
     return roles;
+  }
+
+
+  public static JwtAuthenticationResponse of(SecurityUser securityUser, String token) {
+    return JwtAuthenticationResponse.of(token, securityUser.getId(), securityUser.getUsername(), securityUser.getAuthorities());
   }
 }

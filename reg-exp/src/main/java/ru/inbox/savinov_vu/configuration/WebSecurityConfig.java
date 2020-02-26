@@ -111,7 +111,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .ignoring()
       .antMatchers(
         HttpMethod.GET,
-        "/v1/users/user/filter",
         "/",
         "/*.html",
         "/favicon.ico",

@@ -79,7 +79,6 @@ public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
 
 
   private void checkId(HttpServletRequest request, SecurityUser securityUser) {
-    String id = request.getHeader("id");
     if (!String.valueOf(securityUser.getId()).equals(request.getHeader("id"))) {
       throw new RuntimeException("JwtAuthorizationTokenFilter. method checkId: id in header and in securityUser must be equal");
     }

@@ -5,6 +5,8 @@ import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.security.core.userdetails.UserDetails;
 import ru.inbox.savinov_vu.app.users.model.Authority;
+import ru.inbox.savinov_vu.app.users.model.User;
+import ru.inbox.savinov_vu.common.util.DateTimeUtils;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -30,6 +32,8 @@ public class SecurityUser implements UserDetails {
   private String password;
 
   private Boolean enabled;
+
+  private String fullName;
 
   @CreatedDate
   private Date lastPasswordResetDate;
@@ -87,5 +91,9 @@ public class SecurityUser implements UserDetails {
     return enabled;
   }
 
+
+  public static SecurityUser of(User user) {
+    return new SecurityUser(user.getId(), user.getLogin(), user.getPassword(), user.getEnabled(), user.getFullName(), DateTimeUtils.convertLocalDateTimeToDate(user.getLastPasswordResetDate()));
+  }
 
 }

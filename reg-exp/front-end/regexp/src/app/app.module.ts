@@ -9,7 +9,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './appComponent/app.component';
 import { AuthGuard } from './services/guards/auth.guard';
-import { UserService } from './services/security/user.service';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CookieService } from 'ngx-cookie-service';
@@ -94,7 +93,7 @@ export function jwtLoader(): string {
     })
   ],
   providers: [
-    RestDataSourceService, AuthGuard, UserService, CookieService, AuthenticationService
+    RestDataSourceService, AuthGuard, CookieService, AuthenticationService
   ],
   bootstrap: [AppComponent]
 })

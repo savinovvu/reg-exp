@@ -58,8 +58,6 @@ export class SmartTableComponent implements OnInit {
   source: LocalDataSource = new LocalDataSource();
 
   constructor(restService: RestDataSourceService) {
-    // let data = dataOut;
-    // this.source.load(data);
     this.restService = restService;
   }
 
