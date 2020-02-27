@@ -9,8 +9,9 @@
 . add ci/cd
 . use jsonpath library for controller tests
 . add datavalidation tests
-63. total build with docker compose
-62. implement userTable
+64. users table, pagenation and sort+
+63. total build with docker compose+
+62. implement userTable+
 61. add paged result, mapstruct, metamodel generation+
 60. docker build for node.js+
 59. implement sign-up with jwt+

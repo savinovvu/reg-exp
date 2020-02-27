@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RootRouter } from './app.routes';
 import { RestDataSourceService } from './services/rest/rest-data-source.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './appComponent/app.component';
 import { AuthGuard } from './services/guards/auth.guard';
@@ -31,6 +31,7 @@ import { ProposeTaskComponent } from './pages/propose-task/propose-task.componen
 import { UsefulLinksComponent } from './pages/useful-links/useful-links.component';
 import { SmartTableComponent } from './components/tables/smart-table/smart-table.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { TokenInterceptor } from "./services/interceptors/token-interceptor.service";
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -91,7 +92,8 @@ export function jwtLoader(): string {
     })
   ],
   providers: [
-    RestDataSourceService, AuthGuard, CookieService, AuthenticationService
+    RestDataSourceService, AuthGuard, CookieService, AuthenticationService,
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

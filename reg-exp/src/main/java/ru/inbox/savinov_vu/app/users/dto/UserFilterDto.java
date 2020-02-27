@@ -23,9 +23,13 @@ public class UserFilterDto {
 
   private Boolean enabled;
 
-  private int size = 30;
+  private int size = 2;
 
   private int page = 1;
+
+  private String sort;
+
+  private String direction;
 
 
 }

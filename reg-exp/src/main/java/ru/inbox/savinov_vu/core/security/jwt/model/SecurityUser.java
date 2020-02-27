@@ -33,6 +33,7 @@ public class SecurityUser implements UserDetails {
 
   private Boolean enabled;
 
+  @Transient
   private String fullName;
 
   @CreatedDate

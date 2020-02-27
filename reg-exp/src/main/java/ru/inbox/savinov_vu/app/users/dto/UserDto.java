@@ -21,5 +21,7 @@ public class UserDto {
 
   private String sex;
 
+  private String birthDate;
+
 
 }

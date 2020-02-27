@@ -3,14 +3,15 @@ package ru.inbox.savinov_vu.app.users.repository;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import ru.inbox.savinov_vu.app.users.dto.UserFilterDto;
 import ru.inbox.savinov_vu.app.users.model.User;
 import ru.inbox.savinov_vu.app.users.model.User_;
 import ru.inbox.savinov_vu.common.classes.CriteriaApiFilter;
-import ru.inbox.savinov_vu.common.util.StringUtils;
 
 import static java.util.Objects.isNull;
+import static ru.inbox.savinov_vu.common.util.StringUtils.isNullOrEmpty;
 
 
 
@@ -21,6 +22,8 @@ public class UserFilter extends CriteriaApiFilter<User> {
   private int page;
 
   private int size;
+
+  private Sort sort;
 
 
   public static UserFilter of(UserFilterDto filterDto) {
@@ -35,6 +38,7 @@ public class UserFilter extends CriteriaApiFilter<User> {
     filter.enabled(isNull(enabled) ? true : enabled);
     filter.page = filterDto.getPage() - 1;
     filter.size = filterDto.getSize();
+    filter.setSort(filterDto);
     return filter;
   }
 
@@ -49,7 +53,7 @@ public class UserFilter extends CriteriaApiFilter<User> {
 
 
   private void byFirstName(String firstName) {
-    if (StringUtils.isNullOrEmpty(firstName)) {
+    if (isNullOrEmpty(firstName)) {
       return;
     }
     Specification<Specification> condition = Specification.where((r, cq, cb) -> cb.equal(r.get(User_.FIRST_NAME), firstName));
@@ -58,7 +62,7 @@ public class UserFilter extends CriteriaApiFilter<User> {
 
 
   private void byLastName(String lastName) {
-    if (StringUtils.isNullOrEmpty(lastName)) {
+    if (isNullOrEmpty(lastName)) {
       return;
     }
     Specification<Specification> condition = Specification.where((r, cq, cb) -> cb.equal(r.get(User_.LAST_NAME), lastName));
@@ -67,7 +71,7 @@ public class UserFilter extends CriteriaApiFilter<User> {
 
 
   private void byEmail(String email) {
-    if (StringUtils.isNullOrEmpty(email)) {
+    if (isNullOrEmpty(email)) {
       return;
     }
     Specification<Specification> condition = Specification.where((r, cq, cb) -> cb.equal(r.get(User_.EMAIL), email));
@@ -76,7 +80,7 @@ public class UserFilter extends CriteriaApiFilter<User> {
 
 
   private void byLogin(String login) {
-    if (StringUtils.isNullOrEmpty(login)) {
+    if (isNullOrEmpty(login)) {
       return;
     }
     Specification<Specification> condition = Specification.where((r, cq, cb) -> cb.equal(r.get(User_.LOGIN), login));
@@ -85,7 +89,7 @@ public class UserFilter extends CriteriaApiFilter<User> {
 
 
   private void bySex(String sex) {
-    if (StringUtils.isNullOrEmpty(sex)) {
+    if (isNullOrEmpty(sex)) {
       return;
     }
     Specification<Specification> condition = Specification.where((r, cq, cb) -> cb.equal(r.get(User_.SEX), sex));
@@ -94,7 +98,7 @@ public class UserFilter extends CriteriaApiFilter<User> {
 
 
   private void byBirthDate(String birthDate) {
-    if (StringUtils.isNullOrEmpty(birthDate)) {
+    if (isNullOrEmpty(birthDate)) {
       return;
     }
     Specification<Specification> condition = Specification.where((r, cq, cb) -> cb.equal(r.get(User_.BIRTH_DATE), birthDate));
@@ -105,6 +109,28 @@ public class UserFilter extends CriteriaApiFilter<User> {
   private void enabled(Boolean enabled) {
     Specification<Specification> condition = Specification.where((r, cq, cb) -> cb.equal(r.get(User_.ENABLED), enabled));
     addCondition(condition);
+  }
+
+
+  private void setSort(UserFilterDto filterDto) {
+    if (isNullOrEmpty(filterDto.getSort()) || isNullOrEmpty(filterDto.getDirection())) {
+      defaultSort();
+      return;
+    }
+
+    Sort.Direction direction;
+    if (Sort.Direction.DESC.toString().equals(filterDto.getDirection())) {
+      direction = Sort.Direction.DESC;
+    } else {
+      direction = Sort.Direction.ASC;
+    }
+
+    sort = Sort.by(direction, filterDto.getSort());
+  }
+
+
+  private void defaultSort() {
+    sort = Sort.by(Sort.Direction.ASC, User_.ID);
   }
 
 }

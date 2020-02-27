@@ -1,6 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
+import { LocalDataSource, ServerDataSource } from 'ng2-smart-table';
 import { RestDataSourceService } from '../../../services/rest/rest-data-source.service';
+import { ActivatedRoute, Router, UrlSerializer, UrlTree } from "@angular/router";
+import 'rxjs/add/operator/debounceTime';
+import { debounce } from "rxjs/operators";
+import { interval, timer } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+
+
+
+const BASE_URL = '/v1/users/user/filter';
+
 
 
 @Component({
@@ -10,9 +20,42 @@ import { RestDataSourceService } from '../../../services/rest/rest-data-source.s
 })
 export class SmartTableComponent implements OnInit {
 
-  private restService: RestDataSourceService;
+  private source: ServerDataSource;
+
+
+  constructor(
+    private httpClient: HttpClient,
+  ) {
+    this.source = new ServerDataSource(httpClient,
+      {
+        dataKey:'items',
+        endPoint:'/v1/users/user/filter',
+        pagerLimitKey: 'size',
+        pagerPageKey: 'page',
+        totalKey: 'total',
+        sortFieldKey: 'sort',
+        sortDirKey:'direction'
+      })
+  }
+
+
+
+
+  ngOnInit() {
+  }
+
+
+  onDeleteConfirm(event): void {
+    if (window.confirm('Are you sure you want to delete?')) {
+      event.confirm.resolve();
+    } else {
+      event.confirm.reject();
+    }
+  }
+
 
   settings = {
+
     actions: {
       add: false,
     },
@@ -30,6 +73,7 @@ export class SmartTableComponent implements OnInit {
       id: {
         title: 'ID',
         type: 'number',
+
       },
       firstName: {
         title: 'First Name',
@@ -47,32 +91,28 @@ export class SmartTableComponent implements OnInit {
         title: 'E-mail',
         type: 'string',
       },
+      birthDate: {
+        title: 'Birth Date',
+        type: 'string',
+      },
       sex: {
         title: 'Sex',
         type: 'string',
+        filter: {
+          type: 'list',
+          config: {
+            selectText: 'Select...',
+            list: [
+              { value: 'man', title: 'MAN' },
+              { value: 'woman', title: 'WOMAN' },
+            ],
+          },
+        },
       },
     },
   };
 
-  source: LocalDataSource = new LocalDataSource();
-
-  constructor(restService: RestDataSourceService) {
-    this.restService = restService;
-  }
-
-  ngOnInit() {
-    this.restService.get('/v1/users/user/filter').subscribe(v => {
-      console.log(v);
-      this.source.load(v.items);
-    });
-  }
-
-  onDeleteConfirm(event): void {
-    if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
-    }
-  }
 }
+
+
 

@@ -28,6 +28,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -104,11 +105,13 @@ public class User extends BaseEntityAudit implements Identify {
   private LocalDateTime lastPasswordResetDate;
 
 
+
   public User(Integer id) {
     this.id = id;
     this.enabled = true;
   }
 
+  @Transient
   public String getFullName() {
     return firstName + " " + lastName;
   }

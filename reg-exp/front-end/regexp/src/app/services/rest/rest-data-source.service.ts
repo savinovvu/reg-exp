@@ -76,8 +76,9 @@ export class RestDataSourceService {
 
 
   private getUrl(url) {
-    const currentLang = this.translate.currentLang;
-    return url + `?lang=${currentLang}`;
+    return url;
+    // const currentLang = this.translate.currentLang;
+    // return url + `?lang=${currentLang}`;
   }
 
 
@@ -88,8 +89,8 @@ export class RestDataSourceService {
 
   private getHeaders(): HttpHeaders {
     const headers = new HttpHeaders()
-      .set('Authorization', `Bearer ${this.authenticationService.getJwtToken()}`)
-      .set('id', this.authenticationService.getId())
+      /*.set('Authorization', `Bearer ${this.authenticationService.getJwtToken()}`)
+      .set('id', this.authenticationService.getId())*/
     ;
     return headers;
   }
