@@ -20,7 +20,7 @@ const BASE_URL = '/v1/users/user/filter';
 })
 export class SmartTableComponent implements OnInit {
 
-  private source: ServerDataSource;
+  source: ServerDataSource;
 
 
   constructor(
