@@ -6,7 +6,7 @@ import ru.inbox.savinov_vu.common.interfaces.DtoEntityMapper;
 
 
 
-@Mapper(componentModel = "spring")
+@Mapper
 public interface UserDtoMapper extends DtoEntityMapper<UserDto, User> {
 
   @Override

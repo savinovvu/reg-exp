@@ -29,7 +29,6 @@ import { UserTableComponent } from './pages/user-table/user-table.component';
 import { CourseComponent } from './pages/course/course.component';
 import { ProposeTaskComponent } from './pages/propose-task/propose-task.component';
 import { UsefulLinksComponent } from './pages/useful-links/useful-links.component';
-import { FilterModule } from 'ng2-smart-table/components/filter/filter.module';
 import { SmartTableComponent } from './components/tables/smart-table/smart-table.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
@@ -61,7 +60,6 @@ export function jwtLoader(): string {
     HttpClientModule,
     FormsModule,
 
-    FilterModule,
 
     TranslateModule.forRoot(
       ({

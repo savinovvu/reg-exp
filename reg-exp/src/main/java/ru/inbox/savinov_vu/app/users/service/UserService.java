@@ -1,6 +1,7 @@
 package ru.inbox.savinov_vu.app.users.service;
 
 import lombok.RequiredArgsConstructor;
+import org.mapstruct.factory.Mappers;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -28,10 +29,6 @@ public class UserService {
   @Resource
   private final UserRepository userRepository;
 
-  @Resource
-  private final UserDtoMapper userDtoMapper;
-
-
   @Transactional(readOnly = true)
   public List<User> getAll() {
     return userRepository.findAll();
@@ -54,7 +51,7 @@ public class UserService {
   public PagedResultList<UserDto> getByFilter(UserFilter filter) {
     PageRequest pageRequest = PageRequest.of(filter.getPage(), filter.getSize(), Sort.by(Sort.Direction.ASC, User_.ID));
     Page<User> all = userRepository.findAll(filter, pageRequest);
-    PagedResultList<UserDto> userDtoPagedResultList = PagedResultList.ofPage(all, userDtoMapper);
+    PagedResultList<UserDto> userDtoPagedResultList = PagedResultList.ofPage(all, Mappers.getMapper(UserDtoMapper.class));
     return userDtoPagedResultList;
   }
 

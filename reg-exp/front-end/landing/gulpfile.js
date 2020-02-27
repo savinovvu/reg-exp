@@ -17,7 +17,7 @@ var include = require("posthtml-include");
 var del = require("del");
 var htmlmin = require("gulp-htmlmin");
 var i18n = require("gulp-html-i18n");
-var buildRootFolder = "../../nginx/src/about";
+var buildRootFolder = "../../nginx/src/landing";
 
 
 

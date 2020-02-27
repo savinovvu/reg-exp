@@ -43,16 +43,16 @@ services:
       test: curl -f http://localhost:9090/monitoring/health || exit 1
 
   regexp-nginx:
-    image: nginx
-    container_name: regexp-nginx
+    build:
+      context: .
+      dockerfile: nginx/nginx.dockerfile
+
     ports:
       - 8880:8880
-      - 8443:443
-    volumes:
-      - ./nginx/nginx.conf.nginx:/etc/nginx/nginx.conf
-      - ./nginx/src:/usr/share/nginx/html
     networks:
       - network1
+    depends_on:
+      - app
 
 networks:
   network1:

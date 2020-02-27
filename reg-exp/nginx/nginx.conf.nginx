@@ -29,7 +29,11 @@ http {
         }
 
         location ~ / {
-            root   /usr/share/nginx/html/about;
+            root   /usr/share/nginx/html/landing;
+        }
+
+        location ^~ /inspect-url {
+            return 200 "$host\n$uri\n$args";
         }
 
     }
