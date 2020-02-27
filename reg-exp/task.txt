@@ -9,6 +9,7 @@
 . add ci/cd
 . use jsonpath library for controller tests
 . add datavalidation tests
+66. add some validation
 65. implement filters, add exceptions and exception handling hierarchy.+
 64. users table, pagenation and sort+
 63. total build with docker compose+
