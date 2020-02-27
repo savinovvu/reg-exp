@@ -14,12 +14,11 @@
       .then(response => {
         return response.json();
       }).then(json => {
-      console.log(json);
         localStorage.setItem("jwt_token", json.token);
         localStorage.setItem("id", json.id);
         localStorage.setItem("fullName", json.fullName);
         localStorage.setItem("roles", json.roles);
-        // window.location.href = "/regexp";
+        window.location.href = "/regexp";
       }
     );
   });
