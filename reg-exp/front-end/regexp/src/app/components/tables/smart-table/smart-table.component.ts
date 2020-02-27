@@ -34,7 +34,8 @@ export class SmartTableComponent implements OnInit {
         pagerPageKey: 'page',
         totalKey: 'total',
         sortFieldKey: 'sort',
-        sortDirKey:'direction'
+        sortDirKey:'direction',
+        filterFieldKey:'#field#'
       })
   }
 
@@ -58,22 +59,18 @@ export class SmartTableComponent implements OnInit {
 
     actions: {
       add: false,
+      edit:false,
+      delete:false,
     },
 
-    edit: {
-      editButtonContent: '<i class="nb-edit"></i>',
-      saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
-    },
+
     columns: {
       id: {
         title: 'ID',
         type: 'number',
-
+        filter: {
+          query: 'slfdkj',
+        },
       },
       firstName: {
         title: 'First Name',

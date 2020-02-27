@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class UserFilterDto {
 
-  private Integer id;
+  private String id;
 
   private String firstName;
 

@@ -6,9 +6,13 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import ru.inbox.savinov_vu.app.users.dto.UserFilterDto;
+import ru.inbox.savinov_vu.app.users.model.Sex;
 import ru.inbox.savinov_vu.app.users.model.User;
 import ru.inbox.savinov_vu.app.users.model.User_;
 import ru.inbox.savinov_vu.common.classes.CriteriaApiFilter;
+import ru.inbox.savinov_vu.core.exception.flow.ValidationException;
+
+import java.time.LocalDate;
 
 import static java.util.Objects.isNull;
 import static ru.inbox.savinov_vu.common.util.StringUtils.isNullOrEmpty;
@@ -34,6 +38,7 @@ public class UserFilter extends CriteriaApiFilter<User> {
     filter.byEmail(filterDto.getEmail());
     filter.bySex(filterDto.getSex());
     filter.byBirthDate(filterDto.getBirthDate());
+    filter.byLogin(filterDto.getLogin());
     Boolean enabled = filterDto.getEnabled();
     filter.enabled(isNull(enabled) ? true : enabled);
     filter.page = filterDto.getPage() - 1;
@@ -43,12 +48,27 @@ public class UserFilter extends CriteriaApiFilter<User> {
   }
 
 
-  private void byId(Integer id) {
+  private void byId(String id) {
     if (isNull(id)) {
       return;
     }
-    Specification<Specification> condition = Specification.where((r, cq, cb) -> cb.equal(r.get(User_.ID), id));
+
+    Integer numberId;
+    numberId = getInteger(id);
+
+    Specification<Specification> condition = Specification.where((r, cq, cb) -> cb.equal(r.get(User_.ID), numberId));
     addCondition(condition);
+  }
+
+
+  private Integer getInteger(String id) {
+    Integer numberId;
+    try {
+      numberId = Integer.valueOf(id);
+    } catch (Exception e) {
+      throw new ValidationException(e.getMessage(), e);
+    }
+    return numberId;
   }
 
 
@@ -92,8 +112,22 @@ public class UserFilter extends CriteriaApiFilter<User> {
     if (isNullOrEmpty(sex)) {
       return;
     }
-    Specification<Specification> condition = Specification.where((r, cq, cb) -> cb.equal(r.get(User_.SEX), sex));
+    Sex sexEnum;
+    sexEnum = convertSexToEnum(sex);
+
+    Specification<Specification> condition = Specification.where((r, cq, cb) -> cb.equal(r.get(User_.SEX), sexEnum));
     addCondition(condition);
+  }
+
+
+  private Sex convertSexToEnum(String sex) {
+    Sex sexEnum;
+    try {
+      sexEnum = Sex.getByValue(sex);
+    } catch (Exception e) {
+      throw new ValidationException(e.getMessage(), e);
+    }
+    return sexEnum;
   }
 
 
@@ -101,8 +135,23 @@ public class UserFilter extends CriteriaApiFilter<User> {
     if (isNullOrEmpty(birthDate)) {
       return;
     }
-    Specification<Specification> condition = Specification.where((r, cq, cb) -> cb.equal(r.get(User_.BIRTH_DATE), birthDate));
+
+    LocalDate searchedDate;
+    searchedDate = convertBirthDateToLocalDate(birthDate);
+
+    Specification<Specification> condition = Specification.where((r, cq, cb) -> cb.equal(r.get(User_.BIRTH_DATE), searchedDate));
     addCondition(condition);
+  }
+
+
+  private LocalDate convertBirthDateToLocalDate(String birthDate) {
+    LocalDate searchedDate;
+    try {
+      searchedDate = LocalDate.parse(birthDate);
+    } catch (Exception e) {
+      throw new ValidationException(e.getMessage(), e);
+    }
+    return searchedDate;
   }
 
 

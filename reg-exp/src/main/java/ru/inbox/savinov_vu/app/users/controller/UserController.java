@@ -16,6 +16,7 @@ import ru.inbox.savinov_vu.app.users.service.UserService;
 import ru.inbox.savinov_vu.common.paged.PagedResultList;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 
 
@@ -29,7 +30,7 @@ public class UserController {
 
 
   @GetMapping("/v1/users/user/filter")
-  public ResponseEntity<PagedResultList<UserDto>> getWithFilter(UserFilterDto filterDto) {
+  public ResponseEntity<PagedResultList<UserDto>> getWithFilter(@Valid UserFilterDto filterDto) {
     UserFilter filter = UserFilter.of(filterDto);
     PagedResultList<UserDto> result = userService.getByFilter(filter);
     return ResponseEntity.ok(result);
