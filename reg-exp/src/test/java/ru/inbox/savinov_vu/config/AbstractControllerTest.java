@@ -19,6 +19,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @Import(ControllerTestCommonConfiguration.class)
 @Execution(ExecutionMode.CONCURRENT)
-public abstract class AbstractControllerTest {
+public abstract class AbstractControllerTest extends AbstractJunitTest{
 
 }

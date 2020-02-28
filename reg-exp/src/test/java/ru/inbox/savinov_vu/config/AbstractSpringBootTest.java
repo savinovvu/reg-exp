@@ -1,8 +1,6 @@
 package ru.inbox.savinov_vu.config;
 
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -18,7 +16,6 @@ import ru.inbox.savinov_vu.RegExpApplication;
 @ActiveProfiles("test")
 @SpringBootTest(classes = RegExpApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-@Execution(ExecutionMode.CONCURRENT)
-public abstract class AbstractSpringBootTest {
+public abstract class AbstractSpringBootTest extends AbstractJunitTest{
 
 }

@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import ru.inbox.savinov_vu.common.util.DateTimeUtils;
+import ru.inbox.savinov_vu.config.AbstractJunitTest;
 import ru.inbox.savinov_vu.core.security.jwt.model.SecurityUser;
 import ru.inbox.savinov_vu.testhelpers.data.factories.jwt.JwtHelperFactory;
 import ru.inbox.savinov_vu.testhelpers.data.factories.jwt.JwtParamsFactory;
@@ -26,7 +27,7 @@ import static ru.inbox.savinov_vu.testhelpers.data.factories.jwt.JwtTokenFactory
 
 
 
-class JwtHelperTest {
+class JwtHelperTest extends AbstractJunitTest {
 
 
   @Test

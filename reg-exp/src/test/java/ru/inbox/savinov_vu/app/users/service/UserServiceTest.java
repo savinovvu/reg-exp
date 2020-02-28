@@ -1,12 +1,11 @@
 package ru.inbox.savinov_vu.app.users.service;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
-
+import ru.inbox.savinov_vu.config.AbstractSpringBootTest;
 
 
-class UserServiceTest {
+
+class UserServiceTest extends AbstractSpringBootTest {
 
     @Test
     void getAll() {
