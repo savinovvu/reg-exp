@@ -1,7 +1,7 @@
 . implement translation service
 . change transformers to mapstruct
 . migrate to graphQL.
-. add angular 9
+. migrate angular 9
 . implement logout with save oldtoken, delete unactual old token with job
 . implement usefullinks page.
 . implement news page.
