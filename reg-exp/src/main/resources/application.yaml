@@ -13,6 +13,11 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
     show-sql: false
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_URL:localhost:5432}/regexpert
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
 management:
   endpoint:
     health:
@@ -29,4 +34,7 @@ jwt:
   header: Authorization
   secret: 'Hkb+5HoNpE34B9xGWF2iZjnWYbvqbQ2H76UR/ePP7x4='
   expiration: 31536000
+
+
+
 
