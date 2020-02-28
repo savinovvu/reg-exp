@@ -6,8 +6,8 @@ import ru.inbox.savinov_vu.app.users.model.User;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ru.inbox.savinov_vu.testhelpers.data.factories.constant.Constants.LocalDateConstant.GAGARINS_FLY_DAY_LOCAL_DATE;
 import static ru.inbox.savinov_vu.testhelpers.data.factories.constant.Constants.LocalDateConstant.START_UNIX_EPOCH_LOCAL_DATE;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.constant.Constants.LocalDateConstant.START_XX_AGE_LOCALDATE;
 import static ru.inbox.savinov_vu.testhelpers.data.factories.constant.Constants.LocalDateTimeConstant.START_UNIX_EPOCH_DATE_TIME;
 
 
@@ -37,7 +37,7 @@ public class UserFactory {
     mixedUser.setLastName("lastName2");
     mixedUser.setEnabled(true);
     mixedUser.setSex(Sex.WOMAN);
-    mixedUser.setBirthDate(START_XX_AGE_LOCALDATE);
+    mixedUser.setBirthDate(GAGARINS_FLY_DAY_LOCAL_DATE);
 
     User sortedFirstNameUser = userList.get(11);
     sortedFirstNameUser.setFirstName("aaaaa");
@@ -47,6 +47,12 @@ public class UserFactory {
 
     User disabledUser = userList.get(13);
     disabledUser.setEnabled(false);
+
+    User firstEmail = userList.get(14);
+    firstEmail.setEmail("aaa@email.com");
+
+    User firstLogin = userList.get(15);
+    firstEmail.setLogin("aaaaaa");
 
     userList.addAll(List.of(getOne(), getDisabled(), getWoman(), getOld()));
     return userList;
@@ -76,7 +82,7 @@ public class UserFactory {
 
   public static User getOld() {
     User user = buildUser("old");
-    user.setBirthDate(START_XX_AGE_LOCALDATE);
+    user.setBirthDate(GAGARINS_FLY_DAY_LOCAL_DATE);
     return user;
   }
 

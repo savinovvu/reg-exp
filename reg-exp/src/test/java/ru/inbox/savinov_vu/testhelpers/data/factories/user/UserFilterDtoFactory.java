@@ -7,7 +7,7 @@ import ru.inbox.savinov_vu.app.users.model.User_;
 
 import java.time.LocalDate;
 
-import static ru.inbox.savinov_vu.testhelpers.data.factories.constant.Constants.LocalDateConstant.START_XX_AGE_LOCALDATE;
+import static ru.inbox.savinov_vu.testhelpers.data.factories.constant.Constants.LocalDateConstant.GAGARINS_FLY_DAY_LOCAL_DATE;
 
 
 
@@ -115,7 +115,7 @@ public class UserFilterDtoFactory {
   }
 
 
-  public static UserFilterDto getSortedIdDESC() {
+  public static UserFilterDto getSortedIdDesc() {
     UserFilterDto userFilterDto = of(true);
     userFilterDto.setSort(User_.ID);
     userFilterDto.setDirection(Sort.Direction.DESC.toString());
@@ -143,8 +143,10 @@ public class UserFilterDtoFactory {
   }
 
 
-  public static UserFilterDto getSortedBySexAsc() {
-    return ofEnabledSortedASCByParam(User_.SEX);
+  public static UserFilterDto getSortedBySexDesc() {
+    UserFilterDto userFilterDto = ofEnabledSortedASCByParam(User_.SEX);
+    userFilterDto.setDirection(Sort.Direction.DESC.toString());
+    return userFilterDto;
   }
 
 
@@ -156,7 +158,7 @@ public class UserFilterDtoFactory {
   public static UserFilterDto compositeFilter() {
     UserFilterDto userFilterDto = of(true);
     userFilterDto.setSex(Sex.WOMAN.getValue());
-    userFilterDto.setBirthDate(START_XX_AGE_LOCALDATE.toString());
+    userFilterDto.setBirthDate(GAGARINS_FLY_DAY_LOCAL_DATE.toString());
     return userFilterDto;
 
   }
