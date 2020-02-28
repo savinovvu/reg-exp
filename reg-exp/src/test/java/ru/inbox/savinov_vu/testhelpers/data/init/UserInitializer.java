@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.inbox.savinov_vu.app.users.model.User;
 import ru.inbox.savinov_vu.app.users.repository.UserRepository;
 import ru.inbox.savinov_vu.app.users.service.UserService;
+import ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -36,6 +37,12 @@ public class UserInitializer {
   public List<User> initOneList(List<User> userList) {
     userRepository.deleteAll();
     return userList.stream().map(userRepository::save).collect(Collectors.toList());
+  }
+
+  public List<User> initOneList() {
+    userRepository.deleteAll();
+    List<User> differentUserList = UserFactory.getDifferentUserList();
+    return differentUserList.stream().map(userRepository::save).collect(Collectors.toList());
   }
 
 }

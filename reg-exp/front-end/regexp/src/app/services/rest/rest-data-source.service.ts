@@ -89,8 +89,6 @@ export class RestDataSourceService {
 
   private getHeaders(): HttpHeaders {
     const headers = new HttpHeaders()
-      /*.set('Authorization', `Bearer ${this.authenticationService.getJwtToken()}`)
-      .set('id', this.authenticationService.getId())*/
     ;
     return headers;
   }
