@@ -6,7 +6,6 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
-import org.springframework.data.annotation.CreatedDate;
 import ru.inbox.savinov_vu.app.tasks.comment.model.Comment;
 import ru.inbox.savinov_vu.app.tasks.level.model.RegExpLevel;
 import ru.inbox.savinov_vu.app.tasks.like.model.Like;
@@ -68,7 +67,6 @@ public class User extends BaseEntityAudit implements Identify {
 
   @Column(name = "birth_date")
   @JsonProperty("birth_date")
-  @CreatedDate
   private LocalDate birthDate;
 
 

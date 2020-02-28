@@ -18,7 +18,7 @@ import static org.springframework.test.util.AssertionErrors.assertEquals;
 import static ru.inbox.savinov_vu.testhelpers.data.factories.RegExpLevelFactory.getRegExpLevel;
 import static ru.inbox.savinov_vu.testhelpers.data.factories.RegExpTaskFactory.getRegExpTask;
 import static ru.inbox.savinov_vu.testhelpers.data.factories.RegExpTaskFactory.getRegExpTaskWithNumber;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.UserFactory.getUser;
+import static ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFactory.getOne;
 
 
 
@@ -49,7 +49,7 @@ class RegExpTaskRepositoryTest extends AbstractSpringBootTest {
     RegExpTask regExpTask = getRegExpTask();
     RegExpLevel regExpLevel = getRegExpLevel();
     level = regExpLevelRepository.saveAndFlush(regExpLevel);
-    User user = getUser();
+    User user = getOne();
     author = userRepository.saveAndFlush(user);
     regExpTask.setAuthor(author);
     regExpTask.setRegExpLevel(level);

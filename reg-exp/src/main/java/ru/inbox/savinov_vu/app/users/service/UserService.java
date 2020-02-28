@@ -35,12 +35,6 @@ public class UserService {
 
 
   @Transactional(readOnly = true)
-  public User getById(Integer id) {
-    return userRepository.findById(id).get();
-  }
-
-
-  @Transactional(readOnly = true)
   public User getByLogin(String login) {
     User user = userRepository.findByLogin(login);
     return user;

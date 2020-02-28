@@ -35,6 +35,4 @@ public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecifi
   @Override
   Page<User> findAll(Specification<User> spec, Pageable pageable);
 
-
-
 }
