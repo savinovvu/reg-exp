@@ -1,5 +1,6 @@
 package ru.inbox.savinov_vu.app.tasks.level.service;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -31,6 +32,7 @@ class RegExpLevelServiceTest {
 
 
   @Test
+  @Disabled
   public void findAll() {
     List<RegExpLevel> all = regExpLevelService.findAll(1);
     assertEquals("must be 2 objects", all.size(), 2);
