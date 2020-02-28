@@ -33,7 +33,6 @@ public class UserMock {
 
   public static UserService getUserServiceMock() {
     UserService mock = Mockito.mock(UserService.class);
-    when(mock.findSolvedLevels(1)).thenReturn(Set.of(getRegExpLevelWithId(2)));
     when(mock.add(getOne())).thenReturn(getWithId(1));
     when(mock.getAll()).thenReturn(List.of(getWithId(1), getWithId(2)));
     when(mock.getByLogin("login")).thenReturn(getWithId(1));

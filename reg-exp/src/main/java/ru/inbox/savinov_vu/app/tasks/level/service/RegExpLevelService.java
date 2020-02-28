@@ -1,7 +1,6 @@
 package ru.inbox.savinov_vu.app.tasks.level.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.inbox.savinov_vu.app.tasks.level.model.RegExpLevel;
@@ -10,7 +9,6 @@ import ru.inbox.savinov_vu.app.users.service.UserService;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Set;
 
 
 
@@ -24,19 +22,10 @@ public class RegExpLevelService {
   @Resource
   private final UserService userService;
 
-
+  // todo implement with criteria api or querydsl
   @Transactional(readOnly = true)
   public List<RegExpLevel> findAll(Integer userId) {
-    List<RegExpLevel> all = regExpLevelRepository.findAll(Sort.by(Sort.Direction.ASC, "number"));
-    Set<RegExpLevel> solvedLevels = userService.findSolvedLevels(userId);
-    for (RegExpLevel regExpLevel : all) {
-      if (solvedLevels.contains(regExpLevel)) {
-        regExpLevel.setSolve(true);
-      } else {
-        regExpLevel.setSolve(false);
-      }
-    }
-    return all;
+    return null;
 
   }
 

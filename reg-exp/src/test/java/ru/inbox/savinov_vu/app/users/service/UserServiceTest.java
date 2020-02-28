@@ -9,6 +9,7 @@ import ru.inbox.savinov_vu.app.users.model.Sex;
 import ru.inbox.savinov_vu.app.users.model.User;
 import ru.inbox.savinov_vu.app.users.model.User_;
 import ru.inbox.savinov_vu.app.users.repository.UserFilter;
+import ru.inbox.savinov_vu.app.users.repository.UserRepository;
 import ru.inbox.savinov_vu.common.paged.PagedResultList;
 import ru.inbox.savinov_vu.config.AbstractSpringBootTest;
 import ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFilterDtoFactory;
@@ -47,6 +48,9 @@ class UserServiceTest extends AbstractSpringBootTest {
 
   @Resource
   private UserService userService;
+
+  @Resource
+  private UserRepository userRepository;
 
 
   @Test
@@ -126,16 +130,17 @@ class UserServiceTest extends AbstractSpringBootTest {
     );
   }
 
+
   @Test
-  void getSecondPage(){
+  void getSecondPage() {
     List<User> differentUserList = getDifferentUserList();
     userInitializer.initOneList(differentUserList);
     UserFilter filter = UserFilter.of(UserFilterDtoFactory.getSecondPage());
     PagedResultList<UserDto> pagedResult = userService.getByFilter(filter);
     System.out.println(pagedResult);
     String firstName = pagedResult.getItems().get(0).getFirstName();
-    assertEquals( 2, pagedResult.getPage(), "number of page must be 2" );
-    assertEquals( "firstName5", firstName, "data must be from 2 page -> it is from firstName5 user" );
+    assertEquals(2, pagedResult.getPage(), "number of page must be 2");
+    assertEquals("firstName5", firstName, "data must be from 2 page -> it is from firstName5 user");
   }
 
 
@@ -147,9 +152,26 @@ class UserServiceTest extends AbstractSpringBootTest {
     PagedResultList<UserDto> byFilter = userService.getByFilter(filter);
     UserDto userDto = byFilter.getItems().get(0);
     UserDto userDto1 = byFilter.getItems().get(1);
-    assertEquals( 1, userDto.getId().compareToIgnoreCase(userDto1.getId()), "order by id must be desc" );
+    assertEquals(1, userDto.getId().compareToIgnoreCase(userDto1.getId()), "order by id must be desc");
   }
 
 
+  @Test
+  void updateUser() {
+    User user = userInitializer.initOne();
+    String newFirstName = "newFirstName";
+    user.setFirstName(newFirstName);
+    User updatetedUser = userService.update(user);
+    assertEquals(newFirstName, updatetedUser.getFirstName());
+  }
+
+
+  @Test
+  void deleteUser() {
+    User user = userInitializer.initOne();
+    userService.delete(user.getId());
+    User user1 = userRepository.findById(user.getId()).get();
+    assertEquals(user1.getEnabled(), false);
+  }
 
 }

@@ -6,7 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.inbox.savinov_vu.app.tasks.level.model.RegExpLevel;
 import ru.inbox.savinov_vu.app.users.dto.UserDto;
 import ru.inbox.savinov_vu.app.users.dto.UserDtoMapper;
 import ru.inbox.savinov_vu.app.users.model.User;
@@ -16,7 +15,6 @@ import ru.inbox.savinov_vu.common.paged.PagedResultList;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Set;
 
 
 
@@ -50,12 +48,6 @@ public class UserService {
   }
 
 
-  @Transactional(readOnly = true)
-  public Set<RegExpLevel> findSolvedLevels(Integer userId) {
-    return userRepository.findSolvedLevels(userId);
-  }
-
-
   @Transactional
   public User add(User user) {
     User result = userRepository.saveAndFlush(user);
@@ -71,7 +63,9 @@ public class UserService {
 
   @Transactional
   public boolean delete(Integer id) {
-    userRepository.deleteById(id);
+    User user = userRepository.findById(id).get();
+    user.setEnabled(false);
+    update(user);
     return true;
   }
 
