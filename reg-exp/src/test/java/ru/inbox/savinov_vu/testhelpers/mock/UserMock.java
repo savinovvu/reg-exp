@@ -1,7 +1,6 @@
-package ru.inbox.savinov_vu.stumb;
+package ru.inbox.savinov_vu.testhelpers.mock;
 
 import org.mockito.Mockito;
-import ru.inbox.savinov_vu.app.users.model.User;
 import ru.inbox.savinov_vu.app.users.repository.UserRepository;
 import ru.inbox.savinov_vu.app.users.service.UserService;
 
@@ -10,31 +9,14 @@ import java.util.Optional;
 import java.util.Set;
 
 import static org.mockito.Mockito.when;
-import static ru.inbox.savinov_vu.stumb.RegExpLevelFactory.getRegExpLevelWithId;
-import static ru.inbox.savinov_vu.stumb.RegExpTaskFactory.getRegExpTaskWithId;
+import static ru.inbox.savinov_vu.testhelpers.data.factories.RegExpLevelFactory.getRegExpLevelWithId;
+import static ru.inbox.savinov_vu.testhelpers.data.factories.RegExpTaskFactory.getRegExpTaskWithId;
+import static ru.inbox.savinov_vu.testhelpers.data.factories.UserFactory.getUser;
+import static ru.inbox.savinov_vu.testhelpers.data.factories.UserFactory.getUserWithId;
 
 
 
-public class UserFactory {
-
-  public static User getUser() {
-    User user = new User()
-      .setFirstName("firstName")
-      .setLastName("lastName")
-      .setLogin("login")
-      .setPassword("password")
-      .setEmail("email@email.com")
-      .setEnabled(true);
-    return user;
-  }
-
-
-  public static User getUserWithId(Integer id) {
-    User user = getUser()
-      .setId(id);
-    return user;
-  }
-
+public class UserMock {
 
   public static UserRepository getUserRepositoryMock() {
     UserRepository mock = Mockito.mock(UserRepository.class);

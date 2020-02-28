@@ -9,15 +9,16 @@ import ru.inbox.savinov_vu.app.tasks.level.model.RegExpLevel;
 import ru.inbox.savinov_vu.app.tasks.level.repository.RegExpLevelRepository;
 import ru.inbox.savinov_vu.app.users.repository.UserRepository;
 import ru.inbox.savinov_vu.app.users.service.UserService;
-import ru.inbox.savinov_vu.stumb.UserFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 import static org.springframework.test.util.AssertionErrors.assertEquals;
-import static ru.inbox.savinov_vu.stumb.RegExpLevelFactory.getRegExpLevel;
-import static ru.inbox.savinov_vu.stumb.RegExpLevelFactory.getRegExpLevelRepositoryMock;
-import static ru.inbox.savinov_vu.stumb.RegExpLevelFactory.getRegExpLevelWithId;
+import static ru.inbox.savinov_vu.testhelpers.data.factories.RegExpLevelFactory.getRegExpLevel;
+import static ru.inbox.savinov_vu.testhelpers.data.factories.RegExpLevelFactory.getRegExpLevelWithId;
+import static ru.inbox.savinov_vu.testhelpers.mock.RegExpLevelMock.getRegExpLevelRepositoryMock;
+import static ru.inbox.savinov_vu.testhelpers.mock.UserMock.getUserRepositoryMock;
+import static ru.inbox.savinov_vu.testhelpers.mock.UserMock.getUserServiceMock;
 
 
 
@@ -92,14 +93,14 @@ class RegExpLevelServiceTest {
 
     @Bean
     public UserService userService() {
-      UserService mock = UserFactory.getUserServiceMock();
+      UserService mock = getUserServiceMock();
       return mock;
     }
 
 
     @Bean
     public UserRepository userRepository() {
-      UserRepository userRepositoryMock = UserFactory.getUserRepositoryMock();
+      UserRepository userRepositoryMock = getUserRepositoryMock();
       return userRepositoryMock;
     }
 

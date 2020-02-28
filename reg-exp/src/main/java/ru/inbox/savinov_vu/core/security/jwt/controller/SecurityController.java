@@ -37,7 +37,7 @@ public class SecurityController {
       .orElseThrow(
         () -> new AuthenticationException("Invalid login/password for user " + loginDTO.getLogin()));
 
-    String token = jwtHelper.generateToken(securityUser);
+    String token = jwtHelper.generateToken(securityUser.getLogin());
 
     return ResponseEntity.ok(JwtAuthenticationResponse.of(securityUser, token));
   }

@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.stumb;
+package ru.inbox.savinov_vu.testhelpers.data.factories;
 
 import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 

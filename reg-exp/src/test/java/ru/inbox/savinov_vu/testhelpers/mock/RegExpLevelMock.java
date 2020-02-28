@@ -1,8 +1,7 @@
-package ru.inbox.savinov_vu.stumb;
+package ru.inbox.savinov_vu.testhelpers.mock;
 
 import org.mockito.Mockito;
 import org.springframework.data.domain.Sort;
-import ru.inbox.savinov_vu.app.tasks.level.model.RegExpLevel;
 import ru.inbox.savinov_vu.app.tasks.level.repository.RegExpLevelRepository;
 import ru.inbox.savinov_vu.app.tasks.level.service.RegExpLevelService;
 
@@ -11,38 +10,13 @@ import java.util.Optional;
 
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
+import static ru.inbox.savinov_vu.testhelpers.data.factories.RegExpLevelFactory.getRegExpLevel;
+import static ru.inbox.savinov_vu.testhelpers.data.factories.RegExpLevelFactory.getRegExpLevelWithId;
+import static ru.inbox.savinov_vu.testhelpers.data.factories.RegExpLevelFactory.getRegExpLevelWithNumber;
 
 
 
-public class RegExpLevelFactory {
-
-
-  public static RegExpLevel getRegExpLevel() {
-    RegExpLevel regExpLevel = new RegExpLevel()
-      .setNumber(1)
-      .setEnDescription("some description")
-      .setRuDescription("описание")
-      .setRegExpTasks(List.of())
-      .setUsers(List.of())
-      .setEnabled(true);
-    return regExpLevel;
-  }
-
-
-  public static RegExpLevel getRegExpLevelWithId(Integer id) {
-    RegExpLevel regExpLevel = getRegExpLevel()
-      .setId(id);
-    return regExpLevel;
-  }
-
-
-  public static RegExpLevel getRegExpLevelWithNumber(Integer number) {
-    RegExpLevel regExpLevel = getRegExpLevel()
-      .setId(1)
-      .setNumber(number);
-    return regExpLevel;
-  }
-
+public class RegExpLevelMock {
 
   public static RegExpLevelRepository getRegExpLevelRepositoryMock() {
     RegExpLevelRepository mock = Mockito.mock(RegExpLevelRepository.class);
@@ -67,6 +41,5 @@ public class RegExpLevelFactory {
     when(mock.findByNumber(1)).thenReturn(getRegExpLevelWithNumber(1));
     return mock;
   }
-
 
 }

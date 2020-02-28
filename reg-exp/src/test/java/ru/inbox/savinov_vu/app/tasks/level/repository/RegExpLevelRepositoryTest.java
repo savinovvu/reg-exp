@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
-import static ru.inbox.savinov_vu.stumb.RegExpLevelFactory.getRegExpLevel;
+import static ru.inbox.savinov_vu.testhelpers.data.factories.RegExpLevelFactory.getRegExpLevel;
 
 
 

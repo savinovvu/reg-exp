@@ -6,7 +6,7 @@ import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 import java.util.List;
 
 import static org.springframework.test.util.AssertionErrors.assertEquals;
-import static ru.inbox.savinov_vu.stumb.RegExpTaskFactory.getRegExpTaskWithMistakes;
+import static ru.inbox.savinov_vu.testhelpers.data.factories.RegExpTaskFactory.getRegExpTaskWithMistakes;
 
 
 

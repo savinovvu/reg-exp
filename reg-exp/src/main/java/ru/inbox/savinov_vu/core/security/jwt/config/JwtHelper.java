@@ -25,7 +25,7 @@ public class JwtHelper implements Serializable {
 
   private static final long serialVersionUID = -3301605591108950415L;
 
-  private static final SignatureAlgorithm JWT_ALGORITHM = SignatureAlgorithm.HS256;
+  public static final SignatureAlgorithm JWT_ALGORITHM = SignatureAlgorithm.HS256;
 
   private static final String CLAIM_KEY_USERNAME = "sub";
 
@@ -91,11 +91,10 @@ public class JwtHelper implements Serializable {
   }
 
 
-  public String generateToken(UserDetails userDetails) {
-    Preconditions.checkArgument(!Strings.isBlank(userDetails.getUsername()), "User name can't be blank");
-
+  public String generateToken(String login) {
+    Preconditions.checkArgument(!Strings.isBlank(login), "User name can't be blank");
     Map<String, Object> claims = new HashMap<>();
-    return doGenerateToken(claims, userDetails.getUsername());
+    return doGenerateToken(claims, login);
   }
 
 
