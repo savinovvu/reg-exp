@@ -5,8 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import static java.util.Objects.isNull;
 
 
 
@@ -15,11 +17,22 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoginDto {
-  @NotNull
+
+  @NotBlank
   @Size(min = 5, max = 255)
   private String login;
 
-  @NotNull
+  @NotBlank
   private String password;
+
+
+  public String getLogin() {
+    return isNull(login) ? null : login.strip();
+  }
+
+
+  public String getPassword() {
+    return isNull(password) ? null : password.strip();
+  }
 }
 

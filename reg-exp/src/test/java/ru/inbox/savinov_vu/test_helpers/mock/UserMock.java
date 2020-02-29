@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.testhelpers.mock;
+package ru.inbox.savinov_vu.test_helpers.mock;
 
 import org.mockito.Mockito;
 import ru.inbox.savinov_vu.app.users.repository.UserRepository;
@@ -9,10 +9,10 @@ import java.util.Optional;
 import java.util.Set;
 
 import static org.mockito.Mockito.when;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.RegExpLevelFactory.getRegExpLevelWithId;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.RegExpTaskFactory.getRegExpTaskWithId;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFactory.getOne;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFactory.getWithId;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.RegExpLevelFactory.getRegExpLevelWithId;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.RegExpTaskFactory.getRegExpTaskWithId;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFactory.getOne;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFactory.getWithId;
 
 
 
@@ -33,7 +33,6 @@ public class UserMock {
 
   public static UserService getUserServiceMock() {
     UserService mock = Mockito.mock(UserService.class);
-    when(mock.add(getOne())).thenReturn(getWithId(1));
     when(mock.getAll()).thenReturn(List.of(getWithId(1), getWithId(2)));
     when(mock.getByLogin("login")).thenReturn(getWithId(1));
     when(mock.delete(1)).thenReturn(true);

@@ -1,14 +1,13 @@
+. add monitoring and loging service to docker compose
 . implement translation service
-. change transformers to mapstruct
 . migrate to graphQL.
-. migrate angular 9
+. migrate to angular 9
 . implement logout with save oldtoken, delete unactual old token with job
 . implement usefullinks page.
 . implement news page.
 . implement about page.
 . add kubernates.
 . add ci/cd
-. use jsonpath library for controller tests
 . add datavalidation tests
 67. write tests
 66. add some validation+

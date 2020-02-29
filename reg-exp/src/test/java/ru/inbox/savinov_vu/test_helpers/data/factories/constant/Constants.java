@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.testhelpers.data.factories.constant;
+package ru.inbox.savinov_vu.test_helpers.data.factories.constant;
 
 import ru.inbox.savinov_vu.common.util.DateTimeUtils;
 
@@ -12,6 +12,9 @@ public class Constants {
 
   public static final String LOGIN = "login";
 
+  public static final String TOO_LONG_WORD = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+
+  public static final String LONG_EMPTY_STRING = "                                          ";
 
   public static class LocalDateConstant {
 

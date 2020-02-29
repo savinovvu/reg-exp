@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.testhelpers.data.factories.jwt;
+package ru.inbox.savinov_vu.test_helpers.data.factories.jwt;
 
 import ru.inbox.savinov_vu.core.security.jwt.config.JwtParams;
 

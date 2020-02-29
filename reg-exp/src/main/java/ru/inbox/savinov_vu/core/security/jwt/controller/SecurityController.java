@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import ru.inbox.savinov_vu.core.exception.AuthenticationException;
 import ru.inbox.savinov_vu.core.security.SecurityService;
 import ru.inbox.savinov_vu.core.security.jwt.config.JwtAuthenticationResponse;
 import ru.inbox.savinov_vu.core.security.jwt.config.JwtHelper;
@@ -33,9 +32,7 @@ public class SecurityController {
   @PostMapping("/v1/sign-in")
   public ResponseEntity login(@Valid @RequestBody LoginDto loginDTO) {
 
-    SecurityUser securityUser = securityService.authenticate(loginDTO.getLogin(), loginDTO.getPassword())
-      .orElseThrow(
-        () -> new AuthenticationException("Invalid login/password for user " + loginDTO.getLogin()));
+    SecurityUser securityUser = securityService.authenticate(loginDTO.getLogin(), loginDTO.getPassword());
 
     String token = jwtHelper.generateToken(securityUser.getLogin());
 

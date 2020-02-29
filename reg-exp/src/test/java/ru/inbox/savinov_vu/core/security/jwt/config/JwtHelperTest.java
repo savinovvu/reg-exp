@@ -4,26 +4,23 @@ import io.jsonwebtoken.ExpiredJwtException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import ru.inbox.savinov_vu.common.util.DateTimeUtils;
 import ru.inbox.savinov_vu.config.AbstractJunitTest;
 import ru.inbox.savinov_vu.core.security.jwt.model.SecurityUser;
-import ru.inbox.savinov_vu.testhelpers.data.factories.jwt.JwtHelperFactory;
-import ru.inbox.savinov_vu.testhelpers.data.factories.jwt.JwtParamsFactory;
-import ru.inbox.savinov_vu.testhelpers.data.factories.jwt.SecurityUserFactory;
+import ru.inbox.savinov_vu.test_helpers.data.factories.jwt.JwtHelperFactory;
+import ru.inbox.savinov_vu.test_helpers.data.factories.jwt.JwtParamsFactory;
+import ru.inbox.savinov_vu.test_helpers.data.factories.jwt.SecurityUserFactory;
 
 import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.constant.Constants.LOGIN;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.jwt.JwtTokenFactory.getTokenByCreateTime;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.constant.Constants.LOGIN;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.jwt.JwtTokenFactory.getTokenByCreateTime;
 
 
 
@@ -68,21 +65,14 @@ class JwtHelperTest extends AbstractJunitTest {
   }
 
 
-  @ParameterizedTest
-  @MethodSource(value = "getNotTokenRefreshData")
+  @Test
   @DisplayName("token will not be refresh")
-  void canTokenBeRefreshed(String token, Date lastPasswordReset) {
+  void canTokenBeRefreshed() {
+    String token = getTokenByCreateTime(LocalDateTime.now());
+    Date lastPasswordReset = DateTimeUtils.convertLocalDateTimeToDate(LocalDateTime.now().plusDays(1));
     JwtHelper jwtHelper = JwtHelperFactory.of();
     Boolean result = jwtHelper.canTokenBeRefreshed(token, lastPasswordReset);
     assertFalse(result);
-  }
-
-
-  private static Stream<Arguments> getNotTokenRefreshData() {
-    return Stream.of(
-      Arguments.of(getTokenByCreateTime(LocalDateTime.now()), DateTimeUtils.convertLocalDateTimeToDate(LocalDateTime.now().plusDays(1))),
-      Arguments.of(getTokenByCreateTime(LocalDateTime.now().plusDays(1)), DateTimeUtils.convertLocalDateTimeToDate(LocalDateTime.now().plusDays(2)))
-    );
   }
 
 

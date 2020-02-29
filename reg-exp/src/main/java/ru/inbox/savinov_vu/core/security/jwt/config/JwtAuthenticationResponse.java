@@ -44,6 +44,6 @@ public class JwtAuthenticationResponse implements Serializable {
 
 
   public static JwtAuthenticationResponse of(SecurityUser securityUser, String token) {
-    return JwtAuthenticationResponse.of(token, securityUser.getId(), securityUser.getUsername(), securityUser.getAuthorities());
+    return JwtAuthenticationResponse.of(token, securityUser.getId(), securityUser.getFullName(), securityUser.getAuthorities());
   }
 }

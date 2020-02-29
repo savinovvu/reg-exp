@@ -12,8 +12,8 @@ import ru.inbox.savinov_vu.app.users.repository.UserFilter;
 import ru.inbox.savinov_vu.app.users.repository.UserRepository;
 import ru.inbox.savinov_vu.common.paged.PagedResultList;
 import ru.inbox.savinov_vu.config.AbstractSpringBootTest;
-import ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFilterDtoFactory;
-import ru.inbox.savinov_vu.testhelpers.data.init.UserInitializer;
+import ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFilterDtoFactory;
+import ru.inbox.savinov_vu.test_helpers.data.init.UserInitializer;
 
 import javax.annotation.Resource;
 import java.lang.reflect.Field;
@@ -21,23 +21,23 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.constant.Constants.LocalDateConstant.GAGARINS_FLY_DAY_LOCAL_DATE;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFactory.getDifferentUserList;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFilterDtoFactory.compositeFilter;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFilterDtoFactory.getByBirthDate;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFilterDtoFactory.getByEmail;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFilterDtoFactory.getByFirstName;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFilterDtoFactory.getByLastName;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFilterDtoFactory.getBySex;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFilterDtoFactory.getDisabled;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFilterDtoFactory.getEnabled;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFilterDtoFactory.getFive;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFilterDtoFactory.getSortedByBirthDateAsc;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFilterDtoFactory.getSortedByEmailAsc;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFilterDtoFactory.getSortedByFirstNameAsc;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFilterDtoFactory.getSortedByLastNameAsc;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFilterDtoFactory.getSortedByLoginAsc;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFilterDtoFactory.getSortedBySexDesc;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.constant.Constants.LocalDateConstant.GAGARINS_FLY_DAY_LOCAL_DATE;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFactory.getDifferentUserList;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFilterDtoFactory.compositeFilter;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFilterDtoFactory.getByBirthDate;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFilterDtoFactory.getByEmail;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFilterDtoFactory.getByFirstName;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFilterDtoFactory.getByLastName;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFilterDtoFactory.getBySex;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFilterDtoFactory.getDisabled;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFilterDtoFactory.getEnabled;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFilterDtoFactory.getFive;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFilterDtoFactory.getSortedByBirthDateAsc;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFilterDtoFactory.getSortedByEmailAsc;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFilterDtoFactory.getSortedByFirstNameAsc;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFilterDtoFactory.getSortedByLastNameAsc;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFilterDtoFactory.getSortedByLoginAsc;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFilterDtoFactory.getSortedBySexDesc;
 
 
 

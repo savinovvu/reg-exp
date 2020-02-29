@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.testhelpers.data.factories.user;
+package ru.inbox.savinov_vu.test_helpers.data.factories.user;
 
 import ru.inbox.savinov_vu.app.users.model.Sex;
 import ru.inbox.savinov_vu.app.users.model.User;
@@ -6,9 +6,9 @@ import ru.inbox.savinov_vu.app.users.model.User;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ru.inbox.savinov_vu.testhelpers.data.factories.constant.Constants.LocalDateConstant.GAGARINS_FLY_DAY_LOCAL_DATE;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.constant.Constants.LocalDateConstant.START_UNIX_EPOCH_LOCAL_DATE;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.constant.Constants.LocalDateTimeConstant.START_UNIX_EPOCH_DATE_TIME;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.constant.Constants.LocalDateConstant.GAGARINS_FLY_DAY_LOCAL_DATE;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.constant.Constants.LocalDateConstant.START_UNIX_EPOCH_LOCAL_DATE;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.constant.Constants.LocalDateTimeConstant.START_UNIX_EPOCH_DATE_TIME;
 
 
 
@@ -92,7 +92,7 @@ public class UserFactory {
       .setFirstName("firstName" + s)
       .setLastName("lastName" + s)
       .setLogin("login" + s)
-      .setPassword("password")
+      .setPassword("qweasd")
       .setLastPasswordResetDate(START_UNIX_EPOCH_DATE_TIME)
       .setEnabled(true)
       .setEmail("email" + s + "@email.com")

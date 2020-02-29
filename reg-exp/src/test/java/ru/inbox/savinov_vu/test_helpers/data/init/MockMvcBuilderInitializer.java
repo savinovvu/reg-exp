@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.testhelpers.data.init;
+package ru.inbox.savinov_vu.test_helpers.data.init;
 
 import org.springframework.stereotype.Service;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;

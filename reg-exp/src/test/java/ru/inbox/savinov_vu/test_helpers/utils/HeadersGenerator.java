@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.testhelpers.utils;
+package ru.inbox.savinov_vu.test_helpers.utils;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.testhelpers.data.init;
+package ru.inbox.savinov_vu.test_helpers.data.init;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

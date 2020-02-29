@@ -3,15 +3,13 @@ package ru.inbox.savinov_vu.app.users.controller;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-import ru.inbox.savinov_vu.app.users.dto.UserDto;
 import ru.inbox.savinov_vu.app.users.model.User;
 import ru.inbox.savinov_vu.app.users.model.User_;
-import ru.inbox.savinov_vu.config.ControllerTest;
-import ru.inbox.savinov_vu.testhelpers.data.init.MockMvcBuilderInitializer;
-import ru.inbox.savinov_vu.testhelpers.data.init.UserInitializer;
+import ru.inbox.savinov_vu.config.AbstractSpringBootTest;
+import ru.inbox.savinov_vu.test_helpers.data.init.MockMvcBuilderInitializer;
+import ru.inbox.savinov_vu.test_helpers.data.init.UserInitializer;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -24,15 +22,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 
-class UserControllerTest extends ControllerTest {
+class UserControllerTest extends AbstractSpringBootTest {
 
   private static final String FILTERED_GET_PATH = "/v1/users/user/filter";
 
   @Resource
   private MockMvc mockMvc;
-
-  @Resource
-  private JacksonTester<UserDto> userTester;
 
   @Resource
   private UserInitializer userInitializer;
@@ -71,6 +66,7 @@ class UserControllerTest extends ControllerTest {
       .andExpect(status().isOk())
       .andExpect(jsonPath("$.items.length()", Matchers.equalTo(enabled.size())));
   }
+
 
   @Test
   void getFistPage() throws Exception {

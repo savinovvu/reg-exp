@@ -9,7 +9,7 @@ import ru.inbox.savinov_vu.app.tasks.level.service.RegExpLevelService;
 import ru.inbox.savinov_vu.app.users.repository.UserRepository;
 import ru.inbox.savinov_vu.app.users.service.UserService;
 import ru.inbox.savinov_vu.config.AbstractControllerTest;
-import ru.inbox.savinov_vu.testhelpers.utils.WebTestHelper;
+import ru.inbox.savinov_vu.test_helpers.utils.WebTestHelper;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -19,12 +19,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.RegExpLevelFactory.getRegExpLevel;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.RegExpLevelFactory.getRegExpLevelWithId;
-import static ru.inbox.savinov_vu.testhelpers.mock.RegExpLevelMock.getRegExpLevelRepositoryMock;
-import static ru.inbox.savinov_vu.testhelpers.mock.RegExpLevelMock.getRegExpLevelServiceMock;
-import static ru.inbox.savinov_vu.testhelpers.mock.UserMock.getUserRepositoryMock;
-import static ru.inbox.savinov_vu.testhelpers.mock.UserMock.getUserServiceMock;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.RegExpLevelFactory.getRegExpLevel;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.RegExpLevelFactory.getRegExpLevelWithId;
+import static ru.inbox.savinov_vu.test_helpers.mock.RegExpLevelMock.getRegExpLevelRepositoryMock;
+import static ru.inbox.savinov_vu.test_helpers.mock.RegExpLevelMock.getRegExpLevelServiceMock;
+import static ru.inbox.savinov_vu.test_helpers.mock.UserMock.getUserRepositoryMock;
+import static ru.inbox.savinov_vu.test_helpers.mock.UserMock.getUserServiceMock;
 
 
 

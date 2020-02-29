@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.testhelpers.data.factories.jwt;
+package ru.inbox.savinov_vu.test_helpers.data.factories.jwt;
 
 import io.jsonwebtoken.Jwts;
 import ru.inbox.savinov_vu.common.util.DateTimeUtils;
@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 import static ru.inbox.savinov_vu.core.security.jwt.config.JwtHelper.JWT_ALGORITHM;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.constant.Constants.LOGIN;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.constant.Constants.LOGIN;
 
 
 

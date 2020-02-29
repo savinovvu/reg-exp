@@ -15,11 +15,11 @@ import javax.annotation.Resource;
 import java.util.List;
 
 import static org.springframework.test.util.AssertionErrors.assertEquals;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.RegExpLevelFactory.getRegExpLevel;
-import static ru.inbox.savinov_vu.testhelpers.data.factories.RegExpLevelFactory.getRegExpLevelWithId;
-import static ru.inbox.savinov_vu.testhelpers.mock.RegExpLevelMock.getRegExpLevelRepositoryMock;
-import static ru.inbox.savinov_vu.testhelpers.mock.UserMock.getUserRepositoryMock;
-import static ru.inbox.savinov_vu.testhelpers.mock.UserMock.getUserServiceMock;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.RegExpLevelFactory.getRegExpLevel;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.RegExpLevelFactory.getRegExpLevelWithId;
+import static ru.inbox.savinov_vu.test_helpers.mock.RegExpLevelMock.getRegExpLevelRepositoryMock;
+import static ru.inbox.savinov_vu.test_helpers.mock.UserMock.getUserRepositoryMock;
+import static ru.inbox.savinov_vu.test_helpers.mock.UserMock.getUserServiceMock;
 
 
 

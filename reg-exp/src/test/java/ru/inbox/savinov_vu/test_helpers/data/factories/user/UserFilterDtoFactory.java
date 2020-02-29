@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.testhelpers.data.factories.user;
+package ru.inbox.savinov_vu.test_helpers.data.factories.user;
 
 import org.springframework.data.domain.Sort;
 import ru.inbox.savinov_vu.app.users.dto.UserFilterDto;
@@ -7,7 +7,7 @@ import ru.inbox.savinov_vu.app.users.model.User_;
 
 import java.time.LocalDate;
 
-import static ru.inbox.savinov_vu.testhelpers.data.factories.constant.Constants.LocalDateConstant.GAGARINS_FLY_DAY_LOCAL_DATE;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.constant.Constants.LocalDateConstant.GAGARINS_FLY_DAY_LOCAL_DATE;
 
 
 

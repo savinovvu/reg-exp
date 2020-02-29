@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.testhelpers.utils;
+package ru.inbox.savinov_vu.test_helpers.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.MediaType;
@@ -8,7 +8,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import ru.inbox.savinov_vu.app.users.model.User;
-import ru.inbox.savinov_vu.testhelpers.data.factories.user.UserFactory;
+import ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFactory;
 
 import javax.annotation.Resource;
 
