@@ -11,6 +11,8 @@ services:
     build:
       context: ./postgres
       dockerfile: ./Dockerfile
+    ports:
+    - 55432:5432
     networks:
       - network2
     environment:
