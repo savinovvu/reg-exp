@@ -10,11 +10,16 @@ import static ru.inbox.savinov_vu.test_helpers.data.factories.constant.Constants
 public class SignUpDtoFactory {
 
   public static SignUpDto of() {
+    return of("");
+  }
+
+
+  public static SignUpDto of(String s) {
     SignUpDto signUpDto = new SignUpDto()
-      .setFirstName("signUpFirstName")
-      .setLastName("signUpFirstName")
-      .setLogin("login")
-      .setEmail("email@email.com")
+      .setFirstName("signUpFirstName" + s)
+      .setLastName("signUpFirstName" + s)
+      .setLogin("login" + s)
+      .setEmail("email" + s + "@email.com")
       .setSex(Sex.WOMAN)
       .setBirthDate(START_UNIX_EPOCH_LOCAL_DATE)
       .setPassword("password")

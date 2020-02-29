@@ -214,13 +214,4 @@ class SecurityControllerTest extends AbstractSpringBootTest {
 }
 
 
-/*
-
-
-  @Size(min = 5, max = 255)
-  private String password;
-
-  @Size(min = 5, max = 255)
-  private String repeatPassword;*/
-
 
