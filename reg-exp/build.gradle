@@ -75,6 +75,7 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-impl:${jwtVersion}")
     runtime("io.jsonwebtoken:jjwt-jackson:${jwtVersion}")
 
+    runtime 'biz.paluch.logging:logstash-gelf:1.12.0'
 
     compileOnly('org.hibernate:hibernate-jpamodelgen')
     annotationProcessor('org.hibernate:hibernate-jpamodelgen')

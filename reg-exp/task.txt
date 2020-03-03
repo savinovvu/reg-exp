@@ -1,4 +1,3 @@
-. add monitoring and loging service to docker compose
 . implement translation service
 . migrate to graphQL.
 . migrate to angular 9
@@ -9,7 +8,9 @@
 . add kubernates.
 . add ci/cd
 . add datavalidation tests
-67. write tests
+. add grafite+grafana monitoring
+68. add graylog2 logging server.
+67. write tests+
 66. add some validation+
 65. implement filters, add exceptions and exception handling hierarchy.+
 64. users table, pagenation and sort+

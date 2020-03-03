@@ -2,17 +2,42 @@
 <Configuration status="INFO">
     <Appenders>
         <Console name="STDOUT" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level - %msg%n" />
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level - %msg%n"/>
         </Console>
         <File name="MyFile" fileName="logs/log.txt" immediateFlush="false" append="false">
             <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
+
+                <Gelf name="gelf"
+                      host="graylog"
+                      port="12201"
+                      version="1.1"
+                      extractStackTrace="true"
+                      filterStackTrace="true"
+                      mdcProfiling="true"
+                      includeFullMdc="true"
+                      maximumMessageSize="8192"
+                      originHost="%host{fqdn}"
+                      additionalFieldTypes="app=String"
+                >
+                    <Field name="timestamp" pattern="%d{dd MMM yyyy HH:mm:ss,SSS}"/>
+                    <Field name="level" pattern="%level"/>
+                    <Field name="simpleClassName" pattern="%C{1}"/>
+                    <Field name="className" pattern="%C"/>
+                    <Field name="server" pattern="%host"/>
+                    <Field name="server.fqdn" pattern="%host{fqdn}"/>
+
+                    <Field name="app" literal="admin"/>
+                </Gelf>
+
     </Appenders>
+
+
     <Loggers>
-<!--        <Root level="debug">-->
         <Root level="info">
-            <AppenderRef ref="STDOUT" />
+            <AppenderRef ref="STDOUT"/>
             <AppenderRef ref="MyFile"/>
+            <AppenderRef ref="gelf" />
         </Root>
     </Loggers>
 </Configuration>
