@@ -16,7 +16,7 @@ var posthtml = require("gulp-posthtml");
 var include = require("posthtml-include");
 var del = require("del");
 var htmlmin = require("gulp-htmlmin");
-var buildRootFolder = "../../../nginx/src/login";
+var buildRootFolder = "../../../infrastructure/nginx/src/login";
 
 
 

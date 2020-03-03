@@ -33,7 +33,6 @@ RUN npm run build
 WORKDIR /opt/regexp/
 RUN npm run build
 
-
 FROM nginx
 USER root
 
@@ -43,6 +42,6 @@ RUN rm /usr/share/nginx/html/50x.html && \
 
 COPY nginx/nginx.conf.nginx /etc/nginx/nginx.conf
 
-COPY --from=node10 nginx/src /usr/share/nginx/html
+COPY --from=node10 infrastructure/nginx/src /usr/share/nginx/html
 
 

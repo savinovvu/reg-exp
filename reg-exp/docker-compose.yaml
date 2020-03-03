@@ -9,7 +9,7 @@ services:
 
   regexp-postgres:
     build:
-      context: ./postgres
+      context: ./infrastructure/postgres
       dockerfile: ./Dockerfile
     ports:
     - 55432:5432
@@ -26,7 +26,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: src/main/resources/docker/project-gradle.dockerfile
+      dockerfile: ./infrastructure/app/project-gradle.dockerfile
     container_name: regexp
     ports:
       - 8080:8080
@@ -48,7 +48,7 @@ services:
   regexp-nginx:
     build:
       context: .
-      dockerfile: nginx/nginx.dockerfile
+      dockerfile: infrastructure/nginx/nginx.dockerfile
 
     ports:
       - 8880:8880
