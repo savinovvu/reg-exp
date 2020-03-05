@@ -50,7 +50,7 @@ public class RegExpTaskCheckerTest {
       Arguments.of(DigitalRegExpTaskFactory.getMultipleBinary(), "multiple digits range [0,1]*"),
 
       Arguments.of(DigitalRegExpTaskFactory.getOneRangeWithPoint(), "one digit range [0-3,5]"),
-      Arguments.of(DigitalRegExpTaskFactory.getThreeBinary(), "three digits range [0-3,5]"),
+      Arguments.of(DigitalRegExpTaskFactory.getThreeRangeWithPoint(), "three digits range [0-3,5]"),
       Arguments.of(DigitalRegExpTaskFactory.getMultipleRangeWithPoint(), "multiple digits range [0-3,5]")
     );
   }
