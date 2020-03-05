@@ -8,7 +8,7 @@
 . implement about page.
 . add kubernates.
 . add ci/cd
-. add datavalidation tests
+70. implement task check page.
 69. implement update and delete in user table
 68. add graylog2 logging server.+
 67. write tests+

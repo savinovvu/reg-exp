@@ -1,38 +1,66 @@
 package ru.inbox.savinov_vu.app.checker;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import ru.inbox.savinov_vu.app.checker.model.TaskResulter;
 import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
+import ru.inbox.savinov_vu.test_helpers.data.factories.regexpTask.DigitalRegExpTaskFactory;
+import ru.inbox.savinov_vu.test_helpers.data.factories.regexpTask.WordRegExpTaskFactory;
 
-import java.util.List;
+import java.util.stream.Stream;
 
-import static org.springframework.test.util.AssertionErrors.assertEquals;
-import static ru.inbox.savinov_vu.test_helpers.data.factories.RegExpTaskFactory.getRegExpTaskWithMistakes;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 
 public class RegExpTaskCheckerTest {
 
-  @Test
-  public void missAnswerTest() {
-    RegExpTask regExpTask = getRegExpTaskWithMistakes();
-    RegExpTaskChecker regExpTaskChecker = new RegExpTaskChecker();
-    TaskResulter resulter = regExpTaskChecker.check(regExpTask, "sdfh");
-    assertEquals("result must be false", resulter.getSuccess(), false);
-    assertEquals("Unmatch result with 3 mistakes", resulter.getResult().get(WrongCheckStatus.UNMATCH).size(), 3);
-    assertEquals("Unused result with 1 mistakes", resulter.getResult().get(WrongCheckStatus.UNUSED).size(), 1);
+  private RegExpTaskChecker taskChecker;
+
+
+  @BeforeEach
+  void init() {
+    taskChecker = new RegExpTaskChecker();
+  }
+
+
+  @ParameterizedTest
+  @MethodSource("getValidTasks")
+  public void check_valid(RegExpTask task, String message) {
+    for (String v : task.getAnswers()) {
+      TaskResulter check = taskChecker.check(task, v);
+      assertEquals(true, check.getSuccess(), message + ", answer: " + v);
+    }
+  }
+
+
+  public static Stream<Arguments> getValidTasks() {
+    return Stream.of(
+      Arguments.of(WordRegExpTaskFactory.getWordTask(), "simple word"),
+
+      Arguments.of(DigitalRegExpTaskFactory.getOneDecimalRange(), "one digit range [0-9]"),
+      Arguments.of(DigitalRegExpTaskFactory.getThreeDecimalRange(), "three digit range [0-9]{3}"),
+      Arguments.of(DigitalRegExpTaskFactory.getMultipleDecimalRange(), "multiple digit range [0-9]*"),
+
+      Arguments.of(DigitalRegExpTaskFactory.getOneBinary(), "one digit range [0,1]"),
+      Arguments.of(DigitalRegExpTaskFactory.getThreeBinary(), "three digits range [0,1]{3}"),
+      Arguments.of(DigitalRegExpTaskFactory.getMultipleBinary(), "multiple digits range [0,1]*"),
+
+      Arguments.of(DigitalRegExpTaskFactory.getOneRangeWithPoint(), "one digit range [0-3,5]"),
+      Arguments.of(DigitalRegExpTaskFactory.getThreeBinary(), "three digits range [0-3,5]"),
+      Arguments.of(DigitalRegExpTaskFactory.getMultipleRangeWithPoint(), "multiple digits range [0-3,5]")
+    );
   }
 
 
   @Test
-  public void successAnswerTest() {
-    RegExpTask regExpTask = new RegExpTask()
-      .setExcludedStrings(List.of())
-      .setExcludedAnswers(List.of())
-      .setMatchedStrings(List.of("a"))
-      .setRequiredSubStrings(List.of("a"));
-    RegExpTaskChecker regExpTaskChecker = new RegExpTaskChecker();
-    TaskResulter resulter = regExpTaskChecker.check(regExpTask, "a");
-    assertEquals("result must be false", resulter.getSuccess(), true);
+  public void digitalTask_invalid_excluded_answer() {
+    RegExpTask task = DigitalRegExpTaskFactory.getOneDecimalRange();
+    TaskResulter check = taskChecker.check(task, task.getExcludedAnswers().get(0));
+    assertEquals(false, check.getSuccess());
   }
 
 }

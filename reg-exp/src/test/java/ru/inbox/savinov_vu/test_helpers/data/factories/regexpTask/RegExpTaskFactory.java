@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.test_helpers.data.factories;
+package ru.inbox.savinov_vu.test_helpers.data.factories.regexpTask;
 
 import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 

@@ -213,7 +213,6 @@ class UserControllerTest extends AbstractSpringBootTest {
       Arguments.of(UserDtoFactory.of().setEmail(LONG_EMPTY_STRING), "email is long empty string"),
       Arguments.of(UserDtoFactory.of().setEmail(TOO_LONG_WORD), "email is too long word"),
       Arguments.of(UserDtoFactory.of().setEmail(LONG_EMPTY_STRING + "asdf"), "email is long empty string with param")
-
       );
   }
 }

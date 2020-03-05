@@ -1,7 +1,6 @@
 package ru.inbox.savinov_vu.app.tasks.task.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.LazyCollection;
@@ -29,6 +28,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -102,7 +102,13 @@ public class RegExpTask extends BaseEntityAudit implements Identify {
   private List<UsefulLinks> usefulLinks;
 
   @Transient
-  @JsonProperty("solve")
   private boolean solve;
 
+
+  public RegExpTask() {
+    matchedStrings = new ArrayList<>();
+    excludedStrings = new ArrayList<>();
+    requiredSubStrings = new ArrayList<>();
+    excludedAnswers = new ArrayList<>();
+  }
 }

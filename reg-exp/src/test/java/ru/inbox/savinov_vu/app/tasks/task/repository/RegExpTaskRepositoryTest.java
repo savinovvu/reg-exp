@@ -16,8 +16,8 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
 import static ru.inbox.savinov_vu.test_helpers.data.factories.RegExpLevelFactory.getRegExpLevel;
-import static ru.inbox.savinov_vu.test_helpers.data.factories.RegExpTaskFactory.getRegExpTask;
-import static ru.inbox.savinov_vu.test_helpers.data.factories.RegExpTaskFactory.getRegExpTaskWithNumber;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.regexpTask.RegExpTaskFactory.getRegExpTask;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.regexpTask.RegExpTaskFactory.getRegExpTaskWithNumber;
 import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFactory.getOne;
 
 

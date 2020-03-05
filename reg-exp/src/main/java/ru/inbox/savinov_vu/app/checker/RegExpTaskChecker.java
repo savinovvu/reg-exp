@@ -1,16 +1,19 @@
 package ru.inbox.savinov_vu.app.checker;
 
 import org.springframework.stereotype.Component;
+import ru.inbox.savinov_vu.app.checker.model.ConditionResult;
+import ru.inbox.savinov_vu.app.checker.model.ResultGroup;
+import ru.inbox.savinov_vu.app.checker.model.TaskResulter;
 import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 
+import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
-import static java.util.Objects.isNull;
-import static ru.inbox.savinov_vu.app.checker.WrongCheckStatus.EQUALS;
-import static ru.inbox.savinov_vu.app.checker.WrongCheckStatus.MATCH;
-import static ru.inbox.savinov_vu.app.checker.WrongCheckStatus.UNMATCH;
-import static ru.inbox.savinov_vu.app.checker.WrongCheckStatus.UNUSED;
-import static ru.inbox.savinov_vu.common.constant.StringConstants.NOT_ANSWER;
+import static ru.inbox.savinov_vu.app.checker.model.CheckGroupName.EXCLUDE;
+import static ru.inbox.savinov_vu.app.checker.model.CheckGroupName.EXCLUDE_ANSWER;
+import static ru.inbox.savinov_vu.app.checker.model.CheckGroupName.MATCH;
+import static ru.inbox.savinov_vu.app.checker.model.CheckGroupName.REQUIRE_SUBSTRING;
 
 
 
@@ -39,26 +42,44 @@ public class RegExpTaskChecker {
 
     var result = new TaskResulter();
 
-    if (isNull(answer)) {
-      return result.setWrong(NOT_ANSWER, WrongCheckStatus.NOT_ANSWER);
-    }
-
-    regExpTask.getMatchedStrings().stream()
-      .filter(v -> !checkMatches(v, answer))
-      .forEach(v -> result.setWrong(v, UNMATCH));
-
-    regExpTask.getExcludedStrings().stream()
-      .filter(v -> checkMatches(v, answer))
-      .forEach(v -> result.setWrong(v, MATCH));
-
-    regExpTask.getRequiredSubStrings().stream()
-      .filter(v -> !checkRequiredString(v, answer))
-      .forEach(v -> result.setWrong(v, UNUSED));
-
-    regExpTask.getExcludedAnswers().stream()
-      .filter(v -> isEqualExcludedAnswer(v, answer))
-      .forEach(v -> result.setWrong(v, EQUALS));
-
+    checkMatchedString(regExpTask, answer, result);
+    checkExcludeString(regExpTask, answer, result);
+    checkRequireSubstringinAnswer(regExpTask, answer, result);
+    checkExcludedAnswer(regExpTask, answer, result);
     return result;
   }
+
+
+  private void checkMatchedString(RegExpTask regExpTask, String answer, TaskResulter result) {
+    List<ConditionResult> matchedResult = regExpTask.getMatchedStrings().stream()
+      .map(v -> ConditionResult.of(v, checkMatches(v, answer)))
+      .collect(Collectors.toList());
+    result.getGroups().add(ResultGroup.of(MATCH, matchedResult));
+  }
+
+
+  private void checkExcludeString(RegExpTask regExpTask, String answer, TaskResulter result) {
+    List<ConditionResult> excludedStringsResult = regExpTask.getExcludedStrings().stream()
+      .map(v -> ConditionResult.of(v, !checkMatches(v, answer)))
+      .collect(Collectors.toList());
+    result.getGroups().add(ResultGroup.of(EXCLUDE, excludedStringsResult));
+  }
+
+
+  private void checkRequireSubstringinAnswer(RegExpTask regExpTask, String answer, TaskResulter result) {
+    List<ConditionResult> requireSubstringResult = regExpTask.getRequiredSubStrings().stream()
+      .map(v -> ConditionResult.of(v, checkRequiredString(v, answer)))
+      .collect(Collectors.toList());
+    result.getGroups().add(ResultGroup.of(REQUIRE_SUBSTRING, requireSubstringResult));
+  }
+
+
+  private void checkExcludedAnswer(RegExpTask regExpTask, String answer, TaskResulter result) {
+    List<ConditionResult> excludeAnswerResult = regExpTask.getExcludedAnswers().stream()
+      .map(v -> ConditionResult.of(v, !isEqualExcludedAnswer(v, answer)))
+      .collect(Collectors.toList());
+    result.getGroups().add(ResultGroup.of(EXCLUDE_ANSWER, excludeAnswerResult));
+  }
+
+
 }

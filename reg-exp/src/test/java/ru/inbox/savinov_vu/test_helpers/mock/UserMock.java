@@ -10,7 +10,7 @@ import java.util.Set;
 
 import static org.mockito.Mockito.when;
 import static ru.inbox.savinov_vu.test_helpers.data.factories.RegExpLevelFactory.getRegExpLevelWithId;
-import static ru.inbox.savinov_vu.test_helpers.data.factories.RegExpTaskFactory.getRegExpTaskWithId;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.regexpTask.RegExpTaskFactory.getRegExpTaskWithId;
 import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFactory.getOne;
 import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFactory.getWithId;
 

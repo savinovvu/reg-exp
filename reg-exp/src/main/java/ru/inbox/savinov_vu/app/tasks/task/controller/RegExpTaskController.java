@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +13,6 @@ import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 import ru.inbox.savinov_vu.app.tasks.task.service.RegExpTaskService;
 import ru.inbox.savinov_vu.app.users.model.User;
 import ru.inbox.savinov_vu.app.users.service.UserService;
-import ru.inbox.savinov_vu.core.interfaces.OperationResulter;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -61,13 +59,7 @@ public class RegExpTaskController {
   }
 
 
-  @PostMapping("/v1/tasks/regexptask")
-  public ResponseEntity<OperationResulter> add(Principal principal, @RequestBody RegExpTask regExpTask) {
-    User user = userService.getByLogin(principal.getName());
-    regExpTask.setEnabled(false);
-    regExpTask.setAuthor(user);
-    return new ResponseEntity(regExpTaskService.add(regExpTask), HttpStatus.ACCEPTED.OK);
-  }
+
 
 
   @PutMapping("/v1/tasks/regexptask")
