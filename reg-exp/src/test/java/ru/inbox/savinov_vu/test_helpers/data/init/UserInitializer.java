@@ -58,8 +58,30 @@ public class UserInitializer {
   }
 
 
+
+
+  public User getEnabledUserFromExisting() {
+    List<User> enabled = getEnabledUsersFromExisting();
+    User user = enabled.get(0);
+    return user;
+  }
+
+
+  public List<User> getEnabledUsersFromExisting() {
+    List<User> all = userRepository.findAll();
+    return all.stream().filter(v -> v.getEnabled()).collect(Collectors.toList());
+  }
+
+
   public void deleteAll() {
     userRepository.deleteAll();
   }
+
+
+  public User getById(Integer id) {
+    User user = userService.getById(id);
+    return user;
+  }
+
 
 }

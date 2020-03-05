@@ -16,10 +16,27 @@ public class MockMvcBuilderInitializer {
   @Resource
   private JwtHelper jwtHelper;
 
+
   public MockHttpServletRequestBuilder getRequest(String url, User user) {
     String token = jwtHelper.generateToken(user.getLogin());
     return MockMvcRequestBuilders.get(url)
-      .header("Authorization", "Bearer " +token)
+      .header("Authorization", "Bearer " + token)
+      .header("id", String.valueOf(user.getId()));
+  }
+
+
+  public MockHttpServletRequestBuilder putRequest(String url, User user) {
+    String token = jwtHelper.generateToken(user.getLogin());
+    return MockMvcRequestBuilders.put(url)
+      .header("Authorization", "Bearer " + token)
+      .header("id", String.valueOf(user.getId()));
+  }
+
+
+  public MockHttpServletRequestBuilder deleteRequest(String url, User user) {
+    String token = jwtHelper.generateToken(user.getLogin());
+    return MockMvcRequestBuilders.delete(url)
+      .header("Authorization", "Bearer " + token)
       .header("id", String.valueOf(user.getId()));
   }
 }

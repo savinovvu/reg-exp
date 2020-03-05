@@ -78,4 +78,5 @@ public class SignUpDto {
   public String getRepeatPassword() {
     return isNull(repeatPassword) ? null : repeatPassword.strip();
   }
+
 }

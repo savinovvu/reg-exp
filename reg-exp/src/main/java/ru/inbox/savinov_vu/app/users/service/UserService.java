@@ -38,6 +38,12 @@ public class UserService {
     return user;
   }
 
+  @Transactional(readOnly = true)
+  public User getById(Integer id) {
+    User user = userRepository.findById(id).orElse(null);
+    return user;
+  }
+
 
   @Transactional(readOnly = true)
   public PagedResultList<UserDto> getByFilter(UserFilter filter) {

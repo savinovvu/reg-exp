@@ -47,8 +47,10 @@ public class User extends BaseEntityAudit implements Identify {
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq")
   private Integer id;
 
+  @Column(name = "first_name")
   private String firstName;
 
+  @Column(name = "last_name")
   private String lastName;
 
   @Column(unique = true)

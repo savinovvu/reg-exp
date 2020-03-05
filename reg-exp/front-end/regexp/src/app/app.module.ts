@@ -25,11 +25,10 @@ import {
 import { ThemeModule } from './@theme/theme.module';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthenticationService } from './services/jwt/authentication.service';
-import { UserTableComponent } from './pages/user-table/user-table.component';
 import { CourseComponent } from './pages/course/course.component';
 import { ProposeTaskComponent } from './pages/propose-task/propose-task.component';
 import { UsefulLinksComponent } from './pages/useful-links/useful-links.component';
-import { SmartTableComponent } from './components/tables/smart-table/smart-table.component';
+import { UserTableComponent } from './pages/users/user-table.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { TokenInterceptor } from "./services/interceptors/token-interceptor.service";
 
@@ -52,7 +51,7 @@ export function jwtLoader(): string {
     CourseComponent,
     ProposeTaskComponent,
     UsefulLinksComponent,
-    SmartTableComponent
+    UserTableComponent
   ],
   imports: [
     BrowserModule,

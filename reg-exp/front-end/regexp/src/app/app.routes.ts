@@ -1,8 +1,8 @@
 import { RouterModule, Routes } from '@angular/router';
-import { UserTableComponent } from "./pages/user-table/user-table.component";
 import { CourseComponent } from "./pages/course/course.component";
 import { ProposeTaskComponent } from "./pages/propose-task/propose-task.component";
 import { UsefulLinksComponent } from "./pages/useful-links/useful-links.component";
+import { UserTableComponent } from "./pages/users/user-table.component";
 
 
 

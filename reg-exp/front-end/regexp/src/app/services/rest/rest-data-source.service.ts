@@ -61,7 +61,7 @@ export class RestDataSourceService {
   }
 
 
-  delete(url, item) {
+  delete(url) {
     url = this.getUrl(url);
     const subject = new Subject();
     const headers = this.getHeaders();

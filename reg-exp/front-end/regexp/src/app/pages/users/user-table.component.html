@@ -1,13 +1,20 @@
 <nb-card>
   <nb-card-header>
-    Smart Table
+    Users Table
   </nb-card-header>
 
   <nb-card-body>
     <ng2-smart-table
       [settings]="settings"
       [source]="source"
-      (deleteConfirm)="onDeleteConfirm($event)">
+      (deleteConfirm)="onDeleteConfirm($event)"
+      (delete)="onDelete($event)"
+
+      (editConfirm)="onEditConfirm($event)"
+      (edit)="onEdit($event)"
+
+
+    >
     </ng2-smart-table>
   </nb-card-body>
 </nb-card>

@@ -20,7 +20,7 @@
 /out/
 
 ### NGINX ###
-/nginx/src/**
+/infrastructure/nginx/src/**
 
 ### Logs ###
 /logs/**
@@ -34,6 +34,7 @@
 /front-end/dist-server
 /front-end/tmp
 /front-end/out-tsc
+/front-end/experimental/**
 
 # dependencies
 /front-end/**/node_modules
