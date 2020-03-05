@@ -6,4 +6,4 @@ command:
 docker-compose up --build
 
 
-Graylog logging server dashboard starts on port 9000
+Graylog logging server dashboard starts on port 9000, loging. password: admin:admin
