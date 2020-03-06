@@ -13,9 +13,9 @@ import ru.inbox.savinov_vu.app.checker.model.TaskResulter;
 import ru.inbox.savinov_vu.app.tasks.task.dto.detail.RegExpTaskDetailDto;
 import ru.inbox.savinov_vu.app.tasks.task.dto.detail.RegExpTaskDetailDtoMapper;
 import ru.inbox.savinov_vu.app.tasks.task.dto.list.RegExpTaskListDto;
-import ru.inbox.savinov_vu.app.tasks.task.dto.list.RegExpTaskListDtoMapper;
 import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 import ru.inbox.savinov_vu.app.tasks.task.service.RegExpTaskService;
+import ru.inbox.savinov_vu.common.util.HttpRequestUtil;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -50,10 +50,9 @@ public class RegExpTaskController {
 
 
   @GetMapping("/v1/tasks/regexptask/byLevel/{levelNumber}")
-  public ResponseEntity byLevelNumberAndTaskNumber(@PathVariable Integer levelNumber) {
-
-    List<RegExpTask> regExpTasks = regExpTaskService.getbyLevelNumber(levelNumber);
-    List<RegExpTaskListDto> regExpTaskListDtos = Mappers.getMapper(RegExpTaskListDtoMapper.class).mapEntityToDto(regExpTasks);
+  public ResponseEntity byLevelNumberAndTaskNumber(@PathVariable Integer levelNumber, HttpServletRequest request) {
+    Integer userId = HttpRequestUtil.getUserId(request);
+    List<RegExpTaskListDto> regExpTaskListDtos = regExpTaskService.getbyLevelNumber(levelNumber, userId);
     return new ResponseEntity(regExpTaskListDtos, HttpStatus.OK);
   }
 

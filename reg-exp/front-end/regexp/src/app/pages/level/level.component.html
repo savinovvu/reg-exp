@@ -7,7 +7,8 @@
         <nb-accordion-item-header>
           <nb-action style="margin-bottom: -3px"
                      [link]="'/course/'+level +'/'+task.number"
-                     icon="menu-outline"></nb-action>
+                     [icon]="task.solve? 'checkmark-square-outline' : 'menu-outline'">
+          </nb-action>
 
           <span style="padding-left: 15px">{{task.number}}. {{task.title}} </span>
         </nb-accordion-item-header>

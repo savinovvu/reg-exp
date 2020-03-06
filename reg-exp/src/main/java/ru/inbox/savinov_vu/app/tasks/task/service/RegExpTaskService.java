@@ -1,10 +1,13 @@
 package ru.inbox.savinov_vu.app.tasks.task.service;
 
 import lombok.RequiredArgsConstructor;
+import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.inbox.savinov_vu.app.checker.RegExpTaskChecker;
 import ru.inbox.savinov_vu.app.checker.model.TaskResulter;
+import ru.inbox.savinov_vu.app.tasks.task.dto.list.RegExpTaskListDto;
+import ru.inbox.savinov_vu.app.tasks.task.dto.list.RegExpTaskListDtoMapper;
 import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 import ru.inbox.savinov_vu.app.tasks.task.repository.RegExpTaskRepository;
 import ru.inbox.savinov_vu.app.users.model.User;
@@ -12,6 +15,7 @@ import ru.inbox.savinov_vu.app.users.service.UserService;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 
@@ -30,9 +34,15 @@ public class RegExpTaskService {
 
 
   @Transactional(readOnly = true)
-  public List<RegExpTask> getbyLevelNumber(Integer regExpLevelId) {
+  public List<RegExpTaskListDto> getbyLevelNumber(Integer regExpLevelId, Integer userId) {
     List<RegExpTask> all = repository.findByRegExpLevelNumberOrderByNumber(regExpLevelId);
-    return all;
+    User user = userService.getById(userId);
+    List<RegExpTaskListDto> result = all.stream().map(v -> Mappers.getMapper(RegExpTaskListDtoMapper.class)
+      .mapEntityToDto(v)
+      .setSolve(v.getUsers().contains(user)))
+      .collect(Collectors.toList());
+
+    return result;
   }
 
 
@@ -52,6 +62,7 @@ public class RegExpTaskService {
     var checkedTask = getById(id);
     return regExpTaskChecker.check(checkedTask, answer);
   }
+
 
   @Transactional
   public TaskResulter register(Integer taskId, String answer, Integer userId) {
