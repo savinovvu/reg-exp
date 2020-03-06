@@ -38,27 +38,8 @@ public class RegExpTaskService {
 
 
   @Transactional(readOnly = true)
-  public List<RegExpTask> getDisabledTask() {
-    return repository.getByEnabledOrderById(false);
-  }
-
-
-  @Transactional(readOnly = true)
-  public RegExpTask getByParentNumberAndByNumber(Integer parentNumber, Integer number) {
-    return repository.getTaskByLevelIdAndByNumber(parentNumber, number);
-  }
-
-
-  @Transactional
-  public RegExpTask update(RegExpTask regExpTask) {
-    return repository.saveAndFlush(regExpTask);
-  }
-
-
-  @Transactional
-  public boolean delete(Integer id) {
-    repository.deleteById(id);
-    return true;
+  public RegExpTask getTaskByLevelNumberAndByNumber(Integer levelNumber, Integer taskNumber) {
+    return repository.findTaskByLevelNumberAndByNumber(levelNumber, taskNumber);
   }
 
 

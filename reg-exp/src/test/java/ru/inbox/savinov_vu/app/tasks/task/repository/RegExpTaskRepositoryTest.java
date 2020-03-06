@@ -90,7 +90,7 @@ class RegExpTaskRepositoryTest extends AbstractSpringBootTest {
     mockEntity.setRegExpLevel(level);
     mockEntity.setAuthor(author);
     RegExpTask savedLevel = repository.saveAndFlush(mockEntity);
-    RegExpTask byNumberLevel = repository.getTaskByLevelIdAndByNumber(level.getNumber(), 2);
+    RegExpTask byNumberLevel = repository.findTaskByLevelNumberAndByNumber(level.getNumber(), 2);
     assertEquals("RegExpLevel find by number not correct", byNumberLevel.getId(), savedLevel.getId());
   }
 

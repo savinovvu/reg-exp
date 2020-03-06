@@ -1,11 +1,11 @@
-package ru.inbox.savinov_vu.app.tasks.task.dto;
+package ru.inbox.savinov_vu.app.tasks.task.dto.list;
 
 import lombok.Data;
 
 
 
 @Data
-public class RegExpTaskDto {
+public class RegExpTaskListDto {
 
   private String id;
 

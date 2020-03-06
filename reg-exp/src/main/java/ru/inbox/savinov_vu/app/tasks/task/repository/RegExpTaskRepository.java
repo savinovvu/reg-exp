@@ -20,8 +20,8 @@ public interface RegExpTaskRepository extends JpaRepository<RegExpTask, Integer>
   List<RegExpTask> getByEnabledOrderById(Boolean enable);
 
 
-  @Query("Select r FROM RegExpTask r WHERE r.regExpLevel.number=:level_number AND r.number=:number")
-  RegExpTask getTaskByLevelIdAndByNumber(@Param("level_number") Integer levelNumber,
-                                         @Param("number") Integer number);
+  @Query("Select r FROM RegExpTask r WHERE r.regExpLevel.number=:levelNumber AND r.number=:taskNumber")
+  RegExpTask findTaskByLevelNumberAndByNumber(@Param("levelNumber") Integer levelNumber,
+                                              @Param("taskNumber") Integer taskNumber);
 
 }

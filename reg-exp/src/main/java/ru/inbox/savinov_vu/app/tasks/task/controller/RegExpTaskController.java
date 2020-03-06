@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import ru.inbox.savinov_vu.app.tasks.task.dto.RegExpTaskDto;
-import ru.inbox.savinov_vu.app.tasks.task.dto.RegExpTaskDtoMapper;
+import ru.inbox.savinov_vu.app.tasks.task.dto.detail.RegExpTaskDetailDto;
+import ru.inbox.savinov_vu.app.tasks.task.dto.detail.RegExpTaskDetailDtoMapper;
+import ru.inbox.savinov_vu.app.tasks.task.dto.list.RegExpTaskListDto;
+import ru.inbox.savinov_vu.app.tasks.task.dto.list.RegExpTaskListDtoMapper;
 import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 import ru.inbox.savinov_vu.app.tasks.task.service.RegExpTaskService;
 
@@ -35,11 +37,21 @@ public class RegExpTaskController {
 
 
   @GetMapping("/v1/tasks/regexptask/byLevel/{levelNumber}")
-  public ResponseEntity byFilter(@PathVariable Integer levelNumber) {
+  public ResponseEntity byLevelNumberAndTaskNumber(@PathVariable Integer levelNumber) {
 
     List<RegExpTask> regExpTasks = regExpTaskService.getbyLevelNumber(levelNumber);
-    List<RegExpTaskDto> regExpTaskDtos = Mappers.getMapper(RegExpTaskDtoMapper.class).mapEntityToDto(regExpTasks);
-    return new ResponseEntity(regExpTaskDtos, HttpStatus.OK);
+    List<RegExpTaskListDto> regExpTaskListDtos = Mappers.getMapper(RegExpTaskListDtoMapper.class).mapEntityToDto(regExpTasks);
+    return new ResponseEntity(regExpTaskListDtos, HttpStatus.OK);
   }
+
+  @GetMapping("/v1/tasks/regexptask/byLevel/{levelNumber}/byNumber/{taskNumber}")
+  public ResponseEntity byLevelNumberAndTaskNumber(@PathVariable Integer levelNumber,
+                                                   @PathVariable Integer taskNumber) {
+    RegExpTask regExpTask = regExpTaskService.getTaskByLevelNumberAndByNumber(levelNumber, taskNumber);
+    RegExpTaskDetailDto regExpTaskDetailDto = Mappers.getMapper(RegExpTaskDetailDtoMapper.class).mapEntityToDto(regExpTask);
+    return new ResponseEntity(regExpTaskDetailDto, HttpStatus.OK);
+  }
+
+
 
 }

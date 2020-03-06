@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.app.tasks.task.dto;
+package ru.inbox.savinov_vu.app.tasks.task.dto.detail;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -8,13 +8,13 @@ import ru.inbox.savinov_vu.common.interfaces.DtoEntityMapper;
 
 
 @Mapper
-public interface RegExpTaskDtoMapper extends DtoEntityMapper<RegExpTaskDto, RegExpTask> {
+public interface RegExpTaskDetailDtoMapper extends DtoEntityMapper<RegExpTaskDetailDto, RegExpTask> {
 
   @Override
   @Mapping(source = "enDescription", target = "description")
   @Mapping(source = "enTitle", target = "title")
-  RegExpTaskDto mapEntityToDto(RegExpTask entity);
+  RegExpTaskDetailDto mapEntityToDto(RegExpTask entity);
 
   @Override
-  RegExpTask mapDtoToEntity(RegExpTaskDto dto);
+  RegExpTask mapDtoToEntity(RegExpTaskDetailDto dto);
 }
