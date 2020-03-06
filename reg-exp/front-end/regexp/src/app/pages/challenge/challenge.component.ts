@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { RestDataSourceService } from "../../services/rest/rest-data-source.service";
 import { ActivatedRoute } from "@angular/router";
 import { Task } from 'src/app/model/interfaces';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+
+
+
+;
+
+let timeout;
 
 
 
@@ -22,6 +29,9 @@ export class ChallengeComponent implements OnInit {
 
   answer = '';
 
+  success: boolean = false;
+
+  registerAnswer:boolean = false
 
   constructor(
     private restService: RestDataSourceService,
@@ -44,12 +54,33 @@ export class ChallengeComponent implements OnInit {
 
 
   answerChange() {
+    clearTimeout(timeout);
     if (this.answer.trim() === '') {
+      this.success = false;
       return;
     }
-    this.restService.put(`/v1/tasks/regexptask/check/${this.task.id}`, this.answer).subscribe(v => {
-      this.conditions = v;
-    });
+    timeout = setTimeout(() => {
+      this.restService.put(`/v1/tasks/regexptask/check/${this.task.id}`, this.answer)
+        .subscribe(v => {
+          this.conditions = v;
+          this.success = v.success;
+        });
+    }, 300);
   }
 
+
+  regsiterAnswer() {
+    clearTimeout(timeout);
+    if (this.answer.trim() === '') {
+      this.success = false;
+      return;
+    }
+    timeout = setTimeout(() => {
+      this.restService.put(`/v1/tasks/regexptask/registerAnswer/${this.task.id}`, this.answer)
+        .subscribe(v => {
+          this.conditions = v;
+          this.registerAnswer = v.success;
+        });
+    }, 300);
+  }
 }

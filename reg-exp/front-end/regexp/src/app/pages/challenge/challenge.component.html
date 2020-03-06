@@ -62,8 +62,9 @@
   </nb-card-body>
 </nb-card>
 
-<nb-card class="row show-grid">
-  <nb-card-header>Answer</nb-card-header>
+<nb-card>
+  <nb-card-header *ngIf="!success">Answer</nb-card-header>
+  <nb-card-header *ngIf="success">Good Answer</nb-card-header>
   <nb-card-body>
     <textarea class="indent-10"
               [(ngModel)]="answer"
@@ -75,7 +76,8 @@
               placeholder="Text Area">
 
     </textarea>
-    <button type="submit" nbButton>Submit</button>
+    <button *ngIf="success && !registerAnswer" (click)="regsiterAnswer()" nbButton>Submit</button>
+    <a *ngIf="success && registerAnswer" [routerLink]="'/course/'+levelNumber" nbButton>Go</a>
   </nb-card-body>
 </nb-card>
 

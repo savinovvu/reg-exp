@@ -7,6 +7,8 @@ import ru.inbox.savinov_vu.app.checker.RegExpTaskChecker;
 import ru.inbox.savinov_vu.app.checker.model.TaskResulter;
 import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 import ru.inbox.savinov_vu.app.tasks.task.repository.RegExpTaskRepository;
+import ru.inbox.savinov_vu.app.users.model.User;
+import ru.inbox.savinov_vu.app.users.service.UserService;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,6 +24,9 @@ public class RegExpTaskService {
 
   @Resource
   private final RegExpTaskChecker regExpTaskChecker;
+
+  @Resource
+  private final UserService userService;
 
 
   @Transactional(readOnly = true)
@@ -46,6 +51,18 @@ public class RegExpTaskService {
   public TaskResulter check(Integer id, String answer) {
     var checkedTask = getById(id);
     return regExpTaskChecker.check(checkedTask, answer);
+  }
+
+  @Transactional
+  public TaskResulter register(Integer taskId, String answer, Integer userId) {
+    var checkedTask = getById(taskId);
+    TaskResulter check = regExpTaskChecker.check(checkedTask, answer);
+    if (!check.getSuccess()) {
+      return check;
+    }
+    User user = userService.getById(userId);
+    user.solveTask(checkedTask);
+    return check;
   }
 
 

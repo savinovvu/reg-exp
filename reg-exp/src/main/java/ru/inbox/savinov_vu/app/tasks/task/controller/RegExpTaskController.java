@@ -18,6 +18,7 @@ import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 import ru.inbox.savinov_vu.app.tasks.task.service.RegExpTaskService;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -38,6 +39,16 @@ public class RegExpTaskController {
   }
 
 
+  @PutMapping("/v1/tasks/regexptask/registerAnswer/{id}")
+  public ResponseEntity register(@PathVariable("id") Integer id,
+                                 @RequestBody String answer,
+                                 HttpServletRequest httpServletRequest) {
+    Integer userId = Integer.valueOf(httpServletRequest.getHeader("id"));
+    TaskResulter check = regExpTaskService.register(id, answer, userId);
+    return new ResponseEntity(check, HttpStatus.OK);
+  }
+
+
   @GetMapping("/v1/tasks/regexptask/byLevel/{levelNumber}")
   public ResponseEntity byLevelNumberAndTaskNumber(@PathVariable Integer levelNumber) {
 
@@ -46,6 +57,7 @@ public class RegExpTaskController {
     return new ResponseEntity(regExpTaskListDtos, HttpStatus.OK);
   }
 
+
   @GetMapping("/v1/tasks/regexptask/byLevel/{levelNumber}/byNumber/{taskNumber}")
   public ResponseEntity byLevelNumberAndTaskNumber(@PathVariable Integer levelNumber,
                                                    @PathVariable Integer taskNumber) {
@@ -53,7 +65,6 @@ public class RegExpTaskController {
     RegExpTaskDetailDto regExpTaskDetailDto = Mappers.getMapper(RegExpTaskDetailDtoMapper.class).mapEntityToDto(regExpTask);
     return new ResponseEntity(regExpTaskDetailDto, HttpStatus.OK);
   }
-
 
 
 }

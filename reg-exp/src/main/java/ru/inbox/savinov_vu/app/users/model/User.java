@@ -32,6 +32,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 
 
@@ -105,11 +106,11 @@ public class User extends BaseEntityAudit implements Identify {
   private LocalDateTime lastPasswordResetDate;
 
 
-
   public User(Integer id) {
     this.id = id;
     this.enabled = true;
   }
+
 
   @Transient
   public String getFullName() {
@@ -135,5 +136,31 @@ public class User extends BaseEntityAudit implements Identify {
   @Override
   public int hashCode() {
     return Objects.hash(super.hashCode(), id);
+  }
+
+
+  public void solveTask(RegExpTask task) {
+    List<RegExpTask> solvedRegExpTasks = getSolvedRegExpTasks();
+    if (solvedRegExpTasks.contains(task)) {
+      return;
+    }
+
+    getSolvedRegExpTasks().add(task);
+    RegExpLevel regExpLevel = task.getRegExpLevel();
+
+    List<RegExpTask> enabledSolvedTask = getSolvedRegExpTasks()
+      .stream()
+      .filter(v -> v.isEnabled())
+      .collect(Collectors.toList());
+
+    List<RegExpTask> enabledLevelTask = regExpLevel
+      .getRegExpTasks()
+      .stream()
+      .filter(v-> v.isEnabled())
+      .collect(Collectors.toList());
+
+    if (enabledLevelTask.size() == enabledSolvedTask.size()) {
+      getSolvedRegExpLevels().add(regExpLevel);
+    }
   }
 }
