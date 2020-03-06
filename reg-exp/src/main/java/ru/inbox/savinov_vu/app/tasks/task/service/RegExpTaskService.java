@@ -7,11 +7,9 @@ import ru.inbox.savinov_vu.app.checker.RegExpTaskChecker;
 import ru.inbox.savinov_vu.app.checker.model.TaskResulter;
 import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 import ru.inbox.savinov_vu.app.tasks.task.repository.RegExpTaskRepository;
-import ru.inbox.savinov_vu.app.users.repository.UserRepository;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Set;
 
 
 
@@ -23,23 +21,12 @@ public class RegExpTaskService {
   private final RegExpTaskRepository repository;
 
   @Resource
-  private final UserRepository userRepository;
-
-  @Resource
   private final RegExpTaskChecker regExpTaskChecker;
 
 
   @Transactional(readOnly = true)
-  public List<RegExpTask> getAllByParentId(Integer id, Integer userId) {
-    List<RegExpTask> all = repository.getByRegExpLevelIdAndNumberIsNotNullOrderByNumber(id);
-    Set<RegExpTask> solvedLevels = userRepository.findSolvedTasks(userId);
-    for (RegExpTask regExpTask : all) {
-      if (solvedLevels.contains(regExpTask)) {
-        regExpTask.setSolve(true);
-      } else {
-        regExpTask.setSolve(false);
-      }
-    }
+  public List<RegExpTask> getbyLevelNumber(Integer regExpLevelId) {
+    List<RegExpTask> all = repository.findByRegExpLevelNumberOrderByNumber(regExpLevelId);
     return all;
   }
 

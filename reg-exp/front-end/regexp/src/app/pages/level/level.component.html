@@ -2,17 +2,17 @@
 
   <div class="accordion-container col-md-12 col-lg-12 col-xxxl-12">
 
-    <nb-accordion multi *ngFor="let level of levels">
+    <nb-accordion multi *ngFor="let task of tasks">
       <nb-accordion-item>
         <nb-accordion-item-header>
           <nb-action style="margin-bottom: -3px"
-                     [link]="'/course/'+level.number"
+                     [link]="'/course/'+task.number"
                      icon="menu-outline"></nb-action>
 
-          <span style="padding-left: 15px">{{level.number}}. Level</span>
+          <span style="padding-left: 15px">{{task.number}}. {{task.title}} </span>
         </nb-accordion-item-header>
         <nb-accordion-item-body>
-          {{level.description}}
+          {{task.description}}
         </nb-accordion-item-body>
       </nb-accordion-item>
 

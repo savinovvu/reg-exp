@@ -13,7 +13,8 @@ import java.util.List;
 @Repository
 public interface RegExpTaskRepository extends JpaRepository<RegExpTask, Integer> {
 
-  List<RegExpTask> getByRegExpLevelIdAndNumberIsNotNullOrderByNumber(Integer levelId);
+  @Query("Select r FROM RegExpTask r WHERE r.regExpLevel.number=:levelNumber and r.enabled=true ORDER BY r.number")
+  List<RegExpTask> findByRegExpLevelNumberOrderByNumber(Integer levelNumber);
 
 
   List<RegExpTask> getByEnabledOrderById(Boolean enable);

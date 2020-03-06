@@ -95,28 +95,7 @@ class RegExpTaskRepositoryTest extends AbstractSpringBootTest {
   }
 
 
-  @Test
-  void getByRegExpLevelIdAndNumberIsNotNullOrderByNumber() {
-    repository.deleteAll();
 
-    List<RegExpTask> regExpTaskWithNumber = List.of(
-      getRegExpTaskWithNumber(null),
-      getRegExpTaskWithNumber(3),
-      getRegExpTaskWithNumber(5),
-      getRegExpTaskWithNumber(4),
-      getRegExpTaskWithNumber(6));
-    regExpTaskWithNumber.forEach(v -> v.setAuthor(author));
-    regExpTaskWithNumber.forEach(v -> v.setRegExpLevel(level));
-
-    repository.saveAll(regExpTaskWithNumber);
-    repository.flush();
-    List<RegExpTask> savedList = repository.getByRegExpLevelIdAndNumberIsNotNullOrderByNumber(level.getId());
-    assertEquals("List must contains 4 element", 4, savedList.size());
-
-    List<Integer> result = savedList.stream().map(v -> v.getNumber()).collect(Collectors.toList());
-    List<Integer> expected = List.of(3, 4, 5, 6);
-    assertEquals("Elements must be ordered by number", expected, result);
-  }
 
 
   @Test

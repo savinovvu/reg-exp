@@ -27,7 +27,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -100,9 +99,6 @@ public class RegExpTask extends BaseEntityAudit implements Identify {
   @LazyCollection(LazyCollectionOption.FALSE)
   @ManyToMany(mappedBy = "regExpTasks")
   private List<UsefulLinks> usefulLinks;
-
-  @Transient
-  private boolean solve;
 
 
   public RegExpTask() {

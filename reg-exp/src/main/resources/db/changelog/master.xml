@@ -18,5 +18,6 @@
 
     <include file="dml_001_add_mock_users_data.xml" relativeToChangelogFile="true"/>
     <include file="dml_002_add_mock_regexp_levels.xml" relativeToChangelogFile="true"/>
+    <include file="dml_003_add_mock_regexp_tasks.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

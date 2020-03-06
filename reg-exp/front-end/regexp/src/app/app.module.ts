@@ -35,6 +35,7 @@ import { UserTableComponent } from './pages/users/user-table.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { TokenInterceptor } from "./services/interceptors/token-interceptor.service";
 import { ChallengeComponent } from './pages/challenge/challenge.component';
+import { LevelComponent } from './pages/level/level.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -56,7 +57,8 @@ export function jwtLoader(): string {
     ProposeTaskComponent,
     UsefulLinksComponent,
     UserTableComponent,
-    ChallengeComponent
+    ChallengeComponent,
+    LevelComponent
   ],
   imports: [
     BrowserModule,
