@@ -15,6 +15,8 @@
     <include file="008_create_comments.xml" relativeToChangelogFile="true"/>
     <include file="009_create_likes.xml" relativeToChangelogFile="true"/>
     <include file="010_add_users_fields.xml" relativeToChangelogFile="true"/>
+
     <include file="dml_001_add_mock_users_data.xml" relativeToChangelogFile="true"/>
+    <include file="dml_002_add_mock_regexp_levels.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

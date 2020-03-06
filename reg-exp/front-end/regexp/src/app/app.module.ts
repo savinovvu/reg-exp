@@ -20,7 +20,10 @@ import {
   NbMenuModule,
   NbSidebarModule,
   NbToastrModule,
-  NbWindowModule
+  NbWindowModule,
+  NbAccordionModule,
+  NbActionsModule,
+  NbButtonModule
 } from '@nebular/theme';
 import { ThemeModule } from './@theme/theme.module';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -31,6 +34,7 @@ import { UsefulLinksComponent } from './pages/useful-links/useful-links.componen
 import { UserTableComponent } from './pages/users/user-table.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { TokenInterceptor } from "./services/interceptors/token-interceptor.service";
+import { ChallengeComponent } from './pages/challenge/challenge.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -51,7 +55,8 @@ export function jwtLoader(): string {
     CourseComponent,
     ProposeTaskComponent,
     UsefulLinksComponent,
-    UserTableComponent
+    UserTableComponent,
+    ChallengeComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,9 @@ export function jwtLoader(): string {
     RootRouter,
     HttpClientModule,
     FormsModule,
-
+    NbAccordionModule,
+    NbActionsModule,
+    NbButtonModule,
 
     TranslateModule.forRoot(
       ({

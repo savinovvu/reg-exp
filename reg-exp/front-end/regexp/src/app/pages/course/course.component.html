@@ -1,1 +1,22 @@
-<p>course works!</p>
+<div class="accordions-container row">
+
+  <div class="accordion-container col-md-12 col-lg-12 col-xxxl-12">
+
+    <nb-accordion multi *ngFor="let level of levels">
+      <nb-accordion-item>
+        <nb-accordion-item-header>
+          <nb-action style="margin-bottom: -3px"
+                     link="/propose-task"
+                     icon="menu-outline"></nb-action>
+
+          <span style="padding-left: 15px">{{level.number}}. Level</span>
+        </nb-accordion-item-header>
+        <nb-accordion-item-body>
+          {{level.description}}
+        </nb-accordion-item-body>
+      </nb-accordion-item>
+
+    </nb-accordion>
+
+  </div>
+</div>

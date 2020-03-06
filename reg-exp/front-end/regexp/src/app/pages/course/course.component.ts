@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { RestDataSourceService } from "../../services/rest/rest-data-source.service";
+
+
 
 @Component({
   selector: 'reg-course',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseComponent implements OnInit {
 
-  constructor() { }
+  levels = [];
+
+  constructor(
+    private restService: RestDataSourceService
+  ) {
+  }
+
 
   ngOnInit() {
+    this.restService.get('/v1/tasks/regexplevel').subscribe(v => {
+      this.levels = v;
+    });
+
   }
 
 }

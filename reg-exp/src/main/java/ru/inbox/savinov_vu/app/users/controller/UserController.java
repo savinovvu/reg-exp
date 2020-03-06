@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import ru.inbox.savinov_vu.app.users.dto.UserDto;
 import ru.inbox.savinov_vu.app.users.dto.UserFilterDto;
-import ru.inbox.savinov_vu.app.users.mapper.UserMapper;
+import ru.inbox.savinov_vu.app.users.dto.UserMapper;
 import ru.inbox.savinov_vu.app.users.model.User;
 import ru.inbox.savinov_vu.app.users.repository.UserFilter;
 import ru.inbox.savinov_vu.app.users.service.UserService;

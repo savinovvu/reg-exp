@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="populate users table" author="savinov_vu">
+        <preConditions onFail="MARK_RAN">
+        </preConditions>
+
+        <sql>
+            INSERT INTO public.regexp_levels (id, number, en_description, ru_description, enabled, updated_at, created_at)
+            VALUES
+            (1, 1, 'desc', 'описание', true, '2019-10-26 17:48:01.000000', '2019-10-26 17:48:01.000000'),
+            (2, 2, 'desc', 'описание', true, '2019-10-26 17:48:01.000000', '2019-10-26 17:48:01.000000'),
+            (3, 3, 'desc', 'описание', true, '2019-10-26 17:48:01.000000', '2019-10-26 17:48:01.000000'),
+            (4, 4, 'desc', 'описание', true, '2019-10-26 17:48:01.000000', '2019-10-26 17:48:01.000000');
+        </sql>
+
+    </changeSet>
+
+
+
+
+</databaseChangeLog>

@@ -1,6 +1,5 @@
 package ru.inbox.savinov_vu.app.tasks.level.model;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,10 +19,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import java.util.List;
 
 
@@ -49,9 +46,6 @@ public class RegExpLevel extends BaseEntityAudit implements Identify {
 
   private boolean enabled;
 
-  @Transient
-  private Boolean solve = false;
-
   @LazyCollection(LazyCollectionOption.TRUE)
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "regExpLevel")
   @Lazy
@@ -59,23 +53,7 @@ public class RegExpLevel extends BaseEntityAudit implements Identify {
 
   @LazyCollection(LazyCollectionOption.TRUE)
   @ManyToMany(mappedBy = "solvedRegExpLevels")
-  @OrderBy("name ASC")
   private List<User> users;
-
-
-  @Transient
-  @JsonGetter(value = "solve")
-  public Boolean isSolve() {
-    return solve;
-  }
-
-
-  // for Jackson serialization
-  public Boolean getSolve() {
-    return solve;
-  }
-
-
 
 
 }

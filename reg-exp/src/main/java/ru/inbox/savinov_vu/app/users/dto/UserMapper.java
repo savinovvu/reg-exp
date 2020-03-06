@@ -1,10 +1,8 @@
-package ru.inbox.savinov_vu.app.users.mapper;
+package ru.inbox.savinov_vu.app.users.dto;
 
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Component;
-import ru.inbox.savinov_vu.app.users.dto.UserDto;
-import ru.inbox.savinov_vu.app.users.dto.UserDtoMapper;
 import ru.inbox.savinov_vu.app.users.model.User;
 import ru.inbox.savinov_vu.app.users.service.UserService;
 import ru.inbox.savinov_vu.common.interfaces.DtoEntityMapper;

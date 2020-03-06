@@ -33,12 +33,8 @@ public class RegExpLevelMock {
 
   public static RegExpLevelService getRegExpLevelServiceMock() {
     RegExpLevelService mock = Mockito.mock(RegExpLevelService.class);
-    when(mock.findAll(1)).thenReturn(List.of(getRegExpLevelWithId(1), getRegExpLevelWithId(2)));
-    when(mock.create(getRegExpLevel())).thenReturn(getRegExpLevelWithId(1));
-    when(mock.update(getRegExpLevelWithId(1))).thenReturn(getRegExpLevelWithId(1));
-    when(mock.delete(1)).thenReturn(true);
+    when(mock.findAll()).thenReturn(List.of(getRegExpLevelWithId(1), getRegExpLevelWithId(2)));
     when(mock.findById(1)).thenReturn(getRegExpLevelWithId(1));
-    when(mock.findByNumber(1)).thenReturn(getRegExpLevelWithNumber(1));
     return mock;
   }
 

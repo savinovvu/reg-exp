@@ -12,7 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import ru.inbox.savinov_vu.app.users.dto.UserDto;
-import ru.inbox.savinov_vu.app.users.mapper.UserMapper;
+import ru.inbox.savinov_vu.app.users.dto.UserMapper;
 import ru.inbox.savinov_vu.app.users.model.User;
 import ru.inbox.savinov_vu.app.users.model.User_;
 import ru.inbox.savinov_vu.config.AbstractSpringBootTest;
