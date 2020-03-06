@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import ru.inbox.savinov_vu.app.checker.model.TaskResulter;
 import ru.inbox.savinov_vu.app.tasks.task.dto.detail.RegExpTaskDetailDto;
 import ru.inbox.savinov_vu.app.tasks.task.dto.detail.RegExpTaskDetailDtoMapper;
 import ru.inbox.savinov_vu.app.tasks.task.dto.list.RegExpTaskListDto;
@@ -32,7 +33,8 @@ public class RegExpTaskController {
   @PutMapping("/v1/tasks/regexptask/check/{id}")
   public ResponseEntity check(@PathVariable("id") Integer id,
                               @RequestBody String answer) {
-    return new ResponseEntity(regExpTaskService.check(id, answer), HttpStatus.OK);
+    TaskResulter check = regExpTaskService.check(id, answer);
+    return new ResponseEntity(check, HttpStatus.OK);
   }
 
 

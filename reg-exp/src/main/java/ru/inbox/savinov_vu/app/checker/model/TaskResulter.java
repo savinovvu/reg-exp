@@ -3,8 +3,10 @@ package ru.inbox.savinov_vu.app.checker.model;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 
 
@@ -12,19 +14,29 @@ import java.util.Optional;
 public class TaskResulter {
 
 
-  private List<ResultGroup> groups;
+  private List<ConditionResult> matchedStrings;
+
+  private List<ConditionResult> excludedStrings;
+
+  private List<ConditionResult> requiredSubStrings;
+
+  private List<ConditionResult> excludedAnswers;
 
 
   public TaskResulter() {
-    this.groups = new ArrayList<>();
+    this.matchedStrings = new ArrayList<>();
+    this.excludedStrings = new ArrayList<>();
+    this.requiredSubStrings = new ArrayList<>();
+    this.excludedAnswers = new ArrayList<>();
   }
 
 
   public boolean getSuccess() {
-    Optional<ConditionResult> first = groups.stream()
-      .flatMap(v -> v.getConditions().stream())
-      .filter(v -> !v.isResult())
-      .findFirst();
+    Optional<ConditionResult> first =
+      Stream.of(matchedStrings, excludedStrings, requiredSubStrings, excludedAnswers)
+        .flatMap(Collection::stream)
+        .filter(v -> !v.isResult())
+        .findFirst();
     return first.isEmpty();
   }
 

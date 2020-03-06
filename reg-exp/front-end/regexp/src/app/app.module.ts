@@ -23,7 +23,7 @@ import {
   NbWindowModule,
   NbAccordionModule,
   NbActionsModule,
-  NbButtonModule
+  NbButtonModule, NbCheckboxModule, NbRadioModule, NbSelectModule, NbInputModule
 } from '@nebular/theme';
 import { ThemeModule } from './@theme/theme.module';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -69,6 +69,12 @@ export function jwtLoader(): string {
     NbAccordionModule,
     NbActionsModule,
     NbButtonModule,
+
+    NbCheckboxModule,
+    NbRadioModule,
+    NbSelectModule,
+
+    NbInputModule,
 
     TranslateModule.forRoot(
       ({
