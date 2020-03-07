@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RestDataSourceService } from "../../services/rest/rest-data-source.service";
 import { ActivatedRoute } from "@angular/router";
-import { Task } from 'src/app/model/interfaces';
+// @ts-ignore
+import { Task } from '/src/app/model/interfaces';
 
 
 

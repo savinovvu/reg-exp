@@ -24,4 +24,6 @@ public class RegExpTaskDetailDto {
 
   private List<String> excludedAnswers;
 
+  private int score;
+
 }

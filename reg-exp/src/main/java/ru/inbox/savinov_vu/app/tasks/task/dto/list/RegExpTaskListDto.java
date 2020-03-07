@@ -19,4 +19,6 @@ public class RegExpTaskListDto {
 
   private boolean solve;
 
+  private int score;
+
 }

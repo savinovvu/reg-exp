@@ -53,6 +53,8 @@ public class RegExpTask extends BaseEntityAudit implements Identify {
 
   private String enDescription;
 
+  private int score;
+
   @Column(name = "matched_strings", columnDefinition = "text")
   @Convert(converter = ListStringConverter.class)
   private List<String> matchedStrings;

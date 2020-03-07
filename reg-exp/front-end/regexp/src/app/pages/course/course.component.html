@@ -4,14 +4,17 @@
 
     <nb-accordion multi *ngFor="let level of levels">
       <nb-accordion-item>
-        <nb-accordion-item-header>
-          <nb-action style="margin-bottom: -3px;"
-                     [link]="'/course/'+level.number"
-                     [icon]="level.solve? 'checkmark-square-outline' : 'menu-outline'">
-          </nb-action>
+        <nb-accordion-item-header class="title-row">
+          <div class="title">
+            <nb-action class="title-button"
+                       [link]="'/course/'+level.number"
+                       [icon]="level.solve? 'checkmark-square-outline' : 'menu-outline'">
+            </nb-action>
 
 
-          <span style="padding-left: 15px">{{level.number}}. Level</span>
+            <span class="title-number">{{level.number}}. Level</span>
+          </div>
+          <div class="score">Score: {{level.score}}</div>
         </nb-accordion-item-header>
         <nb-accordion-item-body>
           {{level.description}}

@@ -4,13 +4,15 @@
 
     <nb-accordion multi *ngFor="let task of tasks">
       <nb-accordion-item>
-        <nb-accordion-item-header>
-          <nb-action style="margin-bottom: -3px"
-                     [link]="'/course/'+level +'/'+task.number"
-                     [icon]="task.solve? 'checkmark-square-outline' : 'menu-outline'">
-          </nb-action>
-
-          <span style="padding-left: 15px">{{task.number}}. {{task.title}} </span>
+        <nb-accordion-item-header class="title-row">
+          <div class="title">
+            <nb-action class="title-button"
+                       [link]="'/course/'+level +'/'+task.number"
+                       [icon]="task.solve? 'checkmark-square-outline' : 'menu-outline'">
+            </nb-action>
+            <span class="title-number">{{task.number}}. {{task.title}}. </span>
+          </div>
+          <div class="score">Score Bonus: {{task.score}}</div>
         </nb-accordion-item-header>
         <nb-accordion-item-body>
           {{task.description}}

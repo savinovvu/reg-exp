@@ -49,6 +49,8 @@ public class UserDto {
   @NotNull
   private LocalDate birthDate;
 
+  private int score;
+
 
   public String getFirstName() {
     return isNull(firstName) ? null : firstName.strip();

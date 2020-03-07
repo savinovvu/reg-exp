@@ -46,6 +46,8 @@ public class RegExpLevel extends BaseEntityAudit implements Identify {
 
   private boolean enabled;
 
+  private int score;
+
   @LazyCollection(LazyCollectionOption.TRUE)
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "regExpLevel")
   @Lazy

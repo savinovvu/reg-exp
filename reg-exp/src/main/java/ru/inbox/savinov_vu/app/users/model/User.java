@@ -64,6 +64,8 @@ public class User extends BaseEntityAudit implements Identify {
 
   private Boolean enabled;
 
+  private int score;
+
   @Column
   @Convert(converter = SexConverter.class)
   private Sex sex;
@@ -145,6 +147,8 @@ public class User extends BaseEntityAudit implements Identify {
       return;
     }
 
+    score += task.getScore();
+
     getSolvedRegExpTasks().add(task);
     RegExpLevel regExpLevel = task.getRegExpLevel();
 
@@ -156,7 +160,7 @@ public class User extends BaseEntityAudit implements Identify {
     List<RegExpTask> enabledLevelTask = regExpLevel
       .getRegExpTasks()
       .stream()
-      .filter(v-> v.isEnabled())
+      .filter(v -> v.isEnabled())
       .collect(Collectors.toList());
 
     if (enabledLevelTask.size() == enabledSolvedTask.size()) {

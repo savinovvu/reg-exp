@@ -16,4 +16,6 @@ public class RegExpLevelDto {
   private String number;
 
   private boolean solve;
+
+  private int score;
 }

@@ -5,6 +5,7 @@
 . implement translation service
 . migrate to graphQL.
 . migrate to angular 9
+. add ngrx
 . implement logout with save oldtoken, delete unactual old token with job
 . implement theory page.
 . implement news page.
