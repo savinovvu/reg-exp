@@ -56,13 +56,13 @@ public class RegExpTaskChecker {
     Integer maxLength = regExpTask.getMaxAnswerLength();
     if (nonNull(maxLength)) {
       result.getSpecialConditions().add(
-        ConditionResult.of("Max is " + maxLength, answer.length() <= maxLength));
+        ConditionResult.of("Max " + maxLength +" symbols", answer.length() <= maxLength));
     }
 
     Integer minLength = regExpTask.getMinAnswerLength();
     if (nonNull(minLength)) {
       result.getSpecialConditions().add(
-        ConditionResult.of("Min is " + minLength, answer.length() >= minLength));
+        ConditionResult.of("Min " + minLength +" symbols", answer.length() >= minLength));
     }
 
   }

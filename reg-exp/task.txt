@@ -12,6 +12,7 @@
 . implement about page.
 . add kubernates.
 . add ci/cd
+75. upgrade task for 1 level with max and min length
 74. add min, max answer length conditions+
 73. add tasks to 1 level+
 72. change users page to rating page+
