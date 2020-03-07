@@ -10,6 +10,8 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
 
+import static java.util.Objects.nonNull;
+
 
 
 @Component
@@ -45,7 +47,24 @@ public class RegExpTaskChecker {
     checkExcludeString(regExpTask, answer, result);
     checkRequireSubstringinAnswer(regExpTask, answer, result);
     checkExcludedAnswer(regExpTask, answer, result);
+    checkSpecialConditions(regExpTask, answer, result);
     return result;
+  }
+
+
+  private void checkSpecialConditions(RegExpTask regExpTask, String answer, TaskResulter result) {
+    Integer maxLength = regExpTask.getMaxAnswerLength();
+    if (nonNull(maxLength)) {
+      result.getSpecialConditions().add(
+        ConditionResult.of("Max is " + maxLength, answer.length() <= maxLength));
+    }
+
+    Integer minLength = regExpTask.getMinAnswerLength();
+    if (nonNull(minLength)) {
+      result.getSpecialConditions().add(
+        ConditionResult.of("Min is " + minLength, answer.length() >= minLength));
+    }
+
   }
 
 

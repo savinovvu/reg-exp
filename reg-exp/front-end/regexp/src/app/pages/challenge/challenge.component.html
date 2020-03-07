@@ -9,7 +9,13 @@
 </nb-card>
 
 <nb-card>
-  <nb-card-header>Conditions</nb-card-header>
+  <nb-card-header class="condition-column">
+    <h5>Conditions</h5>
+    <nb-checkbox *ngFor="let conditionResult of conditions?.specialConditions"
+                 [checked]="conditionResult.result"
+                 disabled>{{conditionResult.condition}}
+    </nb-checkbox>
+  </nb-card-header>
   <nb-card-body>
 
 
@@ -20,7 +26,8 @@
 
         <nb-checkbox *ngFor="let conditionResult of conditions?.matchedStrings"
                      [checked]="conditionResult.result"
-                     disabled>{{conditionResult.condition}}</nb-checkbox>
+                     disabled>{{conditionResult.condition}}
+        </nb-checkbox>
 
 
       </div>

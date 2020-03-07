@@ -12,10 +12,10 @@
 . implement about page.
 . add kubernates.
 . add ci/cd
-. add min, max answer length conditions
-73. add tasks to 1 level
-72. change users page to rating page
-71. score for tasks, levels, users
+74. add min, max answer length conditions+
+73. add tasks to 1 level+
+72. change users page to rating page+
+71. score for tasks, levels, users+
 70. implement task check page.+
 69. implement update and delete in user table
 68. add graylog2 logging server.+

@@ -22,18 +22,21 @@ public class TaskResulter {
 
   private List<ConditionResult> excludedAnswers;
 
+  private List<ConditionResult> specialConditions;
+
 
   public TaskResulter() {
     this.matchedStrings = new ArrayList<>();
     this.excludedStrings = new ArrayList<>();
     this.requiredSubStrings = new ArrayList<>();
     this.excludedAnswers = new ArrayList<>();
+    this.specialConditions = new ArrayList<>();
   }
 
 
   public boolean getSuccess() {
     Optional<ConditionResult> first =
-      Stream.of(matchedStrings, excludedStrings, requiredSubStrings, excludedAnswers)
+      Stream.of(matchedStrings, excludedStrings, requiredSubStrings, excludedAnswers, specialConditions)
         .flatMap(Collection::stream)
         .filter(v -> !v.isResult())
         .findFirst();

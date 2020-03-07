@@ -55,6 +55,10 @@ public class RegExpTask extends BaseEntityAudit implements Identify {
 
   private int score;
 
+  private Integer maxAnswerLength;
+
+  private Integer minAnswerLength;
+
   @Column(name = "matched_strings", columnDefinition = "text")
   @Convert(converter = ListStringConverter.class)
   private List<String> matchedStrings;

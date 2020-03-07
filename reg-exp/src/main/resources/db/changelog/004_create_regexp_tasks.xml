@@ -52,6 +52,10 @@
             <column name="ru_description" type="text">
             </column>
 
+            <column name="max_answer_length" type="int(3)"/>
+
+            <column name="min_answer_length" type="int(3)"/>
+
             <column name="matched_strings" type="text"/>
 
             <column name="excluded_strings" type="text"/>
