@@ -8,7 +8,7 @@ import ru.inbox.savinov_vu.core.security.jwt.model.SecurityUser;
 
 
 
-@Mapper(componentModel = "spring")
+@Mapper
 public interface LoginDtoMapper {
 
   LoginDto entityToDto(SecurityUser user);
