@@ -36,6 +36,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
 
   {
+    title: 'Settings',
+    icon: 'settings-outline',
+    link: '/settings',
+  },
+
+  {
     title: 'Auth',
     icon: 'lock-outline',
     children: [
@@ -49,14 +55,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
         url: '/sign-up',
         target: '_blank'
       },
+      {
+        title: 'Login as Temporary',
+        link: '/temporary-login',
+      }
     ],
   },
 ];
-      /*{
-        title: 'Request Password',
-        link: '/auth/request-password',
-      },
-      {
-        title: 'Reset Password',
-        link: '/auth/reset-password',
-      },*/
+

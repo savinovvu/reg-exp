@@ -5,6 +5,8 @@ import { UsefulLinksComponent } from "./pages/useful-links/useful-links.componen
 import { UserRatingComponent } from "./pages/rating/user-rating.component";
 import { LevelComponent } from "./pages/level/level.component";
 import { ChallengeComponent } from "./pages/challenge/challenge.component";
+import { TemporaryLoginComponent } from "./pages/temporary-login/temporary-login.component";
+import { SettingsComponent } from "./pages/settings/settings.component";
 
 
 
@@ -16,13 +18,12 @@ const routes: Routes = [
   { path: 'propose-task', component: ProposeTaskComponent },
   { path: 'course/:levelNumber', component: LevelComponent },
   { path: 'course/:levelNumber/:taskNumber', component: ChallengeComponent },
+  { path: 'temporary-login', component: TemporaryLoginComponent },
+  { path: 'settings', component: SettingsComponent },
   /*  { path: 'main', component: HomeComponent },
     { path: 'news', component: NewsComponent },
     { path: 'contact', component: ContactComponent },
     { path: 'about', component: AboutComponent },
-    { path: 'addTask', component: AddTaskComponent, canActivate: [ AuthGuard ] },
-    { path: 'usefulLinks', component: UsefulLinksComponent },
-
     { path: 'course', component: CourseComponent, canActivate: [ AuthGuard ] },
 
     { path: 'error', component: ErrorComponent },*/

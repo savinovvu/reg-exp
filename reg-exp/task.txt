@@ -1,6 +1,5 @@
 . add grafite+grafana or prometheus+grafana monitoring
 . implement reset for test user with schedule
-. add test free sing-in user for dashboard,
 . add settings, for example show settings
 . implement translation service
 . migrate to graphQL.
@@ -12,6 +11,7 @@
 . implement about page.
 . add kubernates.
 . add ci/cd
+76. add test free sing-in user for dashboard,
 75. upgrade task for 1 level with max and min length
 74. add min, max answer length conditions+
 73. add tasks to 1 level+

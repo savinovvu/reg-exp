@@ -23,7 +23,7 @@ import {
   NbWindowModule,
   NbAccordionModule,
   NbActionsModule,
-  NbButtonModule, NbCheckboxModule, NbRadioModule, NbSelectModule, NbInputModule
+  NbButtonModule, NbCheckboxModule, NbRadioModule, NbSelectModule, NbInputModule, NbTabsetModule, NbRouteTabsetModule
 } from '@nebular/theme';
 import { ThemeModule } from './@theme/theme.module';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -36,6 +36,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { TokenInterceptor } from "./services/interceptors/token-interceptor.service";
 import { ChallengeComponent } from './pages/challenge/challenge.component';
 import { LevelComponent } from './pages/level/level.component';
+import { TemporaryLoginComponent } from './pages/temporary-login/temporary-login.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -58,7 +60,9 @@ export function jwtLoader(): string {
     UsefulLinksComponent,
     UserRatingComponent,
     ChallengeComponent,
-    LevelComponent
+    LevelComponent,
+    TemporaryLoginComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +79,8 @@ export function jwtLoader(): string {
     NbSelectModule,
 
     NbInputModule,
-
+    NbTabsetModule,
+    NbRouteTabsetModule,
     TranslateModule.forRoot(
       ({
         loader: {
