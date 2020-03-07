@@ -45,7 +45,7 @@ class RegExpLevelServiceTest {
 
     @Bean
     public RegExpLevelService regExpLevelService() {
-      return new RegExpLevelService(regExpLevelRepository());
+      return new RegExpLevelService(regExpLevelRepository(), userService());
     }
 
 

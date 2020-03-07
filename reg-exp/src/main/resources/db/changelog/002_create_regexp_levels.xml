@@ -8,7 +8,9 @@
 
     <changeSet id="create regexp_levels_seq" author="savinov_vu">
         <preConditions onFail="MARK_RAN">
-            <not><sequenceExists sequenceName="regexp_levels_seq"/></not>
+            <not>
+                <sequenceExists sequenceName="regexp_levels_seq"/>
+            </not>
         </preConditions>
 
         <createSequence
@@ -31,6 +33,10 @@
 
             <column name="id" type="int(11)" defaultValueSequenceNext="regexp_levels_seq">
                 <constraints nullable="false" primaryKey="true"/>
+            </column>
+
+            <column name="score" type="int(11)" defaultValue="0">
+                <constraints nullable="false"/>
             </column>
 
             <column name="number" type="int(4)">
@@ -57,9 +63,6 @@
         </createTable>
 
     </changeSet>
-
-
-
 
 
 </databaseChangeLog>

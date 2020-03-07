@@ -32,6 +32,10 @@
                 <constraints nullable="false" primaryKey="true"/>
             </column>
 
+            <column name="score" type="int(11)" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+
             <column name="name" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>

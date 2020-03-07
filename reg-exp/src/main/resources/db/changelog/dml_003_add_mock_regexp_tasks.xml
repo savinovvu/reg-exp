@@ -12,10 +12,11 @@
 
         <sql>
             INSERT INTO public.regexp_tasks
-            (id, number, en_title, ru_title, en_description, ru_description, matched_strings, excluded_strings, required_substrings, excluded_answers, answers, author_id, regexp_level_id, enabled, updated_at, created_at)
+            (id, score, number, en_title, ru_title, en_description, ru_description, matched_strings, excluded_strings, required_substrings, excluded_answers, answers, author_id, regexp_level_id, enabled, updated_at, created_at)
             VALUES
-            (1, 1, 'simple word', 'просто слово', 'copy word', 'копируй слово', 'word', '', 'word', '', 'word', 1, 1, true, '2020-03-06 13:51:31.000000', '2020-03-06 13:51:34.000000'),
-            (2, 2, 'one digit', 'одна цифра', 'use range', 'используй диапазон', '1,2,3,8', 'a,12,123,', '', '\\d,', '[0-9]', 1, 1, true, '2020-03-06 13:51:31.000000', '2020-03-06 13:51:34.000000');
+            (1, 1, 1, 'simple word', 'Просто слово', 'Copy word', 'копируй слово', 'word', '', 'word', '', 'word', 1, 1, true, '2020-03-06 13:51:31.000000', '2020-03-06 13:51:34.000000'),
+            (2, 1, 2, 'simple digit', 'Просто цифра', 'Copy digit', 'копируй слово', 'word', '', 'word', '', 'word', 1, 1, true, '2020-03-06 13:51:31.000000', '2020-03-06 13:51:34.000000'),
+            (3, 2, 3, 'one digit', 'Одна цифра', 'Use range [X-Y]', 'используй диапазон [X-Y]', '1 //, 2 //, 3 //, 8', 'a //, 12 //, 123', '', '\d', '[0-9]', 1, 1, true, '2020-03-06 13:51:31.000000', '2020-03-06 13:51:34.000000');
         </sql>
 
     </changeSet>

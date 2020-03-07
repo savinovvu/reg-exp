@@ -1,14 +1,18 @@
 . add grafite+grafana or prometheus+grafana monitoring
+. test free sing-in user for dashboard
+. add settings, for example show settings
+. change users page to rating page
 . implement translation service
 . migrate to graphQL.
 . migrate to angular 9
 . implement logout with save oldtoken, delete unactual old token with job
-. implement usefullinks page.
+. implement theory page.
 . implement news page.
 . implement about page.
 . add kubernates.
 . add ci/cd
-70. implement task check page.
+71. score for tasks, levels, users
+70. implement task check page.+
 69. implement update and delete in user table
 68. add graylog2 logging server.+
 67. write tests+

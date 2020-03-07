@@ -19,15 +19,15 @@ import static ru.inbox.savinov_vu.common.constant.StringConstants.EMPTY;
 public class ListStringConverter implements AttributeConverter<List<String>, String> {
 
 
-    @Override
-    public String convertToDatabaseColumn(List<String> attribute) {
-        return CollectionUtils.isEmpty(attribute) ? EMPTY : attribute.stream().collect(joining(",", ",", ","));
-    }
+  @Override
+  public String convertToDatabaseColumn(List<String> attribute) {
+    return CollectionUtils.isEmpty(attribute) ? EMPTY : attribute.stream().collect(joining(" //, ", "", ""));
+  }
 
 
-    @Override
-    public List<String> convertToEntityAttribute(String dbData) {
-        return StringUtils.isNotEmpty(dbData) ? Arrays.stream(dbData.replaceFirst("^,", EMPTY).split(","))
-                .collect(Collectors.toList()) : Collections.emptyList();
-    }
+  @Override
+  public List<String> convertToEntityAttribute(String dbData) {
+    return StringUtils.isNotEmpty(dbData) ? Arrays.stream(dbData.split(" //, "))
+      .collect(Collectors.toList()) : Collections.emptyList();
+  }
 }

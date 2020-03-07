@@ -30,7 +30,7 @@ public class PhoneNumberUtil {
    * @return return well formated phone number ex: 123-456-7890
    */
   public static String formateToPhoneNumber(String number, String format, int maxLength) {
-    String onlyDidgits = number.replaceAll("\\D+", "");
+    String onlyDidgits = number.replaceAll("//D+", "");
     if (onlyDidgits.length() > maxLength) {
       //now we have only digit that is max 10 length
       onlyDidgits = onlyDidgits.substring(0, maxLength);

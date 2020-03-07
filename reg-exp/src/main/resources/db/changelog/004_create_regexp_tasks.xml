@@ -33,6 +33,10 @@
                 <constraints nullable="false" primaryKey="true"/>
             </column>
 
+            <column name="score" type="int(11)" defaultValue="1">
+                <constraints nullable="false"/>
+            </column>
+
             <column name="number" type="int(4)">
             </column>
 
