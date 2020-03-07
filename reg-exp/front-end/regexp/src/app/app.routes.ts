@@ -6,7 +6,9 @@ import { UserRatingComponent } from "./pages/rating/user-rating.component";
 import { LevelComponent } from "./pages/level/level.component";
 import { ChallengeComponent } from "./pages/challenge/challenge.component";
 import { TemporaryLoginComponent } from "./pages/temporary-login/temporary-login.component";
-import { SettingsComponent } from "./pages/settings/settings.component";
+import { SettingsComponent } from "./pages/settings/root/settings.component";
+import { UserSettingsComponent } from "./pages/settings/user/user-settings/user-settings.component";
+import { RatingSettingsComponent } from "./pages/settings/rating/rating-settings/rating-settings.component";
 
 
 
@@ -19,7 +21,20 @@ const routes: Routes = [
   { path: 'course/:levelNumber', component: LevelComponent },
   { path: 'course/:levelNumber/:taskNumber', component: ChallengeComponent },
   { path: 'temporary-login', component: TemporaryLoginComponent },
-  { path: 'settings', component: SettingsComponent },
+  {
+    path: 'settings', component: SettingsComponent, children: [
+      {
+        path: 'user',
+        component: UserSettingsComponent
+      },
+      {
+        path: 'rating',
+        component: RatingSettingsComponent,
+      },
+      { path: '**', redirectTo: 'user' }
+
+    ]
+  },
   /*  { path: 'main', component: HomeComponent },
     { path: 'news', component: NewsComponent },
     { path: 'contact', component: ContactComponent },

@@ -37,7 +37,9 @@ import { TokenInterceptor } from "./services/interceptors/token-interceptor.serv
 import { ChallengeComponent } from './pages/challenge/challenge.component';
 import { LevelComponent } from './pages/level/level.component';
 import { TemporaryLoginComponent } from './pages/temporary-login/temporary-login.component';
-import { SettingsComponent } from './pages/settings/settings.component';
+import { SettingsComponent } from './pages/settings/root/settings.component';
+import { UserSettingsComponent } from './pages/settings/user/user-settings/user-settings.component';
+import { RatingSettingsComponent } from './pages/settings/rating/rating-settings/rating-settings.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -63,6 +65,8 @@ export function jwtLoader(): string {
     LevelComponent,
     TemporaryLoginComponent,
     SettingsComponent,
+    UserSettingsComponent,
+    RatingSettingsComponent,
   ],
   imports: [
     BrowserModule,
