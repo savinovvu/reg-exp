@@ -12,7 +12,8 @@
 . implement about page.
 . add kubernates.
 . add ci/cd
-73. add tasks to db
+. add min, max answer length conditions
+73. add tasks to 1 level
 72. change users page to rating page
 71. score for tasks, levels, users
 70. implement task check page.+
