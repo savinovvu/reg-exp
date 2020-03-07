@@ -1,5 +1,6 @@
 . add grafite+grafana or prometheus+grafana monitoring
-. test free sing-in user for dashboard
+. implement reset for test user with schedule
+. add test free sing-in user for dashboard,
 . add settings, for example show settings
 . implement translation service
 . migrate to graphQL.
