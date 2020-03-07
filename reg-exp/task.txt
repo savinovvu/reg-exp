@@ -12,6 +12,7 @@
 . implement about page.
 . add kubernates.
 . add ci/cd
+73. add tasks to db
 72. change users page to rating page
 71. score for tasks, levels, users
 70. implement task check page.+

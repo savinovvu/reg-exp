@@ -14,7 +14,7 @@
         <createSequence
             sequenceName="regexp_task_seq"
             incrementBy="1"
-            startValue="1000"
+            startValue="10000"
         />
 
     </changeSet>

@@ -12,11 +12,12 @@
 
         <sql>
             INSERT INTO public.regexp_tasks
-            (id, score, number, en_title, ru_title, en_description, ru_description, matched_strings, excluded_strings, required_substrings, excluded_answers, answers, author_id, regexp_level_id, enabled, updated_at, created_at)
+            (id, number, score, en_title, ru_title, en_description, ru_description, matched_strings, excluded_strings, required_substrings, excluded_answers, answers, author_id, regexp_level_id, enabled, updated_at, created_at)
             VALUES
-            (1, 1, 1, 'simple word', 'Просто слово', 'Copy word', 'копируй слово', 'word', '', 'word', '', 'word', 1, 1, true, '2020-03-06 13:51:31.000000', '2020-03-06 13:51:34.000000'),
-            (2, 1, 2, 'simple digit', 'Просто цифра', 'Copy digit', 'копируй слово', '5', '', '3 ,// 6 //, a', '', 'word', 1, 1, true, '2020-03-06 13:51:31.000000', '2020-03-06 13:51:34.000000'),
-            (3, 2, 3, 'one digit', 'Одна цифра', 'Use range [X-Y]', 'используй диапазон [X-Y]', '0 //, 2 //, 3 //, 9', 'a //, 12 //, 123', '', '\d', '[0-9]', 1, 1, true, '2020-03-06 13:51:31.000000', '2020-03-06 13:51:34.000000');
+            (1, 1, 1, 'Simple word', 'Просто слово', 'Copy word', 'Копируй слово', 'word', '', 'word', '', 'word', 1, 1, true, '2020-03-06 13:51:31.000000', '2020-03-06 13:51:34.000000'),
+            (2, 2, 1, 'Simple digit', 'Просто цифра', 'Copy digit', 'Копируй слово', '5', '', '3 ,// 6 //, a', '', 'word', 1, 1, true, '2020-03-06 13:51:31.000000', '2020-03-06 13:51:34.000000'),
+            (3, 3, 2, 'One digit', 'Одна цифра', 'Use range [X-Y]', 'Используй диапазон [X-Y]', '0 //, 2 //, 3 //, 9', 'a //, 12 //, 123', '', '\d', '[0-9]', 1, 1, true, '2020-03-06 13:51:31.000000', '2020-03-06 13:51:34.000000'),
+            (4, 4, 2, 'Three digit', 'Три цифры', 'Use range [X-Y]{N}', 'Используй диапазон [X-Y]{N}', '000 //, 222 //, 333 //, 999', 'a //, 12 //, aaa', '[ //, ] //, { //, } //, -', '\d', '[0-9]{3}', 1, 1, true, '2020-03-06 13:51:31.000000', '2020-03-06 13:51:34.000000');
         </sql>
 
     </changeSet>
