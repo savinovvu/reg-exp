@@ -7,11 +7,11 @@ import { RestDataSourceService } from "../../services/rest/rest-data-source.serv
 
 
 @Component({
-  selector: 'reg-user-table',
-  templateUrl: './user-table.component.html',
-  styleUrls: ['./user-table.component.scss'],
+  selector: 'reg-user-rating',
+  templateUrl: './user-rating.component.html',
+  styleUrls: ['./user-rating.component.scss'],
 })
-export class UserTableComponent implements OnInit {
+export class UserRatingComponent implements OnInit {
 
   source: ServerDataSource;
 
@@ -88,18 +88,18 @@ export class UserTableComponent implements OnInit {
 
     actions: {
       add: false,
+      edit:false,
+      delete:false
     },
 
 
     columns: {
-      id: {
-        title: 'ID',
+      score:{
+        title: 'Score',
         type: 'number',
         editable: false,
-        filter: {
-          query: 'slfdkj',
-        },
       },
+
       firstName: {
         title: 'First Name',
         type: 'string',
@@ -120,6 +120,7 @@ export class UserTableComponent implements OnInit {
         title: 'Birth Date',
         type: 'string',
       },
+
       sex: {
         title: 'Sex',
         type: 'string',

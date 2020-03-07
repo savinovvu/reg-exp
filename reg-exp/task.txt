@@ -1,7 +1,6 @@
 . add grafite+grafana or prometheus+grafana monitoring
 . test free sing-in user for dashboard
 . add settings, for example show settings
-. change users page to rating page
 . implement translation service
 . migrate to graphQL.
 . migrate to angular 9
@@ -12,6 +11,7 @@
 . implement about page.
 . add kubernates.
 . add ci/cd
+72. change users page to rating page
 71. score for tasks, levels, users
 70. implement task check page.+
 69. implement update and delete in user table

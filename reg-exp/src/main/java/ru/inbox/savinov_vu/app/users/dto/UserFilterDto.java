@@ -23,6 +23,8 @@ public class UserFilterDto {
 
   private Boolean enabled;
 
+  private String score;
+
   private int size = 2;
 
   private int page = 1;

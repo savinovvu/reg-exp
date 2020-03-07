@@ -39,6 +39,7 @@ public class UserFilter extends CriteriaApiFilter<User> {
     filter.bySex(filterDto.getSex());
     filter.byBirthDate(filterDto.getBirthDate());
     filter.byLogin(filterDto.getLogin());
+    filter.byScore(filterDto.getScore());
     Boolean enabled = filterDto.getEnabled();
     filter.enabled(isNull(enabled) ? true : enabled);
     filter.page = filterDto.getPage() - 1;
@@ -48,13 +49,24 @@ public class UserFilter extends CriteriaApiFilter<User> {
   }
 
 
+  private void byScore(String score) {
+    if (isNull(score)) {
+      return;
+    }
+
+    var scoreInt = getInteger(score);
+
+    Specification<Specification> condition = Specification.where((r, cq, cb) -> cb.equal(r.get(User_.SCORE), scoreInt));
+    addCondition(condition);
+  }
+
+
   private void byId(String id) {
     if (isNull(id)) {
       return;
     }
 
-    Integer numberId;
-    numberId = getInteger(id);
+    var numberId = getInteger(id);
 
     Specification<Specification> condition = Specification.where((r, cq, cb) -> cb.equal(r.get(User_.ID), numberId));
     addCondition(condition);
@@ -179,7 +191,7 @@ public class UserFilter extends CriteriaApiFilter<User> {
 
 
   private void defaultSort() {
-    sort = Sort.by(Sort.Direction.ASC, User_.ID);
+    sort = Sort.by(Sort.Direction.DESC, User_.SCORE);
   }
 
 }

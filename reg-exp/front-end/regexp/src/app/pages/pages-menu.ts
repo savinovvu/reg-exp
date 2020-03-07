@@ -30,8 +30,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
 
   {
-    title: 'Users',
-    icon: 'award-outline',
+    title: 'Rating',
+    icon: 'star-outline',
     link: '/users',
   },
 
