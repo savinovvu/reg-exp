@@ -16,12 +16,13 @@ import ru.inbox.savinov_vu.core.security.jwt.model.SecurityUser;
 import javax.annotation.Resource;
 import java.util.Optional;
 
+import static ru.inbox.savinov_vu.common.constant.StringConstants.GUEST_LOGIN;
+
 
 
 @Service
 public class SecurityService implements UserDetailsService {
 
-  private static final String GUEST_LOGIN = "guest";
 
   @Resource
   private UserService userService;

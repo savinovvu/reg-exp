@@ -37,5 +37,11 @@ jwt:
   expiration: 31536000
 
 
+scheduler:
+  cron:
+#    guest-reset: "1/5 * * * * ?"
+    guest-reset: "0 0/30 * * * ?"
+
+
 
 

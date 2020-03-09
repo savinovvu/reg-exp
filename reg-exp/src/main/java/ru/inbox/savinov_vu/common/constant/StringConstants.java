@@ -8,5 +8,8 @@ public class StringConstants {
 
   public static final String NOT_ANSWER = "not answer";
 
+  public static final String GUEST_LOGIN = "guest";
+
+
 
 }

@@ -1,5 +1,4 @@
 . add grafite+grafana or prometheus+grafana monitoring
-. implement reset for guest user with schedule
 . add settings, for example show settings
 . implement translation service
 . migrate to graphQL.
@@ -11,9 +10,10 @@
 . implement about page.
 . add kubernates.
 . add ci/cd
-77. implement guest login
-76. add test free sing-in user for dashboard,
-75. upgrade task for 1 level with max and min length
+78. implement reset for guest user with schedule+
+77. implement guest login+
+76. add test free sing-in user for dashboard+
+75. upgrade task for 1 level with max and min length+
 74. add min, max answer length conditions+
 73. add tasks to 1 level+
 72. change users page to rating page+
