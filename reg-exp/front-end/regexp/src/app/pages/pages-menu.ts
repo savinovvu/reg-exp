@@ -21,7 +21,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Propose a Task',
-    icon: 'shuffle-2-outline',
+    icon: 'plus-circle-outline',
     link: '/propose-task',
   },
 
@@ -33,7 +33,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
 
   {
     title: 'Rating',
-    icon: 'star-outline',
+    icon: 'people-outline',
     link: '/users',
   },
 
