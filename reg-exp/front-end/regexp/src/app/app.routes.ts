@@ -5,9 +5,9 @@ import { UsefulLinksComponent } from "./pages/useful-links/useful-links.componen
 import { UserRatingComponent } from "./pages/rating/user-rating.component";
 import { LevelComponent } from "./pages/level/level.component";
 import { ChallengeComponent } from "./pages/challenge/challenge.component";
-import { TemporaryLoginComponent } from "./pages/temporary-login/temporary-login.component";
+import { GuestLoginComponent } from "./pages/guest-login/guest-login.component";
 import { SettingsComponent } from "./pages/settings/root/settings.component";
-import { UserSettingsComponent } from "./pages/settings/user/user-settings/user-settings.component";
+import { ProfileSettingsComponent } from "./pages/settings/user/user-settings/profile-settings.component";
 import { RatingSettingsComponent } from "./pages/settings/rating/rating-settings/rating-settings.component";
 
 
@@ -20,12 +20,12 @@ const routes: Routes = [
   { path: 'propose-task', component: ProposeTaskComponent },
   { path: 'course/:levelNumber', component: LevelComponent },
   { path: 'course/:levelNumber/:taskNumber', component: ChallengeComponent },
-  { path: 'temporary-login', component: TemporaryLoginComponent },
+  { path: 'temporary-login', component: GuestLoginComponent },
   {
     path: 'settings', component: SettingsComponent, children: [
       {
         path: 'user',
-        component: UserSettingsComponent
+        component: ProfileSettingsComponent
       },
       {
         path: 'rating',

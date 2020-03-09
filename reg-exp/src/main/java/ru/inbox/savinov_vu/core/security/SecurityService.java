@@ -21,6 +21,8 @@ import java.util.Optional;
 @Service
 public class SecurityService implements UserDetailsService {
 
+  private static final String GUEST_LOGIN = "guest";
+
   @Resource
   private UserService userService;
 
@@ -44,6 +46,14 @@ public class SecurityService implements UserDetailsService {
       .filter(user -> encoder.matches(password, user.getPassword()))
       .map(SecurityUser::of)
       .orElseThrow(() -> new AuthenticationException("Invalid login/password for user " + userName));
+  }
+
+
+  public SecurityUser authenticateGuest() {
+    User guest = userService.getByLogin(GUEST_LOGIN);
+    return Optional.ofNullable(guest)
+      .map(SecurityUser::of)
+      .orElseThrow(() -> new AuthenticationException("Invalid login/password for user " + GUEST_LOGIN));
   }
 
 

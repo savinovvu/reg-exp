@@ -21,13 +21,13 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Propose a Task',
-    icon: 'text-outline',
+    icon: 'shuffle-2-outline',
     link: '/propose-task',
   },
 
   {
-    title: 'Useful Links',
-    icon: 'shuffle-2-outline',
+    title: 'Theory',
+    icon: 'text-outline',
     link: '/useful-links'
   },
 
@@ -53,7 +53,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         target: '_blank'
       },
       {
-        title: 'Login as Temporary',
+        title: 'Login as Guest',
         link: '/temporary-login',
       }
     ],

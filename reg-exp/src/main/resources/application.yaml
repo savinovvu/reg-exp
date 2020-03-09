@@ -13,6 +13,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
     show-sql: false
+    open-in-view: false
   datasource:
     url: jdbc:postgresql://${POSTGRES_URL:localhost:5432}/regexpert
     username: postgres

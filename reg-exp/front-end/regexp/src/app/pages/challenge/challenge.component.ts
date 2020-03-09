@@ -23,7 +23,7 @@ export class ChallengeComponent implements OnInit {
 
   levelNumber;
 
-  conditions = {};
+  conditions:any;
 
   answer = '';
 

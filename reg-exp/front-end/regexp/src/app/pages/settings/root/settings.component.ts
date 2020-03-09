@@ -9,11 +9,11 @@ export class SettingsComponent implements OnInit {
 
   tabs: any[] = [
     {
-      title: 'User',
+      title: 'PROFILE',
       route: '/settings/user',
     },
     {
-      title: 'Rating',
+      title: 'RATING',
       route: '/settings/rating',
     },
   ];

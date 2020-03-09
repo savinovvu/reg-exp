@@ -16,7 +16,7 @@
             VALUES
 
             (1, 'FirstName1', 'LastName1', 'some1@email.com', 'login1', 'man', '1970-01-01', true, '1970-01-01', '1970-01-01', '1970-01-01', '$2a$10$NSUPUt4o.ZZiE6judQCnZea2mW6YI2DWP0HRuEeEwQliWFziZ2/Ti'),
-            (2, 'FirstName1', 'LastName2', 'some2@email.com', 'login2', 'man', '1970-01-01', true, '1970-01-01', '1970-01-01', '1970-01-01', '$2a$10$NSUPUt4o.ZZiE6judQCnZea2mW6YI2DWP0HRuEeEwQliWFziZ2/Ti'),
+            (2, 'Lieber', 'Guest', 'some2@email.com', 'guest', 'man', '1970-01-01', true, '1970-01-01', '1970-01-01', '1970-01-01', '$2a$10$NSUPUt4o.ZZiE6judQCnZea2mW6YI2DWP0HRuEeEwQliWFziZ2/Ti'),
             (3, 'FirstName3', 'LastName1', 'some3@email.com', 'login3', 'woman', '1970-01-02', true, '1970-01-01', '1970-01-01', '1970-01-01', '$2a$10$NSUPUt4o.ZZiE6judQCnZea2mW6YI2DWP0HRuEeEwQliWFziZ2/Ti'),
 
             (4, 'FirstName1', 'LastName4', 'some4@email.com', 'login4', 'man', '1970-01-02', true, '1970-01-01', '1970-01-01', '1970-01-01', '$2a$10$NSUPUt4o.ZZiE6judQCnZea2mW6YI2DWP0HRuEeEwQliWFziZ2/Ti'),

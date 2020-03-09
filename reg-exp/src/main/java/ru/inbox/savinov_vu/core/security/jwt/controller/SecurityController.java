@@ -40,6 +40,17 @@ public class SecurityController {
   }
 
 
+  @PostMapping("/v1/sign-in/guest")
+  public ResponseEntity loginGuest() {
+
+    SecurityUser securityUser = securityService.authenticateGuest();
+
+    String token = jwtHelper.generateToken(securityUser.getLogin());
+
+    return ResponseEntity.ok(JwtAuthenticationResponse.of(securityUser, token));
+  }
+
+
   @PostMapping("/v1/sign-up")
   public ResponseEntity signUp(@Valid @RequestBody SignUpDto signUpDto) {
     if (!signUpDto.getPassword().equals(signUpDto.getRepeatPassword())) {
@@ -48,4 +59,11 @@ public class SecurityController {
     securityService.signUp(signUpDto);
     return ResponseEntity.ok().build();
   }
+
+
+  @PostMapping("/v1/log-out")
+  public ResponseEntity logOut() {
+    return ResponseEntity.ok().build();
+  }
+
 }

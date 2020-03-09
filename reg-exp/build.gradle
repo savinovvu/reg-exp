@@ -4,7 +4,7 @@ buildscript {
     }
     repositories {
         mavenCentral()
-        maven {url  "https://plugins.gradle.org/m2/"}
+        maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -65,7 +65,6 @@ dependencies {
 
     implementation('org.springframework.boot:spring-boot-starter-data-jpa')
     implementation('org.springframework.boot:spring-boot-starter-security')
-    implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('org.springframework.boot:spring-boot-starter-log4j2')
     implementation('org.springframework.boot:spring-boot-starter-actuator')
@@ -92,47 +91,47 @@ dependencies {
 }
 
 
-    configurations {
-        all {
-            exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-            exclude group: 'ch.qos.logback', module: 'logback-classic'
-        }
+configurations {
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+    }
+}
+
+test {
+    useJUnitPlatform {
+        includeEngines 'junit-vintage'
+        includeEngines 'junit-jupiter'
     }
 
-    test {
-        useJUnitPlatform {
-            includeEngines 'junit-vintage'
-            includeEngines 'junit-jupiter'
-        }
-
-        testLogging {
-            events "passed", "skipped", "failed"
-        }
-
-        testClassesDirs = sourceSets.test.output
-        classpath = sourceSets.test.runtimeClasspath
-
-        reports {
-            html.enabled = true
-        }
-
-        outputs.upToDateWhen { false }
+    testLogging {
+        events "passed", "skipped", "failed"
     }
 
+    testClassesDirs = sourceSets.test.output
+    classpath = sourceSets.test.runtimeClasspath
 
-    tasks.register("downloadDependencies") {
-        doFirst {
-            project.rootProject.allprojects.each { subProject ->
-                subProject.buildscript.configurations.each { configuration ->
-                    if (configuration.isCanBeResolved()) configuration.resolve()
-                }
-                subProject.configurations.each { configuration ->
+    reports {
+        html.enabled = true
+    }
 
-                    if (configuration.isCanBeResolved()) configuration.resolve()
-                }
+    outputs.upToDateWhen { false }
+}
+
+
+tasks.register("downloadDependencies") {
+    doFirst {
+        project.rootProject.allprojects.each { subProject ->
+            subProject.buildscript.configurations.each { configuration ->
+                if (configuration.isCanBeResolved()) configuration.resolve()
+            }
+            subProject.configurations.each { configuration ->
+
+                if (configuration.isCanBeResolved()) configuration.resolve()
             }
         }
     }
+}
 
 
 sourceSets.configureEach { sourceSet ->

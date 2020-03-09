@@ -52,7 +52,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     String[] publicPaths = new String[]{
       "/v1/sign-up", "/page/users/user", "/v1/sign-in",
       "/css/**", "/icons/**", "/images/**", "/js/**", "/layer/**",
-      "/fonts/**", "/v1/tasks/regexplevel", "/monitoring/**"
+      "/fonts/**", "/v1/tasks/regexplevel", "/monitoring/**", "/v1/sign-in/guest",
+      "/v1/log-out"
     };
 
     http
@@ -103,7 +104,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .antMatchers(
         HttpMethod.POST,
         "/v1/sign-in",
-        "/v1/sign-up"
+        "/v1/sign-up",
+        "/v1/sign-in/guest",
+        "/v1/log-out"
       )
 
       // allow anonymous resource requests

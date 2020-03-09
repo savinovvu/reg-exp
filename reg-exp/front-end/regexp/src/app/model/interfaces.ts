@@ -3,10 +3,11 @@ export interface Task {
   number?: number;
   name?: string;
   description?: string;
-  matchStrings?: string[];
-  excludedString?: string[];
-  requiredSubStrings?: string[];
-  excludedAnswers?: string[];
+  specialConditions?:[];
+  matchedStrings?: [];
+  excludedStrings?: [];
+  requiredSubStrings?: [];
+  excludedAnswers?: [];
   likes?: any;
   comments?: string;
   regExpLevel?: any;
