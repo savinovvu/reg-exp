@@ -1,6 +1,6 @@
 package ru.inbox.savinov_vu.core.converter;
 
-import liquibase.util.StringUtils;
+import io.micrometer.core.instrument.util.StringUtils;
 import org.springframework.util.CollectionUtils;
 
 import javax.persistence.AttributeConverter;

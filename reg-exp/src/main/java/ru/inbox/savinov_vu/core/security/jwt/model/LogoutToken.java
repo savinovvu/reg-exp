@@ -25,7 +25,7 @@ public class LogoutToken {
 
   @Id
   @SequenceGenerator(name = "logout_tokens_seq", sequenceName = "logout_tokens_seq", allocationSize = 1, initialValue = 1000)
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "likes_seq")
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "logout_tokens_seq")
   private Integer id;
 
   private String token;
