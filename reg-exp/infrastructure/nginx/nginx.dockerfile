@@ -40,7 +40,7 @@ RUN rm /usr/share/nginx/html/50x.html && \
     rm /usr/share/nginx/html/index.html
 
 
-COPY nginx/nginx.conf.nginx /etc/nginx/nginx.conf
+COPY infrastructure/nginx/nginx.conf.nginx /etc/nginx/nginx.conf
 
 COPY --from=node10 infrastructure/nginx/src /usr/share/nginx/html
 
