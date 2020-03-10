@@ -136,7 +136,7 @@ class SecurityControllerTest extends AbstractSpringBootTest {
 
 
     @ParameterizedTest
-    @MethodSource("ru.inbox.savinov_vu.core.security.jwt.controller.SecurityControllerTest#getInvalidSignUpDto")
+    @MethodSource("ru.inbox.savinov_vu.core.security.controller.SecurityControllerTest#getInvalidSignUpDto")
     void signUp_invalid_input(SignUpDto signUpDto, String message) throws Exception {
       LOG.info(message);
       userInitializer.deleteAll();

@@ -33,3 +33,9 @@ jwt:
   header: Authorization
   secret: 'Hkb+5HoNpE34B9xGWF2iZjnWYbvqbQ2H76UR/ePP7x4='
   expiration: 31536000
+
+scheduler:
+  cron:
+    #    guest-reset: "1/5 * * * * ?"
+    guest-reset: "0 0/30 * * * ?"
+    expire-logout-token-delete: "0 0 0 * * ?"

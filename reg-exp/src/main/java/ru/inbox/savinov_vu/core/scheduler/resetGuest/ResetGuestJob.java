@@ -12,13 +12,12 @@ import javax.annotation.Resource;
 @RequiredArgsConstructor
 public class ResetGuestJob {
 
-
   @Resource
   private final ResetGuestService resetGuestService;
 
 
   @Scheduled(cron = "${scheduler.cron.guest-reset}")
-  public void dataGenerator() {
+  public void invoke() {
     resetGuestService.resetGuest();
   }
 

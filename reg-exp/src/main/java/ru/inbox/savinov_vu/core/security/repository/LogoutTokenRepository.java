@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import ru.inbox.savinov_vu.core.security.jwt.model.LogoutToken;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 
@@ -12,5 +13,7 @@ import java.util.Optional;
 public interface LogoutTokenRepository extends JpaRepository<LogoutToken, Integer> {
 
   Optional<LogoutToken> findByToken(String token);
+
+  void deleteByExpirationBefore(LocalDateTime before);
 
 }

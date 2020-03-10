@@ -10,7 +10,7 @@
 . implement about page.
 . add kubernates.
 . add ci/cd
-79. implement logout with save oldtoken.
+79. implement logout with save oldtoken.+
 78. implement reset for guest user with schedule+
 77. implement guest login+
 76. add test free sing-in user for dashboard+
