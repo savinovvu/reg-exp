@@ -4,22 +4,29 @@ package ru.inbox.savinov_vu.core.security.jwt.config;
 import com.google.common.base.Preconditions;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Clock;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.DefaultClock;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import ru.inbox.savinov_vu.core.security.jwt.model.SecurityUser;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import static java.util.Objects.isNull;
 
+
+
+@Slf4j
 @Component
 public class JwtHelper implements Serializable {
 
@@ -48,6 +55,22 @@ public class JwtHelper implements Serializable {
   }
 
 
+  public String getUserNameOrNull(String authToken) {
+    if (isNull(authToken)) {
+      return null;
+    }
+    try {
+      return getUserName(authToken);
+    } catch (IllegalArgumentException e) {
+      LOG.error("an error occured during getting username from token", e);
+      return null;
+    } catch (ExpiredJwtException e) {
+      LOG.warn("the token is expired and not valid anymore", e);
+      return null;
+    }
+  }
+
+
   public String getUserName(String token) {
     return getClaimFromToken(token, Claims::getSubject);
   }
@@ -70,7 +93,7 @@ public class JwtHelper implements Serializable {
 
 
   private Claims getAllClaimsFromToken(String token) {
-    return (Claims)jwtParser.parse(token).getBody();
+    return (Claims) jwtParser.parse(token).getBody();
   }
 
 
@@ -134,7 +157,7 @@ public class JwtHelper implements Serializable {
   }
 
 
-  public Boolean validateToken(String token, UserDetails userDetails) {
+  public boolean validateToken(String token, UserDetails userDetails) {
     SecurityUser securityUser = (SecurityUser) userDetails;
     final String username = getUserName(token);
     final Date created = getIssuedAtDateFromToken(token);
@@ -150,5 +173,25 @@ public class JwtHelper implements Serializable {
   private Date calculateExpirationDate(Date createdDate) {
     return new Date(createdDate.getTime() + jwtParams.getExpiration() * 1000);
   }
+
+
+  public String getAuthToken(HttpServletRequest request) {
+    final String requestHeader = request.getHeader(jwtParams.getHeader());
+    String authToken = getAuthToken(requestHeader);
+    return authToken;
+  }
+
+
+  private String getAuthToken(String requestHeader) {
+    if (isNull(requestHeader) || !requestHeader.startsWith("Bearer ")) {
+      LOG.warn("couldn't find bearer string, will ignore the header");
+      return null;
+    }
+    String authToken = requestHeader.substring(7);
+    return authToken;
+  }
+
+
+
 }
 

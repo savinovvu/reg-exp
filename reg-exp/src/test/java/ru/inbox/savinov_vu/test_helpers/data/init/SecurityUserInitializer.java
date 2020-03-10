@@ -3,7 +3,7 @@ package ru.inbox.savinov_vu.test_helpers.data.init;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.inbox.savinov_vu.app.users.model.User;
-import ru.inbox.savinov_vu.core.security.SecurityService;
+import ru.inbox.savinov_vu.core.security.service.SecurityService;
 import ru.inbox.savinov_vu.core.security.jwt.dto.SignUpDto;
 import ru.inbox.savinov_vu.core.security.jwt.model.SecurityUser;
 

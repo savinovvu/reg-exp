@@ -11,13 +11,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import ru.inbox.savinov_vu.core.security.CustomFailureHandler;
-import ru.inbox.savinov_vu.core.security.SecurityService;
+import ru.inbox.savinov_vu.core.security.handler.CustomFailureHandler;
 import ru.inbox.savinov_vu.core.security.jwt.config.JwtAuthorizationTokenFilter;
 import ru.inbox.savinov_vu.core.security.jwt.config.JwtHelper;
 import ru.inbox.savinov_vu.core.security.jwt.config.JwtParams;
+import ru.inbox.savinov_vu.core.security.service.SecurityService;
 
 import javax.annotation.Resource;
 
@@ -58,6 +59,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     http
       .csrf().disable()
+      .sessionManagement()
+      .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+      .sessionFixation().none()
+
+      .and()
+
       .authorizeRequests()
       .antMatchers(publicPaths).permitAll()
       .anyRequest().authenticated()
@@ -132,7 +139,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Bean
   public JwtAuthorizationTokenFilter jwtAuthenticationFilter() {
-    return new JwtAuthorizationTokenFilter(userDetailsService(), jwtHelper, jwtParams.getHeader());
+    return new JwtAuthorizationTokenFilter(userDetailsService(), jwtHelper, securityService);
   }
 
 

@@ -8,6 +8,7 @@ import ru.inbox.savinov_vu.config.AbstractSpringBootTest;
 import ru.inbox.savinov_vu.core.exception.AuthenticationException;
 import ru.inbox.savinov_vu.core.security.jwt.dto.SignUpDto;
 import ru.inbox.savinov_vu.core.security.jwt.model.SecurityUser;
+import ru.inbox.savinov_vu.core.security.service.SecurityService;
 import ru.inbox.savinov_vu.test_helpers.data.factories.jwt.SignUpDtoFactory;
 import ru.inbox.savinov_vu.test_helpers.data.init.SecurityUserInitializer;
 

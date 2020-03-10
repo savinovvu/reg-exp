@@ -1,5 +1,6 @@
-package ru.inbox.savinov_vu.core.security;
+package ru.inbox.savinov_vu.core.security.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,7 +12,9 @@ import ru.inbox.savinov_vu.app.users.repository.UserRepository;
 import ru.inbox.savinov_vu.app.users.service.UserService;
 import ru.inbox.savinov_vu.core.exception.AuthenticationException;
 import ru.inbox.savinov_vu.core.security.jwt.dto.SignUpDto;
+import ru.inbox.savinov_vu.core.security.jwt.model.LogoutToken;
 import ru.inbox.savinov_vu.core.security.jwt.model.SecurityUser;
+import ru.inbox.savinov_vu.core.security.repository.LogoutTokenRepository;
 
 import javax.annotation.Resource;
 import java.util.Optional;
@@ -21,17 +24,21 @@ import static ru.inbox.savinov_vu.common.constant.StringConstants.GUEST_LOGIN;
 
 
 @Service
+@RequiredArgsConstructor
 public class SecurityService implements UserDetailsService {
 
 
   @Resource
-  private UserService userService;
+  private final UserService userService;
 
   @Resource
-  private UserRepository userRepository;
+  private final UserRepository userRepository;
 
   @Resource
-  private BCryptPasswordEncoder encoder;
+  private final BCryptPasswordEncoder encoder;
+
+  @Resource
+  private final LogoutTokenRepository logoutTokenRepository;
 
 
   @Override
@@ -79,4 +86,19 @@ public class SecurityService implements UserDetailsService {
     User result = userRepository.saveAndFlush(user);
     return result;
   }
+
+
+  @Transactional
+  public void logout(LogoutToken logoutToken) {
+    logoutTokenRepository.saveAndFlush(logoutToken);
+  }
+
+
+  @Transactional(readOnly = true)
+  public boolean isLogoutToken(String token) {
+    Optional<LogoutToken> logoutToken = logoutTokenRepository.findByToken(token);
+    return logoutToken.isPresent();
+  }
+
+
 }

@@ -2,6 +2,7 @@ package ru.inbox.savinov_vu.core.security.jwt.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.security.core.userdetails.UserDetails;
 import ru.inbox.savinov_vu.app.users.model.Authority;
@@ -22,6 +23,7 @@ import java.util.Set;
 @Table(name = "users")
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class SecurityUser implements UserDetails {
 
   @Id
@@ -40,10 +42,6 @@ public class SecurityUser implements UserDetails {
   private Date lastPasswordResetDate;
 
 
-  public SecurityUser() {
-  }
-
-
   public SecurityUser(Integer id) {
     this.id = id;
   }
@@ -55,10 +53,12 @@ public class SecurityUser implements UserDetails {
     return login;
   }
 
+
   @Transient
   public Set<Authority> getAuthorities() {
     return Set.of(Authority.ADMIN, Authority.USER);
   }
+
 
   @Override
   public String getPassword() {

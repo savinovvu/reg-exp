@@ -1,4 +1,4 @@
-package ru.inbox.savinov_vu.core.security.jwt.controller;
+package ru.inbox.savinov_vu.core.security.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import ru.inbox.savinov_vu.app.users.model.User;
 import ru.inbox.savinov_vu.config.AbstractSpringBootTest;
-import ru.inbox.savinov_vu.core.security.SecurityService;
+import ru.inbox.savinov_vu.core.security.service.SecurityService;
 import ru.inbox.savinov_vu.core.security.jwt.dto.LoginDto;
 import ru.inbox.savinov_vu.core.security.jwt.dto.SignUpDto;
 import ru.inbox.savinov_vu.test_helpers.data.factories.jwt.LoginDtoFactory;

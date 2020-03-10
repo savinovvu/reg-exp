@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.inbox.savinov_vu.app.users.model.User;
 import ru.inbox.savinov_vu.app.users.repository.UserRepository;
 import ru.inbox.savinov_vu.app.users.service.UserService;
-import ru.inbox.savinov_vu.core.security.SecurityService;
+import ru.inbox.savinov_vu.core.security.service.SecurityService;
 import ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFactory;
 
 import javax.annotation.Resource;

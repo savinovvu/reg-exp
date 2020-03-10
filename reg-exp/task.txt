@@ -1,15 +1,16 @@
 . add grafite+grafana or prometheus+grafana monitoring
+. hide some tabs for unathorized users
 . add settings, for example show settings
 . implement translation service
-. migrate to graphQL.
+. migrate to graphQL
 . migrate to angular 9
 . add ngrx
-. implement logout with save oldtoken, delete unactual old token with job
 . implement theory page.
 . implement news page.
 . implement about page.
 . add kubernates.
 . add ci/cd
+79. implement logout with save oldtoken.
 78. implement reset for guest user with schedule+
 77. implement guest login+
 76. add test free sing-in user for dashboard+
