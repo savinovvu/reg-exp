@@ -14,17 +14,10 @@ export class AuthenticationService {
 
   private login: string;
 
-  private jwtToken: string;
-
-  private id: string;
-
 
   constructor(private jwtService: JwtHelperService, private http: HttpClient) {
-    this.jwtToken = jwtLoader();
-    this.id = getDataByKey('id');
-    if (this.jwtToken) {
-      this.changeUser(this.jwtToken, false);
-    }
+    localStorage.setItem('jwt_token', jwtLoader());
+    localStorage.setItem('id', getDataByKey('id'));
   }
 
 
@@ -33,27 +26,18 @@ export class AuthenticationService {
   }
 
 
-  changeUser(jwtToken: string, persist: boolean): void {
-    const tokenJson: object = this.jwtService.decodeToken(jwtToken);
-    this.login = tokenJson[ 'sub' ];
-    if (persist) {
-      localStorage.setItem('jwt_token', jwtToken);
-    }
+  changeUser(jwt_token: string, id: string): void {
+    localStorage.setItem('jwt_token', jwtLoader());
+    localStorage.setItem('id', getDataByKey('id'));
   }
 
 
   getJwtToken(): string {
-    return this.jwtToken;
+    return localStorage.getItem('jwt_token');
   }
-
-
-  getLogin(): string {
-    return this.login;
-  }
-
 
   getId(): string {
-    return this.id;
+    return localStorage.getItem('id');
   }
 
 }

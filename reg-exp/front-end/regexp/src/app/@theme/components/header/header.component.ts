@@ -3,12 +3,13 @@ import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeServ
 
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { RestDataSourceService } from "../../../services/rest/rest-data-source.service";
 
 
 
 @Component({
   selector: 'ngx-header',
-  styleUrls: [ './header.component.scss' ],
+  styleUrls: ['./header.component.scss'],
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit, OnDestroy {
@@ -28,13 +29,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
 
-  userMenu = [{ title: 'Log out' } ];
+  userMenu = [{ title: 'Log out', tag: 'logout' }];
 
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
               private themeService: NbThemeService,
-              private breakpointService: NbMediaBreakpointsService) {
+              private breakpointService: NbMediaBreakpointsService,
+              private restService: RestDataSourceService,
+  ) {
   }
 
 
@@ -45,7 +48,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()
       .pipe(
-        map(([ , currentBreakpoint ]) => currentBreakpoint.width < xl),
+        map(([, currentBreakpoint]) => currentBreakpoint.width < xl),
         takeUntil(this.destroy$),
       )
       .subscribe((isLessThanXl: boolean) => this.userPictureOnly = isLessThanXl);
@@ -56,6 +59,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
       )
       .subscribe(themeName => this.currentTheme = themeName);
+
+    this.menuService.onItemClick().subscribe((v: any) => {
+      if (v.item && v.item.title === 'Log out') {
+        this.restService.post('/v1/log-out', null).subscribe(v => {
+          localStorage.removeItem('id');
+          localStorage.removeItem('jwt_token');
+        });
+      }
+    });
+
   }
 
 

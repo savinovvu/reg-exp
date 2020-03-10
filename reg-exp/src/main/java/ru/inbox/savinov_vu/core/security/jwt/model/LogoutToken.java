@@ -6,7 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
@@ -21,6 +24,8 @@ import java.time.LocalDateTime;
 public class LogoutToken {
 
   @Id
+  @SequenceGenerator(name = "logout_tokens_seq", sequenceName = "logout_tokens_seq", allocationSize = 1, initialValue = 1000)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "likes_seq")
   private Integer id;
 
   private String token;
