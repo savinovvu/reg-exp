@@ -1,7 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { CourseComponent } from "./pages/course/course.component";
 import { ProposeTaskComponent } from "./pages/propose-task/propose-task.component";
-import { UsefulLinksComponent } from "./pages/useful-links/useful-links.component";
+import { TheoryComponent } from "./pages/theory/theory.component";
 import { UserRatingComponent } from "./pages/rating/user-rating.component";
 import { LevelComponent } from "./pages/level/level.component";
 import { ChallengeComponent } from "./pages/challenge/challenge.component";
@@ -16,7 +16,7 @@ const routes: Routes = [
 
   { path: 'users', component: UserRatingComponent },
   { path: 'course', component: CourseComponent },
-  { path: 'useful-links', component: UsefulLinksComponent },
+  { path: 'theory', component: TheoryComponent },
   { path: 'propose-task', component: ProposeTaskComponent },
   { path: 'course/:levelNumber', component: LevelComponent },
   { path: 'course/:levelNumber/:taskNumber', component: ChallengeComponent },

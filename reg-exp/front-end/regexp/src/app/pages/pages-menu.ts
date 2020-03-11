@@ -28,7 +28,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Theory',
     icon: 'text-outline',
-    link: '/useful-links'
+    link: '/theory'
   },
 
   {

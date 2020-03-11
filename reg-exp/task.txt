@@ -10,6 +10,7 @@
 . implement about page.
 . add kubernates.
 . add ci/cd
+79. theory component+
 79. implement logout with save oldtoken.+
 78. implement reset for guest user with schedule+
 77. implement guest login+

@@ -30,7 +30,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AuthenticationService } from './services/jwt/authentication.service';
 import { CourseComponent } from './pages/course/course.component';
 import { ProposeTaskComponent } from './pages/propose-task/propose-task.component';
-import { UsefulLinksComponent } from './pages/useful-links/useful-links.component';
+import { TheoryComponent } from './pages/theory/theory.component';
 import { UserRatingComponent } from './pages/rating/user-rating.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { TokenInterceptor } from "./services/interceptors/token-interceptor.service";
@@ -59,7 +59,7 @@ export function jwtLoader(): string {
     UserRatingComponent,
     CourseComponent,
     ProposeTaskComponent,
-    UsefulLinksComponent,
+    TheoryComponent,
     UserRatingComponent,
     ChallengeComponent,
     LevelComponent,
