@@ -40,7 +40,7 @@ services:
     networks:
       - network1
       - network2
-    entrypoint: sh -c "java -jar /opt/reg-exp.jar"
+    entrypoint: sh -c "/usr/lib/jvm/spring-boot-runtime/bin/java -Dfile.encoding=UTF-8 -jar /opt/reg-exp.jar"
     healthcheck:
       <<: *health_check
       test: curl -f http://localhost:9090/monitoring/health || exit 1
