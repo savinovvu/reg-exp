@@ -33,7 +33,7 @@ RUN npm run build
 WORKDIR /opt/regexp/
 RUN npm run build
 
-FROM nginx
+FROM nginx:1.17.8-alpine
 USER root
 
 RUN rm /usr/share/nginx/html/50x.html && \
