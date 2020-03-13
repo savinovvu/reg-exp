@@ -17,24 +17,25 @@ http {
         }
 
         location ^~ /regexp {
-            root   /usr/share/nginx/html;
+            alias /usr/share/nginx/html/regexp/;
+            try_files $uri$args $uri$args/ /regexp/index.html;
         }
 
         location ^~ /login {
-            root   /usr/share/nginx/html;
+            alias /usr/share/nginx/html/login/;
+            try_files $uri$args $uri$args/ /login/index.html;
         }
 
         location ^~ /sign-up {
-            root   /usr/share/nginx/html;
+            alias /usr/share/nginx/html/sign-up/;
+            try_files $uri$args $uri$args/ /sign-up/index.html;
         }
 
         location ~ / {
-            root   /usr/share/nginx/html/landing;
+            alias /usr/share/nginx/html/landing/;
+            try_files $uri$args $uri$args/ /index.html;
         }
 
-        location ^~ /inspect-url {
-            return 200 "$host\n$uri\n$args";
-        }
 
     }
 }

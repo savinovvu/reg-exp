@@ -2,6 +2,10 @@ export interface Task {
   id?: number;
   number?: number;
   name?: string;
+  max: number;
+  min: number;
+  title?:string;
+  score?:number;
   description?: string;
   specialConditions?:[];
   matchedStrings?: [];
