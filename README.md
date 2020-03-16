@@ -1,4 +1,4 @@
-Java, Spring boot (MVC, Security, Data-Jpa), JWT, Criteria API, Hibernate Meta Model, MapStruct, Postgres, Liquibase, Angular, Gulp, Nginx.
+Java, Spring boot (MVC, Security, Data-Jpa), JWT, Criteria API, Hibernate Meta Model, MapStruct, Postgres, Liquibase, Angular, Gulp, Nginx. Custom JRE with Jigsaw.
 
 
 To build and start need only docker (docker-compose).
