@@ -16,7 +16,8 @@ var posthtml = require("gulp-posthtml");
 var include = require("posthtml-include");
 var del = require("del");
 var htmlmin = require("gulp-htmlmin");
-var buildRootFolder = "../../../infrastructure/nginx/src/login";
+var root = "../../../infrastructure/nginx/src";
+var buildRootFolder = `${root}/login`;
 
 
 
@@ -39,7 +40,7 @@ gulp.task("css", function () {
 
 gulp.task("server", function () {
   server.init({
-    server: `${buildRootFolder}/`,
+    server: root,
     notify: false,
     open: true,
     cors: true,

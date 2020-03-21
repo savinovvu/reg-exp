@@ -7,7 +7,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Welcome',
     icon: 'home-outline',
-    url: '/',
+    url: '/landing',
     target: '_blank',
   },
   {

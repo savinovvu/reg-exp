@@ -3,28 +3,24 @@
     "target": "http://localhost:8080",
     "secure": false
   },
-  "/login": {
-    "target": "http://localhost:3001/",
-    "secure": false,
-    "pathRewrite": {
-      "/login": ""
-    }
+
+
+  "/login/*": {
+    "target": "http://localhost:3001",
+    "secure": false
   },
-  "/sign-up": {
-    "target": "http://localhost:3002/",
-    "secure": false,
-    "pathRewrite": {
-      "/sign-up": ""
-    }
+
+  "/sign-up/*": {
+    "target": "http://localhost:3002",
+    "secure": false
   },
-  "/about": {
+
+  "/landing/*": {
     "target": "http://localhost:3000",
-    "secure": false,
-    "pathRewrite": {
-      "/about": ""
-    }
+    "secure": false
   },
-  "/test-url": {
+
+  "/test-url/*": {
     "target": "http://localhost/inspect-url",
     "secure": false,
     "pathRewrite": {

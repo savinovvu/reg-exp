@@ -10,6 +10,7 @@
 . implement about page.
 . add kubernates.
 . add ci/cd
+82. implement routing for dev and nginx
 81. docker build with custom jre with jlink.
 80. fix nginx routing.
 79. theory component+
