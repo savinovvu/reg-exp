@@ -32,8 +32,8 @@ http {
         }
 
         location ^~ /landing {
-            alias /home/skorpion/1.Soft/0.Projects/1.MyProjects/1.RegExp/reg-exp/infrastructure/nginx/src/landing/;
-            try_files $uri$args $uri$args/ /index.html;
+            alias /usr/share/nginx/html/landing/;
+            try_files $uri$args $uri$args/ /landing/index.html;
             autoindex on;
         }
 
