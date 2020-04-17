@@ -142,6 +142,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "regexp"
+    }
+  },
+  "defaultProject": "regexp",
+  "cli": {
+    "analytics": false
+  }
 }
