@@ -10,9 +10,10 @@
 . implement about page.
 . add kubernates.
 . add ci/cd
-82. implement routing for dev and nginx
-81. docker build with custom jre with jlink.
-80. fix nginx routing.
+83. implement propose a task.+
+82. implement routing for dev and nginx+
+81. docker build with custom jre with jlink.+
+80. fix nginx routing.+
 79. theory component+
 79. implement logout with save oldtoken.+
 78. implement reset for guest user with schedule+

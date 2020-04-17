@@ -21,37 +21,66 @@
 // install the framework and custom global styles
 @include nb-install() {
 
-  // framework global styles
-  @include nb-theme-global();
-  @include nb-auth-global();
+    // framework global styles
+    @include nb-theme-global();
+    @include nb-auth-global();
 
-  @include ngx-layout();
-  // loading progress bar
-  @include ngx-pace-theme();
+    @include ngx-layout();
+    // loading progress bar
+    @include ngx-pace-theme();
 
-  @include nb-overrides();
-};
+    @include nb-overrides();
+}
+
+;
 
 input-editor {
-    color:black;
+    color: black;
 }
 
 input-filter {
-    color:black;
+    color: black;
 }
 
 select-filter {
-    color:black;
+    color: black;
 }
 
 select-editor {
-    color:black;
+    color: black;
 }
 
 .indent-20 {
     margin-bottom: 20px;
 }
+
+.indent-15 {
+    margin-bottom: 15px;
+}
+
 .indent-10 {
     margin-bottom: 10px;
 }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type="number"]:hover,
+input[type="number"]:focus {
+    -moz-appearance: number-input;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 

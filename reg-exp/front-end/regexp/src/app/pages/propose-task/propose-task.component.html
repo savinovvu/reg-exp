@@ -1,1 +1,137 @@
-<p>propose-task works!</p>
+<nb-card>
+  <nb-card-header>
+    <h4>Propose a task</h4>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="title-column">
+      <label>
+        <h5 class="indent-20">Title</h5>
+        <input [(ngModel)]="task.title" class="input-condition" type="text" nbInput fullWidth>
+      </label>
+      <label>
+        <h5 class="indent-20">Description</h5>
+        <input [(ngModel)]="task.description" class="input-condition" type="text" nbInput fullWidth>
+      </label>
+      <label>
+        <h5 class="indent-20">Score Bonus:</h5>
+        <input [(ngModel)]="task.score" class="input-condition" type="text" nbInput fullWidth>
+      </label>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+<nb-card>
+  <nb-card-header class="condition-column">
+    <h5>Conditions</h5>
+
+    <div class="special-condition-column">
+
+      <label class="special-condition-column--row">
+        <h5>Min</h5>
+        <div class="special-input-container">
+          <input class="input-condition"
+                 [(ngModel)]="conditions.minSymbols.condition"
+                 (ngModelChange)="changeMin()"
+                 type="number"
+                 nbInput
+                 fullWidth>
+          <nb-checkbox [checked]="conditions.minSymbols.result" disabled></nb-checkbox>
+        </div>
+      </label>
+
+
+      <label class="special-condition-column--row">
+        <h5>Max</h5>
+        <div class="special-input-container">
+          <input [(ngModel)]="conditions.maxSymbols.condition"
+                 (ngModelChange)="changeMax()"
+                 class="input-condition"
+                 type="number"
+                 nbInput
+                 fullWidth>
+          <nb-checkbox [checked]="conditions.maxSymbols.result" disabled></nb-checkbox>
+        </div>
+      </label>
+
+
+    </div>
+  </nb-card-header>
+
+
+  <nb-card-body>
+    <div class="row show-grid indent-15">
+      <div class="condition-column col-md-3 col-sm-12">
+        <h5 class="grid-h">Find Strings</h5>
+        <p *ngIf="conditions?.matchedStrings?.length == 0">No Conditions</p>
+
+        <nb-checkbox *ngFor="let conditionResult of conditions?.matchedStrings; let i = index"
+                     (click)="deleteCondition(i, conditions?.matchedStrings)"
+                     [checked]="conditionResult.result"
+                     disabled>{{conditionResult.condition}}
+        </nb-checkbox>
+
+        <input [(ngModel)]="findString" class="input-condition" type="text" nbInput fullWidth>
+      </div>
+
+      <div class="condition-column col-md-3 col-sm-12">
+        <h5 class="grid-h">Exclude Strings</h5>
+        <p *ngIf="conditions?.excludedStrings?.length == 0">No Conditions</p>
+
+        <nb-checkbox *ngFor="let conditionResult of conditions?.excludedStrings; let i = index"
+                     (click)="deleteCondition(i, conditions?.excludedStrings)"
+                     [checked]="conditionResult.result"
+                     disabled>{{conditionResult.condition}}
+        </nb-checkbox>
+
+        <input [(ngModel)]="excludeString" class="input-condition" type="text" nbInput fullWidth>
+      </div>
+
+      <div class="condition-column col-md-3 col-sm-12">
+        <h5 class="grid-h">Required Substring</h5>
+        <p *ngIf="conditions?.requiredSubStrings?.length == 0">No Conditions</p>
+
+        <nb-checkbox *ngFor="let conditionResult of conditions?.requiredSubStrings; let i = index"
+                     (click)="deleteCondition(i, conditions?.requiredSubStrings)"
+                     [checked]="conditionResult.result"
+                     disabled>{{conditionResult.condition}}
+        </nb-checkbox>
+
+        <input [(ngModel)]="requiredSubstring" class="input-condition" type="text" nbInput fullWidth>
+      </div>
+
+      <div class="condition-column col-md-3 col-sm-12">
+        <h5 class="grid-h">Excluded Answers</h5>
+        <p *ngIf="conditions?.excludedAnswers?.length == 0">No Conditions</p>
+        <nb-checkbox *ngFor="let conditionResult of conditions?.excludedAnswers; let i = index"
+                     (click)="deleteCondition(i, conditions?.excludedAnswers)"
+                     [checked]="conditionResult.result"
+                     disabled>{{conditionResult.condition}}
+        </nb-checkbox>
+        <input [(ngModel)]="excludedAnswer" class="input-condition" type="text" nbInput fullWidth>
+      </div>
+    </div>
+
+    <button (click)="addConditions()" nbButton>Add Conditions</button>
+  </nb-card-body>
+</nb-card>
+
+<nb-card>
+  <nb-card-header *ngIf="!success">Answer</nb-card-header>
+  <nb-card-header *ngIf="success">Good Answer</nb-card-header>
+  <nb-card-body>
+    <textarea class="indent-10"
+              [(ngModel)]="answer"
+              (ngModelChange)="check()"
+              rows="5"
+              nbInput
+              fullWidth
+              shape="round"
+              placeholder="Text Area">
+
+    </textarea>
+    <button *ngIf="success" [disabled]="isSubmitting" (click)="registerTask()" nbButton>Submit</button>
+  </nb-card-body>
+</nb-card>
+
+
+

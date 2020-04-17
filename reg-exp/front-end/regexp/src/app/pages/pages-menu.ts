@@ -59,10 +59,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
 
-  {
+/*  {
     title: 'Settings',
     icon: 'settings-outline',
     link: '/settings',
-  },
+  },*/
 ];
 

@@ -1,0 +1,46 @@
+.title-column {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: nowrap;
+}
+
+.condition-column {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: nowrap;
+}
+
+
+.special-condition-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: nowrap;
+}
+
+.special-condition-column--row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: nowrap;
+    max-width: 280px;
+}
+
+.special-input-container {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.input-condition {
+    margin-right: 10px;
+}
+
+.special-condition-column .input-condition {
+    width: 150px;
+}

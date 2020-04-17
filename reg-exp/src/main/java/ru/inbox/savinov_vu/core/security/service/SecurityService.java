@@ -1,6 +1,7 @@
 package ru.inbox.savinov_vu.core.security.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,6 +12,7 @@ import ru.inbox.savinov_vu.app.users.model.User;
 import ru.inbox.savinov_vu.app.users.repository.UserRepository;
 import ru.inbox.savinov_vu.app.users.service.UserService;
 import ru.inbox.savinov_vu.core.exception.AuthenticationException;
+import ru.inbox.savinov_vu.core.exception.FlowException;
 import ru.inbox.savinov_vu.core.security.jwt.dto.SignUpDto;
 import ru.inbox.savinov_vu.core.security.jwt.model.LogoutToken;
 import ru.inbox.savinov_vu.core.security.jwt.model.SecurityUser;
@@ -98,6 +100,23 @@ public class SecurityService implements UserDetailsService {
   public boolean isLogoutToken(String token) {
     Optional<LogoutToken> logoutToken = logoutTokenRepository.findByToken(token);
     return logoutToken.isPresent();
+  }
+
+
+  @Transactional(readOnly = true)
+  public User getUserByPrincipal(Object principal) {
+    if (principal instanceof UsernamePasswordAuthenticationToken) {
+      UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) principal;
+      principal = token.getPrincipal();
+    }
+
+
+    if (principal instanceof SecurityUser) {
+      SecurityUser secUser = (SecurityUser) principal;
+      User user = userService.getById(secUser.getId());
+      return user;
+    }
+    throw new FlowException("principal is not SecurityUser");
   }
 
 

@@ -5,7 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import ru.inbox.savinov_vu.app.checker.model.TaskResulter;
+import ru.inbox.savinov_vu.app.checker.model.RegExpTaskResulter;
+import ru.inbox.savinov_vu.app.checker.model.TaskCondition;
 import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
 import ru.inbox.savinov_vu.test_helpers.data.factories.regexpTask.DigitalRegExpTaskFactory;
 import ru.inbox.savinov_vu.test_helpers.data.factories.regexpTask.WordRegExpTaskFactory;
@@ -31,7 +32,7 @@ public class RegExpTaskCheckerTest {
   @MethodSource("getValidTasks")
   public void check_valid(RegExpTask task, String message) {
     for (String v : task.getAnswers()) {
-      TaskResulter check = taskChecker.check(task, v);
+      RegExpTaskResulter check = taskChecker.check(TaskCondition.of(task, v));
       assertEquals(true, check.getSuccess(), message + ", answer: " + v);
     }
   }
@@ -59,7 +60,7 @@ public class RegExpTaskCheckerTest {
   @Test
   public void digitalTask_invalid_excluded_answer() {
     RegExpTask task = DigitalRegExpTaskFactory.getOneDecimalRange();
-    TaskResulter check = taskChecker.check(task, task.getExcludedAnswers().get(0));
+    RegExpTaskResulter check = taskChecker.check(TaskCondition.of(task, task.getExcludedAnswers().get(0)));
     assertEquals(false, check.getSuccess());
   }
 

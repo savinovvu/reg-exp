@@ -27,7 +27,7 @@ export class RestDataSourceService {
         subject.next(v);
       },
       error => {
-        this.handleError(error);
+        subject.error(error);
       });
     return subject.asObservable();
   }
@@ -41,7 +41,7 @@ export class RestDataSourceService {
         subject.next(v);
       },
       error => {
-        // this.handleError(error);
+        subject.error(error);
       });
     return subject.asObservable();
   }
@@ -55,7 +55,7 @@ export class RestDataSourceService {
         subject.next(v);
       },
       error => {
-        this.handleError(error);
+        subject.error(error);
       });
     return subject.asObservable();
   }
@@ -69,7 +69,7 @@ export class RestDataSourceService {
         subject.next(v);
       },
       error => {
-        this.handleError(error);
+        subject.error(error);
       });
     return subject.asObservable();
   }
@@ -82,9 +82,7 @@ export class RestDataSourceService {
   }
 
 
-  private handleError(error) {
-    this.router.navigate([ '/error' ]);
-  }
+
 
 
   private getHeaders(): HttpHeaders {

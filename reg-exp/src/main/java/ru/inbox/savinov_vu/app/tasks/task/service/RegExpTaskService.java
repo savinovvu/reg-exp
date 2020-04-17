@@ -5,7 +5,8 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.inbox.savinov_vu.app.checker.RegExpTaskChecker;
-import ru.inbox.savinov_vu.app.checker.model.TaskResulter;
+import ru.inbox.savinov_vu.app.checker.model.RegExpTaskResulter;
+import ru.inbox.savinov_vu.app.checker.model.TaskCondition;
 import ru.inbox.savinov_vu.app.tasks.task.dto.list.RegExpTaskListDto;
 import ru.inbox.savinov_vu.app.tasks.task.dto.list.RegExpTaskListDtoMapper;
 import ru.inbox.savinov_vu.app.tasks.task.model.RegExpTask;
@@ -16,6 +17,8 @@ import ru.inbox.savinov_vu.app.users.service.UserService;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static java.util.Objects.nonNull;
 
 
 
@@ -58,22 +61,34 @@ public class RegExpTaskService {
   }
 
 
-  public TaskResulter check(Integer id, String answer) {
+  public RegExpTaskResulter check(Integer id, String answer) {
     var checkedTask = getById(id);
-    return regExpTaskChecker.check(checkedTask, answer);
+    TaskCondition taskCondition = TaskCondition.of(checkedTask, answer);
+    return regExpTaskChecker.check(taskCondition);
   }
 
 
   @Transactional
-  public TaskResulter register(Integer taskId, String answer, Integer userId) {
+  public RegExpTaskResulter register(Integer taskId, String answer, Integer userId) {
     var checkedTask = getById(taskId);
-    TaskResulter check = regExpTaskChecker.check(checkedTask, answer);
+    TaskCondition taskCondition = TaskCondition.of(checkedTask, answer);
+    RegExpTaskResulter check = regExpTaskChecker.check(taskCondition);
     if (!check.getSuccess()) {
       return check;
     }
     User user = userService.getById(userId);
     user.solveTask(checkedTask);
     return check;
+  }
+
+
+  @Transactional
+  public RegExpTask add(RegExpTask regExpTask) {
+    if (nonNull(regExpTask.getId())) {
+      return regExpTask;
+    }
+    RegExpTask result = repository.save(regExpTask);
+    return result;
   }
 
 

@@ -18,7 +18,6 @@ import java.util.Set;
 
 
 
-// todo: split UserDetails and SecurityUser
 @Entity
 @Table(name = "users")
 @Getter

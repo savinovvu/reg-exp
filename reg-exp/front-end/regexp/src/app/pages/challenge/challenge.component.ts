@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RestDataSourceService } from "../../services/rest/rest-data-source.service";
-import { ActivatedRoute } from "@angular/router";
+import { RestDataSourceService } from '../../services/rest/rest-data-source.service';
+import { ActivatedRoute } from '@angular/router';
 import { Task } from '../../model/interfaces';
 
 
@@ -26,9 +26,9 @@ export class ChallengeComponent implements OnInit {
 
   answer = '';
 
-  success: boolean = false;
+  success = false;
 
-  registerAnswer: boolean = false;
+  registerAnswer = false;
 
 
   constructor(
@@ -43,7 +43,6 @@ export class ChallengeComponent implements OnInit {
     this.taskNumber = this.activatedRoute.snapshot.params.taskNumber;
     this.restService.get(`/v1/tasks/regexptask/byLevel/${this.levelNumber}/byNumber/${this.taskNumber}`).subscribe(v => {
       this.task = v;
-
       this.restService.put(`/v1/tasks/regexptask/check/${this.task.id}`, ' ').subscribe(v => {
         this.conditions = v;
       });
@@ -54,7 +53,7 @@ export class ChallengeComponent implements OnInit {
   answerChange() {
     clearTimeout(timeout);
     if (this.answer.trim() === '') {
-      this.success = false;
+      this.resetProgress();
       return;
     }
     timeout = setTimeout(() => {
@@ -80,5 +79,14 @@ export class ChallengeComponent implements OnInit {
           this.registerAnswer = v.success;
         });
     }, 300);
+  }
+
+  private resetProgress() {
+    this.success = false;
+    this.conditions.matchedStrings.forEach(v => v.result = false);
+    this.conditions.excludedStrings.forEach(v => v.result = false);
+    this.conditions.requiredSubStrings.forEach(v => v.result = false);
+    this.conditions.excludedAnswers.forEach(v => v.result = false);
+    this.conditions.specialConditions.forEach(v => v.result = false);
   }
 }
