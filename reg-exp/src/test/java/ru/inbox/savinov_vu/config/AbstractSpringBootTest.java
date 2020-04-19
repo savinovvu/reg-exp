@@ -18,6 +18,6 @@ import ru.inbox.savinov_vu.RegExpApplication;
 @SpringBootTest(classes = RegExpApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 @AutoConfigureJsonTesters
-public abstract class AbstractSpringBootTest extends AbstractJunitTest{
+public abstract class AbstractSpringBootTest extends AbstractJunitTest {
 
 }

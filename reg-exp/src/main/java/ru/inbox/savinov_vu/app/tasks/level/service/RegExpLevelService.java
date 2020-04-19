@@ -29,6 +29,7 @@ public class RegExpLevelService {
   @Resource
   private final UserService userService;
 
+
   @Transactional(readOnly = true)
   public List<RegExpLevel> findAll() {
     List<RegExpLevel> all = regExpLevelRepository.findAll(Sort.by(Sort.Direction.ASC, RegExpLevel_.NUMBER));
@@ -47,6 +48,7 @@ public class RegExpLevelService {
 
     return result;
   }
+
 
   @Transactional(readOnly = true)
   public RegExpLevel findById(Integer id) {

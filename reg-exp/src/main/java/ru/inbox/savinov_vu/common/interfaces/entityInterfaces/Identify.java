@@ -6,12 +6,12 @@ import org.springframework.data.domain.Persistable;
 
 public interface Identify extends Persistable {
 
-    @Override
-    Integer getId();
+  @Override
+  Integer getId();
 
-    @Override
-    default boolean isNew() {
-        return (getId() == null);
-    }
+  @Override
+  default boolean isNew() {
+    return (getId() == null);
+  }
 
 }

@@ -1,4 +1,5 @@
 package ru.inbox.savinov_vu.core.security.jwt.config;
+
 import java.io.Serializable;
 
 

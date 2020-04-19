@@ -20,16 +20,14 @@
 
 
     <div class="row show-grid">
+
       <div class="condition-column col-md-3 col-sm-12">
         <h5 class="grid-h">Find Strings</h5>
         <p *ngIf="conditions?.matchedStrings?.length == 0">No Conditions</p>
-
         <nb-checkbox *ngFor="let conditionResult of conditions?.matchedStrings"
                      [checked]="conditionResult.result"
                      disabled>{{conditionResult.condition}}
         </nb-checkbox>
-
-
       </div>
 
       <div class="condition-column col-md-3 col-sm-12">
@@ -40,24 +38,22 @@
                      [checked]="conditionResult.result"
                      disabled>{{conditionResult.condition}}
         </nb-checkbox>
-
       </div>
 
       <div class="condition-column col-md-3 col-sm-12">
         <h5 class="grid-h">Required Substring</h5>
         <p *ngIf="conditions?.requiredSubStrings?.length == 0">No Conditions</p>
-
         <nb-checkbox *ngFor="let conditionResult of conditions?.requiredSubStrings"
                      [checked]="conditionResult.result"
                      disabled>{{conditionResult.condition}}
         </nb-checkbox>
-
       </div>
 
       <div class="condition-column col-md-3 col-sm-12">
         <h5 class="grid-h">Excluded Answers</h5>
         <p *ngIf="conditions?.excludedAnswers?.length == 0">No Conditions</p>
-        <nb-checkbox *ngFor="let conditionResult of conditions?.excludedAnswers" [checked]="conditionResult.result"
+        <nb-checkbox *ngFor="let conditionResult of conditions?.excludedAnswers"
+                     [checked]="conditionResult.result"
                      disabled>{{conditionResult.condition}}
         </nb-checkbox>
       </div>

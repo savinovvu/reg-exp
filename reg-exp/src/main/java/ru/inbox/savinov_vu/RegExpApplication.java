@@ -11,7 +11,7 @@ import ru.inbox.savinov_vu.core.security.jwt.config.JwtParams;
 
 @SpringBootApplication
 @EnableJpaAuditing
-@EnableConfigurationProperties({ JwtParams.class})
+@EnableConfigurationProperties({JwtParams.class})
 @EnableScheduling
 public class RegExpApplication {
 

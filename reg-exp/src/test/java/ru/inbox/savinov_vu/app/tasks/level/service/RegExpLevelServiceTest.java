@@ -27,16 +27,11 @@ class RegExpLevelServiceTest {
   private RegExpLevelService regExpLevelService;
 
 
-
-
-
   @Test
   public void findById() {
     RegExpLevel level = regExpLevelService.findById(1);
     assertEquals("object id must be 1", level.getId().intValue(), 1);
   }
-
-
 
 
   @TestConfiguration

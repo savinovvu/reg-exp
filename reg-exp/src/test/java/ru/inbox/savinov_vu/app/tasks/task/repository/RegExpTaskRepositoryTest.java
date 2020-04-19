@@ -95,9 +95,6 @@ class RegExpTaskRepositoryTest extends AbstractSpringBootTest {
   }
 
 
-
-
-
   @Test
   void getByEnabledOrderById() {
     repository.deleteAll();

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RestDataSourceService } from "../../services/rest/rest-data-source.service";
+import { RestDataSourceService } from '../../services/rest/rest-data-source.service';
 
 
 
@@ -11,6 +11,7 @@ import { RestDataSourceService } from "../../services/rest/rest-data-source.serv
 export class CourseComponent implements OnInit {
 
   levels = [];
+
 
   constructor(
     private restService: RestDataSourceService

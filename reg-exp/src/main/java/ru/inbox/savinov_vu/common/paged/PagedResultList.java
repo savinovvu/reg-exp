@@ -15,45 +15,20 @@ import static com.google.common.base.Preconditions.checkArgument;
 
 
 
-/**
- * Stores entities with supporting pagination
- */
 @Value(staticConstructor = "of")
 public class PagedResultList<T> implements PagedResult<List<T>> {
 
-  /**
-   * Result items
-   */
   private List<T> items;
 
-  /**
-   * Page size
-   */
   private int size;
 
-  /**
-   * page number
-   */
   private int page;
 
-  /**
-   * total rows count
-   */
   private long total;
 
-  /**
-   * total pages count
-   */
   public long totalPages;
 
 
-  /**
-   * Constructs {@link PagedResultList} from {@link Page}
-   *
-   * @param page {@link Page}
-   * @param <T>  type of data
-   * @return {@link PagedResultList} constructed from {@link Page}
-   */
   public static <T> PagedResultList<T> ofPage(Page<T> page) {
     checkArgument(page != null, "Page object cannot be null");
     return new PagedResultList<>(page.getContent(), page.getSize(), page.getNumber() + 1, page.getTotalElements(), page.getTotalPages());
@@ -67,13 +42,6 @@ public class PagedResultList<T> implements PagedResult<List<T>> {
   }
 
 
-  /**
-   * Constructs {@link PagedResultList} with specified max pages from {@link Page}
-   *
-   * @param page {@link Page}
-   * @param <T>  type of data
-   * @return {@link PagedResultList} constructed from {@link Page}
-   */
   public static <T> PagedResultList<T> ofPage(Page<T> page, final Integer maxPageNumber) {
     checkArgument(page != null, "Page object cannot be null");
     return new PagedResultList<>(page.getContent(), page.getSize(), page.getNumber() + 1, page.getTotalElements(),
@@ -88,9 +56,6 @@ public class PagedResultList<T> implements PagedResult<List<T>> {
   }
 
 
-  /**
-   * Method that add possibility to paginate data from your input list
-   */
   public static <T> PagedResultList<T> fromList(@Nonnull List<T> list, @Nonnull PageRequest pageRequest) {
     Integer start = pageRequest.getPageNumber() * pageRequest.getPageSize();
 

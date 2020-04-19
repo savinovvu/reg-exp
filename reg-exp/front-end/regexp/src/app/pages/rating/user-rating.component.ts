@@ -88,13 +88,13 @@ export class UserRatingComponent implements OnInit {
 
     actions: {
       add: false,
-      edit:false,
-      delete:false
+      edit: false,
+      delete: false
     },
 
 
     columns: {
-      score:{
+      score: {
         title: 'Score',
         type: 'number',
         editable: false,
@@ -124,8 +124,8 @@ export class UserRatingComponent implements OnInit {
       sex: {
         title: 'Sex',
         type: 'string',
-        editor:{
-          type:'list',
+        editor: {
+          type: 'list',
           config: {
             selectText: 'Select...',
             list: [

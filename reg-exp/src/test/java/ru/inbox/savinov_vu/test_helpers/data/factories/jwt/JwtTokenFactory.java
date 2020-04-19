@@ -28,6 +28,7 @@ public class JwtTokenFactory {
       .compact();
   }
 
+
   private static Date getExpirationDate(Date createdDate, JwtParams jwtParams) {
     return new Date(createdDate.getTime() + jwtParams.getExpiration() * 1000);
   }
@@ -43,6 +44,7 @@ public class JwtTokenFactory {
     JwtParams jwtParams = JwtParamsFactory.of();
     return getToken(LOGIN, LocalDateTime.now(), jwtParams);
   }
+
 
   public static String getTokenByCreateTime(LocalDateTime localDateTime) {
     JwtParams jwtParams = JwtParamsFactory.of();

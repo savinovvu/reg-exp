@@ -11,41 +11,25 @@ import static com.google.common.base.Preconditions.checkArgument;
 
 
 
-/**
- * Stores entities with supporting pagination
- */
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class PagedResultMap<K, V> implements PagedResult<Map<K, V>> {
-    /**
-     * Result items
-     */
-    private Map<K, V> items;
 
-    /**
-     * Page size
-     */
-    private int size;
+  private Map<K, V> items;
 
-    /**
-     * page number
-     */
-    private int page;
+  private int size;
 
-    /**
-     * total rows count
-     */
-    private long total;
+  private int page;
 
-    /**
-     * total pages count
-     */
-    public long totalPages;
+  private long total;
 
-    public static <K, V> PagedResultMap<K, V> withResults(Page page, Map<K, V> results) {
-        checkArgument(page != null, "Page object cannot be null");
-        checkArgument(results != null, "Results cannot be null");
-        return new PagedResultMap<>(results, page.getSize(), page.getNumber() + 1, page.getTotalElements(),
-            page.getTotalPages());
-    }
+  public long totalPages;
+
+
+  public static <K, V> PagedResultMap<K, V> withResults(Page page, Map<K, V> results) {
+    checkArgument(page != null, "Page object cannot be null");
+    checkArgument(results != null, "Results cannot be null");
+    return new PagedResultMap<>(results, page.getSize(), page.getNumber() + 1, page.getTotalElements(),
+      page.getTotalPages());
+  }
 }

@@ -78,12 +78,12 @@ public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
   }
 
 
-
   private void checkId(HttpServletRequest request, SecurityUser securityUser) {
     if (!String.valueOf(securityUser.getId()).equals(request.getHeader("id"))) {
       throw new AuthenticationException("JwtAuthorizationTokenFilter. method checkId: id in header and in securityUser must be equal");
     }
   }
+
 
   private void checkLogoutToken(String authToken) {
     boolean isLogout = securityService.isLogoutToken(authToken);

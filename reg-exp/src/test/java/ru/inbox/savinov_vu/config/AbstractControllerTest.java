@@ -16,6 +16,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @AutoConfigureMockMvc
 @EnableWebMvc
 @Import(ControllerTestCommonConfiguration.class)
-public abstract class AbstractControllerTest extends AbstractJunitTest{
+public abstract class AbstractControllerTest extends AbstractJunitTest {
 
 }

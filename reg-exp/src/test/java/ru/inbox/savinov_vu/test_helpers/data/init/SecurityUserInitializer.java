@@ -21,12 +21,14 @@ public class SecurityUserInitializer {
   @Resource
   private final SecurityService securityService;
 
+
   public SecurityUser initOne() {
     deleteAll();
     User user = userInitializer.initOne();
     SecurityUser securityUser = SecurityUser.of(user);
     return securityUser;
   }
+
 
   public SecurityUser initOneWithSignUpDto(SignUpDto signUpDto) {
     deleteAll();

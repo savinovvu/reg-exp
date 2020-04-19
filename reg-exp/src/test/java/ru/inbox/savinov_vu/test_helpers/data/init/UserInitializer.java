@@ -58,8 +58,6 @@ public class UserInitializer {
   }
 
 
-
-
   public User getEnabledUserFromExisting() {
     List<User> enabled = getEnabledUsersFromExisting();
     User user = enabled.get(0);

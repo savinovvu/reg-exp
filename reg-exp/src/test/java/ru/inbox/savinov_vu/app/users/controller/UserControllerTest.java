@@ -137,12 +137,13 @@ class UserControllerTest extends AbstractSpringBootTest {
       .andExpect(status().isBadRequest());
   }
 
+
   @Test
   void delete() throws Exception {
     Integer id = user.getId();
     UserDto userDto = userMapper.mapEntityToDto(user);
     ResultActions result = mockMvc
-      .perform(mockInit.deleteRequest(COMMON_PATH +"/"+id, user)
+      .perform(mockInit.deleteRequest(COMMON_PATH + "/" + id, user)
         .content(userDtoJackson.write(userDto).getJson())
         .contentType(MediaType.APPLICATION_JSON));
 
@@ -152,6 +153,7 @@ class UserControllerTest extends AbstractSpringBootTest {
     User updatedUser = userInitializer.getById(id);
     assertEquals(false, updatedUser.getEnabled());
   }
+
 
   @Test
   void update_validParam() throws Exception {
@@ -213,6 +215,6 @@ class UserControllerTest extends AbstractSpringBootTest {
       Arguments.of(UserDtoFactory.of().setEmail(LONG_EMPTY_STRING), "email is long empty string"),
       Arguments.of(UserDtoFactory.of().setEmail(TOO_LONG_WORD), "email is too long word"),
       Arguments.of(UserDtoFactory.of().setEmail(LONG_EMPTY_STRING + "asdf"), "email is long empty string with param")
-      );
+    );
   }
 }

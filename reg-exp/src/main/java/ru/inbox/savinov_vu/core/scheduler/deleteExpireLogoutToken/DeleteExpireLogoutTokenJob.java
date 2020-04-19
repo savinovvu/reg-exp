@@ -15,6 +15,7 @@ public class DeleteExpireLogoutTokenJob {
   @Resource
   private final DeleteExpireLogoutTokenJobService service;
 
+
   @Scheduled(cron = "${scheduler.cron.expire-logout-token-delete}")
   public void invoke() {
     service.deleteExpired();

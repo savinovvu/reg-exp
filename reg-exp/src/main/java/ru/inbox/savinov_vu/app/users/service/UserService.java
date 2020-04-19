@@ -38,6 +38,7 @@ public class UserService {
     return user;
   }
 
+
   @Transactional(readOnly = true)
   public User getById(Integer id) {
     User user = userRepository.findById(id).orElse(null);

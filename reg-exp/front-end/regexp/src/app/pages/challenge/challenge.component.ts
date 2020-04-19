@@ -22,7 +22,7 @@ export class ChallengeComponent implements OnInit {
 
   levelNumber;
 
-  conditions:any;
+  conditions: any;
 
   answer = '';
 
@@ -80,6 +80,7 @@ export class ChallengeComponent implements OnInit {
         });
     }, 300);
   }
+
 
   private resetProgress() {
     this.success = false;

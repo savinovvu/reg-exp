@@ -13,6 +13,7 @@ public class JwtHelperFactory {
     return helper;
   }
 
+
   public static JwtHelper of(JwtParams jwtParams) {
     JwtHelper helper = new JwtHelper(jwtParams);
     return helper;

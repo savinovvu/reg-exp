@@ -12,6 +12,7 @@ import ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFactory;
 import javax.annotation.Resource;
 
 
+
 @Service
 @RequiredArgsConstructor
 public class RegExpTaskInitializer {
@@ -21,6 +22,7 @@ public class RegExpTaskInitializer {
 
   @Resource
   private final UserRepository userRepository;
+
 
   public RegExpTask initOne() {
     userRepository.deleteAll();

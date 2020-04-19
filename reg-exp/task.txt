@@ -9,6 +9,7 @@
 . implement about page.
 . add kubernates.
 . add ci/cd
+. add task statuses
 84. migrate to angular 9
 83. implement propose a task.+
 82. implement routing for dev and nginx+

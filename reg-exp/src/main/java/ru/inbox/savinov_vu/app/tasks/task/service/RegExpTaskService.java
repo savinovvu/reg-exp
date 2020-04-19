@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.inbox.savinov_vu.app.checker.RegExpTaskChecker;
+import ru.inbox.savinov_vu.app.checker.RegExpTaskCheckerService;
 import ru.inbox.savinov_vu.app.checker.model.RegExpTaskResulter;
 import ru.inbox.savinov_vu.app.checker.model.TaskCondition;
 import ru.inbox.savinov_vu.app.tasks.task.dto.list.RegExpTaskListDto;
@@ -30,7 +30,7 @@ public class RegExpTaskService {
   private final RegExpTaskRepository repository;
 
   @Resource
-  private final RegExpTaskChecker regExpTaskChecker;
+  private final RegExpTaskCheckerService regExpTaskCheckerService;
 
   @Resource
   private final UserService userService;
@@ -64,7 +64,7 @@ public class RegExpTaskService {
   public RegExpTaskResulter check(Integer id, String answer) {
     var checkedTask = getById(id);
     TaskCondition taskCondition = TaskCondition.of(checkedTask, answer);
-    return regExpTaskChecker.check(taskCondition);
+    return regExpTaskCheckerService.check(taskCondition);
   }
 
 
@@ -72,7 +72,7 @@ public class RegExpTaskService {
   public RegExpTaskResulter register(Integer taskId, String answer, Integer userId) {
     var checkedTask = getById(taskId);
     TaskCondition taskCondition = TaskCondition.of(checkedTask, answer);
-    RegExpTaskResulter check = regExpTaskChecker.check(taskCondition);
+    RegExpTaskResulter check = regExpTaskCheckerService.check(taskCondition);
     if (!check.getSuccess()) {
       return check;
     }

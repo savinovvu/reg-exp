@@ -10,6 +10,7 @@ import ru.inbox.savinov_vu.config.AbstractSpringBootTest;
 import ru.inbox.savinov_vu.test_helpers.data.init.MockMvcBuilderInitializer;
 import ru.inbox.savinov_vu.test_helpers.data.init.RegExpTaskInitializer;
 import org.hamcrest.Matchers;
+
 import javax.annotation.Resource;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -50,6 +51,7 @@ class RegExpTaskControllerTest extends AbstractSpringBootTest {
       .andExpect(jsonPath("$.success", Matchers.equalTo(true)));
 
   }
+
 
   @Test
   void check_invalid() throws Exception {

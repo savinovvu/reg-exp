@@ -39,7 +39,7 @@ jwt:
 
 scheduler:
   cron:
-#    guest-reset: "1/5 * * * * ?"
+    #    guest-reset: "1/5 * * * * ?"
     guest-reset: "0 0/30 * * * ?"
     expire-logout-token-delete: "0 0 0 * * ?"
 

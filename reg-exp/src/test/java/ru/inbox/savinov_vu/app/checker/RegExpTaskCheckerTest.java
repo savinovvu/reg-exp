@@ -19,12 +19,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RegExpTaskCheckerTest {
 
-  private RegExpTaskChecker taskChecker;
+  private RegExpTaskCheckerService taskChecker;
 
 
   @BeforeEach
   void init() {
-    taskChecker = new RegExpTaskChecker();
+    taskChecker = new RegExpTaskCheckerService();
   }
 
 

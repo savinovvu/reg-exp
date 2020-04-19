@@ -17,7 +17,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import ru.inbox.savinov_vu.core.security.handler.CustomFailureHandler;
 import ru.inbox.savinov_vu.core.security.jwt.config.JwtAuthorizationTokenFilter;
 import ru.inbox.savinov_vu.core.security.jwt.config.JwtHelper;
-import ru.inbox.savinov_vu.core.security.jwt.config.JwtParams;
 import ru.inbox.savinov_vu.core.security.service.SecurityService;
 
 import javax.annotation.Resource;
@@ -35,9 +34,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Resource
   private SecurityService securityService;
-
-  @Resource
-  private JwtParams jwtParams;
 
 
   @Override
@@ -75,30 +71,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .loginProcessingUrl("/v1/sign-in")
       .failureHandler(unauthorizedEntryPoint())
       .permitAll()
-      .usernameParameter("login")
-      .passwordParameter("password")
-
-      .and()
-      .anonymous()
-      .principal("System")
 
 
       .and()
       .logout()
       .logoutUrl("/v1/logout")
-      .deleteCookies("remember-me")
       .permitAll()
 
       .and()
       .exceptionHandling()
-      .authenticationEntryPoint(unauthorizedEntryPoint())
+      .authenticationEntryPoint(unauthorizedEntryPoint());
 
-      .and()
-      .rememberMe()
-      .rememberMeCookieName("remember-me")
-      .userDetailsService(securityService)
-      .key("userSecurityKey")
-      .tokenValiditySeconds(jwtParams.getExpiration());
 
     http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
   }

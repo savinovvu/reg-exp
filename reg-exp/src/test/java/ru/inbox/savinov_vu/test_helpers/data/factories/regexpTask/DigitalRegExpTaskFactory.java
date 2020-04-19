@@ -33,7 +33,7 @@ public class DigitalRegExpTaskFactory extends BaseRegExpTaskFactory {
 
   public static RegExpTask getMultipleDecimalRange() {
     var regExpTask = of()
-      .setMatchedStrings(List.of( "245", "300", "888", "4444"))
+      .setMatchedStrings(List.of("245", "300", "888", "4444"))
       .setExcludedStrings(List.of("a", "aaa"))
       .setRequiredSubStrings(List.of())
       .setExcludedAnswers(List.of("\\d{1,}"))
@@ -53,6 +53,7 @@ public class DigitalRegExpTaskFactory extends BaseRegExpTaskFactory {
     return regExpTask;
   }
 
+
   public static RegExpTask getThreeBinary() {
     var regExpTask = of()
       .setMatchedStrings(List.of("000", "111", "001"))
@@ -66,7 +67,7 @@ public class DigitalRegExpTaskFactory extends BaseRegExpTaskFactory {
 
   public static RegExpTask getMultipleBinary() {
     var regExpTask = of()
-      .setMatchedStrings(List.of( "0000", "1", "10", "001"))
+      .setMatchedStrings(List.of("0000", "1", "10", "001"))
       .setExcludedStrings(List.of("a", "aaa", "5", "22"))
       .setRequiredSubStrings(List.of())
       .setExcludedAnswers(List.of("\\d{1,}"))
@@ -75,14 +76,16 @@ public class DigitalRegExpTaskFactory extends BaseRegExpTaskFactory {
     return regExpTask;
   }
 
+
   public static RegExpTask getOneRangeWithPoint() {
     var regExpTask = of()
       .setMatchedStrings(List.of("0", "1", "2", "3", "5"))
-      .setExcludedStrings(List.of("a", "11", "4", "6", "7", "8","9"))
+      .setExcludedStrings(List.of("a", "11", "4", "6", "7", "8", "9"))
       .setExcludedAnswers(List.of("[0,1,2,3,5]"))
-      .setAnswers(List.of( "[0-3,5]"));
+      .setAnswers(List.of("[0-3,5]"));
     return regExpTask;
   }
+
 
   public static RegExpTask getThreeRangeWithPoint() {
     var regExpTask = of()
@@ -96,14 +99,12 @@ public class DigitalRegExpTaskFactory extends BaseRegExpTaskFactory {
 
   public static RegExpTask getMultipleRangeWithPoint() {
     var regExpTask = of()
-      .setMatchedStrings(List.of( "0000", "5555", "10", "001"))
+      .setMatchedStrings(List.of("0000", "5555", "10", "001"))
       .setExcludedStrings(List.of("a", "aaa", "4", "6", "7", "8", "9"))
       .setExcludedAnswers(List.of("[0,1,2,3,5]*"))
       .setAnswers(List.of("[0-3,5]*"));
     return regExpTask;
   }
-
-
 
 
 }

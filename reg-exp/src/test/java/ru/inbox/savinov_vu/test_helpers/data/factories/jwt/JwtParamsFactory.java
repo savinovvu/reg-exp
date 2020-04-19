@@ -23,6 +23,7 @@ public class JwtParamsFactory {
     return new JwtParams(AuthorizationHeader, SECRET, expiration);
   }
 
+
   public static JwtParams byExpiration(int expiration) {
     return new JwtParams(AuthorizationHeader, SECRET, expiration);
   }

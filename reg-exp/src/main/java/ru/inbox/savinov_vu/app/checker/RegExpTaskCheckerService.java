@@ -1,6 +1,6 @@
 package ru.inbox.savinov_vu.app.checker;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ru.inbox.savinov_vu.app.checker.model.ConditionResult;
 import ru.inbox.savinov_vu.app.checker.model.RegExpTaskResulter;
 import ru.inbox.savinov_vu.app.checker.model.TaskCondition;
@@ -14,8 +14,8 @@ import static java.util.Objects.nonNull;
 
 
 
-@Component
-public class RegExpTaskChecker {
+@Service
+public class RegExpTaskCheckerService {
 
 
   private boolean checkMatches(String researchedString, String regExp) {

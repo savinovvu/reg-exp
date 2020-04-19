@@ -36,7 +36,6 @@ public class SecurityController {
   private JwtHelper jwtHelper;
 
 
-
   @PostMapping("/v1/sign-in")
   public ResponseEntity login(@Valid @RequestBody LoginDto loginDTO) {
 

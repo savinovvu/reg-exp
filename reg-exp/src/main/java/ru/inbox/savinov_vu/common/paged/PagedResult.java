@@ -1,31 +1,14 @@
 package ru.inbox.savinov_vu.common.paged;
 
-/**
- * Interface for supporting pagination
- */
 public interface PagedResult<T> {
-    /**
-     * Result items
-     */
-    T getItems();
 
-    /**
-     * Page size
-     */
-    int getSize();
+  T getItems();
 
-    /**
-     * page number
-     */
-    int getPage();
+  int getSize();
 
-    /**
-     * total rows count
-     */
-    long getTotal();
+  int getPage();
 
-    /**
-     * total pages count
-     */
-    long getTotalPages();
+  long getTotal();
+
+  long getTotalPages();
 }
