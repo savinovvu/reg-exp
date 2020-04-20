@@ -27,6 +27,7 @@
 # compiled output
 /front-end/tmp
 /front-end/out-tsc
+/front-end/build.sh
 
 # dependencies
 /front-end/auth/login/node_modules

@@ -1,37 +1,20 @@
-FROM node:10-slim as node10
+FROM node:12.16.2-alpine3.11 as node
 
 USER root
 
-COPY front-end/auth/login/package.json /opt/auth/login/package.json
-COPY front-end/auth/sign-up/package.json /opt/auth/sign-up/package.json
-COPY front-end/landing/package.json /opt/landing/package.json
+COPY front-end/static-pages/package.json /opt/static-pages/package.json
 COPY front-end/regexp/package.json /opt/regexp/package.json
 
-WORKDIR /opt/auth/login
-RUN npm install
-
-WORKDIR /opt/auth/sign-up/
-RUN npm install
-
-WORKDIR /opt/landing/
-RUN npm install
-
-WORKDIR /opt/regexp/
-RUN npm install
+RUN npm install --prefix /opt/static-pages && \
+    npm install --prefix /opt/regexp
 
 COPY front-end /opt
 
-WORKDIR /opt/auth/login
-RUN npm run build
+RUN npm run --prefix /opt/static-pages build
 
-WORKDIR /opt/auth/sign-up/
-RUN npm run build
+RUN npm run --prefix /opt/regexp build
 
-WORKDIR /opt/landing/
-RUN npm run build
 
-WORKDIR /opt/regexp/
-RUN npm run build
 
 FROM nginx:1.17.8-alpine
 USER root
@@ -39,9 +22,8 @@ USER root
 RUN rm /usr/share/nginx/html/50x.html && \
     rm /usr/share/nginx/html/index.html
 
-
 COPY infrastructure/nginx/nginx.conf.nginx /etc/nginx/nginx.conf
 
-COPY --from=node10 infrastructure/nginx/src /usr/share/nginx/html
+COPY --from=node infrastructure/nginx/src /usr/share/nginx/html
 
 
