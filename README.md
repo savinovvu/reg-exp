@@ -3,7 +3,7 @@ Java, Spring boot (MVC, Security, Data-Jpa), JWT, Criteria API, Hibernate Meta M
 
 To build and start need only docker (docker-compose).
 command:
-docker-compose up --build
+```docker-compose up --build```
 
 
 Graylog logging server dashboard starts on port 9000, loging. password: admin:admin
