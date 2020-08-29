@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.7'
 x-healthcheck:
   &health_check
   interval: 1m
@@ -9,7 +9,7 @@ services:
 
   regexp-postgres:
     build:
-      context: ./infrastructure/postgres
+      context: ${TOP}/infrastructure/postgres
       dockerfile: ./Dockerfile
     ports:
     - 55432:5432
@@ -25,8 +25,8 @@ services:
 
   app:
     build:
-      context: .
-      dockerfile: ./infrastructure/app/project-gradle.dockerfile
+      context: ${TOP}
+      dockerfile: infrastructure/app/project-gradle.dockerfile
     container_name: regexp
     ports:
       - 8080:8080
@@ -47,7 +47,7 @@ services:
 
   regexp-nginx:
     build:
-      context: .
+      context: ${TOP}
       dockerfile: infrastructure/nginx/nginx.dockerfile
 
     ports:
@@ -60,7 +60,7 @@ services:
 
   graylog:
     build:
-      context: .
+      context: ${TOP}
       dockerfile: infrastructure/graylog-logging/graylog.dockerfile
     container_name: graylog
     ports:

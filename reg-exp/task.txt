@@ -1,17 +1,23 @@
-. add grafite+grafana or prometheus+grafana monitoring
+. move config env to environment variables
+. split system to some modules
+. split tests to integration and unit
+. add micrometer and prometeus + grafana monitoring
 . hide some tabs for unathorized users
 . add settings, for example show settings
 . implement translation service
 . migrate to graphQL
 . add ngrx
-. implement theory page.
-. implement news page.
-. implement about page.
-. add kubernates.
+. implement theory page
+. implement news page
+. implement about page
+. add kubernates with helm chartes
 . add ci/cd
 . add task statuses
-85. reduce assembly front-end
-84. migrate to angular 9
+. fix token null bug
+. add docker-compose for infrastructure
+86. add makefile for different scenarios+
+85. reduce assembly front-end+
+84. migrate to angular 9+
 83. implement propose a task.+
 82. implement routing for dev and nginx+
 81. docker build with custom jre with jlink.+
