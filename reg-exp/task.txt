@@ -7,6 +7,8 @@
 . implement translation service
 . migrate to graphQL
 . add ngrx
+. improove logging
+. add sentry
 . implement theory page
 . implement news page
 . implement about page
