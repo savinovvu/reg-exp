@@ -16,7 +16,8 @@
 . add ci/cd
 . add task statuses
 . fix token null bug
-. add docker-compose for infrastructure
+88. add make and docker-compose for dev infrastructure+
+87. improove settings spring exceptionhandler+
 86. add makefile for different scenarios+
 85. reduce assembly front-end+
 84. migrate to angular 9+
