@@ -16,6 +16,7 @@
 . add ci/cd
 . add task statuses
 . fix token null bug
+89. merge security branches
 88. add make and docker-compose for dev infrastructure+
 87. improove settings spring exceptionhandler+
 86. add makefile for different scenarios+
