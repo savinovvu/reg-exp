@@ -7,12 +7,12 @@
 . implement translation service
 . migrate to graphQL
 . add ngrx
-. improove logging
+. improve logging
 . add sentry
 . implement theory page
 . implement news page
 . implement about page
-. add kubernates with helm chartes
+. add kubernetes with helm chartes
 . add ci/cd
 . add task statuses
 . fix token null bug

@@ -1,9 +1,9 @@
-#RegExp
+# RegExp
 
-###General
-####Technologies
+### General
+#### Technologies
 Java, Spring boot (MVC, Security, Data-Jpa), JWT, Criteria API, Hibernate Meta Model, MapStruct, Postgres, Liquibase, Angular, Gulp, Nginx, custom JRE with Jigsaw (jlink).
-####Start commands
+#### Start commands
 To build and start app with infrastructure in docker, execute command:
 ```
 make run
@@ -12,15 +12,15 @@ make run
 Graylog logging server dashboard starts on port 9000. login:password - admin:admin
 
 
-####Settings
+#### Settings
 For set jvm and gradle with sdkman you can execute:
 ```
 make sdk
 ```
 
-###BackEnd
+### BackEnd
 
-###FrontEnd
+### FrontEnd
 
 In front-end directory
 
