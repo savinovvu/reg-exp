@@ -20,7 +20,7 @@ import java.io.IOException;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
-
+import static ru.inbox.savinov_vu.configuration.WebSecurityConfig.PUBLIC_PATHS;
 
 
 @Slf4j
@@ -39,6 +39,11 @@ public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
   protected void doFilterInternal(HttpServletRequest request,
                                   HttpServletResponse response,
                                   FilterChain chain) throws ServletException, IOException {
+    if (PUBLIC_PATHS.contains(request.getRequestURI())) {
+      chain.doFilter(request, response);
+      return;
+    }
+
     LOG.debug("processing authentication for '{}'", request.getRequestURL());
 
     String authToken = jwtHelper.getAuthToken(request);

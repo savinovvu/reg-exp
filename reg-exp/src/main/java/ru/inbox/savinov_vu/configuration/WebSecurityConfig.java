@@ -20,7 +20,9 @@ import ru.inbox.savinov_vu.core.security.jwt.config.JwtHelper;
 import ru.inbox.savinov_vu.core.security.service.SecurityService;
 
 import javax.annotation.Resource;
-
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Configuration
@@ -35,6 +37,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Resource
   private SecurityService securityService;
 
+  public static final Set<String> PUBLIC_PATHS = new HashSet<>(Arrays.asList(
+    "/v1/sign-up",
+    "/v1/sign-in",
+    "/v1/sign-in/guest",
+    "/v1/log-out"));
+
 
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -46,12 +54,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    String[] publicPaths = new String[]{
-      "/v1/sign-up", "/page/users/user", "/v1/sign-in",
-      "/css/**", "/icons/**", "/images/**", "/js/**", "/layer/**",
-      "/fonts/**", "/v1/tasks/regexplevel", "/monitoring/**", "/v1/sign-in/guest",
-      "/v1/log-out"
-    };
 
     http
       .csrf().disable()
@@ -62,7 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .and()
 
       .authorizeRequests()
-      .antMatchers(publicPaths).permitAll()
+      .antMatchers(PUBLIC_PATHS.toArray(String[]::new)).permitAll()
       .anyRequest().authenticated()
 
       .and()
@@ -97,20 +99,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         "/v1/sign-up",
         "/v1/sign-in/guest",
         "/v1/log-out"
-      )
-
-      // allow anonymous resource requests
-      .and()
-      .ignoring()
-      .antMatchers(
-        HttpMethod.GET,
-        "/",
-        "/*.html",
-        "/favicon.ico",
-        "/**/*.html",
-        "/**/*.css",
-        "/**/*.js"
       );
+//
+//      // allow anonymous resource requests
+//      .and()
+//      .ignoring()
+//      .antMatchers(
+//        HttpMethod.GET,
+//        "/",
+//        "/*.html",
+//        "/favicon.ico",
+//        "/**/*.html",
+//        "/**/*.css",
+//        "/**/*.js"
+//      );
   }
 
 

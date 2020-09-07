@@ -49,11 +49,8 @@ public class SecurityController {
 
   @PostMapping("/v1/sign-in/guest")
   public ResponseEntity loginGuest() {
-
     SecurityUser securityUser = securityService.authenticateGuest();
-
     String token = jwtHelper.generateToken(securityUser.getLogin());
-
     return ResponseEntity.ok(JwtAuthenticationResponse.of(securityUser, token));
   }
 
