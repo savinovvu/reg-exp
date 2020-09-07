@@ -20,9 +20,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import java.util.Date;
+import java.util.List;
 
 import static java.util.Objects.isNull;
-
 
 
 @RestController
@@ -61,7 +61,7 @@ public class SecurityController {
   @PostMapping("/v1/sign-up")
   public ResponseEntity signUp(@Valid @RequestBody SignUpDto signUpDto) {
     if (!signUpDto.getPassword().equals(signUpDto.getRepeatPassword())) {
-      return new ResponseEntity(HttpStatus.BAD_REQUEST);
+      return new ResponseEntity(List.of("passwords must be equals"), HttpStatus.BAD_REQUEST);
     }
     securityService.signUp(signUpDto);
     return ResponseEntity.ok().build();

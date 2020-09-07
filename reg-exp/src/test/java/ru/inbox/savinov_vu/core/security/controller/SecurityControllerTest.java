@@ -111,7 +111,7 @@ class SecurityControllerTest extends AbstractSpringBootTest {
       ResultActions result = mockMvc.perform(post(SIGN_IN_PATH).content(loginTester.write(loginDto).getJson())
         .contentType(MediaType.APPLICATION_JSON));
 
-      result.andExpect(status().isUnauthorized());
+      result.andExpect(status().isMovedPermanently());
     }
 
 

@@ -28,6 +28,15 @@
         'Content-Type': 'application/json; charset=utf-8',
       }
     })
-      .then(response =>  window.location.href = "/login");
+      .then(response => {
+        return response.json();
+      })
+      .then(json => {
+        if (Array.isArray(json)) {
+          alert(json);
+          return;
+        }
+        window.location.href = "/login"
+      });
   });
 }

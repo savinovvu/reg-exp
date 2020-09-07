@@ -1,7 +1,9 @@
 package ru.inbox.savinov_vu.core.exception.handling;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -13,11 +15,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.validation.BindException;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import ru.inbox.savinov_vu.core.exception.flow.InvalidParameterException;
 import ru.inbox.savinov_vu.core.exception.flow.ValidationException;
 import ru.inbox.savinov_vu.test_helpers.controller.ExceptionAdviceHelperController;
 
+import javax.annotation.Resource;
 import java.util.stream.Stream;
 
 import static org.mockito.BDDMockito.given;
@@ -27,6 +31,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(MockitoExtension.class)
 class ExceptionHandlingAdviceTest {
+
+  @Resource
+  private ObjectMapper mapper;
 
   @Mock
   private ExceptionAdviceHelperController controller;
@@ -38,7 +45,7 @@ class ExceptionHandlingAdviceTest {
   public void setUp() {
     this.mockMvc = MockMvcBuilders
       .standaloneSetup(controller)
-      .setControllerAdvice(new ExceptionHandlingAdvice())
+      .setControllerAdvice(new ExceptionHandlingAdvice(mapper))
       .build();
   }
 
@@ -59,8 +66,7 @@ class ExceptionHandlingAdviceTest {
     return Stream.of(
       Arguments.of(new Exception("Unexpected Exception"), status().isInternalServerError(), "Internal Server Error"),
       Arguments.of(new InvalidParameterException("invalid param"), status().isNotFound(), "invalid param"),
-      Arguments.of(new ValidationException("field is not valid", new RuntimeException()), status().isBadRequest(), "field is not valid"),
-      Arguments.of(new MethodArgumentNotValidException(getParameter(), new BindException("target", "name")), status().isBadRequest(), "Validation failed for argument [0] in public void ru.inbox.savinov_vu.core.exception.handling.ExceptionHandlingAdviceTest.mockMethodForTest(java.lang.Boolean): ")
+      Arguments.of(new ValidationException("field is not valid", new RuntimeException()), status().isBadRequest(), "field is not valid")
     );
 
 
@@ -78,5 +84,19 @@ class ExceptionHandlingAdviceTest {
 
   public void mockMethodForTest(Boolean param) {
 
+  }
+
+  @Test
+  public void testMethodArgumentNotValidException() throws Exception {
+    BindException bindingResult = new BindException("target", "name");
+    bindingResult.addError(new ObjectError("objectName", "some message"));
+    MethodArgumentNotValidException exception = new MethodArgumentNotValidException(getParameter(), bindingResult);
+    String message = "some message";
+    given(controller.make()).willAnswer((x) -> {
+      throw exception;
+    });
+
+    mockMvc.perform(get("/error/invoke"))
+      .andExpect(jsonPath("$[0]").value(message));
   }
 }
