@@ -33,9 +33,3 @@ FROM debian:stretch-slim as run-container
 COPY --from=build-container /home/custom-jvm/spring-boot-runtime /usr/lib/jvm/spring-boot-runtime
 
 COPY --from=build-container /opt/reg-exp.jar /opt/reg-exp.jar
-
-
-# from root of project
-# docker build -t app-tmp -f infrastructure/app/project-gradle.dockerfile .
-# docker run -it --entrypoint /bin/sh app-tmp
-# /usr/lib/jvm/spring-boot-runtime/bin/java -Dfile.encoding=UTF-8 -jar /opt/reg-exp.jar

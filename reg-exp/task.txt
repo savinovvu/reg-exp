@@ -16,7 +16,8 @@
 . add ci/cd
 . add task statuses
 . add code formatter to build
-91. fix token null bug, delete some public paths
+92. improove test for regexplevel+
+91. fix token null bug, delete some public paths+
 90. add validation to /login and /sign-up, fix undefined token bug+
 89. merge security branches+
 88. add make and docker-compose for dev infrastructure+

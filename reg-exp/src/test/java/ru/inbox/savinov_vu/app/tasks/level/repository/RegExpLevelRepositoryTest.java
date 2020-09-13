@@ -2,67 +2,73 @@ package ru.inbox.savinov_vu.app.tasks.level.repository;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import ru.inbox.savinov_vu.app.tasks.level.model.RegExpLevel;
-import ru.inbox.savinov_vu.config.AbstractSpringBootTest;
+import ru.inbox.savinov_vu.config.AbstractJpaRepositoryTest;
 
 import javax.annotation.Resource;
 
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.springframework.test.util.AssertionErrors.assertEquals;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static ru.inbox.savinov_vu.test_helpers.data.factories.RegExpLevelFactory.getRegExpLevel;
 
 
-
-class RegExpLevelRepositoryTest extends AbstractSpringBootTest {
-
+class RegExpLevelRepositoryTest extends AbstractJpaRepositoryTest<RegExpLevel> {
 
   @Resource
-  private RegExpLevelRepository repository;
+  private RegExpLevelRepository subject;
 
   private RegExpLevel level;
 
-
   @BeforeEach
   public void initTest() {
-    repository.deleteAll();
-    RegExpLevel regExpLevel = getRegExpLevel();
-    level = repository.saveAndFlush(regExpLevel);
+    level = getRegExpLevel();
   }
 
-
   @Test
-  public void createAndReadLevelTest() {
-    RegExpLevel result = repository.findById(level.getId()).orElse(new RegExpLevel());
-    assertEquals("RegExpLevel must have id", result.getId().intValue(), level.getId());
+  public void findById() {
+    Integer id = (Integer) em.persistAndGetId(level);
+    em.flush();
+    em.clear();
+    assertTrue(subject.findById(id).isPresent());
   }
 
-
   @Test
-  public void updateLevelTest() {
-    RegExpLevel regExpLevel = repository.findById(level.getId()).orElse(new RegExpLevel());
-    regExpLevel.setNumber(5);
-    RegExpLevel result = repository.saveAndFlush(regExpLevel);
-    assertEquals("RegExpLevel must have id", result.getNumber().intValue(), 5);
+  public void findAll() {
+    em.persist(getRegExpLevel());
+    em.persist(getRegExpLevel());
+    em.persist(getRegExpLevel());
+    em.flush();
+    em.clear();
+    List<RegExpLevel> all = subject.findAll();
+    assertEquals(3, all.size());
   }
 
-
   @Test
-  public void deleteLevelTest() {
-    RegExpLevel regExpLevel = getRegExpLevel();
-    RegExpLevel result = repository.saveAndFlush(regExpLevel);
-    repository.delete(result);
-    RegExpLevel nullLevel = repository.findById(result.getId()).orElse(null);
-    assertNull(nullLevel, "RegExpLevel must be null");
+  public void update() {
+    em.persistAndFlush(level);
+    em.clear();
+    level.setScore(80);
+    RegExpLevel actual = subject.saveAndFlush(level);
+    assertEquals(80, actual.getScore());
   }
 
+  @Test
+  public void delete() {
+    Integer id = (Integer) em.persistAndGetId(level);
+    em.flush();
+    em.clear();
+    subject.deleteById(id);
+    RegExpLevel actual = em.find(RegExpLevel.class, id);
+    assertNull(actual);
+  }
 
   @Test
-  public void getByNumberTest() {
-    RegExpLevel regExpLevel = getRegExpLevel();
-    regExpLevel.setNumber(2);
-    RegExpLevel savedLevel = repository.saveAndFlush(regExpLevel);
-    RegExpLevel byNumberLevel = repository.findByNumber(savedLevel.getNumber());
-    assertEquals("RegExpLevel find by number not correct", byNumberLevel.getId(), savedLevel.getId());
+  public void create() {
+    RegExpLevel regExpLevel = subject.saveAndFlush(level);
+    RegExpLevel actual = em.find(RegExpLevel.class, regExpLevel.getId());
+    assertNotNull(actual);
   }
 
 }

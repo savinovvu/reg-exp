@@ -11,7 +11,6 @@ import ru.inbox.savinov_vu.app.tasks.level.model.RegExpLevel;
 import ru.inbox.savinov_vu.app.tasks.level.service.RegExpLevelService;
 import ru.inbox.savinov_vu.common.util.HttpRequestUtil;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -21,9 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 public class RegExpLevelController {
 
-  @Resource
   private final RegExpLevelService regExpLevelService;
-
 
   @GetMapping("/v1/tasks/regexplevel")
   public ResponseEntity<List<RegExpLevelDto>> getAll(HttpServletRequest request) {
@@ -38,6 +35,4 @@ public class RegExpLevelController {
     RegExpLevel byId = regExpLevelService.findById(id);
     return new ResponseEntity(byId, HttpStatus.OK);
   }
-
-
 }

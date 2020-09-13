@@ -4,7 +4,7 @@ server:
 
 spring:
   liquibase:
-    change-log: classpath:/db/changelog/master.xml
+    enabled: false
   mandatory-file-encoding: utf-8
   jpa:
     hibernate:

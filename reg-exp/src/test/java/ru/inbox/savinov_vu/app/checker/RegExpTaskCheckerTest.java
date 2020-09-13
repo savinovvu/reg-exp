@@ -13,18 +13,17 @@ import ru.inbox.savinov_vu.test_helpers.data.factories.regexpTask.WordRegExpTask
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class RegExpTaskCheckerTest {
 
-  private RegExpTaskCheckerService taskChecker;
+  private RegExpTaskCheckerService subject;
 
 
   @BeforeEach
   void init() {
-    taskChecker = new RegExpTaskCheckerService();
+    subject = new RegExpTaskCheckerService();
   }
 
 
@@ -32,8 +31,8 @@ public class RegExpTaskCheckerTest {
   @MethodSource("getValidTasks")
   public void check_valid(RegExpTask task, String message) {
     for (String v : task.getAnswers()) {
-      RegExpTaskResulter check = taskChecker.check(TaskCondition.of(task, v));
-      assertEquals(true, check.getSuccess(), message + ", answer: " + v);
+      RegExpTaskResulter check = subject.check(TaskCondition.of(task, v));
+      assertTrue(check.getSuccess(), message + ", answer: " + v);
     }
   }
 
@@ -60,8 +59,8 @@ public class RegExpTaskCheckerTest {
   @Test
   public void digitalTask_invalid_excluded_answer() {
     RegExpTask task = DigitalRegExpTaskFactory.getOneDecimalRange();
-    RegExpTaskResulter check = taskChecker.check(TaskCondition.of(task, task.getExcludedAnswers().get(0)));
-    assertEquals(false, check.getSuccess());
+    RegExpTaskResulter check = subject.check(TaskCondition.of(task, task.getExcludedAnswers().get(0)));
+    assertFalse(check.getSuccess());
   }
 
 }

@@ -13,25 +13,20 @@ import ru.inbox.savinov_vu.app.tasks.level.repository.RegExpLevelRepository;
 import ru.inbox.savinov_vu.app.users.model.User;
 import ru.inbox.savinov_vu.app.users.service.UserService;
 
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.stream.Collectors;
-
 
 
 @Service
 @RequiredArgsConstructor
 public class RegExpLevelService {
 
-  @Resource
   private final RegExpLevelRepository regExpLevelRepository;
 
-  @Resource
   private final UserService userService;
 
 
-  @Transactional(readOnly = true)
-  public List<RegExpLevel> findAll() {
+  private List<RegExpLevel> findAll() {
     List<RegExpLevel> all = regExpLevelRepository.findAll(Sort.by(Sort.Direction.ASC, RegExpLevel_.NUMBER));
     return all;
   }
@@ -41,11 +36,11 @@ public class RegExpLevelService {
   public List<RegExpLevelDto> findAllForUser(Integer userId) {
     User user = userService.getById(userId);
     List<RegExpLevel> all = findAll();
-    List<RegExpLevelDto> result = all.stream().map(v -> Mappers.getMapper(RegExpLevelDtoMapper.class)
-      .mapEntityToDto(v)
-      .setSolve(v.getUsers().contains(user)))
+    List<RegExpLevelDto> result = all.stream()
+      .map(v -> Mappers.getMapper(RegExpLevelDtoMapper.class)
+        .mapEntityToDto(v)
+        .setSolve(v.getUsers().contains(user)))
       .collect(Collectors.toList());
-
     return result;
   }
 

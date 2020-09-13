@@ -1,93 +1,79 @@
 package ru.inbox.savinov_vu.app.tasks.level.controller;
 
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.context.annotation.Bean;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import ru.inbox.savinov_vu.app.tasks.level.dto.RegExpLevelDto;
 import ru.inbox.savinov_vu.app.tasks.level.model.RegExpLevel;
-import ru.inbox.savinov_vu.app.tasks.level.repository.RegExpLevelRepository;
 import ru.inbox.savinov_vu.app.tasks.level.service.RegExpLevelService;
-import ru.inbox.savinov_vu.app.users.repository.UserRepository;
-import ru.inbox.savinov_vu.app.users.service.UserService;
-import ru.inbox.savinov_vu.config.AbstractControllerTest;
-import ru.inbox.savinov_vu.test_helpers.utils.WebTestHelper;
 
-import javax.annotation.Resource;
 import java.util.List;
 
-import static org.springframework.test.util.AssertionErrors.assertEquals;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static ru.inbox.savinov_vu.test_helpers.mock.RegExpLevelMock.getRegExpLevelRepositoryMock;
-import static ru.inbox.savinov_vu.test_helpers.mock.RegExpLevelMock.getRegExpLevelServiceMock;
-import static ru.inbox.savinov_vu.test_helpers.mock.UserMock.getUserRepositoryMock;
-import static ru.inbox.savinov_vu.test_helpers.mock.UserMock.getUserServiceMock;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static ru.inbox.savinov_vu.test_helpers.data.factories.RegExpLevelFactory.getRegExpLevelWithId;
 
 
+@ExtendWith(MockitoExtension.class)
+class RegExpLevelControllerTest {
 
-class RegExpLevelControllerTest extends AbstractControllerTest {
+  private RegExpLevelController subject;
 
-  @Resource
-  private WebTestHelper webTestHelper;
+  @Mock
+  private RegExpLevelService levelService;
 
-  @Resource
-  private RegExpLevelService regExpLevelService;
+  private MockMvc mvc;
+
+  @BeforeEach
+  void setUp() {
+    subject = new RegExpLevelController(levelService);
+    mvc = MockMvcBuilders.standaloneSetup(subject).build();
+  }
+
+  @Test
+  void getAll() throws Exception {
+    when(levelService.findAllForUser(1))
+      .thenReturn(List.of(
+        new RegExpLevelDto("1", "descr", "12", false, 50),
+        new RegExpLevelDto().setId("2")
+      ));
+    MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/v1/tasks/regexplevel")
+      .header("id", 1);
+
+    mvc.perform(request)
+      .andExpect(status().isOk())
+      .andExpect(jsonPath("$.length()").value(2))
+      .andExpect(jsonPath("$[0].id").value("1"))
+      .andExpect(jsonPath("$[0].description").value("descr"))
+      .andExpect(jsonPath("$[0].number").value("12"))
+      .andExpect(jsonPath("$[0].solve").value(false))
+      .andExpect(jsonPath("$[0].score").value(50))
+      .andExpect(jsonPath("$[1].id").value("2"));
+  }
 
 
   @Test
-  @Disabled
-  void getAll() {
-    String result = webTestHelper.performRequest(get("/v1/tasks/regexplevel"));
-    List<RegExpLevel> all = regExpLevelService.findAll();
-    String expected = webTestHelper.objectToJson(all);
-    assertEquals("json must be right", expected, result);
+  void getById() throws Exception {
+    RegExpLevel level = getRegExpLevelWithId(1);
+    when(levelService.findById(1)).thenReturn(level);
+
+    MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/v1/tasks/regexplevel/1");
+
+    mvc.perform(request)
+      .andExpect(status().isOk())
+      .andExpect(jsonPath("$.id").value(level.getId()))
+      .andExpect(jsonPath("$.number").value(level.getNumber()))
+      .andExpect(jsonPath("$.enDescription").value(level.getEnDescription()))
+      .andExpect(jsonPath("$.ruDescription").value(level.getRuDescription()))
+      .andExpect(jsonPath("$.enabled").value(level.isEnabled()))
+      .andExpect(jsonPath("$.score").value(level.getScore()));
   }
 
-
-  @Test
-  @Disabled
-  void getById() {
-    String result = webTestHelper.performRequest(get("/v1/tasks/regexplevel/1"));
-    RegExpLevel regExpLevel = regExpLevelService.findById(1);
-    String expected = webTestHelper.objectToJson(regExpLevel);
-    assertEquals("json must be right", expected, result);
-  }
-
-
-  @TestConfiguration
-  public static class RegExpLevelServiceTestContextConfiguration {
-
-
-    @Bean
-    public RegExpLevelController regExpLevelController() {
-      return new RegExpLevelController(regExpLevelService());
-    }
-
-
-    @Bean
-    public RegExpLevelService regExpLevelService() {
-      RegExpLevelService regExpLevelServiceMock = getRegExpLevelServiceMock();
-      return regExpLevelServiceMock;
-    }
-
-
-    @Bean
-    public UserService userService() {
-      UserService mock = getUserServiceMock();
-      return mock;
-    }
-
-
-    @Bean
-    public UserRepository userRepository() {
-      UserRepository userRepositoryMock = getUserRepositoryMock();
-      return userRepositoryMock;
-    }
-
-
-    @Bean
-    public RegExpLevelRepository regExpLevelRepository() {
-      RegExpLevelRepository regExpLevelRepository = getRegExpLevelRepositoryMock();
-      return regExpLevelRepository;
-    }
-  }
 }

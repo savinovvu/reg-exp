@@ -2,8 +2,9 @@ package ru.inbox.savinov_vu.test_helpers.data.factories;
 
 import ru.inbox.savinov_vu.app.tasks.level.model.RegExpLevel;
 
+import java.util.Arrays;
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 
 public class RegExpLevelFactory {
@@ -33,6 +34,10 @@ public class RegExpLevelFactory {
       .setId(1)
       .setNumber(number);
     return regExpLevel;
+  }
+
+  public static List<RegExpLevel> getRegExpLevelsWithNumbers(Integer... numbers) {
+    return Arrays.stream(numbers).map(RegExpLevelFactory::getRegExpLevelWithNumber).collect(Collectors.toList());
   }
 
 
