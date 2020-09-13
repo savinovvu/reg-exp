@@ -1,6 +1,5 @@
 package ru.inbox.savinov_vu.core.exception.handling;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +20,6 @@ import ru.inbox.savinov_vu.core.exception.flow.InvalidParameterException;
 import ru.inbox.savinov_vu.core.exception.flow.ValidationException;
 import ru.inbox.savinov_vu.test_helpers.controller.ExceptionAdviceHelperController;
 
-import javax.annotation.Resource;
 import java.util.stream.Stream;
 
 import static org.mockito.BDDMockito.given;
@@ -32,8 +30,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(MockitoExtension.class)
 class ExceptionHandlingAdviceTest {
 
-  @Resource
-  private ObjectMapper mapper;
 
   @Mock
   private ExceptionAdviceHelperController controller;
@@ -45,7 +41,7 @@ class ExceptionHandlingAdviceTest {
   public void setUp() {
     this.mockMvc = MockMvcBuilders
       .standaloneSetup(controller)
-      .setControllerAdvice(new ExceptionHandlingAdvice(mapper))
+      .setControllerAdvice(new ExceptionHandlingAdvice())
       .build();
   }
 

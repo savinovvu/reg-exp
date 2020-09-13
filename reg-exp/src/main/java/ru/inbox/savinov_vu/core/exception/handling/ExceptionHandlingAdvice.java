@@ -27,8 +27,6 @@ import static org.springframework.http.HttpStatus.*;
 @Slf4j
 public class ExceptionHandlingAdvice {
 
-  private final ObjectMapper mapper;
-
   private static final String LOGIN_PATH = "/login";
   private static final HttpStatus DEFAULT_HTTP_STATUS = HttpStatus.INTERNAL_SERVER_ERROR;
   private static final String LOG_TEMPLATE = "request to {}; {}: {}, responding with <{} {}>";
@@ -37,8 +35,7 @@ public class ExceptionHandlingAdvice {
 
   private final Map<Class<?>, HttpStatus> exceptionStatusMap = new HashMap<>();
 
-  public ExceptionHandlingAdvice(ObjectMapper mapper) {
-    this.mapper = mapper;
+  public ExceptionHandlingAdvice() {
     exceptionStatusMap.put(InvalidParameterException.class, NOT_FOUND);
     exceptionStatusMap.put(ValidationException.class, BAD_REQUEST);
     exceptionStatusMap.put(MethodArgumentNotValidException.class, BAD_REQUEST);

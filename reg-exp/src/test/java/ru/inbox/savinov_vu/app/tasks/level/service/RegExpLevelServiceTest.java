@@ -22,7 +22,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static ru.inbox.savinov_vu.test_helpers.data.factories.RegExpLevelFactory.getRegExpLevelsWithNumbers;
 import static ru.inbox.savinov_vu.test_helpers.data.factories.user.UserFactory.getWithId;
 
-
 @ExtendWith(MockitoExtension.class)
 class RegExpLevelServiceTest {
 
