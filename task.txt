@@ -1,3 +1,4 @@
+. replace hibernate field metamodel with lombok @fielNameConstant
 . move config env to environment variables
 . split system to some modules
 . split tests to integration and unit

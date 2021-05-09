@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import lombok.experimental.FieldNameConstants;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import ru.inbox.savinov_vu.app.tasks.comment.model.Comment;
@@ -14,20 +15,7 @@ import ru.inbox.savinov_vu.common.audit.BaseEntityAudit;
 import ru.inbox.savinov_vu.common.interfaces.entityInterfaces.Identify;
 import ru.inbox.savinov_vu.core.converter.SexConverter;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Convert;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -41,6 +29,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @Accessors(chain = true)
+@FieldNameConstants
 public class User extends BaseEntityAudit implements Identify {
 
   @Id

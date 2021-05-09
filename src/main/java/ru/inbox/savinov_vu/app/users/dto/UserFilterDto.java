@@ -1,10 +1,11 @@
 package ru.inbox.savinov_vu.app.users.dto;
 
 import lombok.Data;
-
+import lombok.experimental.Accessors;
 
 
 @Data
+@Accessors(chain = true)
 public class UserFilterDto {
 
   private String id;

@@ -2,12 +2,10 @@ package ru.inbox.savinov_vu.app.tasks.level.repository;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import ru.inbox.savinov_vu.app.tasks.level.model.RegExpLevel;
 import ru.inbox.savinov_vu.config.AbstractJpaRepositoryTest;
 
 import javax.annotation.Resource;
-
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;

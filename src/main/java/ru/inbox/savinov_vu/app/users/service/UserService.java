@@ -13,7 +13,6 @@ import ru.inbox.savinov_vu.app.users.repository.UserFilter;
 import ru.inbox.savinov_vu.app.users.repository.UserRepository;
 import ru.inbox.savinov_vu.common.paged.PagedResultList;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 
@@ -22,7 +21,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserService {
 
-  @Resource
   private final UserRepository userRepository;
 
 
