@@ -100,19 +100,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         "/v1/sign-in/guest",
         "/v1/log-out"
       );
-//
-//      // allow anonymous resource requests
-//      .and()
-//      .ignoring()
-//      .antMatchers(
-//        HttpMethod.GET,
-//        "/",
-//        "/*.html",
-//        "/favicon.ico",
-//        "/**/*.html",
-//        "/**/*.css",
-//        "/**/*.js"
-//      );
   }
 
 

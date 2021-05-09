@@ -24,10 +24,6 @@ spring:
     password: ""
     driver-class-name: org.h2.Driver
 
-  thymeleaf:
-    prefix: file:///${user.dir}/src/main/resources/templates/
-    cache: false
-    mode: HTML
 
 jwt:
   header: Authorization
