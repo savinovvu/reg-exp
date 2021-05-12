@@ -34,7 +34,7 @@
     "@ngx-translate/core": "^11.0.0",
     "@ngx-translate/http-loader": "^4.0.0",
     "bootstrap": "4.3.1",
-    "chart.js": "2.7.1",
+    "chart.js": "2.9.4",
     "crypto-js": "^4.0.0",
     "echarts": "^4.0.2",
     "eva-icons": "^1.1.3",
