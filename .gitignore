@@ -2,6 +2,7 @@
 /build/
 /tmp
 !gradle/wrapper/gradle-wrapper.jar
+.tool-versions
 
 
 ### STS ###
