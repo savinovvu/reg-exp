@@ -15,7 +15,7 @@
   "devDependencies": {
     "@htmlacademy/editorconfig-cli": "1.x",
     "autoprefixer": "9.5.x",
-    "browser-sync": "2.26.x",
+    "browser-sync": "2.27.x",
     "del": "^5.1.0",
     "gulp": "4.0.x",
     "gulp-csso": "^3.0.1",
